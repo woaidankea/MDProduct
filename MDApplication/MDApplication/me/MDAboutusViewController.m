@@ -1,0 +1,77 @@
+//
+//  MDAboutusViewController.m
+//  MDApplication
+//
+//  Created by jieku on 16/3/19.
+//  Copyright © 2016年 jieku. All rights reserved.
+//
+
+#import "MDAboutusViewController.h"
+
+@interface MDAboutusViewController ()
+
+@end
+
+@implementation MDAboutusViewController
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSString *filePath = [NSString new];
+    NSString *htmlString = [NSString new];
+    switch (self.enterType) {
+        case MD_AboutController:{
+            
+            self.title =@"关于我们";
+            
+            filePath = [[NSBundle mainBundle]pathForResource:@"about" ofType:@"html"];
+          
+            
+                   }
+            
+            break;
+        case MD_ProtocolControlller:
+            self.title =@"隐私协议";
+            
+            filePath = [[NSBundle mainBundle]pathForResource:@"protocol" ofType:@"html"];
+            
+            break;
+        default:
+            break;
+    }
+      htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    [_webview loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
+
+    
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+     self.automaticallyAdjustsScrollViewInsets =NO;
+    [self setleftBarItemWith:@"back_ico@2x.png"];
+
+    
+    
+    
+    
+   
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

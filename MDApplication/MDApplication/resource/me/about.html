@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>关于我们</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:focus {outline:none;}
+a,
+a:focus,
+a:hover {
+    color: #FF6000;
+    text-decoration: none;
+}
+ {
+    color: #FF6000;
+}
+body {
+    font-size: 16px;
+    color: #555;
+    background: #EFEFEF;
+}
+.pic {
+    text-align: center;
+    margin: 20px 0 10px;
+}
+#version {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+#contact {
+    text-align: center;
+}
+
+td {
+    line-height: 150%;
+    text-align: left;
+}
+.alignCenter {
+    text-align:center;
+    line-height: 200%;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+<div class="pic">
+    <img src="apple-touch-icon.png" width="90">
+</div>
+<div id="version"></div>
+<div class="alignCenter">
+    <strong>工作时间：</strong><br>
+    <small>周一至周五10：00～18：00</small>
+</div>
+<div class="alignCenter">
+    <strong>官方QQ群1：</strong><small>389584031(已满)</small><br>
+    <strong>官方QQ群2：</strong><small>153591027(未满)</small><br>
+    <strong>官方QQ群3：</strong><small>390311192(未满)</small><br>
+    <strong>官方QQ群4：</strong><small>532923693(未满)</small><br>
+    <strong>官方QQ群5：</strong><small>240985106(未满)</small><br>
+    <strong>官方QQ群6：</strong><small>391621244(未满)</small><br>
+</div>
+<div class="alignCenter">
+    <strong>微信公众号：</strong><small>azfapp（客服&提现）</small>
+</div>
+<div class="alignCenter">
+    <strong>商务合作QQ：</strong><small>910778 (验证说明：商务合作)</small>
+</div>
+<div class="alignCenter">
+    <strong>客服电话：</strong><br>
+    <small><a href="tel:4009606551">400-960-6551</a></small>
+</div>
+
+<script>
+var $_GET = function(n, s) {
+    s = s || window.location.search;
+    var v = s.match(new RegExp("[\?\&]" + n + "=([^\&]*)(\&?)","i"));
+    return v ? v[1] : v;
+};
+var version = document.getElementById('version');
+version.innerHTML = 'version ' + ($_GET('ver') ? escape($_GET('ver')) : '');
+</script>
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256624996'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256624996' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
