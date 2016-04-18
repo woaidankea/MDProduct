@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Setting View Controller-->
+        <scene sceneID="4Tn-Oe-aEi">
+            <objects>
+                <viewController storyboardIdentifier="MDSettingViewController" id="f2b-kE-Wq7" customClass="MDSettingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zeJ-ll-4bk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aji-mo-TnD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7ya-Ge-mCI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTb-az-ddY">
+                                <rect key="frame" x="34" y="391" width="253" height="40"/>
+                                <color key="backgroundColor" red="0.88417530059814453" green="0.19475024938583374" blue="0.18050619959831238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Wkb-8M-5NC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="退出登录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutClick:" destination="f2b-kE-Wq7" eventType="touchUpInside" id="Qog-bS-RHC"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HlE-3W-LHy">
+                                <rect key="frame" x="0.0" y="20" width="320" height="348"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MDSettingCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MDSettingCell" rowHeight="40" id="Dag-Vd-n49" customClass="MDSettingCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dag-Vd-n49" id="LzJ-bt-e5a">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改登录密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-p3-x2N">
+                                                    <rect key="frame" x="8" y="13" width="304" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="aY1-A5-SIA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.035294117649999998" green="0.035294117649999998" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jaF-p3-x2N" firstAttribute="centerX" secondItem="LzJ-bt-e5a" secondAttribute="centerX" id="UpO-ur-Bf4"/>
+                                                <constraint firstItem="jaF-p3-x2N" firstAttribute="leading" secondItem="LzJ-bt-e5a" secondAttribute="leadingMargin" id="c8z-oW-M7S"/>
+                                                <constraint firstItem="jaF-p3-x2N" firstAttribute="centerY" secondItem="LzJ-bt-e5a" secondAttribute="centerY" id="k7i-wD-WYu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Name" destination="jaF-p3-x2N" id="dpy-Ln-vq7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="HlE-3W-LHy" firstAttribute="left" secondItem="7ya-Ge-mCI" secondAttribute="left" id="0Mi-oE-ohe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YTb-az-ddY" secondAttribute="trailing" constant="17" id="Rxm-kb-um5"/>
+                            <constraint firstItem="YTb-az-ddY" firstAttribute="top" secondItem="HlE-3W-LHy" secondAttribute="bottom" constant="23" id="XjZ-rm-Cgj"/>
+                            <constraint firstAttribute="right" secondItem="HlE-3W-LHy" secondAttribute="right" id="eaO-Sc-uyI"/>
+                            <constraint firstItem="YTb-az-ddY" firstAttribute="leading" secondItem="7ya-Ge-mCI" secondAttribute="leadingMargin" constant="18" id="pMe-Qz-eXt"/>
+                            <constraint firstItem="HlE-3W-LHy" firstAttribute="top" secondItem="zeJ-ll-4bk" secondAttribute="bottom" id="vAB-9R-3sW"/>
+                            <constraint firstItem="Aji-mo-TnD" firstAttribute="top" secondItem="HlE-3W-LHy" secondAttribute="bottom" constant="200" id="vE2-Iy-0HV"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="logoutBtn" destination="YTb-az-ddY" id="Ngf-yY-g1P"/>
+                        <outlet property="table" destination="HlE-3W-LHy" id="HIe-WZ-CI4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8g-X9-ist" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="237"/>
+        </scene>
+        <!--Aboutus View Controller-->
+        <scene sceneID="BPX-D5-cSS">
+            <objects>
+                <viewController storyboardIdentifier="MDAboutusViewController" id="B3B-iy-cuN" customClass="MDAboutusViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IgD-DC-1QQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="cWf-CS-bmI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZUz-sU-nZV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1y7-po-I4x">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="right" secondItem="1y7-po-I4x" secondAttribute="right" id="V4B-Rc-iKW"/>
+                            <constraint firstItem="cWf-CS-bmI" firstAttribute="top" secondItem="1y7-po-I4x" secondAttribute="bottom" id="lgl-NN-a8W"/>
+                            <constraint firstItem="1y7-po-I4x" firstAttribute="left" secondItem="ZUz-sU-nZV" secondAttribute="left" id="uva-ij-Tas"/>
+                            <constraint firstItem="1y7-po-I4x" firstAttribute="top" secondItem="IgD-DC-1QQ" secondAttribute="bottom" id="yiF-qf-Lft"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="webview" destination="1y7-po-I4x" id="7jo-4p-Orh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFi-9t-9kY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="168"/>
+        </scene>
+    </scenes>
+</document>

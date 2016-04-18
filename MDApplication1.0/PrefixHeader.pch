@@ -1,0 +1,23 @@
+//
+//  PrefixHeader.pch
+//  AMen
+//
+//  Created by xy on 15/8/26.
+//  Copyright (c) 2015年 gaoxinfei. All rights reserved.
+//
+
+#ifndef AMen_PrefixHeader_pch
+#define AMen_PrefixHeader_pch
+
+#define UILocalizedString(key)  NSLocalizedStringFromTable(key, @"AMenLocalization", @"")
+
+#ifdef DEBUG //测试
+#define AMLog(...) NSLog(__VA_ARGS__)
+#else
+#define AMLog(...) //发布
+#endif
+
+#import "AMColorAndFontConfig.h"
+
+
+#endif
