@@ -146,6 +146,10 @@
                 _onSuccess(self);
             }
         }else{
+            if([result[@"message"] isEqualToString:@"Token过期"])
+            {
+                return;
+            }
             [_response setErrorMessage:result[@"message"]];
             if(_onFailure!=nil){
                 _onFailure(self);

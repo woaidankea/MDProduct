@@ -11,9 +11,13 @@
 #import "UtilsMacro.h"
 #import "DXShareTools.h"
 #import "MDGetDomain.h"
+#import "MDApprenticeModel.h"
 @interface MDApprenticeViewController ()
 {
     NSString *domailUrl ;
+    MDApprenticeModel *apprenticeModel;
+    UIImageView *shareBgimage;
+    UIImage *shareBG;
 }
 @end
 
@@ -26,16 +30,20 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-       [self getdomain];
+    [self.bgimage addSubview:self.barCode];
+    [self.bgimage addSubview:self.code];
+    [self getdomain];
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
-    self.code.text = memberCode;
-     self.barCode.image= [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"http://m.yuechezhu.com/register.html?uid=%@",memberCode] withSize:170];
-   
-    self.title = @"收徒";
+  
+    
+//
+    shareBgimage =  [[UIImageView alloc]init];
+      self.code.text = [NSString stringWithFormat:@"您的邀请码:%@",memberCode];
+     self.title = @"收徒";
     if(iPhone5){
         [self.bgimage setImage:[UIImage imageNamed:@"bg1136"]];
     }else if(iPhone6){
@@ -48,6 +56,9 @@
           [self.bgimage setImage:[UIImage imageNamed:@"bg640"]];
     
     }
+    
+    [self.bgimage setImage:[self addImage_iphone6:  [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"http://h.51tangdou.com/weizuan/reg.html?uid=%@",memberCode] withSize:170] toImage:[UIImage imageNamed:@"bg750"]]];
+    
  
     
     
@@ -55,8 +66,22 @@
 }
 - (void)getdomain {
     
+    
+    __weak MDApprenticeViewController *weakSelf = self;
     MDGetDomain *request = [[MDGetDomain alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
+        apprenticeModel = [MDApprenticeModel mj_objectWithKeyValues:request.responseObject];
         domailUrl = [request.responseObject objectForKey:@"domain"];
+         NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
+         weakSelf.barCode.image= [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:170];
+         [weakSelf.bgimage setImage:[self addImage_iphone6: [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:185]toImage:[UIImage imageNamed:@"bg750"]]];
+        
+        if(apprenticeModel.imageBig!=nil){
+        [shareBgimage sd_setImageWithURL:[NSURL URLWithString:apprenticeModel.imageBig] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            shareBG = [weakSelf addImage:_barCode.image toImage:shareBgimage.image];
+        }];
+        }
+        
+
     } failureCallback:^(AMBaseRequest *request) {
         
     }];
@@ -92,18 +117,54 @@
                           @{@"image":@"share_weibo",@"title":@"新浪微博"},
                           @{@"image":@"share_qzone",@"title":@"QQ空间"}];
     
+    
     ShareModel *sharemodel = [[ShareModel alloc]init];
     
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
     
+//    self.barCode.image = [self captureScreen];
+    if(apprenticeModel.title != nil){
+        sharemodel.title = apprenticeModel.title;
+    }else{
+      sharemodel.title = @"这个应用好玩,推荐大家下载。好多人都在玩!";
+    }
     
+    if(apprenticeModel.desc != nil){
+     sharemodel.desc = apprenticeModel.desc;
+    }else {
+     sharemodel.desc = @"利用闲余时间,随便点点就可以轻松拿零花";
+    }
+   
+     sharemodel.url = [NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain, USER_DEFAULT_KEY(@"memberId")];
+    if(apprenticeModel.imageSmall != nil && shareBG != nil){
+     sharemodel.imageArray = @[apprenticeModel.imageSmall,shareBG];
+    }else if (shareBG != nil){
+        sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"],shareBG];
+
+    }else {
+        
+          shareBG = [self addImage_local:_barCode.image toImage:[UIImage imageNamed:@"apprentice"]];
+          sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"],shareBG];
     
-    sharemodel.title = @"碎片时间轻松玩";
-    sharemodel.url = [NSString stringWithFormat:@"%@?uid=%@",domailUrl, USER_DEFAULT_KEY(@"memberId")];
-    sharemodel.imageArray = @[imagePath];
-    sharemodel.desc = @"碎片时间轻松玩，分享就能赚大钱";
-    [DXShareTools shareToolsInstance].isPic = NO;
+    }
+    
+    [DXShareTools shareToolsInstance].isApprentice = YES;
+    
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
+
+    
+    
+//    ShareModel *sharemodel = [[ShareModel alloc]init];
+//    
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
+//    
+//    
+//    
+//    sharemodel.title = @"碎片时间轻松玩";
+//    sharemodel.url = [NSString stringWithFormat:@"%@?uid=%@",domailUrl, USER_DEFAULT_KEY(@"memberId")];
+//    sharemodel.imageArray = @[imagePath];
+//    sharemodel.desc = @"碎片时间轻松玩，分享就能赚大钱";
+//    [DXShareTools shareToolsInstance].isPic = YES;
+//    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
 }
 
 
@@ -172,17 +233,102 @@
 */
 
 - (UIImage *) captureScreen {
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    CGRect rect = [keyWindow bounds];
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [keyWindow.layer renderInContext:context];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+//    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+//    CGRect rect = [keyWindow bounds];
+//    UIGraphicsBeginImageContext(rect.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    [keyWindow.layer renderInContext:context];
+//    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return img;
+        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+        CGRect rect = [keyWindow bounds];
+    
+    UIGraphicsBeginImageContextWithOptions(self.bgimage.frame.size, YES, 0);
+    [[self.bgimage layer] renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    
     UIGraphicsEndImageContext();
-    return img;
+//    
+    CGImageRef imageRef = viewImage.CGImage;
+    CGRect getRect = CGRectMake(0,64,_bgimage.frame.size.width, _bgimage.frame.size.height);//这里可以设置想要截图的区域
+    
+    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, getRect);
+    UIImage *sendImage = [[UIImage alloc] initWithCGImage:imageRefRect];
+    return viewImage;
+//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(640, 960), YES, 0);
+//    
+//    //设置截屏大小
+//    
+//    [[self.view layer] renderInContext:UIGraphicsGetCurrentContext()];
+//    
+//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    UIGraphicsEndImageContext();
+//    
+//    CGImageRef imageRef = viewImage.CGImage;
+//    CGRect rect = CGRectMake(0, 0, 641, SCREEN_HEIGHT + 300);//这里可以设置想要截图的区域
+//    
+//    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, rect);
+//    UIImage *sendImage = [[UIImage alloc] initWithCGImage:imageRefRect];
+//    return  sendImage;
+}
+//合成图片
+
+- (UIImage *)addImage_local:(UIImage *)image1 toImage:(UIImage *)image2 {
+    UIGraphicsBeginImageContext(CGSizeMake(621, 1104));
+    
+    // Draw image1
+    [image2 drawInRect:CGRectMake(0, 0,621,1104)];
+    
+    // Draw image2
+    NSLog(@"%f",image2.size.width);
+    [image1 drawInRect:CGRectMake(150,510,320,320)];
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    
+    return resultingImage;
 }
 
+- (UIImage *)addImage_iphone6:(UIImage *)image1 toImage:(UIImage *)image2 {
+    UIGraphicsBeginImageContext(CGSizeMake(750, 1066));
+    
+    // Draw image2
+    [image2 drawInRect:CGRectMake(0, 0,750,1066)];
+    
+    // Draw image1
+    NSLog(@"%f",image2.size.width);
+    [image1 drawInRect:CGRectMake(188,436,372,333)];
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    
+    return resultingImage;
+}
 
+- (UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2 {
+    UIGraphicsBeginImageContext(image2.size);
+    NSLog(@"is Web Big Share Image");
+    // Draw image1
+    [image2 drawInRect:CGRectMake(0, 0,image2.size.width,image2.size.height)];
+    
+    // Draw image2
+    NSLog(@"%f",image2.size.width);
+    [image1 drawInRect:CGRectMake([apprenticeModel.startX integerValue]/2, [apprenticeModel.startY integerValue]/2,[apprenticeModel.size integerValue]/2,[apprenticeModel.size integerValue]/2)];
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    
+    return resultingImage;
+}
 - (IBAction)shareButtonClick:(id)sender {
     [self share];
 }

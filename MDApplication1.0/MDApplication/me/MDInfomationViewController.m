@@ -150,7 +150,9 @@
                 break;
             case 2://年龄
                 cell.leftLabel.text = @"年龄";
+                if(memberModel.birthday != nil){
                 cell.rightLabel.text = [self ageWithDateOfBirth:memberModel.birthday];
+                }
                 cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
                 break;
                 default:

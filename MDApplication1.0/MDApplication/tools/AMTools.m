@@ -107,7 +107,10 @@ static const NSUInteger MAX_SIZE=1024*300ul;
 
 +(AM_CheckPassword)checkPassword:(NSString *)password{
     NSInteger passwordNum =password.length;
-    if (passwordNum >30)
+    NSRange _range = [password rangeOfString:@" "];
+    if (_range.location != NSNotFound) {
+       return AM_Password_Empty;
+    }else if (passwordNum >30)
     {
         return AM_Password_Greater30;
     }else
@@ -118,12 +121,12 @@ static const NSUInteger MAX_SIZE=1024*300ul;
             NSString * IsWord =@"^[A-Za-z]+$";
             NSPredicate *regextestWord = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", IsWord];
             NSPredicate *regextestNum = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", Isnumber];
-            if (([regextestWord evaluateWithObject:password] == YES)||([regextestNum evaluateWithObject:password] == YES))
-            {
-                return AM_Password_Format;
-            }else{
+//            if (([regextestWord evaluateWithObject:password] == YES)||([regextestNum evaluateWithObject:password] == YES))
+//            {
+//                return AM_Password_Format;
+//            }else{
                 return AM_Password_IsRight;
-            }
+//            }
         }else{
             return AM_Password_Smaller6;
         }
@@ -164,6 +167,8 @@ static const NSUInteger MAX_SIZE=1024*300ul;
             break;
         case AM_Password_Format:
             return @"密码设置的太简单了";
+        case AM_Password_Empty:
+            return @"密码不能包含空格";
             break;
             
         default:

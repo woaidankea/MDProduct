@@ -17,6 +17,7 @@
 #import "UIWindow+RedPacket.h"
 #import "AppDelegate.h"
 #import "MDAddShareRequest.h"
+#import "UIWindow+ShareSucAlert.h"
 @interface DXShareTools()
 @property (nonatomic,strong)HXEasyCustomShareView *shareView;
 @end
@@ -28,7 +29,7 @@
 
 
 @implementation DXShareTools
-
+@synthesize shareView;
 
 static DXShareTools *_shareTools = nil;
 +(DXShareTools *)shareToolsInstance
@@ -36,10 +37,15 @@ static DXShareTools *_shareTools = nil;
     if (_shareTools == nil)
     {
         _shareTools = [[DXShareTools alloc] init];
+        
     }
     return _shareTools;
 }
-
+- (id)init{
+    self = [super init];
+    shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
+    return  self;
+}
 #pragma -- showAction
 
 -(void)showShareView:(NSArray *)shareAry contentModel:(ShareModel *) model view:(UIView *)view{
@@ -47,7 +53,7 @@ static DXShareTools *_shareTools = nil;
     
     
     
-    HXEasyCustomShareView *shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
+     shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
     shareView.backView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
     //    shareView.headerView = headerView;
     float height = [shareView getBoderViewHeight:shareAry firstCount:7];
@@ -169,6 +175,16 @@ static DXShareTools *_shareTools = nil;
     }
     
     }
+    
+    if (_isApprentice && CurrentModel.imageArray.count == 2 && [title isEqualToString:@"朋友圈"]){
+        if([title isEqualToString:@"朋友圈"]){
+            type = SSDKPlatformSubTypeWechatTimeline;
+            [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:1] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
+        }
+
+    
+    }
+    
 //     [sheet.directSharePlatforms removeObject:@(SSDKPlatformTypeWechat)];
     
     [shareParams SSDKEnableUseClientShare];
@@ -215,13 +231,21 @@ static DXShareTools *_shareTools = nil;
                      if(isvalid){
                          
                          //            [self initRedPacketWindowNeedOpen:info];
+                         
                          RewardInfo *info = [[RewardInfo alloc] init];
                          info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
-                         info.rewardName = @"分享成功获得";
-                         info.rewardContent = @"恭喜你得到奖励";
-                         info.rewardStatus = 0;
+                         //                info.rewardName = @"分享成功获得";
+                         //                info.rewardContent = @"恭喜你得到奖励";
+                         //                info.rewardStatus = 0;
                          //
-                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+//                         RewardInfo *info = [[RewardInfo alloc] init];
+//                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+//                         info.rewardName = @"分享成功获得";
+//                         info.rewardContent = @"恭喜你得到奖励";
+//                         info.rewardStatus = 0;
+//                         //
+//                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
                      }
                      
 
@@ -250,22 +274,22 @@ static DXShareTools *_shareTools = nil;
              }
              case SSDKResponseStateFail:
              {
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                 message:nil
-                                                                delegate:self
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil, nil];
-                 [alert show];
+//                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+//                                                                 message:nil
+//                                                                delegate:self
+//                                                       cancelButtonTitle:@"OK"
+//                                                       otherButtonTitles:nil, nil];
+//                 [alert show];
                  break;
              }
                
              case SSDKResponseStateCancel: {
-                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
-                                                                 message:nil
-                                                                delegate:self
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil, nil];
-                 [alert show];
+//                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+//                                                                 message:nil
+//                                                                delegate:self
+//                                                       cancelButtonTitle:@"OK"
+//                                                       otherButtonTitles:nil, nil];
+//                 [alert show];
                  break;
 
              }
@@ -278,7 +302,7 @@ static DXShareTools *_shareTools = nil;
      }];
     
     
-//     [self tappedCancel];
+     [shareView tappedCancel];
     NSLog(@"当前点击:%@",title);
 }
 #pragma -- share lib action

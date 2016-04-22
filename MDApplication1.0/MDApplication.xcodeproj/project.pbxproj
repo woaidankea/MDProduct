@@ -62,8 +62,6 @@
 		5C1923391CA4CCA400C1A380 /* ios7_spotlight_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1923291CA4CCA400C1A380 /* ios7_spotlight_icon@2x.png */; };
 		5C1AF0A01CB4A90E00719F72 /* RewardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */; };
 		5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */; };
-		5C1AF0A61CB4D80B00719F72 /* img_reward_packet_closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1AF0A41CB4D80B00719F72 /* img_reward_packet_closed@2x.png */; };
-		5C1AF0A71CB4D80B00719F72 /* img_reward_packet_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C1AF0A51CB4D80B00719F72 /* img_reward_packet_open@2x.png */; };
 		5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */; };
 		5C3A8F5C1C992B0F00B4388B /* MDMeSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */; };
 		5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F571C992B0F00B4388B /* MDMeTopCollectionViewCell.m */; };
@@ -252,7 +250,6 @@
 		5C73A6F51CC07B57000CB453 /* MDTXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C73A6F41CC07B57000CB453 /* MDTXModel.m */; };
 		5C73A6F71CC0AE2A000CB453 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C73A6F61CC0AE2A000CB453 /* 5.png */; };
 		5C73A6FA1CC0B9F7000CB453 /* myImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C73A6F91CC0B9F7000CB453 /* myImageView.m */; };
-		5C79E4341CB538FF00EC0368 /* 56fdf570082c4 (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C79E4331CB538FF00EC0368 /* 56fdf570082c4 (1).jpg */; };
 		5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90360D1C9D193500721D8F /* MDAboutusViewController.m */; };
 		5C9036101C9D1A4900721D8F /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C90360F1C9D1A4900721D8F /* protocol.html */; };
 		5C9036141C9D262100721D8F /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C9036131C9D262100721D8F /* apple-touch-icon.png */; };
@@ -337,6 +334,14 @@
 		5CA7AC681CBBC39E005EF4D0 /* MDRedPacketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7AC671CBBC39E005EF4D0 /* MDRedPacketModel.m */; };
 		5CA7AC6C1CBBD26F005EF4D0 /* MDShareSuccessRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7AC6B1CBBD26F005EF4D0 /* MDShareSuccessRequest.m */; };
 		5CA7AC701CBBD3C5005EF4D0 /* MDDepositRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7AC6F1CBBD3C5005EF4D0 /* MDDepositRequest.m */; };
+		5CE307861CC743FD0034F2A2 /* img_reward_packet_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307841CC743FD0034F2A2 /* img_reward_packet_closed.png */; };
+		5CE307871CC743FD0034F2A2 /* img_reward_packet_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307851CC743FD0034F2A2 /* img_reward_packet_open.png */; };
+		5CE3078A1CC755B60034F2A2 /* MDApprenticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE307891CC755B60034F2A2 /* MDApprenticeModel.m */; };
+		5CE307901CC75D500034F2A2 /* UIWindow+ShareSucAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3078F1CC75D500034F2A2 /* UIWindow+ShareSucAlert.m */; };
+		5CE307941CC75E8B0034F2A2 /* earnmoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307911CC75E8B0034F2A2 /* earnmoney.png */; };
+		5CE307951CC75E8B0034F2A2 /* earntitlebig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307921CC75E8B0034F2A2 /* earntitlebig@2x.png */; };
+		5CE307961CC75E8B0034F2A2 /* earntitlesmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307931CC75E8B0034F2A2 /* earntitlesmall@2x.png */; };
+		5CE307981CC7777C0034F2A2 /* apprentice.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE307971CC7777C0034F2A2 /* apprentice.png */; };
 		5CE560021CBF3F38005786E1 /* MDAddShareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE560011CBF3F38005786E1 /* MDAddShareRequest.m */; };
 		5CF67A1F1CA8D108004C8345 /* MDForgotPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF67A1E1CA8D108004C8345 /* MDForgotPasswordRequest.m */; };
 		5CF67A221CA8D302004C8345 /* MDCheckVertifyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF67A211CA8D302004C8345 /* MDCheckVertifyRequest.m */; };
@@ -434,8 +439,6 @@
 		5C1AF09E1CB4A90E00719F72 /* UIWindow+RedPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RedPacket.h"; sourceTree = "<group>"; };
 		5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RedPacket.m"; sourceTree = "<group>"; };
 		5C1AF0A21CB4D21E00719F72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		5C1AF0A41CB4D80B00719F72 /* img_reward_packet_closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_reward_packet_closed@2x.png"; sourceTree = "<group>"; };
-		5C1AF0A51CB4D80B00719F72 /* img_reward_packet_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_reward_packet_open@2x.png"; sourceTree = "<group>"; };
 		5C204D991CBFA2670084BD78 /* MDGetDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGetDomain.h; sourceTree = "<group>"; };
 		5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGetDomain.m; sourceTree = "<group>"; };
 		5C3A8F541C992B0F00B4388B /* MDMeSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeSecondCell.h; sourceTree = "<group>"; };
@@ -717,7 +720,6 @@
 		5C73A6F81CC0B9F7000CB453 /* myImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myImageView.h; sourceTree = "<group>"; };
 		5C73A6F91CC0B9F7000CB453 /* myImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myImageView.m; sourceTree = "<group>"; };
 		5C73A6FB1CC0BA24000CB453 /* UConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UConstants.h; sourceTree = "<group>"; };
-		5C79E4331CB538FF00EC0368 /* 56fdf570082c4 (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "56fdf570082c4 (1).jpg"; path = "../../../../Downloads/56fdf570082c4 (1).jpg"; sourceTree = "<group>"; };
 		5C90360C1C9D193500721D8F /* MDAboutusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAboutusViewController.h; sourceTree = "<group>"; };
 		5C90360D1C9D193500721D8F /* MDAboutusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAboutusViewController.m; sourceTree = "<group>"; };
 		5C90360F1C9D1A4900721D8F /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
@@ -867,6 +869,16 @@
 		5CA7AC6B1CBBD26F005EF4D0 /* MDShareSuccessRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDShareSuccessRequest.m; sourceTree = "<group>"; };
 		5CA7AC6E1CBBD3C5005EF4D0 /* MDDepositRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDepositRequest.h; sourceTree = "<group>"; };
 		5CA7AC6F1CBBD3C5005EF4D0 /* MDDepositRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDepositRequest.m; sourceTree = "<group>"; };
+		5CE307841CC743FD0034F2A2 /* img_reward_packet_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_reward_packet_closed.png; sourceTree = "<group>"; };
+		5CE307851CC743FD0034F2A2 /* img_reward_packet_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_reward_packet_open.png; sourceTree = "<group>"; };
+		5CE307881CC755B60034F2A2 /* MDApprenticeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDApprenticeModel.h; sourceTree = "<group>"; };
+		5CE307891CC755B60034F2A2 /* MDApprenticeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDApprenticeModel.m; sourceTree = "<group>"; };
+		5CE3078E1CC75D500034F2A2 /* UIWindow+ShareSucAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ShareSucAlert.h"; sourceTree = "<group>"; };
+		5CE3078F1CC75D500034F2A2 /* UIWindow+ShareSucAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ShareSucAlert.m"; sourceTree = "<group>"; };
+		5CE307911CC75E8B0034F2A2 /* earnmoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earnmoney.png; sourceTree = "<group>"; };
+		5CE307921CC75E8B0034F2A2 /* earntitlebig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earntitlebig@2x.png"; sourceTree = "<group>"; };
+		5CE307931CC75E8B0034F2A2 /* earntitlesmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earntitlesmall@2x.png"; sourceTree = "<group>"; };
+		5CE307971CC7777C0034F2A2 /* apprentice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apprentice.png; sourceTree = "<group>"; };
 		5CE560001CBF3F38005786E1 /* MDAddShareRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAddShareRequest.h; sourceTree = "<group>"; };
 		5CE560011CBF3F38005786E1 /* MDAddShareRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAddShareRequest.m; sourceTree = "<group>"; };
 		5CF67A1D1CA8D108004C8345 /* MDForgotPasswordRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDForgotPasswordRequest.h; sourceTree = "<group>"; };
@@ -938,6 +950,7 @@
 		5C0D19B01CAA2B4A0039F7E5 /* 分享相关 */ = {
 			isa = PBXGroup;
 			children = (
+				5CE307971CC7777C0034F2A2 /* apprentice.png */,
 				5C0D19B11CAA2B4A0039F7E5 /* HXEasyCustomShareView.h */,
 				5C0D19B21CAA2B4A0039F7E5 /* HXEasyCustomShareView.m */,
 				5C0D19B31CAA2B4A0039F7E5 /* HXShareScrollView.h */,
@@ -1004,16 +1017,21 @@
 		5C1AF09B1CB4A90E00719F72 /* 红包相关 */ = {
 			isa = PBXGroup;
 			children = (
+				5CE307841CC743FD0034F2A2 /* img_reward_packet_closed.png */,
+				5CE307851CC743FD0034F2A2 /* img_reward_packet_open.png */,
+				5CE307911CC75E8B0034F2A2 /* earnmoney.png */,
+				5CE307921CC75E8B0034F2A2 /* earntitlebig@2x.png */,
+				5CE307931CC75E8B0034F2A2 /* earntitlesmall@2x.png */,
 				5C73A6FB1CC0BA24000CB453 /* UConstants.h */,
 				5C73A6F81CC0B9F7000CB453 /* myImageView.h */,
 				5C73A6F91CC0B9F7000CB453 /* myImageView.m */,
 				5C73A6F61CC0AE2A000CB453 /* 5.png */,
-				5C1AF0A41CB4D80B00719F72 /* img_reward_packet_closed@2x.png */,
-				5C1AF0A51CB4D80B00719F72 /* img_reward_packet_open@2x.png */,
 				5C1AF09C1CB4A90E00719F72 /* RewardInfo.h */,
 				5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */,
 				5C1AF09E1CB4A90E00719F72 /* UIWindow+RedPacket.h */,
 				5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */,
+				5CE3078E1CC75D500034F2A2 /* UIWindow+ShareSucAlert.h */,
+				5CE3078F1CC75D500034F2A2 /* UIWindow+ShareSucAlert.m */,
 			);
 			path = "红包相关";
 			sourceTree = "<group>";
@@ -1643,7 +1661,6 @@
 		5C9F3E071C9685A000756229 = {
 			isa = PBXGroup;
 			children = (
-				5C79E4331CB538FF00EC0368 /* 56fdf570082c4 (1).jpg */,
 				5C9F3E121C9685A000756229 /* MDApplication */,
 				5C9F3E2F1C9685A000756229 /* MDApplicationTests */,
 				5C9F3E3A1C9685A000756229 /* MDApplicationUITests */,
@@ -1724,6 +1741,8 @@
 				5C9F3F3C1C96A5FD00756229 /* MDApprenticeViewController.h */,
 				5C9F3F3D1C96A5FD00756229 /* MDApprenticeViewController.m */,
 				5C9F3F3F1C96A61200756229 /* MDApprenticeViewController.storyboard */,
+				5CE307881CC755B60034F2A2 /* MDApprenticeModel.h */,
+				5CE307891CC755B60034F2A2 /* MDApprenticeModel.m */,
 			);
 			path = apprentice;
 			sourceTree = "<group>";
@@ -2354,6 +2373,7 @@
 				5C711A2B1CA0243700CA1A31 /* MDEncyclopediasViewController.storyboard in Resources */,
 				5C9F3F361C96A27B00756229 /* MDInterestingArticleViewController.storyboard in Resources */,
 				5C1923161CA4C81D00C1A380 /* Default-667h@2x.png in Resources */,
+				5CE307951CC75E8B0034F2A2 /* earntitlebig@2x.png in Resources */,
 				5C3A903D1C9AB9F100B4388B /* share_bg@2x.png in Resources */,
 				5C1923341CA4CCA400C1A380 /* ios7_app_icon_iphone.png in Resources */,
 				5C3A8F761C994AB100B4388B /* MDTitleSectionView.xib in Resources */,
@@ -2412,6 +2432,7 @@
 				5C3A904C1C9AC47B00B4388B /* MDArticleCell.xib in Resources */,
 				5C9F3F6E1C97A90200756229 /* 4_index_1.png in Resources */,
 				5C3A907D1C9BA9BF00B4388B /* key_ico@2x.png in Resources */,
+				5CE307941CC75E8B0034F2A2 /* earnmoney.png in Resources */,
 				5C9F3FAB1C97BE5B00756229 /* tab_ngc_normal@2x.png in Resources */,
 				5C711AEC1CA38A7C00CA1A31 /* ShareSDK.bundle in Resources */,
 				5C9F3FAD1C97BE5B00756229 /* tab_ngc_selected@2x.png in Resources */,
@@ -2422,6 +2443,7 @@
 				5C0D19AB1CAA1BE40039F7E5 /* mune_ico1_hov@2x.png in Resources */,
 				5C3A900A1C9AB6F700B4388B /* last_receive@3x.png in Resources */,
 				5C73A6F71CC0AE2A000CB453 /* 5.png in Resources */,
+				5CE307861CC743FD0034F2A2 /* img_reward_packet_closed.png in Resources */,
 				5C19232E1CA4CCA400C1A380 /* Icon-Small.png in Resources */,
 				5C19232C1CA4CCA400C1A380 /* Icon-Small-50.png in Resources */,
 				5C9036141C9D262100721D8F /* apple-touch-icon.png in Resources */,
@@ -2435,13 +2457,14 @@
 				5C0D19CB1CAA2D360039F7E5 /* share_weibo@3x.png in Resources */,
 				5C0D19C81CAA2D360039F7E5 /* share_save_icon@2x.png in Resources */,
 				5C0D19AC1CAA1BE40039F7E5 /* mune_ico2_hov@2x.png in Resources */,
+				5CE307871CC743FD0034F2A2 /* img_reward_packet_open.png in Resources */,
+				5CE307961CC75E8B0034F2A2 /* earntitlesmall@2x.png in Resources */,
 				5C7119E51C9F925900CA1A31 /* SelectView.xib in Resources */,
 				5C0D19D91CAA675D0039F7E5 /* down@3x.png in Resources */,
 				5C1923381CA4CCA400C1A380 /* ios7_spotlight_icon.png in Resources */,
 				5C3A8F7E1C9959F000B4388B /* MePlist.plist in Resources */,
 				5C9F3F6F1C97A90200756229 /* 4_index_2.png in Resources */,
 				5C9F3FA91C97BE5B00756229 /* tab_money_selected@2x.png in Resources */,
-				5C1AF0A61CB4D80B00719F72 /* img_reward_packet_closed@2x.png in Resources */,
 				5C3A90191C9AB6F700B4388B /* open_ico@2x.png in Resources */,
 				5C0D19AF1CAA1BE40039F7E5 /* mune_ico5_hov@2x.png in Resources */,
 				5C0D19CC1CAA2D360039F7E5 /* share_wx@2x.png in Resources */,
@@ -2459,12 +2482,12 @@
 				5C9F3F7F1C97AD6900756229 /* ScreenGuideViewController.storyboard in Resources */,
 				5C3A90141C9AB6F700B4388B /* ico7@3x.png in Resources */,
 				5C1923391CA4CCA400C1A380 /* ios7_spotlight_icon@2x.png in Resources */,
-				5C1AF0A71CB4D80B00719F72 /* img_reward_packet_open@2x.png in Resources */,
 				5C3A90081C9AB6F700B4388B /* ico12@3x.png in Resources */,
 				5C0D199B1CA956110039F7E5 /* MDFourthCollectionCell.xib in Resources */,
 				5C0D19C71CAA2D360039F7E5 /* share_qzone@3x.png in Resources */,
 				5C9F3F451C96A68C00756229 /* MDSchoolViewController.storyboard in Resources */,
 				5C3A901B1C9AB6F700B4388B /* sound_ico@2x.png in Resources */,
+				5CE307981CC7777C0034F2A2 /* apprentice.png in Resources */,
 				5C0D19A31CA95C210039F7E5 /* mune_ico3@2x.png in Resources */,
 				5C711A3A1CA0289F00CA1A31 /* MDMilitaryViewController.storyboard in Resources */,
 				5C3A90661C9ADB4100B4388B /* share_butt_bg@2x.png in Resources */,
@@ -2483,7 +2506,6 @@
 				5C0D19AD1CAA1BE40039F7E5 /* mune_ico3_hov@2x.png in Resources */,
 				5C3A90101C9AB6F700B4388B /* ico5@3x.png in Resources */,
 				5C3A90701C9B9EC700B4388B /* MDLoginViewController.storyboard in Resources */,
-				5C79E4341CB538FF00EC0368 /* 56fdf570082c4 (1).jpg in Resources */,
 				5C3A903B1C9AB9F100B4388B /* share@2x.png in Resources */,
 				5C3A90151C9AB6F700B4388B /* ico8@2x.png in Resources */,
 				5C0D19C41CAA2D360039F7E5 /* share_qq@2x.png in Resources */,
@@ -2657,6 +2679,7 @@
 				5C9036461C9D548200721D8F /* AbstractActionSheetPicker+Interface.m in Sources */,
 				5C73A6F51CC07B57000CB453 /* MDTXModel.m in Sources */,
 				5C9F3E7B1C96954C00756229 /* MainViewController.m in Sources */,
+				5CE307901CC75D500034F2A2 /* UIWindow+ShareSucAlert.m in Sources */,
 				5C3A8F7C1C9953F200B4388B /* MDDiscipleCell.m in Sources */,
 				5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */,
 				5C9F3E771C96951000756229 /* RDVTabBarController.m in Sources */,
@@ -2671,6 +2694,7 @@
 				5CFE38291CACBDF0007A48BE /* YPWebView.m in Sources */,
 				5C3A8F5C1C992B0F00B4388B /* MDMeSecondCell.m in Sources */,
 				5C711A1F1CA0230500CA1A31 /* MDDeliciousViewController.m in Sources */,
+				5CE3078A1CC755B60034F2A2 /* MDApprenticeModel.m in Sources */,
 				5CFE382D1CACF8FA007A48BE /* MDRegistRequest.m in Sources */,
 				5C9F3F121C969CF400756229 /* AMHttpRequstTask.m in Sources */,
 				5C9F3F2A1C96A01600756229 /* AMBaseViewController.m in Sources */,

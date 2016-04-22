@@ -12,13 +12,20 @@
 
 - (void)awakeFromNib {
     // Initialization code
+//    _title.adjustsFontSizeToFitWidth = YES;
 }
 
 
 - (void)setModel:(MDArticleModel *)model{
         [_cover sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"place_order"]];
-        
-         _title.text = model.title;
+    
+    
+           NSString *string = [model.title stringByAppendingString:@"\n"];
+           _title.text = string;
+    
+    
+//          [_title sizeToFit];
+    
          _income.text = model.inCome;
     
         if([model.showPrice isEqualToString:@"1"]){

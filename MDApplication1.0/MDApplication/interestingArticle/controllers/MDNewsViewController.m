@@ -132,7 +132,8 @@
                                   
                               } failure:^(AMBaseRequest *request) {
                                   [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-                                  //                                             [self.tableView.header endRefreshing];
+                                  [self.tableView.mj_header endRefreshing];
+                                  [self.tableView.mj_footer endRefreshing];
                               }];
     [request start];
 }

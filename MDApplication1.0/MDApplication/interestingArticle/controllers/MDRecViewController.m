@@ -140,6 +140,7 @@
 //
                                     }];
     [request start];
+    
 }
 
 
@@ -149,7 +150,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 95;
+    return 94;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

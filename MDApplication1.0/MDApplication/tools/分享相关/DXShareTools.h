@@ -27,6 +27,7 @@
 @property (nonatomic, retain)NSArray         *shareImageValue;
 @property (nonatomic, retain)NSArray         *shareImageActionTypes;
 @property (nonatomic,assign)BOOL isPic;
+@property (nonatomic,assign)BOOL isApprentice;
 
 +(DXShareTools *)shareToolsInstance;
 

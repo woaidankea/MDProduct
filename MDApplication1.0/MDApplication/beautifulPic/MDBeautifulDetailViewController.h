@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *BigImage;
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImage;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIView *shadowLine;
 - (IBAction)shareButtonClick:(id)sender;
 
 @end

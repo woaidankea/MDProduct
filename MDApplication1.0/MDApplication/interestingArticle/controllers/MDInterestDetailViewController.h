@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (strong,nonatomic)WKWebView *wkwebview;
+
 - (IBAction)shareButtonClick:(id)sender;
 
 @end

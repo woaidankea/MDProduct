@@ -26,7 +26,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   
+    _shadowLine.layer.shadowOffset = CGSizeMake(0, -1);
+    _shadowLine.layer.shadowColor = [UIColor grayColor].CGColor;
+    _shadowLine.layer.shadowOpacity = 0.80;
     _barcodeImage.frame = CGRectMake([_model.startX integerValue], [_model.startY integerValue], [_model.size integerValue]/2, [_model.size integerValue]/2);
     _barcodeImage.image =  [[DXBarCode shareInstance]createBarCodeImageFrom:_model.codeUrl withSize:[_model.size integerValue]/2];
    _barcodeImage.hidden =YES;
@@ -44,10 +46,10 @@
 //UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机拍照",@"照片图库",nil];
 //[sheet showInView:self.view];
 - (UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2 {
-    UIGraphicsBeginImageContext(CGSizeMake(320, 390));
+    UIGraphicsBeginImageContext(image2.size);
     
     // Draw image1
-    [image2 drawInRect:CGRectMake(0, 0,320,390)];
+    [image2 drawInRect:CGRectMake(0, 0,image2.size.width,image2.size.height)];
     
     // Draw image2
     NSLog(@"%f",image2.size.width);
@@ -122,7 +124,7 @@
     sharemodel.title = self.model.title;
     sharemodel.url = self.model.codeUrl;
     sharemodel.imageArray = @[_BigImage.image];
-    sharemodel.key = self.model.authCode;
+    sharemodel.key = self.model.authcode;
     [DXShareTools shareToolsInstance].isPic = YES;
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
 }

@@ -37,6 +37,8 @@ NSString * const kMeReloadData = @"MeReloadData";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
    [self.collectionview.mj_header beginRefreshing];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(MeReloadData) name:kMeReloadData object:nil];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -44,7 +46,6 @@ NSString * const kMeReloadData = @"MeReloadData";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reload) name:kMeReloadData object:nil];
     
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
@@ -362,7 +363,7 @@ NSString * const kMeReloadData = @"MeReloadData";
         {
             //我要提现
             MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
-            NSString *outCome = [NSString stringWithFormat:@"http://h.51tangdou.com /weizuan/?m=cash&a=timoney&token=%@",USER_DEFAULT_KEY(@"token")];
+            NSString *outCome = [NSString stringWithFormat:@"http://h.51tangdou.com/weizuan/?m=cash&a=timoney&token=%@",USER_DEFAULT_KEY(@"token")];
             vc.url = outCome;
             [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
             return;

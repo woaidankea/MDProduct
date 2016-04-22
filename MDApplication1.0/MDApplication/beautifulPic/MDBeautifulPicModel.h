@@ -28,6 +28,6 @@
 @property (nonatomic,strong)NSString *isTop;
 @property (nonatomic,strong)NSString *locationType;
 @property (nonatomic,strong)NSString *showPrice;
-@property (nonatomic,strong)NSString *authCode;
+@property (nonatomic,strong)NSString *authcode;
 @property (nonatomic,strong)NSString *authMember;
 @end

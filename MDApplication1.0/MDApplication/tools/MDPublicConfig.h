@@ -268,7 +268,10 @@ typedef NS_ENUM(NSUInteger, AM_CheckPassword) {
 
     AM_Password_IsRight,
     
-    AM_Password_Format
+    
+    AM_Password_Format,
+    
+    AM_Password_Empty
 };
 
 typedef NS_ENUM(NSInteger, AM_FRIENDS_RELATION) {

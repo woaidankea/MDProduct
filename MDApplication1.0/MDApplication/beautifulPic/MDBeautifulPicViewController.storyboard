@@ -120,14 +120,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b34-vm-HWA">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <color key="backgroundColor" red="0.90980392160000001" green="0.17254901959999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2F-sV-spv">
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="HiK-9c-Rje"/>
+                                    <constraint firstAttribute="height" constant="60" id="yEv-Qf-mZp"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b34-vm-HWA">
+                                <rect key="frame" x="20" y="518" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HiK-9c-Rje"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="点击分享此图,即可赚钱">
+                                <state key="normal" backgroundImage="detailShareBtn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -135,7 +141,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3md-cC-56L">
-                                <rect key="frame" x="0.0" y="60" width="320" height="419"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="418"/>
                                 <color key="backgroundColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -147,10 +153,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="b34-vm-HWA" firstAttribute="top" secondItem="3md-cC-56L" secondAttribute="bottom" constant="40" id="2kv-6h-XGV"/>
+                            <constraint firstAttribute="trailing" secondItem="g2F-sV-spv" secondAttribute="trailing" id="50u-55-7jE"/>
+                            <constraint firstItem="g2F-sV-spv" firstAttribute="leading" secondItem="Oz8-Ts-8FU" secondAttribute="leading" id="CTF-Lu-dhv"/>
+                            <constraint firstItem="D80-1r-PuZ" firstAttribute="top" secondItem="g2F-sV-spv" secondAttribute="bottom" id="GGA-bo-WVo"/>
                             <constraint firstItem="3md-cC-56L" firstAttribute="left" secondItem="Oz8-Ts-8FU" secondAttribute="left" id="GlC-Xl-9Nd"/>
-                            <constraint firstAttribute="right" secondItem="b34-vm-HWA" secondAttribute="right" id="HCM-pV-GQg"/>
-                            <constraint firstItem="D80-1r-PuZ" firstAttribute="top" secondItem="b34-vm-HWA" secondAttribute="bottom" id="Ht2-aq-2If"/>
-                            <constraint firstItem="b34-vm-HWA" firstAttribute="left" secondItem="Oz8-Ts-8FU" secondAttribute="left" id="NYg-nM-eiq"/>
+                            <constraint firstAttribute="right" secondItem="b34-vm-HWA" secondAttribute="right" constant="20" id="HCM-pV-GQg"/>
+                            <constraint firstItem="D80-1r-PuZ" firstAttribute="top" secondItem="b34-vm-HWA" secondAttribute="bottom" constant="10" id="Ht2-aq-2If"/>
+                            <constraint firstItem="b34-vm-HWA" firstAttribute="left" secondItem="Oz8-Ts-8FU" secondAttribute="left" constant="20" id="NYg-nM-eiq"/>
                             <constraint firstItem="3md-cC-56L" firstAttribute="top" secondItem="D39-9P-n1y" secondAttribute="bottom" constant="40" id="nHi-SX-Vkn"/>
                             <constraint firstAttribute="right" secondItem="3md-cC-56L" secondAttribute="right" id="nIU-J7-pUw"/>
                         </constraints>
@@ -159,6 +168,7 @@
                     <connections>
                         <outlet property="BigImage" destination="3md-cC-56L" id="rUE-y0-MXy"/>
                         <outlet property="barcodeImage" destination="PEA-GG-CEl" id="JRX-jS-rDy"/>
+                        <outlet property="shadowLine" destination="g2F-sV-spv" id="V8c-sQ-cju"/>
                         <outlet property="shareButton" destination="b34-vm-HWA" id="w74-zc-35B"/>
                     </connections>
                 </viewController>
@@ -169,5 +179,6 @@
     </scenes>
     <resources>
         <image name="5_index_2.png" width="640" height="1136"/>
+        <image name="detailShareBtn" width="335" height="40"/>
     </resources>
 </document>

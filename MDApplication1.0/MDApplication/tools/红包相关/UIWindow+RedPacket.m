@@ -77,7 +77,7 @@ static const void *Timer =  &Timer;
     self.rewardInfoForRedPacket = rewardInfo;
     self.windowUv = [[UIView alloc] initWithFrame:self.frame];
     [self.windowUv setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.7]];
-    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(20 * ratio , 80 * ratio, 280 * ratio, 400 * ratio)];
+    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(0 , (80 + 85/2) * ratio, 320 * ratio, 631/2 * ratio)];
     backGround.image        = [UIImage imageNamed:@"img_reward_packet_open"];
     backGround.tag          = 10;
     [self.windowUv addSubview:backGround];
@@ -89,10 +89,10 @@ static const void *Timer =  &Timer;
     label.text          = rewardInfo.rewardName;
     label.tag           = 11;
 
-    [self.windowUv addSubview:label];
+//    [self.windowUv addSubview:label];
     
-    label = [[UILabel alloc]initWithFrame:CGRectMake(110 * ratio, 175 * ratio, 110 * ratio, 20 * ratio)];
-    label.font = [UIFont boldSystemFontOfSize:16];
+    label = [[UILabel alloc]initWithFrame:CGRectMake(90 * ratio, 275 * ratio, 110 * ratio, 20 * ratio)];
+    label.font = [UIFont boldSystemFontOfSize:20];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
     label.text          = [NSString stringWithFormat:@"%.2f元红包",self.rewardInfoForRedPacket.money];
@@ -106,9 +106,10 @@ static const void *Timer =  &Timer;
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 3;
     label.tag           = 14;
-    [self.windowUv addSubview:label];
+//    [self.windowUv addSubview:label];
     
     UIButton* cancel = [[UIButton alloc] initWithFrame:CGRectMake(260 * ratio, 110 * ratio, 40 * ratio, 40 * ratio)];
+//    cancel.backgroundColor = [UIColor redColor];
     UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonClicked:)];
     [cancel addGestureRecognizer:tapGesture];
     [self.windowUv addSubview:cancel];
@@ -151,7 +152,7 @@ static const void *Timer =  &Timer;
     self.rewardInfoForRedPacket = rewardInfo;
     self.windowUv = [[UIView alloc] initWithFrame:self.frame];
     [self.windowUv setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.7]];
-    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(20 * ratio , 80 * ratio, 280 * ratio, 400 * ratio)];
+    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(0 , (80 + 85/2) * ratio, 320 * ratio, 631/2 * ratio)];
     backGround.image        = [UIImage imageNamed:@"img_reward_packet_closed"];
     backGround.tag          = 10;
     [self.windowUv addSubview:backGround];
@@ -163,10 +164,10 @@ static const void *Timer =  &Timer;
     label.text          = @"恭喜获得";
     label.tag           = 11;
     label.hidden        = YES;
-    [self.windowUv addSubview:label];
+//    [self.windowUv addSubview:label];
     
-    label = [[UILabel alloc]initWithFrame:CGRectMake(110 * ratio, 175 * ratio, 110 * ratio, 20 * ratio)];
-    label.font = [UIFont boldSystemFontOfSize:16];
+    label = [[UILabel alloc]initWithFrame:CGRectMake(102 * ratio, 290 * ratio, 110 * ratio, 20 * ratio)];
+    label.font = [UIFont boldSystemFontOfSize:20];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
     label.text          = [NSString stringWithFormat:@"%.2f元红包",self.rewardInfoForRedPacket.money];
@@ -181,18 +182,19 @@ static const void *Timer =  &Timer;
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 3;
     label.tag           = 14;
-    [self.windowUv addSubview:label];
+//    [self.windowUv addSubview:label];
     
     UIButton* cancel = [[UIButton alloc] initWithFrame:CGRectMake(260 * ratio, 110 * ratio, 40 * ratio, 40 * ratio)];
+//    cancel.backgroundColor = [UIColor redColor];
     UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonClicked:)];
     [cancel addGestureRecognizer:tapGesture];
     [self.windowUv addSubview:cancel];
     
-    UIButton* next = [[UIButton alloc] initWithFrame:CGRectMake(75 * ratio, 360 * ratio, 180 * ratio, 30 * ratio)];
-    [next setBackgroundColor:RGBACOLOR( 252 , 240 , 107 , 1)];
-    [next.layer setCornerRadius:next.frame.size.height/8];
+    UIButton* next = [[UIButton alloc] initWithFrame:CGRectMake(75 * ratio, 300 * ratio, 180 * ratio, 100 * ratio)];
+    [next setBackgroundColor:[UIColor clearColor]];
+//    [next.layer setCornerRadius:next.frame.size.height/8];
     [next.layer setMasksToBounds:YES];
-    [next setTitle:@"打开红包" forState:UIControlStateNormal];
+//    [next setTitle:@"打开红包" forState:UIControlStateNormal];
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextButtonClicked:)];
     [next setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     next.tag = 13;
@@ -254,10 +256,12 @@ static int i = 0;
 
 
 - (void)nextButtonClicked:(id)sender {
+//    MDRedPacketModel *model  =  request.responseObject;
     
+
     
     MDRedPacketRequest *request = [[MDRedPacketRequest alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
-        self.timer=[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(makeSnow) userInfo:nil repeats:YES];
+//        self.timer=[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(makeSnow) userInfo:nil repeats:YES];
         MDRedPacketModel *model  =  request.responseObject;
         UIImageView* background = [self.windowUv viewWithTag:10];
         background.image        = [UIImage imageNamed:@"img_reward_packet_open"];
@@ -283,6 +287,8 @@ static int i = 0;
         lable        = [self.windowUv viewWithTag:14];
         lable.hidden = NO;
         lable.text   = self.rewardInfoForRedPacket.rewardContent;
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"MeReloadData" object:nil];
         
     } failureCallback:^(AMBaseRequest *request) {
         NSString *confirmTitle=@"确定";
@@ -314,6 +320,6 @@ static int i = 0;
 - (void)cancelButtonClicked:(id)sender {
     self.windowUv.hidden = YES;
     self.windowUv        = nil;
-    [self.timer invalidate];
+//    [self.timer invalidate];
 }
 @end
