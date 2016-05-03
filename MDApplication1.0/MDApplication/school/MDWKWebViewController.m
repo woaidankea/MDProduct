@@ -31,6 +31,7 @@
     
     _wkwebview = [[YPWebView alloc]initWithFrame:rect];
     _wkwebview.delegate = self;
+    _wkwebview.wkUIDelegateViewController = self;
     _progressview = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1)];
     [_wkwebview addSubview:_progressview];
 //    _wkwebview.UIDelegate =self;
@@ -54,6 +55,21 @@
         }];
         
     }
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+        
+    }]];
+    
+
+        [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 
 - (void)YPwebview:(YPWebView *)webview loadTitle:(NSString *)title{

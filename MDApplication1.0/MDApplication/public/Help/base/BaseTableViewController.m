@@ -16,6 +16,7 @@
 #import "MDAddShareRequest.h"
 #import "RewardInfo.h"
 #import "UIWindow+RedPacket.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation BaseTableViewController
 
@@ -206,58 +207,53 @@
             if([share.platform isEqualToString:@"5"]){
                 [shareAry addObject:share_weibo];
             }
-            
-            
-            
+           
         }
         
     }
     
-    
-    
-    
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];  //转为字符型
+    NSString *newKey = [self md5:timeString];
+    NSString *MD5 = [newKey substringWithRange:NSMakeRange(7,16)];
     sharemodel.title = t_model.title;
-    sharemodel.url = t_model.url;
+    sharemodel.url =  [NSString stringWithFormat:@"%@%@",t_model.url,MD5];
     sharemodel.imageArray = @[t_model.cover];
     sharemodel.desc = t_model.desc;
-    sharemodel.key = t_model.authcode;
+    sharemodel.key = [NSString stringWithFormat:@"%@%@",t_model.authcode,MD5];
     [DXShareTools shareToolsInstance].isPic = NO;
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
-    
-//    MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:sharemodel.key Platform: 1 success:^(AMBaseRequest *request) {
-//        
-//        BOOL isvalid  =  [request.responseObject objectForKey:@"isvalid"];
-//      
-//        if(isvalid){
-//            
-//            //            [self initRedPacketWindowNeedOpen:info];
-//            RewardInfo *info = [[RewardInfo alloc] init];
-//            info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
-//            info.rewardName = @"分享成功获得";
-//            info.rewardContent = @"恭喜你得到奖励";
-//            info.rewardStatus = 0;
-//            //
-//            [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
-//        }
-//
-    
-        
-        
-        //                     [_weakSelf setBusyIndicatorVisible:NO];
-        //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
-        
-//    } failure:^(AMBaseRequest *request) {
-//        ////                     [_weakSelf setBusyIndicatorVisible:NO];
-//        //                     if(request.response.statusCode==300){
-//        //                     }
-//        //                     else{
-//        //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-//        //                     }
-//    }];
-//    
-//    [request start];
 
    
+    
+}
+
+
+- (NSString *)md5:(NSString *)string {
+    
+    // 1. 导入库文件
+    //    #import <CommonCrypto/CommonDigest.h>
+    
+    // 需要MD5加密的字符
+    const char *cStr = [string UTF8String];
+    // 设置字符加密后存储的空间
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    
+    // 参数三：编码的加密机制
+    CC_MD5(cStr, (UInt32)strlen(cStr), digest);
+    
+    NSMutableString *result = [[NSMutableString alloc] initWithCapacity:16];
+    
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i ++) {
+        
+        [result appendFormat:@"%02x",digest];
+        
+    }
+    
+    result = (NSMutableString *)[result stringByAppendingString:@".png"];
+    
+    return result;
     
 }
 

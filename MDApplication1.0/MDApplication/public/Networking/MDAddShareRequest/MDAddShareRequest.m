@@ -15,7 +15,7 @@
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         
-        
+       
         [dict setObject:contentid forKey:@"key"];
         [dict setObject:[NSNumber numberWithInteger:platform] forKey:@"plat"];
         [dict setObject:@"ios" forKey:@"device"];

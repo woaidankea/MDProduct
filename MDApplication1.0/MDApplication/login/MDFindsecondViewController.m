@@ -59,6 +59,9 @@
      __weak UINavigationController *_weakNav = ((AppDelegate *)[UIApplication sharedApplication].delegate).rootController;
     MDFindPassword *request=[[MDFindPassword alloc]initWithTelephone:_telePhone VerifyCode:_verifyCode PassWord:_surePasswordField.text success:^(AMBaseRequest *request) {
         [_weakSelf setBusyIndicatorVisible:NO];
+        
+            [AMTools showHUDtoView:[UIApplication sharedApplication].keyWindow  title:@"找回成功" delay:2];
+        
         [_weakNav  popToRootViewControllerAnimated:YES];
         
     } failure:^(AMBaseRequest *request) {

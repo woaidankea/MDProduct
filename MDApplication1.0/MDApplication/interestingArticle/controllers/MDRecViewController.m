@@ -31,12 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+     self.automaticallyAdjustsScrollViewInsets = NO;
     [self resetTableView:_table];
   
     _table.contentInset = UIEdgeInsetsMake(64 + 50, 0, 49, 0);
     [_table registerNib:[UINib nibWithNibName:@"MDArticleCell" bundle:nil] forCellReuseIdentifier:@"MDArticleCell"];
-    _table.cellLayoutMarginsFollowReadableWidth = NO;
+//    _table.cellLayoutMarginsFollowReadableWidth = NO;
     _currentPage = 0;
     _isLastPage = NO;
     self.items = [NSMutableArray array];

@@ -36,7 +36,7 @@ NSString * const kMeReloadData = @"MeReloadData";
 @implementation MDMeCollectionViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   [self.collectionview.mj_header beginRefreshing];
+    [self startBeautifulPicRequest];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(MeReloadData) name:kMeReloadData object:nil];
 
 }
@@ -64,7 +64,7 @@ NSString * const kMeReloadData = @"MeReloadData";
 }
 
 - (void)MeReloadData {
-    [self.collectionview.mj_header beginRefreshing];
+    [self startBeautifulPicRequest];
 }
 
 
@@ -174,7 +174,7 @@ NSString * const kMeReloadData = @"MeReloadData";
            
         }
         if(indexPath.row==3){
-            cell.Title.text = @"徒弟进贡(今日)";
+            cell.Title.text = @"徒弟进贡";
             
             if(ServerJieKu){
                 cell.content.text = _model.tudijingong;

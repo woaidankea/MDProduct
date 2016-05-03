@@ -20,7 +20,7 @@
 + (NSDictionary *)objectClassInArray{
     return @{
              @"shareConfig" : @"MDShareModel"
-             };
+        };
 }
 
 @end

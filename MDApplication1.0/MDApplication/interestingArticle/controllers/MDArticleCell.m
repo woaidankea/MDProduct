@@ -26,7 +26,12 @@
     
 //          [_title sizeToFit];
     
+       if([model.showPrice isEqualToString:@"1"]){
+    
          _income.text = model.inCome;
+       }else {
+        _income.text = @"";
+       }
     
         if([model.showPrice isEqualToString:@"1"]){
             

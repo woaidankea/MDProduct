@@ -65,7 +65,13 @@
     __weak UINavigationController *_weakNav = ((AppDelegate *)[UIApplication sharedApplication].delegate).rootController;
     MDModifyPassword *request=[[MDModifyPassword alloc]initWithOldPassword:_oldPassword.text Newpassword:_surPassword.text success:^(AMBaseRequest *request) {
         [_weakSelf setBusyIndicatorVisible:NO];
+        
+     
+
+        
         [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+        
+           [AMTools showHUDtoView:[UIApplication sharedApplication].keyWindow title:@"修改成功" delay:2];
         
     } failure:^(AMBaseRequest *request) {
         [_weakSelf setBusyIndicatorVisible:NO];

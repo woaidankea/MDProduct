@@ -226,8 +226,10 @@ static DXShareTools *_shareTools = nil;
                  if (CurrentModel.key != nil){
                  MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
                      
-                     BOOL isvalid  =  [request.responseObject objectForKey:@"isvalid"];
+                     BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
                      
+                     
+                     NSLog(@"response = %@",request.responseObject);
                      if(isvalid){
                          
                          //            [self initRedPacketWindowNeedOpen:info];
@@ -274,12 +276,39 @@ static DXShareTools *_shareTools = nil;
              }
              case SSDKResponseStateFail:
              {
-//                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-//                                                                 message:nil
-//                                                                delegate:self
-//                                                       cancelButtonTitle:@"OK"
-//                                                       otherButtonTitles:nil, nil];
-//                 [alert show];
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                    
+                     
+                
+                 }
                  break;
              }
                

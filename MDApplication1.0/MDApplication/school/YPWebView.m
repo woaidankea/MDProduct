@@ -358,12 +358,16 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 
 
 #pragma mark - WKUIDelegate Method
+
+
+
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        completionHandler();
+          completionHandler();
+      
     }]];
     
     if (self.wkUIDelegateViewController) {

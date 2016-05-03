@@ -107,20 +107,30 @@
     
     
     
-    [self setViewControllers:@[nav1,nav2,nav3,nav4,nav5]];
+    [self setViewControllers:@[nav1,nav3,nav4,nav5]];
 }
 
 - (void)addTabBarImage{
     //    UIImage *finishedImage = [UIImage imageNamed:@"tabbar_selected_background"];
     //    UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_normal_background"];
+//    NSArray *selectedImages = @[@"mune_ico1_hov",
+//                                @"mune_ico2_hov",
+//                                @"mune_ico3_hov",
+//                                @"mune_ico4_hov",
+//                                @"mune_ico5_hov"];
+//
+//    NSArray *unselectedImages = @[@"mune_ico1",
+//                                  @"mune_ico2",
+//                                  @"mune_ico3",
+//                                  @"mune_ico4",
+//                                  @"mune_ico5"];
+    
     NSArray *selectedImages = @[@"mune_ico1_hov",
-                                @"mune_ico2_hov",
                                 @"mune_ico3_hov",
                                 @"mune_ico4_hov",
                                 @"mune_ico5_hov"];
-
+    
     NSArray *unselectedImages = @[@"mune_ico1",
-                                  @"mune_ico2",
                                   @"mune_ico3",
                                   @"mune_ico4",
                                   @"mune_ico5"];
@@ -149,7 +159,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)tabBar:(RDVTabBar *)tabBar didSelectItemAtIndex:(NSInteger)index{
-    if(index==2||index==4){
+    if(index==1||index==3){
         if(!USER_DEFAULT_KEY(@"token")){
         [self setSelectedIndex:0];
         

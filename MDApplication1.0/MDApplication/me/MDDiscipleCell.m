@@ -18,13 +18,15 @@
 
 - (void)setPupilModel:(MDPupilModel *)pupilModel{
     _First.text = pupilModel.ranking;
-    _Second.text = pupilModel.telephone;
+    
+    _Second.text =    [ pupilModel.telephone stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+;
     _Third.text = [NSString stringWithFormat:@"￥%.2f",[pupilModel.money floatValue]];
 }
 
 
 - (void)setRankModel:(MDRankModel *)rankModel{
-    _Second.text = rankModel.phone;
+    _Second.text =  [rankModel.phone stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];;
     _Third.text = [NSString stringWithFormat:@"￥%.2f",[rankModel.totalmoney floatValue]];
 }
 

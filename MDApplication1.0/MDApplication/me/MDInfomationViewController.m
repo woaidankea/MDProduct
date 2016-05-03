@@ -140,7 +140,7 @@
                 cell.leftLabel.text = @"性别";
                 if([memberModel.sex isEqualToString:@"1"]){
                 cell.rightLabel.text = @"男";
-                }else if([memberModel.sex isEqualToString:@"2"]){
+                }else if([memberModel.sex isEqualToString:@"0"]){
                 cell.rightLabel.text = @"女";
                 }else{
                 cell.rightLabel.text = @"";
@@ -233,7 +233,7 @@
     
    
     if (indexPath.section==-1) {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机拍照",@"照片图库",nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机拍照",@"照片图库",nil];
         [sheet showInView:self.view];
     }
     if (indexPath.section==0) {
@@ -261,7 +261,7 @@
                         memberModel.sex = @"1";
                     }
                     if([selectedValue isEqualToString:@"女"]){
-                        memberModel.sex = @"2";
+                        memberModel.sex = @"0";
                     }
                     
                     [tableView reloadData];
