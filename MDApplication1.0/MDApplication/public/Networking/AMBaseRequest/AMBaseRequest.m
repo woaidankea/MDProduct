@@ -146,7 +146,7 @@
                 _onSuccess(self);
             }
         }else{
-            if([result[@"message"] isEqualToString:@"Token过期"])
+            if([result[@"message"] isEqualToString:@"Token过期"]||[result[@"message"] isEqualToString:@"Token过期或不存在"])
             {
                 return;
             }

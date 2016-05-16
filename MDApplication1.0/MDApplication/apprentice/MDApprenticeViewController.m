@@ -322,7 +322,7 @@
     NSLog(@"%f",image2.size.width);
     
     if(iPhone6Pus){
-    [image1 drawInRect:CGRectMake([apprenticeModel.startX integerValue]/3, [apprenticeModel.startY integerValue]/3,[apprenticeModel.size integerValue]/3,[apprenticeModel.size integerValue]/3)];
+     [image1 drawInRect:CGRectMake([apprenticeModel.startX integerValue]/3, [apprenticeModel.startY integerValue]/3,[apprenticeModel.size integerValue]/3,[apprenticeModel.size integerValue]/3)];
     }else{
      [image1 drawInRect:CGRectMake([apprenticeModel.startX integerValue]/2, [apprenticeModel.startY integerValue]/2,[apprenticeModel.size integerValue]/2,[apprenticeModel.size integerValue]/2)];
     }

@@ -22,6 +22,7 @@
 #import "AMRequestHelper.h"
 #import "AFNetworking.h"
 #import "MDMotifyUserInfoRequest.h"
+
 @interface MDInfomationViewController ()<UIImagePickerControllerDelegate,SelectPictureDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MDInfomationDelegate>
 {
      AMUserActionSelectView *selectPictureView;

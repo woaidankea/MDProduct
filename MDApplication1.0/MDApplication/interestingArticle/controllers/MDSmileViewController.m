@@ -36,7 +36,9 @@
     
     _table.contentInset = UIEdgeInsetsMake(64 + 44, 0, 49, 0);
     [_table registerNib:[UINib nibWithNibName:@"MDArticleCell" bundle:nil] forCellReuseIdentifier:@"MDArticleCell"];
-    _table.cellLayoutMarginsFollowReadableWidth = NO;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
+        _table.cellLayoutMarginsFollowReadableWidth = NO;
+    }
     _currentPage = 0;
     _isLastPage = NO;
     self.items = [NSMutableArray array];

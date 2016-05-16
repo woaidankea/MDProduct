@@ -23,7 +23,7 @@
     NSInteger shortUserTimes;
     NSInteger disabledTime;
     NSString *inPutIphoneNumber;
-    NSString *receiveCode;
+//    NSString *receiveCode;
 }
 @end
 
@@ -80,10 +80,10 @@
         return;
     }
     
-    if (![_securityCodeTextField.text isEqualToString:receiveCode]) {
-        [AMTools showAlertViewWithTitle:@"验证码输入错误" cancelButtonTitle:@"确定"];
-        return;
-    }
+//    if (![_securityCodeTextField.text isEqualToString:receiveCode]) {
+//        [AMTools showAlertViewWithTitle:@"验证码输入错误" cancelButtonTitle:@"确定"];
+//        return;
+//    }
     if (_securityCodeTextField.text.length == 0) {
         [AMTools showAlertViewWithTitle:@"验证码不能为空" cancelButtonTitle:@"确定"];
         return;
@@ -132,7 +132,7 @@
         MDForgotPasswordRequest *request=[[MDForgotPasswordRequest alloc]initWithTelephone:_PhoneField.text m:@"user" success:^(AMBaseRequest *request) {
             [self setBusyIndicatorVisible:NO];
             AMLog(@"验证码==============%@",[request.responseObject objectForKey:@"phonecode"]);
-            receiveCode =[NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
+//            receiveCode =[NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
             [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
         } failure:^(AMBaseRequest *request) {
             [self setBusyIndicatorVisible:NO];

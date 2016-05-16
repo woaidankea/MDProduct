@@ -21,7 +21,7 @@
     NSInteger shortUserTimes;
     NSInteger disabledTime;
     NSString *inPutIphoneNumber;
-    NSString *receiveCode;
+//    NSString *receiveCode;
     BOOL Selected;
 
 }
@@ -99,7 +99,7 @@
             [self setBusyIndicatorVisible:NO];
             AMLog(@"验证码==============%@",request.responseObject);
             
-            receiveCode = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
+//            receiveCode = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
             NSDate *curentTime =[NSDate date];
             disabledTime =curentTime.timeIntervalSince1970+60;
             
@@ -154,11 +154,11 @@
         return;
     }
     
-    if (![_securityCodeTextField.text isEqualToString:receiveCode]) {
-        [AMTools showAlertViewWithTitle:@"请输入正确的验证码" cancelButtonTitle:@"确定"];
-        [_PhoneField becomeFirstResponder];
-        return;
-    }
+//    if (![_securityCodeTextField.text isEqualToString:receiveCode]) {
+//        [AMTools showAlertViewWithTitle:@"请输入正确的验证码" cancelButtonTitle:@"确定"];
+//        [_PhoneField becomeFirstResponder];
+//        return;
+//    }
 
     if (_securityCodeTextField.text.length == 0) {
         [AMTools showAlertViewWithTitle:@"验证码不能为空" cancelButtonTitle:@"确定"];
