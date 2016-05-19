@@ -136,24 +136,26 @@ static DXShareTools *_shareTools = nil;
 }
 -(void)showShareView:(NSArray *)shareAry contentModel:(ShareModel *) model viewController:(UIViewController *)vc{
        CurrentModel = model;
+//    @"shareToWeChatTimeline",
+//    @"shareToWechatSession",
     NSArray *selectors = @[
                            @"shareToWeibo",
-                           @"shareToWeChatTimeline",
-                           @"shareToWechatSession",
+                        
                            @"shareToTencentQQ",
                            @"shareToQzone"
                            ];
     
     //添加Share
-    Class classes[5] = {
+//    [WechatTimelineActivity class],
+//    [WechatSessionActivity class],
+    Class classes[3] = {
         [WeiboActivity class],
-        [WechatTimelineActivity class],
-        [WechatSessionActivity class],
+    
         [TencentActivity class],
         [QZoneActivity class]
     };
     NSMutableArray *activitys = [NSMutableArray arrayWithCapacity:3];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
         id activity = [[classes[i] alloc] init];
         [activity setPerformActivityBlock:^{
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -174,7 +176,7 @@ static DXShareTools *_shareTools = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachesDir = [paths objectAtIndex:0];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
+    if(!_isApprentice){
     for(int i = 0;i<model.imageArray.count;i++)
     {
         //文件名请自己处理
@@ -193,13 +195,17 @@ static DXShareTools *_shareTools = nil;
 //        [activityItems addObject:shareobj];
         
     }
+        NSString *textToShare = model.title;
+        NSURL *urlToShare = [NSURL URLWithString:model.url];
+        [activityItems addObject:urlToShare];
+        [activityItems addObject:textToShare];
+    }else {
+    
+     [activityItems addObject:[CurrentModel.imageArray objectAtIndex:1]];
+    }
     
     
-     NSString *textToShare = model.title;
-     UIImage *image = [UIImage imageNamed:@"Icon"];
-     NSURL *urlToShare = [NSURL URLWithString:model.url];
-    [activityItems addObject:urlToShare];
-    [activityItems addObject:textToShare];
+    
 
      
      UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activitys];
@@ -727,7 +733,12 @@ static DXShareTools *_shareTools = nil;
                                         url:[NSURL URLWithString:CurrentModel.url]
                                       title:CurrentModel.title
                                        type:SSDKContentTypeWebPage];
-    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    
+    if (_isApprentice && CurrentModel.imageArray.count == 2){
+    
+            [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:1] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatTimeline];
+     }
 
     
     [ShareSDK share:type //传入分享的平台类型

@@ -2429,7 +2429,6 @@
 				TargetAttributes = {
 					5C9F3E0F1C9685A000756229 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = DVS4WL6GA8;
 					};
 					5C9F3E2B1C9685A000756229 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2940,8 +2939,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xu weiwei (S6M45FMX2J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu weiwei (S6M45FMX2J)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2963,6 +2962,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d5218d04-e6a8-4255-a0cd-910ff8393eac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2985,8 +2985,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xu weiwei (S6M45FMX2J)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu weiwei (S6M45FMX2J)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3001,6 +3001,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "d5218d04-e6a8-4255-a0cd-910ff8393eac";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3031,9 +3032,9 @@
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.tangdou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d5218d04-e6a8-4255-a0cd-910ff8393eac";
+				PROVISIONING_PROFILE = "a0f696e1-2cbe-4e55-b68c-85690f420f68";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3062,9 +3063,9 @@
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.tangdou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d5218d04-e6a8-4255-a0cd-910ff8393eac";
+				PROVISIONING_PROFILE = "a0f696e1-2cbe-4e55-b68c-85690f420f68";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -3127,7 +3128,7 @@
 				5C9F3E3F1C9685A000756229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5C9F3E401C9685A000756229 /* Build configuration list for PBXNativeTarget "MDApplication" */ = {
 			isa = XCConfigurationList;
@@ -3136,7 +3137,7 @@
 				5C9F3E421C9685A000756229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5C9F3E431C9685A000756229 /* Build configuration list for PBXNativeTarget "MDApplicationTests" */ = {
 			isa = XCConfigurationList;
@@ -3145,7 +3146,7 @@
 				5C9F3E451C9685A000756229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5C9F3E461C9685A000756229 /* Build configuration list for PBXNativeTarget "MDApplicationUITests" */ = {
 			isa = XCConfigurationList;
@@ -3154,7 +3155,7 @@
 				5C9F3E481C9685A000756229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

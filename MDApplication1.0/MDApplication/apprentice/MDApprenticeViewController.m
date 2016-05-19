@@ -149,8 +149,10 @@
     
     [DXShareTools shareToolsInstance].isApprentice = YES;
     
-    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
-
+//    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
+    
+    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel viewController:self];
+    
     
     
 //    ShareModel *sharemodel = [[ShareModel alloc]init];
