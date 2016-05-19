@@ -18,6 +18,8 @@
 #import "YZXiMaViewController.h"
 #import "MDLoginViewController.h"
 #import "AppDelegate.h"
+#import "MDWKWebViewController.h"
+#import "ViewControllerFactory.h"
 @interface MainViewController ()
 
 @end
@@ -42,12 +44,24 @@
     
     [super viewDidLoad];
     
+    NSMutableArray *vcArray = [NSMutableArray new];
     
+    
+//    for(int i = 0; i < 5; i++){
+//        
+//        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//        vc.title = [NSString stringWithFormat:@"%d",i];
+//        [vcArray addObject:nav];
+//     
+//    }
+//    
+//    [self setViewControllers:vcArray];
     
     
     [self addSubViewControllers];
     [self addTabBarImage];
-    
+//
     if(!USER_DEFAULT_KEY(@"FisrtLogin")){
     NSMutableArray *paths = [NSMutableArray new];
     
@@ -64,9 +78,7 @@
 
 
 - (void)addSubViewControllers{
-//    //趣文
-//    UIStoryboard *neighborStoryboard = [UIStoryboard storyboardWithName:@"MDInterestingArticleViewController" bundle:nil];
-//    MDInterestingArticleViewController *neighborFirendContr = [neighborStoryboard instantiateViewControllerWithIdentifier:@"MDInterestingArticleViewController"];
+
     YZXiMaViewController *neighborFirendContr = [[YZXiMaViewController alloc]init];
     
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:neighborFirendContr];

@@ -53,7 +53,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
             
             
             //add KVO
-            [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:nil];
+//            [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:nil];
             [self.wkWebView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
         }else{
             self.uiWebView = [[UIWebView alloc] initWithFrame:self.bounds];
@@ -207,11 +207,12 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 #pragma mark - KVO
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    if ([keyPath isEqual:@"estimatedProgress"]) {
-        if ([self.delegate respondsToSelector:@selector(YPwebview:loadProgress:)]) {
-            [self.delegate YPwebview:self loadProgress:self.wkWebView.estimatedProgress];
-        }
-    }else if ([keyPath isEqualToString:@"title"])
+//    if ([keyPath isEqual:@"estimatedProgress"]) {
+//        if ([self.delegate respondsToSelector:@selector(YPwebview:loadProgress:)]) {
+//            [self.delegate YPwebview:self loadProgress:self.wkWebView.estimatedProgress];
+//        }
+//    }else
+        if ([keyPath isEqualToString:@"title"])
     {
         if ([self.delegate respondsToSelector:@selector(YPwebview:loadTitle:)]) {
             [self.delegate YPwebview:self loadTitle:self.wkWebView.title];

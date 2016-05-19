@@ -223,7 +223,9 @@
     sharemodel.desc = t_model.desc;
     sharemodel.key = [NSString stringWithFormat:@"%@%@",t_model.authcode,MD5];
     [DXShareTools shareToolsInstance].isPic = NO;
-    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
+//    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
+    
+     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel viewController:self];
 
    
     

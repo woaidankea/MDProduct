@@ -250,6 +250,19 @@
 		5C73A6F51CC07B57000CB453 /* MDTXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C73A6F41CC07B57000CB453 /* MDTXModel.m */; };
 		5C73A6F71CC0AE2A000CB453 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C73A6F61CC0AE2A000CB453 /* 5.png */; };
 		5C73A6FA1CC0B9F7000CB453 /* myImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C73A6F91CC0B9F7000CB453 /* myImageView.m */; };
+		5C7E746F1CEC0CD10086879F /* CopyLinkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E74661CEC0CD10086879F /* CopyLinkActivity.m */; };
+		5C7E74701CEC0CD10086879F /* CustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E74681CEC0CD10086879F /* CustomActivity.m */; };
+		5C7E74711CEC0CD10086879F /* WechatSessionActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E746A1CEC0CD10086879F /* WechatSessionActivity.m */; };
+		5C7E74721CEC0CD10086879F /* WechatTimelineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E746C1CEC0CD10086879F /* WechatTimelineActivity.m */; };
+		5C7E74731CEC0CD10086879F /* WeiboActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E746E1CEC0CD10086879F /* WeiboActivity.m */; };
+		5C7E74791CEC2FE10086879F /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E74741CEC2FE10086879F /* friend@2x.png */; };
+		5C7E747A1CEC2FE10086879F /* qq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E74751CEC2FE10086879F /* qq@2x.png */; };
+		5C7E747B1CEC2FE10086879F /* qqzone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E74761CEC2FE10086879F /* qqzone@2x.png */; };
+		5C7E747C1CEC2FE10086879F /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E74771CEC2FE10086879F /* weibo@2x.png */; };
+		5C7E747D1CEC2FE10086879F /* wx@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E74781CEC2FE10086879F /* wx@2x.png */; };
+		5C7E748A1CEC52D80086879F /* TencentActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E74891CEC52D80086879F /* TencentActivity.m */; };
+		5C7E748D1CEC530C0086879F /* QZoneActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E748C1CEC530C0086879F /* QZoneActivity.m */; };
+		5C7E74951CED4EDF0086879F /* ViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E74941CED4EDF0086879F /* ViewControllerFactory.m */; };
 		5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90360D1C9D193500721D8F /* MDAboutusViewController.m */; };
 		5C9036101C9D1A4900721D8F /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C90360F1C9D1A4900721D8F /* protocol.html */; };
 		5C9036141C9D262100721D8F /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C9036131C9D262100721D8F /* apple-touch-icon.png */; };
@@ -720,6 +733,27 @@
 		5C73A6F81CC0B9F7000CB453 /* myImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myImageView.h; sourceTree = "<group>"; };
 		5C73A6F91CC0B9F7000CB453 /* myImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myImageView.m; sourceTree = "<group>"; };
 		5C73A6FB1CC0BA24000CB453 /* UConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UConstants.h; sourceTree = "<group>"; };
+		5C7E74651CEC0CD10086879F /* CopyLinkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyLinkActivity.h; sourceTree = "<group>"; };
+		5C7E74661CEC0CD10086879F /* CopyLinkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyLinkActivity.m; sourceTree = "<group>"; };
+		5C7E74671CEC0CD10086879F /* CustomActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActivity.h; sourceTree = "<group>"; };
+		5C7E74681CEC0CD10086879F /* CustomActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActivity.m; sourceTree = "<group>"; };
+		5C7E74691CEC0CD10086879F /* WechatSessionActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatSessionActivity.h; sourceTree = "<group>"; };
+		5C7E746A1CEC0CD10086879F /* WechatSessionActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatSessionActivity.m; sourceTree = "<group>"; };
+		5C7E746B1CEC0CD10086879F /* WechatTimelineActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatTimelineActivity.h; sourceTree = "<group>"; };
+		5C7E746C1CEC0CD10086879F /* WechatTimelineActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatTimelineActivity.m; sourceTree = "<group>"; };
+		5C7E746D1CEC0CD10086879F /* WeiboActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboActivity.h; sourceTree = "<group>"; };
+		5C7E746E1CEC0CD10086879F /* WeiboActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboActivity.m; sourceTree = "<group>"; };
+		5C7E74741CEC2FE10086879F /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
+		5C7E74751CEC2FE10086879F /* qq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@2x.png"; sourceTree = "<group>"; };
+		5C7E74761CEC2FE10086879F /* qqzone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qqzone@2x.png"; sourceTree = "<group>"; };
+		5C7E74771CEC2FE10086879F /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
+		5C7E74781CEC2FE10086879F /* wx@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wx@2x.png"; sourceTree = "<group>"; };
+		5C7E74881CEC52D80086879F /* TencentActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentActivity.h; sourceTree = "<group>"; };
+		5C7E74891CEC52D80086879F /* TencentActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentActivity.m; sourceTree = "<group>"; };
+		5C7E748B1CEC530C0086879F /* QZoneActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZoneActivity.h; sourceTree = "<group>"; };
+		5C7E748C1CEC530C0086879F /* QZoneActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZoneActivity.m; sourceTree = "<group>"; };
+		5C7E74931CED4EDF0086879F /* ViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerFactory.h; sourceTree = "<group>"; };
+		5C7E74941CED4EDF0086879F /* ViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerFactory.m; sourceTree = "<group>"; };
 		5C90360C1C9D193500721D8F /* MDAboutusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAboutusViewController.h; sourceTree = "<group>"; };
 		5C90360D1C9D193500721D8F /* MDAboutusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAboutusViewController.m; sourceTree = "<group>"; };
 		5C90360F1C9D1A4900721D8F /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
@@ -964,6 +998,11 @@
 		5C0D19B71CAA2D360039F7E5 /* share */ = {
 			isa = PBXGroup;
 			children = (
+				5C7E74741CEC2FE10086879F /* friend@2x.png */,
+				5C7E74751CEC2FE10086879F /* qq@2x.png */,
+				5C7E74761CEC2FE10086879F /* qqzone@2x.png */,
+				5C7E74771CEC2FE10086879F /* weibo@2x.png */,
+				5C7E74781CEC2FE10086879F /* wx@2x.png */,
 				5C0D19B81CAA2D360039F7E5 /* share_qq@2x.png */,
 				5C0D19B91CAA2D360039F7E5 /* share_qq@3x.png */,
 				5C0D19BA1CAA2D360039F7E5 /* share_qzone@2x.png */,
@@ -1658,6 +1697,68 @@
 			path = MDTiXianJilu;
 			sourceTree = "<group>";
 		};
+		5C7E74641CEC0CD10086879F /* CustomActivity */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E74651CEC0CD10086879F /* CopyLinkActivity.h */,
+				5C7E74661CEC0CD10086879F /* CopyLinkActivity.m */,
+				5C7E74671CEC0CD10086879F /* CustomActivity.h */,
+				5C7E74681CEC0CD10086879F /* CustomActivity.m */,
+				5C7E74881CEC52D80086879F /* TencentActivity.h */,
+				5C7E74891CEC52D80086879F /* TencentActivity.m */,
+				5C7E748B1CEC530C0086879F /* QZoneActivity.h */,
+				5C7E748C1CEC530C0086879F /* QZoneActivity.m */,
+				5C7E74691CEC0CD10086879F /* WechatSessionActivity.h */,
+				5C7E746A1CEC0CD10086879F /* WechatSessionActivity.m */,
+				5C7E746B1CEC0CD10086879F /* WechatTimelineActivity.h */,
+				5C7E746C1CEC0CD10086879F /* WechatTimelineActivity.m */,
+				5C7E746D1CEC0CD10086879F /* WeiboActivity.h */,
+				5C7E746E1CEC0CD10086879F /* WeiboActivity.m */,
+			);
+			path = CustomActivity;
+			sourceTree = "<group>";
+		};
+		5C7E748E1CED49A40086879F /* Tang2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E748F1CED49A40086879F /* Base */,
+			);
+			path = Tang2.0;
+			sourceTree = "<group>";
+		};
+		5C7E748F1CED49A40086879F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E74901CED49A40086879F /* Controller */,
+				5C7E74911CED49A40086879F /* Model */,
+				5C7E74921CED49A40086879F /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5C7E74901CED49A40086879F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E74931CED4EDF0086879F /* ViewControllerFactory.h */,
+				5C7E74941CED4EDF0086879F /* ViewControllerFactory.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5C7E74911CED49A40086879F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5C7E74921CED49A40086879F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5C9F3E071C9685A000756229 = {
 			isa = PBXGroup;
 			children = (
@@ -1683,6 +1784,7 @@
 		5C9F3E121C9685A000756229 /* MDApplication */ = {
 			isa = PBXGroup;
 			children = (
+				5C7E748E1CED49A40086879F /* Tang2.0 */,
 				5C9036131C9D262100721D8F /* apple-touch-icon.png */,
 				5C3A906B1C9B9E4C00B4388B /* login */,
 				5C9F3F611C97A7B100756229 /* firstguide */,
@@ -1845,6 +1947,7 @@
 		5C9F3E6E1C96951000756229 /* thirdlib */ = {
 			isa = PBXGroup;
 			children = (
+				5C7E74641CEC0CD10086879F /* CustomActivity */,
 				5C711ABE1CA38A7B00CA1A31 /* ShareSDK */,
 				5C711A4B1CA0F4DB00CA1A31 /* NJKWebViewProgress */,
 				5C9036441C9D548200721D8F /* AbstractActionSheetPicker+Interface.h */,
@@ -2380,6 +2483,7 @@
 				5C0D19A51CA95C210039F7E5 /* mune_ico5@2x.png in Resources */,
 				5C19232B1CA4CCA400C1A380 /* Icon-72@2x.png in Resources */,
 				5C9F3FCD1C983CB300756229 /* MDMeCollectionViewController.storyboard in Resources */,
+				5C7E747B1CEC2FE10086879F /* qqzone@2x.png in Resources */,
 				5C711AE61CA38A7B00CA1A31 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				5C9F3F401C96A61200756229 /* MDApprenticeViewController.storyboard in Resources */,
 				5C3A8F651C99304200B4388B /* close bottom@2x.png in Resources */,
@@ -2475,6 +2579,7 @@
 				5C3A90181C9AB6F700B4388B /* ico9@3x.png in Resources */,
 				5C3A903F1C9AB9F100B4388B /* share_top@2x.png in Resources */,
 				5C1923351CA4CCA400C1A380 /* ios7_app_icon_iphone@2x.png in Resources */,
+				5C7E747C1CEC2FE10086879F /* weibo@2x.png in Resources */,
 				5C3A90001C9AB6F700B4388B /* butt_h@2x.png in Resources */,
 				5C3A90051C9AB6F700B4388B /* ico11@2x.png in Resources */,
 				5C3A90021C9AB6F700B4388B /* tit@2x.png in Resources */,
@@ -2503,6 +2608,7 @@
 				5C711A351CA027A600CA1A31 /* MDFashionViewController.storyboard in Resources */,
 				5C3A900F1C9AB6F700B4388B /* ico5@2x.png in Resources */,
 				5C3A90161C9AB6F700B4388B /* ico8@3x.png in Resources */,
+				5C7E747A1CEC2FE10086879F /* qq@2x.png in Resources */,
 				5C0D19AD1CAA1BE40039F7E5 /* mune_ico3_hov@2x.png in Resources */,
 				5C3A90101C9AB6F700B4388B /* ico5@3x.png in Resources */,
 				5C3A90701C9B9EC700B4388B /* MDLoginViewController.storyboard in Resources */,
@@ -2523,6 +2629,7 @@
 				5C711AEA1CA38A7B00CA1A31 /* read_me.txt in Resources */,
 				5C3A8FFD1C9AB6F700B4388B /* bg@3x.png in Resources */,
 				5C3A90121C9AB6F700B4388B /* ico6@3x.png in Resources */,
+				5C7E747D1CEC2FE10086879F /* wx@2x.png in Resources */,
 				5C3A90261C9AB89900B4388B /* ico@2x.png in Resources */,
 				5C9F3F751C97A90200756229 /* 5_index_4.png in Resources */,
 				5C3A90671C9ADB4100B4388B /* share_butt_bg@3x.png in Resources */,
@@ -2539,6 +2646,7 @@
 				5C3A90091C9AB6F700B4388B /* last_receive@2x.png in Resources */,
 				5C3A90421C9ABE3A00B4388B /* MDRecViewController.storyboard in Resources */,
 				5C0D19C91CAA2D360039F7E5 /* share_save_icon@3x.png in Resources */,
+				5C7E74791CEC2FE10086879F /* friend@2x.png in Resources */,
 				5C19232F1CA4CCA400C1A380 /* Icon-Small@2x.png in Resources */,
 				5C0D19AE1CAA1BE40039F7E5 /* mune_ico4_hov@2x.png in Resources */,
 			);
@@ -2618,10 +2726,12 @@
 				5C3A8FB21C9A75FB00B4388B /* YZDisplayTitleLabel.m in Sources */,
 				5C9F3E8F1C9699E400756229 /* BaseTableViewCell.m in Sources */,
 				5C3A8F9F1C9A415100B4388B /* MDSchoolSecondCell.m in Sources */,
+				5C7E74951CED4EDF0086879F /* ViewControllerFactory.m in Sources */,
 				5C3A8FBF1C9A8A6100B4388B /* MDPopCollectionViewCell.m in Sources */,
 				5C711A471CA0E4AD00CA1A31 /* MDArticleModel.m in Sources */,
 				5C9F3EFA1C969C6100756229 /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				5C3A8FB31C9A75FB00B4388B /* YZDisplayViewController.m in Sources */,
+				5C7E74701CEC0CD10086879F /* CustomActivity.m in Sources */,
 				5C9F3F601C97A78C00756229 /* KSGuideManager.m in Sources */,
 				5C3A90831C9BB19400B4388B /* MDRegistViewController.m in Sources */,
 				5C9F3F151C969CF400756229 /* AMSystemInfo.m in Sources */,
@@ -2639,15 +2749,18 @@
 				5C0D19B51CAA2B4A0039F7E5 /* HXEasyCustomShareView.m in Sources */,
 				5C9F3F171C969CF400756229 /* NSDate+Utils.m in Sources */,
 				5C7119FB1CA01D2800CA1A31 /* MDMotherChildViewController.m in Sources */,
+				5C7E74721CEC0CD10086879F /* WechatTimelineActivity.m in Sources */,
 				5C711A4A1CA0F07900CA1A31 /* MDInterestDetailViewController.m in Sources */,
 				5C711A0D1CA01F4100CA1A31 /* MDFinanceViewController.m in Sources */,
 				5C9F3F431C96A67700756229 /* MDSchoolViewController.m in Sources */,
 				5CFE38261CACB2EA007A48BE /* MDWKWebViewController.m in Sources */,
+				5C7E748A1CEC52D80086879F /* TencentActivity.m in Sources */,
 				5C3A904F1C9AD3DE00B4388B /* MDSmileViewController.m in Sources */,
 				5C73A6F21CC07ABD000CB453 /* MDTXRequest.m in Sources */,
 				5C711A2E1CA026CE00CA1A31 /* MDCarViewController.m in Sources */,
 				5C9F3E781C96951000756229 /* RDVTabBarItem.m in Sources */,
 				5C9F3F591C96A8AB00756229 /* FCFileManager.m in Sources */,
+				5C7E74731CEC0CD10086879F /* WeiboActivity.m in Sources */,
 				5C3A906A1C9B948400B4388B /* DXBarCode.m in Sources */,
 				5C3A8F9C1C9A413100B4388B /* MDSchoolHeadCell.m in Sources */,
 				5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */,
@@ -2660,6 +2773,7 @@
 				5C9F3E911C9699E400756229 /* BaseViewController.m in Sources */,
 				5C3A8FAF1C9A75FB00B4388B /* ChildViewController.m in Sources */,
 				5CA7AC6C1CBBD26F005EF4D0 /* MDShareSuccessRequest.m in Sources */,
+				5C7E74711CEC0CD10086879F /* WechatSessionActivity.m in Sources */,
 				5C711A081CA01EB700CA1A31 /* MDCuriousViewController.m in Sources */,
 				5C0D19D51CAA52AA0039F7E5 /* MDShareModel.m in Sources */,
 				5C9F3F141C969CF400756229 /* AMMergeHttpParams.m in Sources */,
@@ -2750,12 +2864,14 @@
 				5C711A1A1CA0226F00CA1A31 /* MDTechnologyViewController.m in Sources */,
 				5C711A5E1CA109CE00CA1A31 /* MDUserInfoModel.m in Sources */,
 				5C0D199A1CA956110039F7E5 /* MDFourthCollectionCell.m in Sources */,
+				5C7E748D1CEC530C0086879F /* QZoneActivity.m in Sources */,
 				5C9F3E8D1C9699E400756229 /* AMBaseTableTableViewController.m in Sources */,
 				5C3A906E1C9B9E8700B4388B /* MDLoginViewController.m in Sources */,
 				5C711A771CA1349D00CA1A31 /* MDPupilRequest.m in Sources */,
 				5C3A8F971C998DB300B4388B /* AMUserActionSelectView.m in Sources */,
 				5C9F3E761C96951000756229 /* RDVTabBar.m in Sources */,
 				5C3A8FD01C9AA39B00B4388B /* MDNewsCell.m in Sources */,
+				5C7E746F1CEC0CD10086879F /* CopyLinkActivity.m in Sources */,
 				5C9F3F481C96A6CC00756229 /* MDMeViewController.m in Sources */,
 				5C7119F51CA001C100CA1A31 /* MDBeautifulDetailViewController.m in Sources */,
 				5C7119EB1C9FC2FE00CA1A31 /* MDNewsRequest.m in Sources */,

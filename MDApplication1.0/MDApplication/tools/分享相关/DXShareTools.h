@@ -33,4 +33,13 @@
 
 -(void)showShareView:(NSArray *)shareAry contentModel:(ShareModel *) model view:(UIView *)view;
 -(void)shareWithMode:(int)action fromSender:(UIView*)sender shareContent:(NSString*)someText;
+
+-(void)showShareView:(NSArray *)shareAry contentModel:(ShareModel *) model viewController:(UIViewController *)vc;
+@end
+
+
+
+@interface PicCache : NSObject{
+}
+
 @end

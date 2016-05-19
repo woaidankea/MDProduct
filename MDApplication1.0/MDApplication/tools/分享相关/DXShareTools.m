@@ -18,6 +18,66 @@
 #import "AppDelegate.h"
 #import "MDAddShareRequest.h"
 #import "UIWindow+ShareSucAlert.h"
+
+#import "WeiboActivity.h"
+#import "WechatSessionActivity.h"
+#import "WechatTimelineActivity.h"
+#import "CopyLinkActivity.h"
+#import "TencentActivity.h"
+#import "QZoneActivity.h"
+
+
+
+
+@implementation PicCache
+
++(UIImage *) getImageFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    UIImage * result;
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+
++(NSData *) getDataFromURL:(NSString *)fileURL {
+    NSLog(@"执行图片下载函数");
+    
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    
+    return data;
+}
+
++(UIImage *) loadImage:(NSString *)fileName
+{
+    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@", fileName]];
+    
+    return result;
+}
+
++(void) saveImage:(UIImage *)image withFileName:(NSString *)imageName ofType:(NSString *)extension
+{
+    NSString *filePath = imageName;
+    if ([[extension lowercaseString] isEqualToString:@"png"])
+    {
+        BOOL isOK = [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+        NSLog([NSString stringWithFormat:@"%d",isOK]);
+    }
+    else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"])
+    {
+        BOOL isOK = [UIImageJPEGRepresentation(image, 0.7) writeToFile:filePath atomically:YES];
+        NSLog([NSString stringWithFormat:@"%d",isOK]);
+    }
+    else
+    {
+        NSLog(@"文件后缀不认识");
+    }
+}
+
+@end
+
+
 @interface DXShareTools()
 @property (nonatomic,strong)HXEasyCustomShareView *shareView;
 @end
@@ -69,9 +129,93 @@ static DXShareTools *_shareTools = nil;
     [shareView.cancleButton addSubview:lineLabel1];
     [view addSubview:shareView];
     
+
+    
+    
     
 }
+-(void)showShareView:(NSArray *)shareAry contentModel:(ShareModel *) model viewController:(UIViewController *)vc{
+       CurrentModel = model;
+    NSArray *selectors = @[
+                           @"shareToWeibo",
+                           @"shareToWeChatTimeline",
+                           @"shareToWechatSession",
+                           @"shareToTencentQQ",
+                           @"shareToQzone"
+                           ];
+    
+    //添加Share
+    Class classes[5] = {
+        [WeiboActivity class],
+        [WechatTimelineActivity class],
+        [WechatSessionActivity class],
+        [TencentActivity class],
+        [QZoneActivity class]
+    };
+    NSMutableArray *activitys = [NSMutableArray arrayWithCapacity:3];
+    for (int i = 0; i < 5; i++) {
+        id activity = [[classes[i] alloc] init];
+        [activity setPerformActivityBlock:^{
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [self performSelector:NSSelectorFromString(selectors[i]) withObject:nil];
+        }];
+        [activitys addObject:activity];
+    }
+    
+//    //添加Action
+//    CopyLinkActivity *copyLinkActivity = [[CopyLinkActivity alloc] init];
+//    [copyLinkActivity setPerformActivityBlock:^{
+//        [self copyLink:@"http://helloseed.io"];
+//    }];
+//    [activitys addObject:copyLinkActivity];
+    
+   // /*
+    NSMutableArray *activityItems = [NSMutableArray array];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachesDir = [paths objectAtIndex:0];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    for(int i = 0;i<model.imageArray.count;i++)
+    {
+        //文件名请自己处理
+        NSString *filename = [NSString stringWithFormat:@"car/shared_%@.jpg", @"1"];
+        NSString *filestr = [NSString stringWithFormat:@"%@/%@", cachesDir, filename];
+        if(![fileManager fileExistsAtPath:filestr])
+        {
+            //图片路径请处理成自己的
+            UIImage * imageFromURL = [PicCache getImageFromURL:[NSString stringWithFormat:@"%@",model.imageArray[i]]];
+             [activityItems addObject:imageFromURL];
+            
+            [PicCache saveImage:imageFromURL withFileName:filestr ofType:@"jpg"];
+        }
+        NSURL *shareobj = [NSURL fileURLWithPath:filestr];
+        // 试验了好多参数，就这个参数部分好使了。
+//        [activityItems addObject:shareobj];
+        
+    }
+    
+    
+     NSString *textToShare = model.title;
+     UIImage *image = [UIImage imageNamed:@"Icon"];
+     NSURL *urlToShare = [NSURL URLWithString:model.url];
+    [activityItems addObject:urlToShare];
+    [activityItems addObject:textToShare];
 
+     
+     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activitys];
+   
+    activityVC.excludedActivityTypes =  @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+                                          UIActivityTypeAssignToContact,UIActivityTypeMessage, UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll,UIActivityTypePostToTwitter,UIActivityTypeMail,
+                                          UIActivityTypePostToFlickr,UIActivityTypePostToFacebook,UIActivityTypeAddToReadingList,UIActivityTypePostToVimeo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
+     activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+     [self alert:@"成功"];
+     };
+  //   */
+//    NSArray *activityItems = @[];
+//    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activitys];
+    
+    [vc presentViewController:activityVC animated:YES completion:nil];
+}
 
 
 -(void)showShareView:(UIViewController *)uiViewController isFollow:(BOOL)follow
@@ -403,4 +547,808 @@ static DXShareTools *_shareTools = nil;
 }
 
 
+
+
+
+  
+
+
+//拷贝链接
+- (void)copyLink:(NSString *)link {
+    [self alert:@"拷贝成功"];
+}
+
+//分享到微博
+- (void)shareToWeibo {
+    [self alert:@"成功分享到微信朋友"];
+    NSInteger type = 0;
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformTypeSinaWeibo;
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    
+    [ShareSDK share:type //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 //                                                                     message:nil
+                 //                                                                    delegate:self
+                 //                                                           cancelButtonTitle:@"确定"
+                 //                                                           otherButtonTitles:nil];
+                 //                 [alertView show];
+                 
+                 //   1.qq  kongjian  pengyouquan  wx  weibo
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             //            [self initRedPacketWindowNeedOpen:info];
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                info.rewardName = @"分享成功获得";
+                             //                info.rewardContent = @"恭喜你得到奖励";
+                             //                info.rewardStatus = 0;
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             //                         RewardInfo *info = [[RewardInfo alloc] init];
+                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                         info.rewardName = @"分享成功获得";
+                             //                         info.rewardContent = @"恭喜你得到奖励";
+                             //                         info.rewardStatus = 0;
+                             //                         //
+                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         }
+                         
+                         
+                         
+                         
+                         
+                         
+                         //                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     if(request.response.statusCode==300){
+                         //                     }
+                         //                     else{
+                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+                         //                     }
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+    
+    
+}
+
+//分享到微信朋友
+- (void)shareToWeChatTimeline {
+    [self alert:@"成功分享到微信朋友"];
+    NSInteger type = 0;
+     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformSubTypeWechatTimeline;
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+
+    
+    [ShareSDK share:type //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 //                                                                     message:nil
+                 //                                                                    delegate:self
+                 //                                                           cancelButtonTitle:@"确定"
+                 //                                                           otherButtonTitles:nil];
+                 //                 [alertView show];
+                 
+                 //   1.qq  kongjian  pengyouquan  wx  weibo
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             //            [self initRedPacketWindowNeedOpen:info];
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                info.rewardName = @"分享成功获得";
+                             //                info.rewardContent = @"恭喜你得到奖励";
+                             //                info.rewardStatus = 0;
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             //                         RewardInfo *info = [[RewardInfo alloc] init];
+                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                         info.rewardName = @"分享成功获得";
+                             //                         info.rewardContent = @"恭喜你得到奖励";
+                             //                         info.rewardStatus = 0;
+                             //                         //
+                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         }
+                         
+                         
+                         
+                         
+                         
+                         
+                         //                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     if(request.response.statusCode==300){
+                         //                     }
+                         //                     else{
+                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+                         //                     }
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+
+    
+}
+
+- (void)shareToQzone{
+    NSInteger type = 0;
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformSubTypeQZone;
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    
+    [ShareSDK share:type //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 //                                                                     message:nil
+                 //                                                                    delegate:self
+                 //                                                           cancelButtonTitle:@"确定"
+                 //                                                           otherButtonTitles:nil];
+                 //                 [alertView show];
+                 
+                 //   1.qq  kongjian  pengyouquan  wx  weibo
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             //            [self initRedPacketWindowNeedOpen:info];
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                info.rewardName = @"分享成功获得";
+                             //                info.rewardContent = @"恭喜你得到奖励";
+                             //                info.rewardStatus = 0;
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             //                         RewardInfo *info = [[RewardInfo alloc] init];
+                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                         info.rewardName = @"分享成功获得";
+                             //                         info.rewardContent = @"恭喜你得到奖励";
+                             //                         info.rewardStatus = 0;
+                             //                         //
+                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         }
+                         
+                         
+                         
+                         
+                         
+                         
+                         //                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     if(request.response.statusCode==300){
+                         //                     }
+                         //                     else{
+                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+                         //                     }
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+    
+
+}
+
+- (void)shareToTencentQQ{
+    NSInteger type = 0;
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformSubTypeQQFriend;
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    
+    [ShareSDK share:type //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 //                                                                     message:nil
+                 //                                                                    delegate:self
+                 //                                                           cancelButtonTitle:@"确定"
+                 //                                                           otherButtonTitles:nil];
+                 //                 [alertView show];
+                 
+                 //   1.qq  kongjian  pengyouquan  wx  weibo
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             //            [self initRedPacketWindowNeedOpen:info];
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                info.rewardName = @"分享成功获得";
+                             //                info.rewardContent = @"恭喜你得到奖励";
+                             //                info.rewardStatus = 0;
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             //                         RewardInfo *info = [[RewardInfo alloc] init];
+                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                         info.rewardName = @"分享成功获得";
+                             //                         info.rewardContent = @"恭喜你得到奖励";
+                             //                         info.rewardStatus = 0;
+                             //                         //
+                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         }
+                         
+                         
+                         
+                         
+                         
+                         
+                         //                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     if(request.response.statusCode==300){
+                         //                     }
+                         //                     else{
+                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+                         //                     }
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+    
+
+}
+//分享到微信朋友圈
+- (void)shareToWechatSession {
+    [self alert:@"成功分享到微信朋友"];
+    NSInteger type = 0;
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformSubTypeWechatSession;
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    
+    
+    [ShareSDK share:type //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 //                                                                     message:nil
+                 //                                                                    delegate:self
+                 //                                                           cancelButtonTitle:@"确定"
+                 //                                                           otherButtonTitles:nil];
+                 //                 [alertView show];
+                 
+                 //   1.qq  kongjian  pengyouquan  wx  weibo
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             //            [self initRedPacketWindowNeedOpen:info];
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                info.rewardName = @"分享成功获得";
+                             //                info.rewardContent = @"恭喜你得到奖励";
+                             //                info.rewardStatus = 0;
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             //                         RewardInfo *info = [[RewardInfo alloc] init];
+                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             //                         info.rewardName = @"分享成功获得";
+                             //                         info.rewardContent = @"恭喜你得到奖励";
+                             //                         info.rewardStatus = 0;
+                             //                         //
+                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                         }
+                         
+                         
+                         
+                         
+                         
+                         
+                         //                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
+                         //                     if(request.response.statusCode==300){
+                         //                     }
+                         //                     else{
+                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+                         //                     }
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+    
+    
+}
+
+//弹出框
+- (void)alert:(NSString *)text {
+//    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:(UIAlertControllerStyleAlert)];
+//    [self presentViewController:alertVC animated:YES completion:nil];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [alertVC dismissViewControllerAnimated:YES completion:nil];
+//    });
+    NSLog(@"%@",text);
+    
+}
+
+
 @end
+
