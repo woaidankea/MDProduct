@@ -71,4 +71,10 @@
 + (void)showHUDtoWindow:(UIWindow *)window title:(NSString *)title delay:(NSInteger)delay;
 
 
+
+
+
++ (id)getLocalJsonDataWithFileName:(NSString *)fileName;
+
+
 @end

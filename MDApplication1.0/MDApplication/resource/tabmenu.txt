@@ -1,0 +1,40 @@
+{
+    "code": 0,
+    "message": "成功",
+    "currentTime": 1463473386,
+    "data": {
+        "tabMenu": [
+            {
+                "moduleid": 1,
+                "modulename": "文章",
+                "type": 1,
+                "url": "",
+                "iconSelected": "selectedicon1",
+                "iconUnSelected": "unselectedicon1",
+                "show": 1,
+                "index": 0
+            },
+            {
+                "moduleid": 2,
+                "modulename": "活动",
+                "type": 3,
+                "url": "http://www.jieku.com",
+                "iconSelected": "selectedicon2",
+                "iconUnSelected": "unselectedicon2",
+                "show": 1,
+                "index": 2
+            },
+            {
+                "moduleid": 3,
+                "modulename": "我的",
+                "type": 2,
+                "url": "",
+                "iconSelected": "selectedicon3",
+                "iconUnSelected": "unselectedicon3",
+                "show": 1,
+                "index": 3,
+
+            }
+        ]
+    }
+}

@@ -40,7 +40,7 @@
     self.title = @"趣文";
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 添加所有子控制器
-    [self setUpAllViewController];
+//    [self setUpAllViewController];
     
     
     // 设置标题字体
@@ -238,22 +238,6 @@
     
     Military.title = @"旅游";
     [self addChildViewController:Military];
-    
-
-    
-//    
-//    // 旅游
-//    UIStoryboard *TourStory = [UIStoryboard storyboardWithName:@"MDTourViewController" bundle:nil];
-//    MDTourViewController *Tour= [TourStory instantiateViewControllerWithIdentifier:@"MDTourViewController"];
-//    
-//    
-//    Tour.title = @"旅游";
-//    [self addChildViewController:Tour];
-    
-
-    
-    
-    
     
 }
 

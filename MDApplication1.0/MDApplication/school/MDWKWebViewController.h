@@ -11,5 +11,5 @@
 #import "YPWebView.h"
 @interface MDWKWebViewController : BaseViewController<WKNavigationDelegate,WKUIDelegate,YPWebViewDelegate>
 @property (strong,nonatomic)YPWebView *wkwebview;
-@property (copy,nonatomic)NSString *url;
+
 @end

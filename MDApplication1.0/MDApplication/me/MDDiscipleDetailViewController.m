@@ -84,7 +84,7 @@
     _table.separatorColor = [UIColor clearColor];
     [self addFooterRefresh];
     [self addHeaderRefresh];
-    [self setleftBarItemWith:@"back_ico@2x.png"];
+    [self setleftBarItemWith:@"back_ico"];
     
     
 

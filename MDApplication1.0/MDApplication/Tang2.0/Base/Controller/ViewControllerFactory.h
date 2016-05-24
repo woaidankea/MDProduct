@@ -8,13 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
+#import "ArticleMoudleController.h"
+#import "MDNewsViewController.h"
+#import "ContentModel.h"
 static NSString *kWebViewController = @"MDWKWebViewController";
-static NSString *kOperationSub = @"OperationSub";
-
+static NSString *kArticleMoudle = @"ArticleMoudleController";
+static NSString *kArticleContent = @"MDNewsViewController";
+static NSString *kMyMoudle = @"MDMyViewController";
 
 
 @interface ViewControllerFactory : NSObject
 
 + (BaseViewController *)TabMenuFactoryCreateViewControllerWithType:(NSString *)type;
 
+
++ (ArticleMoudleController *)TabMenuFactoryCreateArticleMoudleWithType:(NSString *)type;
+
+
++ (BaseViewController *)CreateArticleMoudleContentViewControllerWithId:(ContentModel *)model;
 @end

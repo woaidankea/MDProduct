@@ -22,8 +22,8 @@
 // THE SOFTWARE.
 
 
-#define SELECTEDCOLOR        @"#d43d3d"
-#define NORMALCOLOR          @"#4e4e4e"
+#define SELECTEDCOLOR        @"#cc3333"
+#define NORMALCOLOR          @"#999999"
 #import "RDVTabBarItem.h"
 #import "UIColor+HexStringToColor.h"
 @interface RDVTabBarItem () {
@@ -72,13 +72,13 @@
     
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
         _unselectedTitleAttributes = @{
-                                       NSFontAttributeName: [UIFont systemFontOfSize:7.5],
+                                       NSFontAttributeName: [UIFont systemFontOfSize:12],
                                        NSForegroundColorAttributeName: [UIColor ColorWithHexString:NORMALCOLOR],
                                        };
     } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
         _unselectedTitleAttributes = @{
-                                       UITextAttributeFont: [UIFont systemFontOfSize:7.5],
+                                       UITextAttributeFont: [UIFont systemFontOfSize:12],
                                        UITextAttributeTextColor: [UIColor ColorWithHexString:NORMALCOLOR],
                                        };
 #endif
@@ -86,13 +86,13 @@
     
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
         _selectedTitleAttributes = @{
-                                       NSFontAttributeName: [UIFont systemFontOfSize:7.5],
+                                       NSFontAttributeName: [UIFont systemFontOfSize:12],
                                        NSForegroundColorAttributeName: [UIColor ColorWithHexString:SELECTEDCOLOR],
                                        };
     } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
         _selectedTitleAttributes = @{
-                                       UITextAttributeFont: [UIFont systemFontOfSize:7.5],
+                                       UITextAttributeFont: [UIFont systemFontOfSize:12],
                                        UITextAttributeTextColor: [UIColor ColorWithHexString:SELECTEDCOLOR],
                                        };
 #endif

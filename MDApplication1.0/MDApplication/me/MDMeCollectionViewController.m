@@ -70,12 +70,9 @@ NSString * const kMeReloadData = @"MeReloadData";
 
 //下拉刷新
 - (void)tableViewHeaderRefresh{
-//    _currentPage = 1;
-//    _totalPage = 0;
-//    _isLastPage = 0;
+
     [self  startBeautifulPicRequest];
-//    [self.collectionview.mj_header endRefreshing];
-//    [self HTTPLocationRequest:MD_Rec];
+
 }
 
 - (void)startBeautifulPicRequest
@@ -436,18 +433,5 @@ NSString * const kMeReloadData = @"MeReloadData";
     
     
 }
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-//
-//}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

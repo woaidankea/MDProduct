@@ -1,0 +1,88 @@
+{
+"code": 0,
+"message": "成功",
+"currentTime": 1463480500,
+"data": {
+"list": [
+{
+"id": 0,
+"moduletype": 1,
+"imageurl":"zijin",
+"modulename": "资金明细",
+"sort": 0,
+"status": 0
+},
+{
+"id": 1,
+"moduletype": 2,
+"imageurl":"tixian",
+"modulename": "我要提现",
+"sort": 3,
+"status": 0
+},
+{
+"id": 2,
+"moduletype": 3,
+"imageurl":"qiandao",
+"modulename": "每日签到",
+"sort": 6,
+"status": 0
+},
+{
+"id": 3,
+"moduletype": 4,
+"imageurl":"tijiao",
+"modulename": "提交工单",
+"sort": 2,
+"status": 0
+},
+{
+"id": 4,
+"moduletype": 2,
+"imageurl":"shoutu",
+"modulename": "收徒中心",
+"sort": 4,
+"status": 0
+},
+{
+"id": 5,
+"moduletype": 2,
+"imageurl":"xuetang",
+"modulename": "糖豆学堂",
+"sort": 1,
+"status": 0
+},
+{
+"id": 21,
+"moduletype": 5,
+"imageurl":"wanshan",
+"modulename": "完善资料",
+"sort": 9,
+"status": 0
+},
+{
+"id": 22,
+"moduletype": 6,
+"imageurl":"shouru",
+"modulename": "收入排行",
+"sort": 5,
+"status": 0
+},
+{
+"id": 23,
+"moduletype": 2,
+"imageurl":"shangwu",
+"modulename": "商务联系",
+"url": "http:///www.h.51tangdou.com/reg.html",
+"sort": 11,
+"status": 0
+}
+],
+"avatar": "",
+"allincome": "5.53",
+"todayincome": "136.2",
+"yesterdayincome": "",
+"disciplenum": "6",
+"discipleincome": "2.36"
+}
+}

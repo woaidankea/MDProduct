@@ -20,8 +20,11 @@
 #import "AppDelegate.h"
 #import "MDWKWebViewController.h"
 #import "ViewControllerFactory.h"
+#import "AMTools.h"
+#import "TabMenuModel.h"
 @interface MainViewController ()
-
+@property (nonatomic,strong)NSMutableArray *selected;
+@property (nonatomic,strong)NSMutableArray *unselected;
 @end
 
 @implementation MainViewController
@@ -38,16 +41,29 @@
 -(void)viewDidLoad{
 //    self.view.backgroundColor = [UIColor redColor];
     
-    
+    [[UINavigationBar appearance]setBarTintColor:UIColorFromRGB(0xc8252b)];
+
     
     
     
     [super viewDidLoad];
     
-    NSMutableArray *vcArray = [NSMutableArray new];
+    _selected = [NSMutableArray new];
+    _unselected = [NSMutableArray new];
+    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
     
+    if(jsonObject){
+        
+        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
+        
+        [self setTabbarControllers:contentItems];
+    }
     
-//    for(int i = 0; i < 5; i++){
+
+//    NSMutableArray *vcArray = [NSMutableArray new];
+//    
+//    
+//    for(int i = 0; i < 3; i++){
 //        
 //        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
 //        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
@@ -56,11 +72,20 @@
 //     
 //    }
 //    
+//    for(int i = 0; i < 3; i++){
+//        
+//        ArticleMoudleController *vc = [ViewControllerFactory TabMenuFactoryCreateArticleMoudleWithType:kArticleMoudle];
+//        [vc getContent];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//        vc.title = [NSString stringWithFormat:@"%d",i];
+//        [vcArray addObject:nav];
+//        
+//    }
 //    [self setViewControllers:vcArray];
     
     
-    [self addSubViewControllers];
-    [self addTabBarImage];
+//    [self addSubViewControllers];
+//    [self addTabBarImage];
 //
     if(!USER_DEFAULT_KEY(@"FisrtLogin")){
     NSMutableArray *paths = [NSMutableArray new];
@@ -75,6 +100,39 @@
     [USERDEFAULTS setObject:@"1" forKey:@"FisrtLogin"];
 }
 
+- (void)setTabbarControllers:(NSArray *)models{
+     NSMutableArray *vcArray = [NSMutableArray new];
+    for(TabMenuModel *model in models){
+        
+        if([model.type isEqualToString:@"1"]){
+            ArticleMoudleController *vc = [ViewControllerFactory TabMenuFactoryCreateArticleMoudleWithType:kArticleMoudle];
+                    [vc getContent];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                    vc.title = model.modulename;
+                    [vcArray addObject:nav];
+        }else if ([model.type isEqualToString:@"3"]){
+            BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            vc.title = model.modulename;
+            vc.url = model.url;
+            [vcArray addObject:nav];
+        }else if ([model.type isEqualToString:@"2"]){
+            BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMyMoudle];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            vc.title = model.modulename;
+            vc.url = model.url;
+            [vcArray addObject:nav];
+        }
+    
+        [ _unselected addObject:model.iconUnSelected];
+        [ _selected addObject:model.iconSelected];
+    
+//    UIImage *myImage2 =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.kutx.cn/xiaotupian/icons/png/200803/20080327095245737.png"]]];
+    }
+    [self setViewControllers:vcArray];
+    [self addTabBarImage];
+
+}
 
 
 - (void)addSubViewControllers{
@@ -137,21 +195,21 @@
 //                                  @"mune_ico4",
 //                                  @"mune_ico5"];
     
-    NSArray *selectedImages = @[@"mune_ico1_hov",
-                                @"mune_ico3_hov",
-                                @"mune_ico4_hov",
-                                @"mune_ico5_hov"];
-    
-    NSArray *unselectedImages = @[@"mune_ico1",
-                                  @"mune_ico3",
-                                  @"mune_ico4",
-                                  @"mune_ico5"];
+//    NSArray *selectedImages = @[@"mune_ico1_hov",
+//                                @"mune_ico3_hov",
+//                                @"mune_ico4_hov",
+//                                @"mune_ico5_hov"];
+//    
+//    NSArray *unselectedImages = @[@"mune_ico1",
+//                                  @"mune_ico3",
+//                                  @"mune_ico4",
+//                                  @"mune_ico5"];
 //    NSArray *titles = @[];
     
     NSInteger index = 0;
     for (RDVTabBarItem *item in self.tabBar.items) {
-        UIImage *selectedimage = [UIImage imageNamed:selectedImages[index]];
-        UIImage *unselectedimage = [UIImage imageNamed:unselectedImages[index]];
+        UIImage *selectedimage = [UIImage imageNamed:_selected[index]];
+        UIImage *unselectedimage = [UIImage imageNamed:_unselected[index]];
         
         [item setFinishedSelectedImage:selectedimage
            withFinishedUnselectedImage:unselectedimage];
@@ -171,21 +229,21 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)tabBar:(RDVTabBar *)tabBar didSelectItemAtIndex:(NSInteger)index{
-    if(index==1||index==3){
-        if(!USER_DEFAULT_KEY(@"token")){
-        [self setSelectedIndex:0];
-        
-        if ([[self delegate] respondsToSelector:@selector(tabBarController:didSelectViewController:)]) {
-            [[self delegate] tabBarController:self didSelectViewController:[self viewControllers][0]];
-        }
-            [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
-
-      
-            return;
-        }
-       
-
-    }
+//    if(index==1||index==3){
+//        if(!USER_DEFAULT_KEY(@"token")){
+//        [self setSelectedIndex:0];
+//        
+//        if ([[self delegate] respondsToSelector:@selector(tabBarController:didSelectViewController:)]) {
+//            [[self delegate] tabBarController:self didSelectViewController:[self viewControllers][0]];
+//        }
+//            [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+//
+//      
+//            return;
+//        }
+//       
+//
+//    }
     [super tabBar:tabBar didSelectItemAtIndex:index];
 }
 /*

@@ -19,6 +19,9 @@
         [dict setObject:contentid forKey:@"key"];
         [dict setObject:[NSNumber numberWithInteger:platform] forKey:@"plat"];
         [dict setObject:@"ios" forKey:@"device"];
+        
+        
+        
         [dict setObject:@"profit" forKey:@"m"];
         [dict setObject:@"sharesuc" forKey:@"a"];
         

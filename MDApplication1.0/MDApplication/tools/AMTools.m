@@ -813,6 +813,18 @@ static const NSUInteger MAX_SIZE=1024*300ul;
     
     [hud hide:YES afterDelay:delay];
 }
-
++ (id)getLocalJsonDataWithFileName:(NSString *)fileName{
+    NSError*error;
+    //获取文件路径
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:fileName ofType:@"txt"];
+    
+    //根据文件路径读取数据
+    NSData *jdata = [[NSData alloc]initWithContentsOfFile:filePath];
+    
+    //格式化成json数据
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jdata options:kNilOptions error:&error];
+    
+    return jsonObject;
+}
 
 @end

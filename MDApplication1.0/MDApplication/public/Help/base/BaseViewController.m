@@ -20,7 +20,6 @@
 @end
 
 @implementation BaseViewController
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //    [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
@@ -95,10 +94,13 @@
 
 -(void)setleftBarItemWith:(NSString *)imageNamed{
 
-
-    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageNamed] style:UIBarButtonItemStylePlain target:self action:@selector(leftItemAction)];
-    [leftBar setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftBar];
+    
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:@"back_ico.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    [self.navigationItem setLeftBarButtonItem:backItem];
 }
 
 

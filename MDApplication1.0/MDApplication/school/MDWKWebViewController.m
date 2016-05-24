@@ -14,7 +14,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
