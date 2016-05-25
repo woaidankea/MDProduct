@@ -55,10 +55,14 @@ sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 @interface JYSlideView : UIScrollView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) id<JYSlideViewDelegate> slideDelegate;
-
+@property (nonatomic, assign) BOOL scrollContentSizeResizing;
 @end
 
-@interface JYSlideSegmentController : UIViewController
+
+
+
+
+@interface JYSlideSegmentController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
 /**
  *  Child viewControllers of SlideSegmentController
@@ -66,11 +70,11 @@ sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 @property (nonatomic, copy) NSArray *viewControllers;
 @property (nonatomic, assign, readwrite) NSInteger startIndex;
 
-@property (nonatomic, strong, readonly) UICollectionView *segmentBar;
-@property (nonatomic, strong, readonly) JYSlideView *slideView;
+@property (nonatomic, strong, readwrite) UICollectionView *segmentBar;
+@property (nonatomic, strong, readwrite) JYSlideView *slideView;
 
-@property (nonatomic, weak, readonly) UIViewController *selectedViewController;
-@property (nonatomic, assign, readonly) NSInteger selectedIndex;
+@property (nonatomic, weak, readwrite) UIViewController *selectedViewController;
+@property (nonatomic, assign, readwrite) NSInteger selectedIndex;
 
 /**
  *  Custom UI
@@ -94,6 +98,20 @@ sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @property (nonatomic,assign)BOOL canSelected;
 
+
+@property (nonatomic, assign, readwrite) NSInteger previousIndex;
+@property (nonatomic, assign, readwrite) CGFloat lastDestination;
+@property (nonatomic, strong) UIView *indicator;
+@property (nonatomic, strong) UIView *indicatorBgView;
+@property (nonatomic, strong) UIView *separator;
+@property (nonatomic, assign) CGRect currentIndicatorFrame;
+
+@property (nonatomic, strong) UICollectionViewFlowLayout *segmentBarLayout;
+
+
+@property (nonatomic,strong)UIView *line;
+- (void)reset;
+- (void)setupSubviews;
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers

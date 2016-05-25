@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
-  
+    [self setleftBarItemWith:nil];
     
 //
     shareBgimage =  [[UIImageView alloc]init];
@@ -295,14 +295,15 @@
 }
 
 - (UIImage *)addImage_iphone6:(UIImage *)image1 toImage:(UIImage *)image2 {
-    UIGraphicsBeginImageContext(CGSizeMake(750, 1066));
+    UIGraphicsBeginImageContext(CGSizeMake(750, 1334));
     
     // Draw image2
-    [image2 drawInRect:CGRectMake(0, 0,750,1066)];
+    [image2 drawInRect:CGRectMake(0, 0,750,1334
+                                  )];
     
     // Draw image1
     NSLog(@"%f",image2.size.width);
-    [image1 drawInRect:CGRectMake(188,436,372,333)];
+    [image1 drawInRect:CGRectMake(270,620,190,190)];
     
     UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
     

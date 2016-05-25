@@ -9,8 +9,26 @@
 #import "ViewControllerFactory.h"
 #import "MDWKWebViewController.h"
 #import "MDMyViewController.h"
+#import "MDApprenticeViewController.h"
+#import "MDInfomationViewController.h"
 @implementation ViewControllerFactory
 + (BaseViewController *)TabMenuFactoryCreateViewControllerWithType:(NSString *)type{
+    
+    if([type isEqualToString:@"MDApprenticeViewController"]){
+    
+        UIStoryboard *ReaderStoryboard = [UIStoryboard storyboardWithName:@"MDApprenticeViewController" bundle:nil];
+        MDApprenticeViewController *reader = [ReaderStoryboard instantiateViewControllerWithIdentifier:@"MDApprenticeViewController"];
+        return reader;
+    }
+    
+    if([type isEqualToString:@"MDInfomationViewController"]){
+        UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDInfomationViewController" bundle:nil];
+        MDInfomationViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDInfomationViewController"];
+         return myContr;
+
+    }
+    
+    
     return [NSClassFromString(type) new];
 }
 

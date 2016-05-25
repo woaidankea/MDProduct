@@ -19,7 +19,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
 //    [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) ];
-//     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
+     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
 }
   
 - (void)viewDidLoad{
@@ -75,12 +75,12 @@
 - (void)YPwebview:(YPWebView *)webview loadTitle:(NSString *)title{
     self.title = title;
 }
-//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
 //    if ([keyPath isEqual:@"estimatedProgress"]) {
 //        if ([self.delegate respondsToSelector:@selector(YPwebview:loadProgress:)]) {
 //            [self.delegate YPwebview:self loadProgress:self.wkWebView.estimatedProgress];
 //        }
 //    }
-//}
+}
 
 @end

@@ -15,7 +15,8 @@ static NSString *kWebViewController = @"MDWKWebViewController";
 static NSString *kArticleMoudle = @"ArticleMoudleController";
 static NSString *kArticleContent = @"MDNewsViewController";
 static NSString *kMyMoudle = @"MDMyViewController";
-
+static NSString *kMDApprenticeViewController = @"MDApprenticeViewController";
+static NSString *kMDInfomationViewController = @"MDInfomationViewController";
 
 @interface ViewControllerFactory : NSObject
 
@@ -26,4 +27,6 @@ static NSString *kMyMoudle = @"MDMyViewController";
 
 
 + (BaseViewController *)CreateArticleMoudleContentViewControllerWithId:(ContentModel *)model;
+
+
 @end

@@ -45,12 +45,7 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
 
 @end
 
-@interface JYSlideView()
 
-//don't trigger scrollViewDidScroll when scrollContentSizeResizing = YES
-@property (nonatomic, assign) BOOL scrollContentSizeResizing;
-
-@end
 
 @implementation JYSlideView
 
@@ -87,24 +82,10 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
 @end
 
 @interface JYSlideSegmentController ()
-<UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
-
-@property (nonatomic, strong, readwrite) UICollectionView *segmentBar;
-@property (nonatomic, strong, readwrite) JYSlideView *slideView;
-@property (nonatomic, assign, readwrite) NSInteger selectedIndex;
-@property (nonatomic, assign, readwrite) NSInteger previousIndex;
-@property (nonatomic, assign, readwrite) CGFloat lastDestination;
-@property (nonatomic, strong) UIView *indicator;
-@property (nonatomic, strong) UIView *indicatorBgView;
-@property (nonatomic, strong) UIView *separator;
-@property (nonatomic, assign) CGRect currentIndicatorFrame;
-
-@property (nonatomic, strong) UICollectionViewFlowLayout *segmentBarLayout;
 
 
-@property (nonatomic,strong)UIView *line;
 
-- (void)reset;
+
 
 @end
 

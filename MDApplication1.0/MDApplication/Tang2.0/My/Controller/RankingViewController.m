@@ -15,6 +15,7 @@
 #import "MDTXModel.h"
 #import "MDTXRequest.h"
 #import "MDDiscipleCell.h"
+#import "TangRankingCell.h"
 @interface RankingViewController ()
 @property (strong, nonatomic) UITableView *table;
 @end
@@ -61,7 +62,7 @@
         _table.showsHorizontalScrollIndicator = NO;
         _table.showsVerticalScrollIndicator = NO;
 //        [_table registerClass:[MDDiscipleCell class] forCellReuseIdentifier:@"MDDiscipleCell"];
-        [_table registerNib:[UINib nibWithNibName:@"MDDiscipleCell" bundle:nil] forCellReuseIdentifier:@"MDDiscipleCell"];
+      [_table registerClass:[TangRankingCell class] forCellReuseIdentifier:@"rankCell"];
         
     }
     return _table;
@@ -121,29 +122,17 @@
     }
     //    [self.tableView.mj_footer endRefreshingWithNoMoreData];
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 64;
+}
 #pragma mark -UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MDDiscipleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDDiscipleCell"];
+    TangRankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankCell"];
     
-    if(self.enterType==MD_Disciple||self.enterType==MD_DiscipleUp){
-        
-        cell.pupilModel = self.items[indexPath.row];
-        cell.First.text = [NSString stringWithFormat:@"%ld",((long)(indexPath.row+1))];
-    }
-    if(self.enterType == MD_Ranking){
-        cell.rankModel = self.items[indexPath.row];
-        cell.First.text = [NSString stringWithFormat:@"%ld",((long)(indexPath.row+1))];
-    }
-    if(self.enterType == MD_DepositT){
-        cell.txModel = self.items[indexPath.row];
-        //        cell.First.text = [NSString stringWithFormat:@"%ld",((long)(indexPath.row+1))];
-        
-    }
     
     return cell;
 }

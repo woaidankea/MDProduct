@@ -95,23 +95,23 @@
 }
 //这样  分割线的长度 随意控制 想怎么改变怎么改变
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if(section==0){
-//        return 1;
-//    }
-    if(section==0)
+    if(section==0){
+        return 1;
+    }
+    if(section==1)
     {
         return 3;
     }
     return 3;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(indexPath.section==0){
-//        return 80;
-//    }
-    return 49;
+    if(indexPath.section==0){
+        return 58;
+    }
+    return 50;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
     
 }
 
@@ -119,16 +119,36 @@
     if(section==0){
         return 1;
     }
-    return 7;
+    return 40;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return nil;
+        
+    }
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20,0, kScreenWidth - 40, 40)];
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = UIColorFromRGB(0x868788);
+    
+    [header addSubview:titleLabel];
+    
+    if(section == 1){
+    titleLabel.text = @"基本信息";
+    }else if(section == 2){
+      titleLabel.text = @"安全信息";
+    }
+    return header;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==-1){
+    if(indexPath.section==0){
     MDHeadImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDHeadImageCell"];
     [cell.headImage sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar] placeholderImage:[UIImage imageNamed:@"close bottom@"]];
         return cell;
-    }else if (indexPath.section == 0) {
+    }else if (indexPath.section == 1) {
         MDInfomationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDInfomationCell"];
         
         switch (indexPath.row) {
@@ -161,7 +181,7 @@
                 cell.rightLabel.text = @"";
             break;}
                 return cell;
-        }else if (indexPath.section == 1) {
+        }else if (indexPath.section == 2) {
             MDInfomationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDInfomationCell"];
             
             switch (indexPath.row) {
@@ -233,11 +253,11 @@
     
     
    
-    if (indexPath.section==-1) {
+    if (indexPath.section==0) {
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相机拍照",@"照片图库",nil];
         [sheet showInView:self.view];
     }
-    if (indexPath.section==0) {
+    if (indexPath.section==1) {
         switch (indexPath.row) {
             case 0:{
                 UIStoryboard *story = [UIStoryboard storyboardWithName:@"MDInfomationViewController" bundle:nil];
@@ -304,7 +324,7 @@
                 break;
         }
     }
-    if (indexPath.section==1) {
+    if (indexPath.section==2) {
         switch (indexPath.row) {
             case 0:{
               

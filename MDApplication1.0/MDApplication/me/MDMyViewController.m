@@ -18,6 +18,7 @@
 #import "JYSlideSegmentController.h"
 #import "CustomSegmentController.h"
 #import "RankingViewController.h"
+#import "ViewControllerFactory.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -291,9 +292,9 @@
     
     
     if([model.moduletype isEqualToString:@"6"]){
-        NSArray *arr = @[@"昨日",@"分享榜",@"阅读榜",@"收入榜"];
+        NSArray *arr = @[@"分享榜",@"阅读榜",@"收入榜"];
         NSMutableArray *vcs = [NSMutableArray array];
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             
 //            UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
 //            MDDiscipleDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDDiscipleDetailViewController"];
@@ -306,9 +307,33 @@
         CustomSegmentController *slideSegmentController = [[CustomSegmentController alloc] initWithViewControllers:vcs];
         slideSegmentController.title = @"排行榜";
         //  self.slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        slideSegmentController.indicatorColor = UIColorFromRGB(0xcc3333);
+        slideSegmentController.indicatorColor = [UIColor clearColor];
         slideSegmentController.itemWidth = FRAME_WIDTH/4;
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:slideSegmentController animated:YES];
+        return;
+    }
+    
+    if([model.moduletype isEqualToString:@"2"]){
+    
+        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
+       
+       
+        vc.url = model.url;
+        
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+        return;
+    }
+    if([model.moduletype isEqualToString:@"7"]){
+     BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDApprenticeViewController];
+    
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+        return;
+    }
+    
+    if([model.moduletype isEqualToString:@"5"]){
+        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDInfomationViewController];
+        
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
     
