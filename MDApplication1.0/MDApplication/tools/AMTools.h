@@ -76,5 +76,5 @@
 
 + (id)getLocalJsonDataWithFileName:(NSString *)fileName;
 
-
++ (NSString *)dateStringFromTimeInterval:(NSString *)timeInterval;
 @end

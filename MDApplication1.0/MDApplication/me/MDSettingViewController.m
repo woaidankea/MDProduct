@@ -37,43 +37,43 @@
 }
 #pragma mark -UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section==0){
-        return 1;
-    }
-    if(section==1)
-    {
-        return 1;
-    }
-    return 3;
+//    if(section==0){
+//        return 1;
+//    }
+//    if(section==1)
+//    {
+//        return 1;
+//    }
+    return 5;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 1;
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 7;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 7;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MDSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDSettingCell"];
     if(indexPath.section!=1){
         cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
     }
-    if(indexPath.section==1){
+    if(indexPath.row==1){
         cell.Name.text =@"清除缓存";
     }
-    if(indexPath.section==0){
+    if(indexPath.row==0){
         cell.Name.text = @"修改登录密码";
     }
-    if(indexPath.section==2&&indexPath.row==0){
+    if(indexPath.row==2){
         cell.Name.text = @"去评分";
     }
-    if(indexPath.section == 2 && indexPath.row == 1){
+    if(indexPath.row == 3){
         cell.Name.text = @"隐私协议";
     }
-    if(indexPath.section == 2 && indexPath.row == 2){
+    if(indexPath.row == 4){
         cell.Name.text = @"关于我们";
     }
     
@@ -83,7 +83,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==1){
+    if(indexPath.row==1){
     //@"清除缓存";
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -94,28 +94,28 @@
         hud.labelText = @"缓存已清理";
          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }
-    if(indexPath.section==0){
+    if(indexPath.row==0){
     //@"修改登录密码";
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"MDLoginViewController" bundle:nil];
         MDFindNextViewController *vc = [story instantiateViewControllerWithIdentifier:@"MDFindNextViewController"];
          [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
     }
-    if(indexPath.section==2&&indexPath.row==0){
+    if(indexPath.row==2){
     //@"去评分";
        NSString*   url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id1101583170"];
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
         
         
     }
-    if(indexPath.section == 2 && indexPath.row == 1){
+    if(indexPath.row == 3){
      //@"隐私协议";
         MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
         vc.url = @"http://h.51tangdou.com/weizuan/help/protocol.html";
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
-    if(indexPath.section == 2 && indexPath.row == 2){
+    if(indexPath.row == 4){
     //关于我们
         
         MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];

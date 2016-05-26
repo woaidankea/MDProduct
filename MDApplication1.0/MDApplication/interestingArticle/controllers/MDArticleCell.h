@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) id<ArticleCellDelegate> delegate;
 - (IBAction)shareButtonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *ContentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *datetime;
 
 
 @property (nonatomic,strong)MDArticleModel *model;

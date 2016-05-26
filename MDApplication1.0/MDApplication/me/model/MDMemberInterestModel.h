@@ -15,7 +15,9 @@
 @property (nonatomic,copy)NSString *interest;
 @property (nonatomic,copy)NSString *education;
 @property (nonatomic,copy)NSString *income;    //收入
-@property (nonatomic,copy)NSString *avatar;
+@property (nonatomic,copy)NSString *avatar;     //头像 昵称
 @property (nonatomic,copy)NSString *nickname;
+@property (nonatomic,copy)NSString *phone;    //手机号   2.0+
+
 
 @end

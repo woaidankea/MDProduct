@@ -827,4 +827,14 @@ static const NSUInteger MAX_SIZE=1024*300ul;
     return jsonObject;
 }
 
+
++ (NSString *)dateStringFromTimeInterval:(NSString *)timeInterval{
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeInterval integerValue]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:confromTimesp];
+    return strDate;
+
+}
+
 @end

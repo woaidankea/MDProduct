@@ -349,7 +349,7 @@ NSString * const kMeReloadData = @"MeReloadData";
 
 
         }
-               if(indexPath.section==1&&indexPath.row==2){
+        if(indexPath.section==1&&indexPath.row==2){
             myContr.enterType = MD_Disciple;
            
         } if(indexPath.section==1&&indexPath.row==3){

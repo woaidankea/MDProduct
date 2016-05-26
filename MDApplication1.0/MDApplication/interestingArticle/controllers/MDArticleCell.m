@@ -8,6 +8,7 @@
 
 #import "MDArticleCell.h"
 #import "UIColor+HexStringToColor.h"
+#import "AMTools.h"
 @implementation MDArticleCell
 
 - (void)awakeFromNib {
@@ -36,15 +37,18 @@
         if([model.showPrice isEqualToString:@"1"]){
             
             _income.text = [NSString stringWithFormat:@"￥%@",model.inCome];
-            _income.textColor = [UIColor ColorWithHexString:@"E82C28"];
+//            _income.textColor = [UIColor ColorWithHexString:@"E82C28"];
             
         }else{
             
-          _income.text = model.createTime;
-          _income.textColor = [UIColor ColorWithHexString:@"9A9A9A"];
+//          _income.text = model.createTime;
+//          _income.textColor = [UIColor ColorWithHexString:@"9A9A9A"];
             
         }
          _readCount.text = [NSString stringWithFormat:@"阅读数：%@",model.readCount];
+    
+        _ContentLabel.text =  model.desc;
+    _datetime.text =  [AMTools dateStringFromTimeInterval:model.createDatetime];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -58,7 +62,7 @@
     
     if ([_delegate respondsToSelector:@selector(choseButton:)]) {
             [_delegate choseButton:sender];
-        }
+    }
     
     
 }

@@ -56,19 +56,27 @@
 }
 - (void)startMemberInterestRequest
 {
-    
-    __weak MDInfomationViewController *weakSelf =self;
-    MDMemberInterestRequest *request = [[MDMemberInterestRequest alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
+    //格式化成json数据
+    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"getuserInfo"];
+    if(jsonObject){
         
-        memberModel =[MDMemberInterestModel mj_objectWithKeyValues:request.responseObject];
-        requestModel = [MDMemberInterestModel mj_objectWithKeyValues:request.responseObject];
-        [self.tableView reloadData];
-    } failureCallback:^(AMBaseRequest *request) {
-      [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-    }];
-    
-    
-    [request start];
+        memberModel = [MDMemberInterestModel mj_objectWithKeyValues:[[jsonObject objectForKey:@"data"] objectForKey:@"member"]];
+        
+        //        [self setViewControllers:contentItems];
+    }
+
+//    __weak MDInfomationViewController *weakSelf =self;
+//    MDMemberInterestRequest *request = [[MDMemberInterestRequest alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
+//        
+//        memberModel =[MDMemberInterestModel mj_objectWithKeyValues:request.responseObject];
+//        requestModel = [MDMemberInterestModel mj_objectWithKeyValues:request.responseObject];
+//        [self.tableView reloadData];
+//    } failureCallback:^(AMBaseRequest *request) {
+//      [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+//    }];
+//    
+//    
+//    [request start];
 }
 
 
@@ -78,21 +86,21 @@
 }
 
 
-#pragma mark -UITableViewDelegate
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    // Remove seperator inset
-    if([cell respondsToSelector:@selector(setSeparatorInset:)]){
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    }
-    // Prevent the cell from inheriting the Table View's margin settings
-    if([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]){
-        [cell setPreservesSuperviewLayoutMargins:NO];
-    }
-    // Explictly set your cell's layout margins
-    if([cell respondsToSelector:@selector(setLayoutMargins:)]){
-        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
-    }
-}
+//#pragma mark -UITableViewDelegate
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    // Remove seperator inset
+//    if([cell respondsToSelector:@selector(setSeparatorInset:)]){
+//        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    }
+//    // Prevent the cell from inheriting the Table View's margin settings
+//    if([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]){
+//        [cell setPreservesSuperviewLayoutMargins:NO];
+//    }
+//    // Explictly set your cell's layout margins
+//    if([cell respondsToSelector:@selector(setLayoutMargins:)]){
+//        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    }
+//}
 //这样  分割线的长度 随意控制 想怎么改变怎么改变
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section==0){
@@ -100,9 +108,9 @@
     }
     if(section==1)
     {
-        return 3;
+        return 5;
     }
-    return 3;
+    return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
@@ -146,18 +154,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
     MDHeadImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDHeadImageCell"];
-    [cell.headImage sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar] placeholderImage:[UIImage imageNamed:@"close bottom@"]];
+    [cell.headImage sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar] placeholderImage:[UIImage imageNamed:@"avatorplaceorder"]];
         return cell;
     }else if (indexPath.section == 1) {
         MDInfomationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDInfomationCell"];
         
         switch (indexPath.row) {
-            case 0://姓名
-                cell.leftLabel.text = @"姓名";
-                cell.rightLabel.text = memberModel.nickname;
-                cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
-                break;
-            case 1://性别
+
+            case 0://性别
                 cell.leftLabel.text = @"性别";
                 if([memberModel.sex isEqualToString:@"1"]){
                 cell.rightLabel.text = @"男";
@@ -167,15 +171,32 @@
                 cell.rightLabel.text = @"";
                 }
                 
-                cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+               
                 break;
-            case 2://年龄
+            case 1://年龄
                 cell.leftLabel.text = @"年龄";
                 if(memberModel.birthday != nil){
                 cell.rightLabel.text = [self ageWithDateOfBirth:memberModel.birthday];
                 }
-                cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+                
                 break;
+            case 2://学历
+                cell.leftLabel.text = @"学历";
+                cell.rightLabel.text = [degree objectAtIndex: [memberModel.education integerValue]];
+                
+                break;
+            case 3://行业
+                cell.leftLabel.text = @"行业";
+                cell.rightLabel.text = [industry objectAtIndex:[memberModel.vocation integerValue]];
+              
+                break;
+            case 4://收入
+                cell.leftLabel.text = @"收入";
+                cell.rightLabel.text = [income  objectAtIndex:[memberModel.income integerValue]];
+              
+                break;
+
+
                 default:
                 cell.leftLabel.text = @"";
                 cell.rightLabel.text = @"";
@@ -186,19 +207,19 @@
             
             switch (indexPath.row) {
                 case 0://学历
-                    cell.leftLabel.text = @"学历";
-                    cell.rightLabel.text = [degree objectAtIndex: [memberModel.education integerValue]];
-                    cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+                    cell.leftLabel.text = @"手机号";
+                    cell.rightLabel.text = memberModel.phone;
+                   
                     break;
                 case 1://行业
                     cell.leftLabel.text = @"行业";
                     cell.rightLabel.text = [industry objectAtIndex:[memberModel.vocation integerValue]];
-                    cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+                
                     break;
                 case 2://收入
                     cell.leftLabel.text = @"收入";
                     cell.rightLabel.text = [income  objectAtIndex:[memberModel.income integerValue]];
-                    cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+                
                     break;
                 default:
                     cell.leftLabel.text = @"";
@@ -259,19 +280,19 @@
     }
     if (indexPath.section==1) {
         switch (indexPath.row) {
+//            case 0:{
+//                UIStoryboard *story = [UIStoryboard storyboardWithName:@"MDInfomationViewController" bundle:nil];
+//                MDEditNameViewController *vc = [story instantiateViewControllerWithIdentifier:@"MDEditNameViewController"];
+//                vc.placeName = memberModel.nickname;
+//                
+//                vc.delegate  =self;
+//                [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+//
+//           
+//            }
+//                
+//                break;
             case 0:{
-                UIStoryboard *story = [UIStoryboard storyboardWithName:@"MDInfomationViewController" bundle:nil];
-                MDEditNameViewController *vc = [story instantiateViewControllerWithIdentifier:@"MDEditNameViewController"];
-                vc.placeName = memberModel.nickname;
-                
-                vc.delegate  =self;
-                [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
-
-           
-            }
-                
-                break;
-            case 1:{
                 
                
                 
@@ -298,7 +319,7 @@
                 [actionPicker showActionSheetPicker];
                 actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
               }break;
-            case 2:{
+            case 1:{
                 NSCalendar *calendar = [NSCalendar currentCalendar];
                 NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay  fromDate:[NSDate date]];
                 [minimumDateComponents setYear:1950];//最小日期
@@ -319,6 +340,72 @@
                 
 
             }
+                break;
+            case 2:{
+                
+                
+                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:degree initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                    //*********一组点击确认按钮做处理************
+                    NSLog(@"选择de学历%@",selectedValue);
+                    memberModel.education =[NSString stringWithFormat:@"%ld",[degree indexOfObject:selectedValue]];
+                    [tableView reloadData];
+                } cancelBlock:^(ActionSheetStringPicker *picker) {
+                    
+                } origin:self.view];
+                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
+                [actionPicker customizeInterface];
+                [actionPicker showActionSheetPicker];
+                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
+                
+                
+            }
+                
+                break;
+            case 3:{
+                
+                
+                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:industry initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                    //*********一组点击确认按钮做处理************
+                    NSLog(@"选择de职业%@",selectedValue);
+                    
+                    
+                    memberModel.vocation =[NSString stringWithFormat:@"%ld",[industry indexOfObject:selectedValue]];
+                    
+                    [tableView reloadData];
+                } cancelBlock:^(ActionSheetStringPicker *picker) {
+                    
+                } origin:self.view];
+                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
+                [actionPicker customizeInterface];
+                [actionPicker showActionSheetPicker];
+                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
+                
+                
+            }
+                break;
+            case 4:{
+                
+                
+                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:income initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                    //*********一组点击确认按钮做处理************
+                    NSLog(@"选择de收入%@",selectedValue);
+                    memberModel.income = [NSString stringWithFormat:@"%ld",[income indexOfObject:selectedValue]];
+                    [tableView reloadData];
+                    
+                    
+                } cancelBlock:^(ActionSheetStringPicker *picker) {
+                    
+                } origin:self.view];
+                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
+                [actionPicker customizeInterface];
+                [actionPicker showActionSheetPicker];
+                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
+                
+                
+            }
+                break;
+                
+
                 
             default:
                 break;

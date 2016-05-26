@@ -11,7 +11,7 @@
 @implementation MDHeadImageCell
 - (void)awakeFromNib{
     [super awakeFromNib];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -1,0 +1,17 @@
+ {
+    "code": 0,
+    "message": "成功",
+    "data": {
+        "member": {
+            "avatar": "http:\/\/static.imdou.net\/upload\/avatar\/e36e504c7182f2a0fd9ff11c60eec23f.png",
+            "nickname": "Simon",
+            "sex": "0",
+            "birthday": "1991-11-11",
+            "education": "2",
+            "vocation": "2",
+            "income": "2",
+	     "phone": "13261308224"
+        }
+    },
+    "currentTime": 1463492008
+}

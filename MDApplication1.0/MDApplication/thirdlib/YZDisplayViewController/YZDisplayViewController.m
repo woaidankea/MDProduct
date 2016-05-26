@@ -214,7 +214,7 @@ static CGFloat const cellborder =4;
         UIButton *buttonup  = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonup.backgroundColor = [UIColor whiteColor];
         
-        [buttonup setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
+        [buttonup setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         
         
         [buttonup addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -421,7 +421,7 @@ static CGFloat const cellborder =4;
     UIButton *buttondown  = [UIButton buttonWithType:UIButtonTypeCustom];
     //        button.backgroundColor = [UIColor greenColor];
     
-    [buttondown setImage:[UIImage imageNamed:@"up"] forState:UIControlStateNormal];
+    [buttondown setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
     
     
     [buttondown addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];

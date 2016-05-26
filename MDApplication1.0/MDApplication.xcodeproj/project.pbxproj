@@ -176,9 +176,11 @@
 		5C3A90861C9BC36C00B4388B /* MDFindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A90851C9BC36C00B4388B /* MDFindPasswordViewController.m */; };
 		5C3A90891C9BF39E00B4388B /* MDFindNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A90881C9BF39E00B4388B /* MDFindNextViewController.m */; };
 		5C3A908C1C9CF90100B4388B /* MDFindsecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A908B1C9CF90100B4388B /* MDFindsecondViewController.m */; };
+		5C3D411D1CF57A70006F2DFC /* mydiciple.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C3D411C1CF57A70006F2DFC /* mydiciple.txt */; };
 		5C3E46501CF3E7DC002B7FF4 /* TangRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E464F1CF3E7DC002B7FF4 /* TangRankingCell.m */; };
 		5C3E46531CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46521CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m */; };
 		5C3E46561CF423EC002B7FF4 /* SelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46551CF423EC002B7FF4 /* SelectedView.m */; };
+		5C62AF0E1CF549FF007343D8 /* getuserInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */; };
 		5C7119E31C9F924C00CA1A31 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119E21C9F924C00CA1A31 /* SelectView.m */; };
 		5C7119E51C9F925900CA1A31 /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7119E41C9F925900CA1A31 /* SelectView.xib */; };
 		5C7119EB1C9FC2FE00CA1A31 /* MDNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119EA1C9FC2FE00CA1A31 /* MDNewsRequest.m */; };
@@ -625,12 +627,14 @@
 		5C3A90881C9BF39E00B4388B /* MDFindNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFindNextViewController.m; sourceTree = "<group>"; };
 		5C3A908A1C9CF90100B4388B /* MDFindsecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFindsecondViewController.h; sourceTree = "<group>"; };
 		5C3A908B1C9CF90100B4388B /* MDFindsecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFindsecondViewController.m; sourceTree = "<group>"; };
+		5C3D411C1CF57A70006F2DFC /* mydiciple.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mydiciple.txt; sourceTree = "<group>"; };
 		5C3E464E1CF3E7DC002B7FF4 /* TangRankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TangRankingCell.h; sourceTree = "<group>"; };
 		5C3E464F1CF3E7DC002B7FF4 /* TangRankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TangRankingCell.m; sourceTree = "<group>"; };
 		5C3E46511CF42241002B7FF4 /* UIButton+CenterImageAndTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CenterImageAndTitle.h"; sourceTree = "<group>"; };
 		5C3E46521CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CenterImageAndTitle.m"; sourceTree = "<group>"; };
 		5C3E46541CF423EC002B7FF4 /* SelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedView.h; sourceTree = "<group>"; };
 		5C3E46551CF423EC002B7FF4 /* SelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedView.m; sourceTree = "<group>"; };
+		5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getuserInfo.txt; sourceTree = "<group>"; };
 		5C7119E11C9F924C00CA1A31 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
 		5C7119E21C9F924C00CA1A31 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
 		5C7119E41C9F925900CA1A31 /* SelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
@@ -2027,6 +2031,8 @@
 		5C9F3E6C1C96926000756229 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				5C3D411C1CF57A70006F2DFC /* mydiciple.txt */,
+				5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */,
 				5C7822931CF2A82F00889E21 /* my.txt */,
 				5C7267861CED96440019F37C /* tabmenu.txt */,
 				5C7267811CED8F020019F37C /* content.txt */,
@@ -2644,6 +2650,7 @@
 				5C3A90131C9AB6F700B4388B /* ico7@2x.png in Resources */,
 				5C3A8F991C9990B400B4388B /* AMenLocalization.strings in Resources */,
 				5C0D19C51CAA2D360039F7E5 /* share_qq@3x.png in Resources */,
+				5C62AF0E1CF549FF007343D8 /* getuserInfo.txt in Resources */,
 				5C3A8FFC1C9AB6F700B4388B /* bg@2x.png in Resources */,
 				5CFE37E51CABB71F007A48BE /* place_order_big.png in Resources */,
 				5C3A900D1C9AB6F700B4388B /* ico4@2x.png in Resources */,
@@ -2741,6 +2748,7 @@
 				5C3A903B1C9AB9F100B4388B /* share@2x.png in Resources */,
 				5C3A90151C9AB6F700B4388B /* ico8@2x.png in Resources */,
 				5C0D19C41CAA2D360039F7E5 /* share_qq@2x.png in Resources */,
+				5C3D411D1CF57A70006F2DFC /* mydiciple.txt in Resources */,
 				5C9F3F731C97A90200756229 /* 5_index_2.png in Resources */,
 				5C3A901D1C9AB6F700B4388B /* today_receive@2x.png in Resources */,
 				5C3A90511C9AD3EF00B4388B /* MDSmileViewController.storyboard in Resources */,

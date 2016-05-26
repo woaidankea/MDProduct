@@ -19,6 +19,7 @@
 #import "CustomSegmentController.h"
 #import "RankingViewController.h"
 #import "ViewControllerFactory.h"
+#import "MDSettingViewController.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -28,6 +29,7 @@
 @property (strong,nonatomic)DoubleLabelView *studentLabel;
 @property (strong,nonatomic)UILabel *incomeTitle;
 @property (strong,nonatomic)UILabel *todayLabel;
+@property (strong,nonatomic)UIButton *settingButton;
 
 @property (strong,nonatomic)NSArray *line1;
 
@@ -89,11 +91,15 @@
 
 
 }
-//- (void) setLabelText:(NSString *)text
-//{
-//    self.label.text = text;
-//    [self.label sizeToFit];
-//}
+- (UIButton *)settingButton{
+    if(!_settingButton){
+        _settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_settingButton setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+   
+    
+    }
+    return _settingButton;
+}
 
 
 - (void)setUpConstriant{
@@ -105,6 +111,14 @@
         make.left.equalTo(weakSelf.mas_left).offset(0);
         make.bottom.equalTo(weakSelf.mas_bottom).offset(0);
         //        make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(0);
+    }];
+    
+    [self.settingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.mas_top).offset(10);
+        make.height.width.equalTo(@24);
+        make.right.equalTo(weakSelf.mas_right).offset(-10);
+//        make.centerX.equalTo(weakSelf.mas_centerX);
+        
     }];
     
     [self.incomeTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,12 +146,14 @@
 
 }
 
+
 - (void)setUpView
 {
     self.backgroundColor = [UIColor whiteColor];
      [self addSubview:self.backgroundImage];
      [self addSubview:self.incomeTitle];
      [self addSubview:self.todayLabel];
+     [self addSubview:self.settingButton];
     _balanceLabel = [[DoubleLabelView alloc]init];
     _balanceLabel.firstLabel.text = @"18.57";
       _balanceLabel.lastLabel.text = @"余额(元)";
@@ -263,6 +279,10 @@
         headView.balanceLabel.firstLabel.text = _myModel.discipleincome;
         headView.incomeLabel.firstLabel.text = _myModel.allincome;
         headView.studentLabel.firstLabel.text = _myModel.disciplenum;
+        [headView.settingButton addTarget:self action:@selector(SettingClick) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITapGestureRecognizer *myTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction:)];
+        [headView.studentLabel addGestureRecognizer:myTap];
     }
     return headView;
 }
@@ -383,9 +403,7 @@
 //
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    //    if(section==0)
-    //    {
-    int temp = 0;
+       int temp = 0;
     if(iPhone5){
         temp = 12.5;
     }else if (iPhone6){
@@ -398,55 +416,22 @@
     
     
     return UIEdgeInsetsMake(10, 0, 0, 0);
-    //    }
-    //    else
-    //    {
-    //        return UIEdgeInsetsMake(15, 15, 15, 15);
-    //    }
 }
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    //    if(section==0)
-//    //    {
-//    //        return 10.0;
-//    //    }
-//    //    else
-//    //    {
-//    //    if(iPhone5){
-//    //        return 12.5;
-//    //    }else if (iPhone6){
-//    //        return 26.25;
-//    //    }else if (iPhone6Pus){
-//    //        return 36;
-//    //    }
-//    return 12.5;
-//    
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    
-//    //    if(iPhone5){
-//    //        return 12.5;
-//    //    }else if (iPhone6){
-//    //        return 26.25;
-//    //    }else if (iPhone6Pus){
-//    //        return 36;
-//    //    }
-//    NSLog(@"%d",section);
-//    return 12.5;
-//}
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)SettingClick{
+    UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDSettingViewController" bundle:nil];
+    MDSettingViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDSettingViewController"];
+    
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:myContr animated:YES];
 }
-*/
 
+- (void)tapGestureRecognizerAction:(UITapGestureRecognizer *)sender {
+    NSLog(@"111");
+    UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
+    MDDiscipleDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDDiscipleDetailViewController"];
+    myContr.enterType = MD_Disciple;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:myContr animated:YES];
+
+
+}
 @end

@@ -1,0 +1,61 @@
+{
+    "code": 0,
+    "message": "成功",
+    "currentTime": 1463492735,
+    "data": {
+        "list": [
+            {
+                "ranking": 1,
+                "telephone": "13406032123",
+                "money": "0.00"
+            },
+	    {
+                "ranking": 2,
+                "telephone": "13406032121",
+                "money": "0.00"
+            },
+ 	    {
+                "ranking": 3,
+                "telephone": "13406032822",
+                "money": "0.00"
+            },
+	    {
+                "ranking": 4,
+                "telephone": "13404032121",
+                "money": "0.00"
+            },
+ 	    {
+                "ranking": 5,
+                "telephone": "13406022122",
+                "money": "0.00"
+            },
+	    {
+                "ranking": 6,
+                "telephone": "13466032121",
+                "money": "0.00"
+            },
+ 	    {
+                "ranking": 7,
+                "telephone": "13406232122",
+                "money": "0.00"
+            },
+	    {
+                "ranking": 8,
+                "telephone": "13406035121",
+                "money": "0.00"
+            },
+ 	    {
+                "ranking": 9,
+                "telephone": "13446032122",
+                "money": "0.00"
+            }
+
+
+
+
+        ],
+        "page": "1",
+        "count": 1,
+        "lastPage": 0
+    }
+}

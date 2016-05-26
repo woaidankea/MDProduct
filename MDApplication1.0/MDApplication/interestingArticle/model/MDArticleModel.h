@@ -16,7 +16,7 @@
 @property (nonatomic,strong)NSString *threshold;
 @property (nonatomic,strong)NSString *isTop;
 @property (nonatomic,strong)NSString *quickShare;
-@property (nonatomic,strong)NSString *createTime;     //创建时间
+@property (nonatomic,strong)NSString *createDatetime;     //创建时间
 @property (nonatomic,strong)NSString *memberId;
 @property (nonatomic,strong)NSString *showPrice;
 @property (nonatomic,strong)NSString *failTime;
