@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"找回密码";
-      self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setleftBarItemWith:@"back_ico@2x.png"];
     // Do any additional setup after loading the view.
 }

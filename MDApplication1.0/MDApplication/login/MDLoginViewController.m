@@ -22,7 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"登录";
-    self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:@"back_ico.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(leftItemAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    [self.navigationItem setLeftBarButtonItem:backItem];
+
+    self.view.backgroundColor = UIColorFromRGB(0xffffff);
       [self setleftBarItemWith:@"back_ico@2x.png"];
     // Do any additional setup after loading the view.
 }

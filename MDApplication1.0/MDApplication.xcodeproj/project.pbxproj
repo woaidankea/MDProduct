@@ -177,6 +177,8 @@
 		5C3A90891C9BF39E00B4388B /* MDFindNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A90881C9BF39E00B4388B /* MDFindNextViewController.m */; };
 		5C3A908C1C9CF90100B4388B /* MDFindsecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A908B1C9CF90100B4388B /* MDFindsecondViewController.m */; };
 		5C3D411D1CF57A70006F2DFC /* mydiciple.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C3D411C1CF57A70006F2DFC /* mydiciple.txt */; };
+		5C3D41411CF7019C006F2DFC /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3D413F1CF7019C006F2DFC /* jpush-ios-2.1.7.a */; };
+		5C3D41431CF703CF006F2DFC /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C3D41421CF703CF006F2DFC /* PushConfig.plist */; };
 		5C3E46501CF3E7DC002B7FF4 /* TangRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E464F1CF3E7DC002B7FF4 /* TangRankingCell.m */; };
 		5C3E46531CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46521CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m */; };
 		5C3E46561CF423EC002B7FF4 /* SelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46551CF423EC002B7FF4 /* SelectedView.m */; };
@@ -628,6 +630,9 @@
 		5C3A908A1C9CF90100B4388B /* MDFindsecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFindsecondViewController.h; sourceTree = "<group>"; };
 		5C3A908B1C9CF90100B4388B /* MDFindsecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFindsecondViewController.m; sourceTree = "<group>"; };
 		5C3D411C1CF57A70006F2DFC /* mydiciple.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mydiciple.txt; sourceTree = "<group>"; };
+		5C3D413F1CF7019C006F2DFC /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
+		5C3D41401CF7019C006F2DFC /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		5C3D41421CF703CF006F2DFC /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		5C3E464E1CF3E7DC002B7FF4 /* TangRankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TangRankingCell.h; sourceTree = "<group>"; };
 		5C3E464F1CF3E7DC002B7FF4 /* TangRankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TangRankingCell.m; sourceTree = "<group>"; };
 		5C3E46511CF42241002B7FF4 /* UIButton+CenterImageAndTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CenterImageAndTitle.h"; sourceTree = "<group>"; };
@@ -997,6 +1002,7 @@
 				5C711AFD1CA38C1E00CA1A31 /* JavaScriptCore.framework in Frameworks */,
 				5C711AFB1CA38C1300CA1A31 /* libstdc++.tbd in Frameworks */,
 				5C711AF91CA38B7900CA1A31 /* Security.framework in Frameworks */,
+				5C3D41411CF7019C006F2DFC /* jpush-ios-2.1.7.a in Frameworks */,
 				5C711AF71CA38B6E00CA1A31 /* libz.1.2.5.tbd in Frameworks */,
 				5C711AF51CA38B5A00CA1A31 /* libicucore.tbd in Frameworks */,
 				5C711AF31CA38B2D00CA1A31 /* CoreTelephony.framework in Frameworks */,
@@ -1464,6 +1470,15 @@
 			path = login;
 			sourceTree = "<group>";
 		};
+		5C3D413E1CF7019C006F2DFC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				5C3D413F1CF7019C006F2DFC /* jpush-ios-2.1.7.a */,
+				5C3D41401CF7019C006F2DFC /* JPUSHService.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		5C7119E81C9FC2E400CA1A31 /* NewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1907,6 +1922,7 @@
 		5C9F3E121C9685A000756229 /* MDApplication */ = {
 			isa = PBXGroup;
 			children = (
+				5C3D41421CF703CF006F2DFC /* PushConfig.plist */,
 				5C7E748E1CED49A40086879F /* Tang2.0 */,
 				5C9036131C9D262100721D8F /* apple-touch-icon.png */,
 				5C3A906B1C9B9E4C00B4388B /* login */,
@@ -2075,6 +2091,7 @@
 		5C9F3E6E1C96951000756229 /* thirdlib */ = {
 			isa = PBXGroup;
 			children = (
+				5C3D413E1CF7019C006F2DFC /* lib */,
 				5C3E46511CF42241002B7FF4 /* UIButton+CenterImageAndTitle.h */,
 				5C3E46521CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m */,
 				5C7E74641CEC0CD10086879F /* CustomActivity */,
@@ -2624,6 +2641,7 @@
 				5C3A903E1C9AB9F100B4388B /* share_bg@3x.png in Resources */,
 				5C3A90561C9AD50200B4388B /* MDLifeViewController.storyboard in Resources */,
 				5C3A8F8D1C99838C00B4388B /* MDInfomationViewController.storyboard in Resources */,
+				5C3D41431CF703CF006F2DFC /* PushConfig.plist in Resources */,
 				5C711A3F1CA0292A00CA1A31 /* MDTourViewController.storyboard in Resources */,
 				5C3A901E1C9AB6F700B4388B /* today_receive@3x.png in Resources */,
 				5C3A8FFF1C9AB6F700B4388B /* butt@3x.png in Resources */,
@@ -3178,6 +3196,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/MDApplication/thirdlib/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3209,6 +3228,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/MDApplication/thirdlib/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

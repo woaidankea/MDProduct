@@ -77,62 +77,90 @@ static const void *Timer =  &Timer;
     self.rewardInfoForRedPacket = rewardInfo;
     self.windowUv = [[UIView alloc] initWithFrame:self.frame];
     [self.windowUv setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.7]];
-    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(0 , (80 + 85/2) * ratio, 320 * ratio, 631/2 * ratio)];
-    backGround.image        = [UIImage imageNamed:@"img_reward_packet_open"];
+    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake(40 * ratio , 185 * ratio, 240 * ratio, 200 * ratio)];
+    backGround.image        = [UIImage imageNamed:@"img_reward_packet_closed"];
     backGround.tag          = 10;
     [self.windowUv addSubview:backGround];
     
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(110 * ratio, 150 * ratio, 110 * ratio, 20 * ratio)];
-    label.font          = [UIFont boldSystemFontOfSize:14];
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 327 * ratio, 320 * ratio, 20 * ratio)];
+    label.font          = [UIFont boldSystemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
-    label.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
+    label.textColor     = [UIColor whiteColor];
     label.text          = rewardInfo.rewardName;
     label.tag           = 11;
 
-//    [self.windowUv addSubview:label];
-    
-    label = [[UILabel alloc]initWithFrame:CGRectMake(90 * ratio, 275 * ratio, 110 * ratio, 20 * ratio)];
-    label.font = [UIFont boldSystemFontOfSize:20];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
-    label.text          = [NSString stringWithFormat:@"%.2f元红包",self.rewardInfoForRedPacket.money];
-    label.tag           = 12;
     [self.windowUv addSubview:label];
     
-    label               = [[UILabel alloc]initWithFrame:CGRectMake(80 * ratio, 275 * ratio, 170 * ratio, 70 * ratio)];
-    label.font          = [UIFont systemFontOfSize:17];
-    label.textColor     = RGBACOLOR( 252 , 240 , 107 , 1);
+    label = [[UILabel alloc]initWithFrame:CGRectMake(50 * ratio, 290 * ratio, 215 * ratio, 20 * ratio)];
+    label.font = [UIFont systemFontOfSize:19];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
+    
+    NSMutableAttributedString * aAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"签到抽奖 恭喜你 抽中%.2f元",self.rewardInfoForRedPacket.money]];
+    NSString *number = [NSString stringWithFormat:@"%.2f",self.rewardInfoForRedPacket.money];
+         //富文本样式
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                                         value:[UIColor whiteColor]
+                                          range:NSMakeRange(0, 11)];
+    
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                              value:UIColorFromRGB(0xfaad2f)
+                              range:NSMakeRange(11, number.length)];
+    
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                              value:[UIColor whiteColor]
+                              range:NSMakeRange(aAttributedString.length-1, 1)];
+    
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                                        value:[UIFont systemFontOfSize:19]
+                                          range:NSMakeRange(0, 11)];
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                              value:[UIFont systemFontOfSize:18]
+                              range:NSMakeRange(11, number.length)];
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                              value:[UIFont systemFontOfSize:19]
+                              range:NSMakeRange(aAttributedString.length-1, 1)];
+    
+        label.attributedText = aAttributedString;
+    
+    
+//    label.text          = [NSString stringWithFormat:@"签到抽奖 恭喜你 抽中%.2f元",self.rewardInfoForRedPacket.money];
+//    label.tag           = 12;
+    [self.windowUv addSubview:label];
+    
+    label               = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio, 310 * ratio, 320 * ratio, 20 * ratio)];
+    label.font          = [UIFont systemFontOfSize:19];
+    label.textColor     = [UIColor whiteColor];
     label.text          = self.rewardInfoForRedPacket.rewardContent;
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 3;
     label.tag           = 14;
-//    [self.windowUv addSubview:label];
+    [self.windowUv addSubview:label];
     
-    UIButton* cancel = [[UIButton alloc] initWithFrame:CGRectMake(260 * ratio, 110 * ratio, 40 * ratio, 40 * ratio)];
+    UIButton* cancel = [[UIButton alloc] initWithFrame:CGRectMake(160 * ratio, 350 * ratio, 120 * ratio, 35 * ratio)];
 //    cancel.backgroundColor = [UIColor redColor];
+    [cancel setTitle:@"关闭" forState:UIControlStateNormal];
+    [cancel setTitleColor:UIColorFromRGB(0xf45961) forState:UIControlStateNormal];
+    [cancel.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonClicked:)];
     [cancel addGestureRecognizer:tapGesture];
     [self.windowUv addSubview:cancel];
     
-    UIButton* next = [[UIButton alloc] initWithFrame:CGRectMake(75 * ratio, 360 * ratio, 180 * ratio, 30 * ratio)];
-    [next setBackgroundColor:RGBACOLOR( 252 , 240 , 107 , 1)];
-    [next.layer setCornerRadius:next.frame.size.height/8];
-    [next.layer setMasksToBounds:YES];
-    NSString* title = @"已领取过红包";
-    if (self.rewardInfoForRedPacket.rewardStatus == 1) {
-        next.enabled = NO;
-    } else {
-        title = @"立即分享";
-    }
-    [next setTitle:title forState:UIControlStateNormal];
-
+    UIButton* next = [[UIButton alloc] initWithFrame:CGRectMake(40 * ratio, 350 * ratio, 120 * ratio, 30 * ratio)];
+//    [next setBackgroundColor:RGBACOLOR( 252 , 240 , 107 , 1)];
+//    [next.layer setCornerRadius:next.frame.size.height/8];
+//    [next.layer setMasksToBounds:YES];
     
+    [next setTitle:@"分享" forState:UIControlStateNormal];
+    [next setTitleColor:UIColorFromRGB(0xf45961) forState:UIControlStateNormal];
+    [next.titleLabel setFont:[UIFont systemFontOfSize:15]];
+
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shareButtonPress:)];
-    [next setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    
     next.tag = 13;
     [next addGestureRecognizer:tapGesture];
     
-//    [self.windowUv addSubview:next];
+    [self.windowUv addSubview:next];
     [self addSubview:self.windowUv];
     
     
@@ -312,8 +340,9 @@ static int i = 0;
 }
 
 - (void)shareButtonPress:(id)sender {
-    UIButton* button = sender;
-    button.enabled   = NO;
+//    UIButton* button = sender;
+//    button.enabled   = NO;
+    NSLog(@"123123123123");
     //TODO 自定义分享方式
 }
 

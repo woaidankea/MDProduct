@@ -82,8 +82,8 @@
 }
 ],
 "avatar": "",
-"allincome": "5.53",
-"todayincome": "136.2",
+"allincome": "11.77",
+"todayincome": "555.2",
 "yesterdayincome": "",
 "disciplenum": "6",
 "discipleincome": "2.36"

@@ -37,16 +37,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-Cp-3AQ">
-                                <rect key="frame" x="0.0" y="20" width="320" height="458"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="508"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-5H-myr">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvC-dU-fKs">
-                                        <rect key="frame" x="20" y="10" width="280" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-ma-UgM">
+                                        <rect key="frame" x="0.0" y="1" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="gxa-pg-iEX"/>
+                                            <constraint firstAttribute="height" constant="1" id="qSw-0y-V5O"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blacknews" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-s5-P5q">
+                                        <rect key="frame" x="20" y="14" width="50" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="Jkg-Yf-Xhc"/>
+                                            <constraint firstAttribute="width" constant="50" id="Oy2-2Z-cPK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvC-dU-fKs">
+                                        <rect key="frame" x="90" y="5" width="210" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gxa-pg-iEX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" backgroundImage="detailShareBtn">
@@ -59,10 +73,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6eH-zQ-qxv"/>
-                                    <constraint firstItem="xvC-dU-fKs" firstAttribute="leading" secondItem="Tbu-5H-myr" secondAttribute="leading" constant="20" id="BtS-my-EOE"/>
+                                    <constraint firstItem="7BI-s5-P5q" firstAttribute="left" secondItem="Tbu-5H-myr" secondAttribute="left" constant="20" id="22P-re-Ifh"/>
+                                    <constraint firstItem="xvC-dU-fKs" firstAttribute="leading" secondItem="7BI-s5-P5q" secondAttribute="trailing" constant="20" id="2Ys-dG-Yag"/>
+                                    <constraint firstAttribute="height" constant="40" id="6eH-zQ-qxv"/>
+                                    <constraint firstItem="j3e-ma-UgM" firstAttribute="leading" secondItem="Tbu-5H-myr" secondAttribute="leading" id="KWn-tr-Nkk"/>
+                                    <constraint firstItem="7BI-s5-P5q" firstAttribute="centerY" secondItem="Tbu-5H-myr" secondAttribute="centerY" id="def-iG-QLT"/>
                                     <constraint firstItem="xvC-dU-fKs" firstAttribute="centerY" secondItem="Tbu-5H-myr" secondAttribute="centerY" id="dx6-Hs-x0p"/>
                                     <constraint firstAttribute="trailing" secondItem="xvC-dU-fKs" secondAttribute="trailing" constant="20" id="fEK-Af-4qU"/>
+                                    <constraint firstItem="j3e-ma-UgM" firstAttribute="top" secondItem="Tbu-5H-myr" secondAttribute="top" constant="1" id="oDU-IE-vlc"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3e-ma-UgM" secondAttribute="trailing" id="sFg-uQ-A0x"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -74,7 +93,7 @@
                             <constraint firstItem="Zyw-Cp-3AQ" firstAttribute="left" secondItem="XJk-4a-YOr" secondAttribute="left" id="eOX-Zj-3d7"/>
                             <constraint firstAttribute="right" secondItem="Zyw-Cp-3AQ" secondAttribute="right" id="imz-Wb-Xsc"/>
                             <constraint firstItem="QgB-Tu-1Zc" firstAttribute="top" secondItem="Tbu-5H-myr" secondAttribute="bottom" id="jzw-ml-HKQ"/>
-                            <constraint firstItem="Tbu-5H-myr" firstAttribute="top" secondItem="Zyw-Cp-3AQ" secondAttribute="bottom" constant="30" id="lpC-Xe-IdP"/>
+                            <constraint firstItem="Tbu-5H-myr" firstAttribute="top" secondItem="Zyw-Cp-3AQ" secondAttribute="bottom" id="lpC-Xe-IdP"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -90,6 +109,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="detailShareBtn" width="335" height="40"/>
+        <image name="blacknews" width="49" height="11"/>
+        <image name="detailShareBtn" width="283" height="30"/>
     </resources>
 </document>

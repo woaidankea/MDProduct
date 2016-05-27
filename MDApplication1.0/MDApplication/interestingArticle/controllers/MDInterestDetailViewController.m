@@ -42,16 +42,12 @@
     self.automaticallyAdjustsScrollViewInsets =NO;
     [self setleftBarItemWith:@"back_ico@2x.png"];
     
-    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-60-64);
+    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-40-64);
     if(IOS_8){
     _wkwebview = [[WKWebView alloc]initWithFrame:rect];
     }
+   
     
-    _wkwebview.layer.shadowOffset = CGSizeMake(0, -1);
-    _wkwebview.layer.shadowColor = [UIColor grayColor].CGColor;
-    _wkwebview.layer.shadowOpacity = 0.80;
-
-
     [self.view addSubview:_wkwebview];
     
     

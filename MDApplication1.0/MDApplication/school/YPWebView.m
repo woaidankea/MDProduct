@@ -23,7 +23,10 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
 @implementation YPWebView
 
 #pragma mark - Initializer
-
+- (void)dealloc{
+    [self.wkWebView removeObserver:self forKeyPath:@"title"];
+    
+}
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     

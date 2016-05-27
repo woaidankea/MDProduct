@@ -90,10 +90,10 @@ NSString * const kMeReloadData = @"MeReloadData";
             RewardInfo *info = [[RewardInfo alloc] init];
             info.money = 100.0;
             info.rewardName = @"每日签到";
-            info.rewardContent = @"恭喜你得到红包~";
+            info.rewardContent = @"已奖励到您的账户";
             info.rewardStatus = 0;
 //
-            [[UIApplication sharedApplication].keyWindow initRedPacketWindow:info];
+            [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
         }
         
 

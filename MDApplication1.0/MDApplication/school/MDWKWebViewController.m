@@ -19,12 +19,13 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
 //    [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) ];
-     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
+//     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
 }
   
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets =NO;
+    
     [self setleftBarItemWith:@"back_ico@2x.png"];
     
     CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-64);

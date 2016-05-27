@@ -20,6 +20,8 @@
 #import "RankingViewController.h"
 #import "ViewControllerFactory.h"
 #import "MDSettingViewController.h"
+#import "RewardInfo.h"
+#import "UIWindow+RedPacket.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -260,7 +262,8 @@
     MyContentModel *content = [_myModel.list objectAtIndex:indexPath.row];
     cell.iconImage.image = [UIImage imageNamed:content.imageurl];
     cell.titleLabel.text = content.modulename;
-      return cell;
+  
+    return cell;
     
     
 }
@@ -309,7 +312,16 @@
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:slideSegmentController animated:YES];
         return;
     }
-    
+    if([model.moduletype isEqualToString:@"3"]){
+        RewardInfo *info = [[RewardInfo alloc] init];
+        info.money = 0.03;
+        info.rewardName = @"(每日一次签到抽奖机会)";
+        info.rewardContent = @"已奖励到你的账户";
+        info.rewardStatus = 0;
+        //
+        [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+        return ;
+    }
     
     if([model.moduletype isEqualToString:@"6"]){
         NSArray *arr = @[@"分享榜",@"阅读榜",@"收入榜"];

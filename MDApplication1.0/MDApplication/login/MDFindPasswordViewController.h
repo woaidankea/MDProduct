@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *PhoneField;
 @property (weak, nonatomic) IBOutlet UITextField *securityCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *getSecurityBtn;
+@property (weak, nonatomic) IBOutlet UITextField *passWord;
 
 - (IBAction)getSecruityBtnClick:(id)sender;
 
