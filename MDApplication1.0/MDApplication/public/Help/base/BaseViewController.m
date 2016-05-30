@@ -99,8 +99,22 @@
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [backButton setImage:[UIImage imageNamed:@"back_ico.png"] forState:UIControlStateNormal];
     [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
+     *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    negativeSpacer.width = -17;
+    self.navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,backItem, nil];
+    
+//    
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
 }
 
 
@@ -111,10 +125,28 @@
 
 -(void)setrightBarItemWith:(NSString *)imageNamed{
     
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:imageNamed] forState:UIControlStateNormal];
+    [backButton addTarget:self.navigationController action:@selector(rightItemAction) forControlEvents:UIControlEventTouchUpInside];
+
     
-    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageNamed] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
-    [rightBar setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setRightBarButtonItem:rightBar];
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
+     *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    negativeSpacer.width = -17;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,rightBar,nil];
+
+//    [self.navigationItem setRightBarButtonItem:rightBar];
+
+//    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageNamed] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
+//    [rightBar setTintColor:[UIColor whiteColor]];
+//    [self.navigationItem setRightBarButtonItem:rightBar];
 }
 
 

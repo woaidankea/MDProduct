@@ -34,7 +34,7 @@
 - (void)startNeighborFriendsRequest:(NSInteger)page
 {
     MDMoneyDetailRequest *request = [[MDMoneyDetailRequest alloc]initWithPage:page success:^(AMBaseRequest *request) {
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_header endRefreshing] ;
         
         
         NSArray *list =   [MDMoneyDetailModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];

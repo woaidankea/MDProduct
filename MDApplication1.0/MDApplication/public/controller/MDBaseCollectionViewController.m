@@ -27,7 +27,7 @@
     _collectionview = collection;
     _collectionview.dataSource = self;
     _collectionview.delegate = self;
-    _collectionview.backgroundColor = UIColorFromRGB(0xf6f6f6);
+    _collectionview.backgroundColor = UIColorFromRGB(0xeeeeee);
 }
 
 - (void)addHeaderRefresh{

@@ -45,11 +45,11 @@
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
      *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
      */
-    negativeSpacer.width = -20;
+    negativeSpacer.width = -17;
     
     
     
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:backItem, nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,backItem,nil];
 
 }
 - (void)rightClick{

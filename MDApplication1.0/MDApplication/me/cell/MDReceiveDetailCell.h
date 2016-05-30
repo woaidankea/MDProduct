@@ -15,5 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (nonatomic,strong)MDMoneyDetailModel *model;
+@property (weak, nonatomic) IBOutlet UIImageView *contentImage;
 
 @end

@@ -469,4 +469,12 @@ typedef NS_ENUM(NSInteger, MD_Request_Type) {
 };
 
 
+typedef NS_ENUM(NSInteger, MD_Receive_Type) {
+    MD_Receivce_ALL = 0,
+    MD_Receivce_Disciple = 1,
+    MD_Receivce_Read =2,
+    MD_Receivce_Other
+    
+};
+
 

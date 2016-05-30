@@ -193,13 +193,20 @@
 
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+    [self resetCollectionView:self.collection];
     [self.view addSubview:self.collection];
     
     
-    
+     [self addHeaderRefresh];
     // Do any additional setup after loading the view.
 }
-
+//下拉刷新
+- (void)tableViewHeaderRefresh{
+    
+    [self  getContent];
+    
+}
 - (void)getContent {
     
     
@@ -211,8 +218,38 @@
         
 //        [self setViewControllers:contentItems];
     }
+//    [NSThread sleepForTimeInterval:2];
+     [self.collectionview.mj_header endRefreshing];
     
     
+//    __weak MDMeCollectionViewController *weakSelf =self;
+//    MDGetMemberInfoRequest *request = [[MDGetMemberInfoRequest alloc]initWithToken:USER_DEFAULT_KEY(@"token")success:^(AMBaseRequest *request) {
+//        
+//        [weakSelf.collectionview.mj_header endRefreshing];
+//        _model =  request.responseObject;
+//        [weakSelf.collectionview reloadData];
+//        if(!_model.issign){
+//            
+//            //            [self initRedPacketWindowNeedOpen:info];
+//            RewardInfo *info = [[RewardInfo alloc] init];
+//            info.money = 100.0;
+//            info.rewardName = @"每日签到";
+//            info.rewardContent = @"已奖励到您的账户";
+//            info.rewardStatus = 0;
+//            //
+//            [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+//        }
+//        
+//        
+//        
+//    } failure:^(AMBaseRequest *request) {
+//        [weakSelf.collectionview.mj_header endRefreshing];
+//        [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+//        
+//    }];
+//    
+//    
+//    [request start];
 }
 
 

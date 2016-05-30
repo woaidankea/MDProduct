@@ -7,7 +7,7 @@
 //
 
 #import "JYSlideSegmentController.h"
-
+#import "MDReciveDetailViewController.h"
 #define INDICATOR_HEIGHT (1)
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -99,6 +99,10 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
   self = [super init];
   if (self) {
     _viewControllers = [viewControllers copy];
+
+      
+      
+    
     _selectedIndex = NSNotFound;
     _startIndex = 0;
   }
@@ -488,10 +492,16 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+ 
+    
   if (scrollView == self.slideView) {
     if (self.slideView.scrollContentSizeResizing) {
       return;
+        
     }
+    
+      
+      
     CGFloat percent = scrollView.contentOffset.x / scrollView.contentSize.width;
     CGFloat destination = percent * self.viewControllers.count;
     NSInteger index = destination >= self.lastDestination ? ceilf(destination)
@@ -550,7 +560,8 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-  self.currentIndicatorFrame = self.indicatorBgView.frame;
+
+    self.currentIndicatorFrame = self.indicatorBgView.frame;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

@@ -201,15 +201,24 @@
                                                     <color key="textColor" red="0.035294117647058823" green="0.035294117647058823" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ubH-OD-Z1y">
+                                                    <rect key="frame" x="285" y="13" width="70" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="jsP-Dj-dAf"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dSd-d6-Ssm" firstAttribute="top" secondItem="1iu-Xi-eS5" secondAttribute="bottom" constant="3" id="5qi-1x-W5p"/>
                                                 <constraint firstItem="dSd-d6-Ssm" firstAttribute="leading" secondItem="MvJ-5y-3P0" secondAttribute="leadingMargin" constant="12" id="6AF-Sp-gPk"/>
                                                 <constraint firstItem="dSd-d6-Ssm" firstAttribute="top" secondItem="1iu-Xi-eS5" secondAttribute="bottom" constant="1" id="6WP-yG-PdX"/>
+                                                <constraint firstItem="ubH-OD-Z1y" firstAttribute="top" secondItem="MvJ-5y-3P0" secondAttribute="topMargin" constant="5" id="UCZ-TE-PY3"/>
                                                 <constraint firstItem="Z5h-YF-o7H" firstAttribute="left" secondItem="dSd-d6-Ssm" secondAttribute="right" constant="5" id="VKe-UF-QjG"/>
                                                 <constraint firstItem="1iu-Xi-eS5" firstAttribute="leading" secondItem="MvJ-5y-3P0" secondAttribute="leadingMargin" constant="12" id="WTO-cr-4O9"/>
                                                 <constraint firstItem="Z5h-YF-o7H" firstAttribute="baseline" secondItem="dSd-d6-Ssm" secondAttribute="baseline" id="Ybt-nA-1Sg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ubH-OD-Z1y" secondAttribute="trailing" constant="12" id="i6E-I0-kXs"/>
                                                 <constraint firstItem="1iu-Xi-eS5" firstAttribute="top" secondItem="MvJ-5y-3P0" secondAttribute="topMargin" constant="1" id="m37-Ga-4IU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ubH-OD-Z1y" secondAttribute="bottom" constant="5" id="uBE-0z-z6E"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -221,6 +230,7 @@
                                             <outlet property="Date" destination="Z5h-YF-o7H" id="6UP-2B-H3H"/>
                                             <outlet property="Money" destination="dSd-d6-Ssm" id="RgE-Fc-idb"/>
                                             <outlet property="Title" destination="1iu-Xi-eS5" id="fCl-or-CUU"/>
+                                            <outlet property="contentImage" destination="ubH-OD-Z1y" id="b7J-QN-Boq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

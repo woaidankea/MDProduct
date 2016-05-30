@@ -34,7 +34,7 @@
     Selected = YES;
     self.title = @"注册";
     [self setleftBarItemWith:@"back_ico@2x.png"];
-     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UITapGestureRecognizer *imageViewTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
     self.protocolImage.userInteractionEnabled =YES;
@@ -143,10 +143,10 @@
 
 - (IBAction)registerClick:(id)sender {
     
-    if (!Selected) {
-        [AMTools showAlertViewWithTitle:@"请勾选阅读魔豆相关协议" cancelButtonTitle:@"确定"];
-        return;
-    }
+//    if (!Selected) {
+//        [AMTools showAlertViewWithTitle:@"请勾选阅读魔豆相关协议" cancelButtonTitle:@"确定"];
+//        return;
+//    }
 
     if (_PhoneField.text.length == 0) {
         [AMTools showAlertViewWithTitle:@"手机号不能为空" cancelButtonTitle:@"确定"];
@@ -164,12 +164,12 @@
         [AMTools showAlertViewWithTitle:@"验证码不能为空" cancelButtonTitle:@"确定"];
         return;
     }
-    if (!
-        [_NewPassword.text isEqualToString:_SurePassword.text] && _NewPassword.text.length!=0) {
-        [AMTools showAlertViewWithTitle:@"请确认密码" cancelButtonTitle:@"确定"];
-        [_NewPassword becomeFirstResponder];
-        return;
-    }
+//    if (!
+//        [_NewPassword.text isEqualToString:_SurePassword.text] && _NewPassword.text.length!=0) {
+//        [AMTools showAlertViewWithTitle:@"请确认密码" cancelButtonTitle:@"确定"];
+//        [_NewPassword becomeFirstResponder];
+//        return;
+//    }
     
     
     

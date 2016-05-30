@@ -7,7 +7,7 @@
 //
 
 #import "MDReceiveDetailCell.h"
-
+#import "UIImageView+WebCache.h"
 @implementation MDReceiveDetailCell
 
 /*
@@ -22,6 +22,9 @@
     _Title.text = model.title;
     _Money.text = model.amount;
     _Date.text = model.date;
+//    if(model.imageUrl.length!=0){
+        [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"place_order"]];
+//    }
     
 }
 
