@@ -12,6 +12,9 @@
 #import "MDAboutusViewController.h"
 #import "AppDelegate.h"
 #import "MDWKWebViewController.h"
+#import "AppDelegate.h"
+#import "UIButton+CenterImageAndTitle.h"
+#define YZScreenW [UIScreen mainScreen].bounds.size.width
 @interface MDSchoolViewController ()
 
 @end
@@ -22,7 +25,26 @@
     [super viewDidLoad];
     self.title = @"新手学堂";
     [self resetTableView:_table];
-    // Do any additional setup after loading the view.
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame =CGRectMake(0,64, YZScreenW, 30);
+    [button setImage:[UIImage imageNamed:@"gengduo"]forState:UIControlStateNormal];
+    [button setTitle:@"iOS如何分享到朋友圈" forState:UIControlStateNormal];
+    [button setTitleColor:UIColorFromRGB(0xDE3748) forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(helpClick) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = UIColorFromRGB(0xe2e2e2);
+    [button horizontalCenterTitleAndImage:YZScreenW - 100];
+    //    button.backgroundColor =[UIColor redColor];
+    [self.view addSubview:button];
+}
+
+- (void)helpClick{
+    MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
+    NSString *outCome = [NSString stringWithFormat:@"http://h.51tangdou.com/help/ios/index.html"];
+    vc.url = outCome;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

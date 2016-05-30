@@ -76,7 +76,7 @@ typedef enum : NSUInteger {
  */
 @property (nonatomic, strong) UIColor *titleScrollViewColor;
 
-
+@property (nonatomic, weak) UIView *contentView;
 /**
     标题高度
  */

@@ -63,6 +63,7 @@
 		5C1AF0A01CB4A90E00719F72 /* RewardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */; };
 		5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */; };
 		5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */; };
+		5C2D05501CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D054F1CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.m */; };
 		5C3A8F5C1C992B0F00B4388B /* MDMeSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */; };
 		5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F571C992B0F00B4388B /* MDMeTopCollectionViewCell.m */; };
 		5C3A8F5E1C992B0F00B4388B /* MeBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F591C992B0F00B4388B /* MeBottomCell.m */; };
@@ -454,6 +455,8 @@
 		5C1AF0A21CB4D21E00719F72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C204D991CBFA2670084BD78 /* MDGetDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGetDomain.h; sourceTree = "<group>"; };
 		5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGetDomain.m; sourceTree = "<group>"; };
+		5C2D054E1CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CenterImageAndTitle.h"; sourceTree = "<group>"; };
+		5C2D054F1CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CenterImageAndTitle.m"; sourceTree = "<group>"; };
 		5C3A8F541C992B0F00B4388B /* MDMeSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeSecondCell.h; sourceTree = "<group>"; };
 		5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMeSecondCell.m; sourceTree = "<group>"; };
 		5C3A8F561C992B0F00B4388B /* MDMeTopCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeTopCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1947,6 +1950,8 @@
 		5C9F3E6E1C96951000756229 /* thirdlib */ = {
 			isa = PBXGroup;
 			children = (
+				5C2D054E1CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.h */,
+				5C2D054F1CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.m */,
 				5C7E74641CEC0CD10086879F /* CustomActivity */,
 				5C711ABE1CA38A7B00CA1A31 /* ShareSDK */,
 				5C711A4B1CA0F4DB00CA1A31 /* NJKWebViewProgress */,
@@ -2846,6 +2851,7 @@
 				5C3A8FB01C9A75FB00B4388B /* FullChildViewController.m in Sources */,
 				5C9F3FC81C98228400756229 /* MDBaseCollectionViewController.m in Sources */,
 				5C0D19921CA91AEF0039F7E5 /* MDMeCollectionCell.m in Sources */,
+				5C2D05501CFC37FB003BE9D9 /* UIButton+CenterImageAndTitle.m in Sources */,
 				5C9F3F5C1C96A96100756229 /* Reachability.m in Sources */,
 				5C711A511CA0F4DB00CA1A31 /* NJKWebViewProgressView.m in Sources */,
 				5C3A8FC91C9A9A8700B4388B /* MDNewsViewController.m in Sources */,

@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg750" translatesAutoresizingMaskIntoConstraints="NO" id="lDG-6w-aw1">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mis-hA-FqP">
-                                <rect key="frame" x="75" y="50" width="170" height="170"/>
+                                <rect key="frame" x="75" y="80" width="170" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="7CP-ML-qYM"/>
                                     <constraint firstAttribute="width" constant="170" id="czC-9w-7bi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的邀请码 : 1931710" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD9-qk-uUw">
-                                <rect key="frame" x="16" y="20" width="288" height="30"/>
+                                <rect key="frame" x="16" y="50" width="288" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YJQ-81-TvJ"/>
                                 </constraints>
@@ -59,12 +59,12 @@
                             </constraint>
                             <constraint firstItem="mis-hA-FqP" firstAttribute="centerX" secondItem="RgV-8a-obr" secondAttribute="centerX" id="PKA-Ff-UN4"/>
                             <constraint firstItem="9eH-1Q-Kju" firstAttribute="top" secondItem="Vfv-t6-7gF" secondAttribute="bottom" constant="20" id="SBY-1E-mkd"/>
-                            <constraint firstItem="jD9-qk-uUw" firstAttribute="top" secondItem="3NF-zZ-GjI" secondAttribute="bottom" id="U6m-LU-f2y"/>
+                            <constraint firstItem="jD9-qk-uUw" firstAttribute="top" secondItem="3NF-zZ-GjI" secondAttribute="bottom" constant="30" id="U6m-LU-f2y"/>
                             <constraint firstAttribute="right" secondItem="lDG-6w-aw1" secondAttribute="right" id="VLj-ZN-Nvb"/>
                             <constraint firstItem="jD9-qk-uUw" firstAttribute="leading" secondItem="RgV-8a-obr" secondAttribute="leadingMargin" id="W8P-TY-iGh"/>
                             <constraint firstItem="lDG-6w-aw1" firstAttribute="left" secondItem="RgV-8a-obr" secondAttribute="left" id="Xal-Uj-T00"/>
                             <constraint firstItem="Vfv-t6-7gF" firstAttribute="leading" secondItem="RgV-8a-obr" secondAttribute="leadingMargin" id="m5W-UI-ccE"/>
-                            <constraint firstItem="lDG-6w-aw1" firstAttribute="top" secondItem="3NF-zZ-GjI" secondAttribute="bottom" id="p9w-9B-l59"/>
+                            <constraint firstItem="lDG-6w-aw1" firstAttribute="top" secondItem="3NF-zZ-GjI" secondAttribute="bottom" constant="30" id="p9w-9B-l59"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -20,6 +20,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
 //    [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) ];
 //     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
+         [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
 }
   
 - (void)viewDidLoad{

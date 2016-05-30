@@ -13,6 +13,8 @@
 #import "YZFlowLayout.h"
 #import "SelectView.h"
 #import "AMColorAndFontConfig.h"
+#import "MDWKWebViewController.h"
+#import "AppDelegate.h"
 #import "UIColor+HexStringToColor.h"
 static CGFloat const ButtonWidth = 25;
 static CGFloat const cellButtonWidth = 62;
@@ -22,7 +24,7 @@ static CGFloat const cellborder =4;
 @interface YZDisplayViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 /** 整体内容View 包含标题好内容滚动视图 */
-@property (nonatomic, weak) UIView *contentView;
+
 
 /** 标题滚动视图 */
 @property (nonatomic, weak) UIScrollView *titleScrollView;
@@ -227,7 +229,7 @@ static CGFloat const cellborder =4;
 
         [self.contentView addSubview:titleScrollView];
         [self.contentView addSubview:buttonup];
-          [self.contentView addSubview:cv];
+        [self.contentView addSubview:cv];
         
         
         
@@ -275,6 +277,11 @@ static CGFloat const cellborder =4;
         _contentView = contentView;
         [self.view addSubview:contentView];
         
+        
+   
+
+        
+        
     }
     
     return _contentView;
@@ -316,7 +323,7 @@ static CGFloat const cellborder =4;
 {
     _isfullScreen = isfullScreen;
     
-    self.contentView.frame = CGRectMake(0, 0, YZScreenW, YZScreenH);
+    self.contentView.frame = CGRectMake(0,30, YZScreenW, YZScreenH);
     
 }
 
@@ -427,16 +434,12 @@ static CGFloat const cellborder =4;
     [buttondown addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     buttondown.frame =CGRectMake(contentW-ButtonWidth, 0,ButtonWidth, titleH);
     [self.selectView addSubview:buttondown];
-
     // 设置内容滚动视图frame
     CGFloat contentScrollY = CGRectGetMaxY(self.titleScrollView.frame);
     self.contentScrollView.frame = _isfullScreen?CGRectMake(0, -10, contentW, YZScreenH) :CGRectMake(0, contentScrollY, contentW, self.contentView.height - contentScrollY);
-    
-    
-    
 }
-
-- (void)viewWillAppear:(BOOL)animated
+    
+ - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     

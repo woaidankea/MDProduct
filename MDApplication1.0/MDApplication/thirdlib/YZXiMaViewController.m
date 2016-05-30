@@ -30,6 +30,9 @@
 #import "MDFashionViewController.h"
 #import "MDTourViewController.h"
 #import "MDMilitaryViewController.h"
+#import "UIButton+CenterImageAndTitle.h"
+#import "MDWKWebViewController.h"
+#define YZScreenW [UIScreen mainScreen].bounds.size.width
 @implementation YZXiMaViewController
 
 
@@ -94,6 +97,29 @@
     // 设置全屏显示
     // 如果有导航控制器或者tabBarController,需要设置tableView额外滚动区域,详情请看FullChildViewController
     self.isfullScreen = YES;
+}
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    // Do any additional setup after loading the view.
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame =CGRectMake(0,34, YZScreenW, 30);
+    [button setImage:[UIImage imageNamed:@"gengduo"]forState:UIControlStateNormal];
+    [button setTitle:@"iOS如何分享到朋友圈" forState:UIControlStateNormal];
+    [button setTitleColor:UIColorFromRGB(0xDE3748) forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(helpClick) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = UIColorFromRGB(0xe2e2e2);
+    [button horizontalCenterTitleAndImage:YZScreenW - 100];
+//    button.backgroundColor =[UIColor redColor];
+    [self.contentView addSubview:button];
+}
+
+- (void)helpClick{
+    MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
+    NSString *outCome = [NSString stringWithFormat:@"http://h.51tangdou.com/help/ios/index.html"];
+    vc.url = outCome;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+    
+    
 }
 
 // 添加所有子控制器
