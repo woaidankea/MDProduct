@@ -22,6 +22,7 @@
 #import "MDSettingViewController.h"
 #import "RewardInfo.h"
 #import "UIWindow+RedPacket.h"
+#import "RootViewController.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -186,8 +187,12 @@
     [super viewDidLoad];
     _myModel = [[MyModel alloc]init];
     [self getContent];
+    self.title = @"糖豆";
     
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+
     
+    self.navigationController.navigationBar.titleTextAttributes = dict;
     [self.view addSubview:self.collection];
     
     
@@ -322,7 +327,11 @@
         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
         return ;
     }
-    
+    if([model.moduletype isEqualToString:@"4"]){
+          RootViewController *root = [[RootViewController alloc]init];
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:root animated:YES];
+        return;
+    }
     if([model.moduletype isEqualToString:@"6"]){
         NSArray *arr = @[@"分享榜",@"阅读榜",@"收入榜"];
         NSMutableArray *vcs = [NSMutableArray array];
@@ -349,7 +358,7 @@
     
         BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
        
-       
+       [vc setleftBarItemWith:nil];
         vc.url = model.url;
         
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
@@ -357,7 +366,7 @@
     }
     if([model.moduletype isEqualToString:@"7"]){
      BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDApprenticeViewController];
-    
+        
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }

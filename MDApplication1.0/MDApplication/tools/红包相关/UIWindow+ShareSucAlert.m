@@ -190,49 +190,108 @@ static const void *LabelKey =  &LabelKey;
     self.rewardInfoForRedPacket = rewardInfo;
     self.windowUv = [[UIView alloc] initWithFrame:self.frame];
     [self.windowUv setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.7]];
-    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake((320-192)/2 * ratio , (80 + 85/2) * ratio, 192 * ratio, 192 * ratio)];
-    backGround.image        = [UIImage imageNamed:@"earnmoney"];
+    UIImageView* backGround = [[UIImageView alloc]initWithFrame:CGRectMake((320-549/2)/2 * ratio , (200) * ratio, 275 * ratio, 174 * ratio)];
+    backGround.image        = [UIImage imageNamed:@"tanchu"];
     backGround.tag          = 10;
     [self.windowUv addSubview:backGround];
     
     
     
-    self.titleViewSmall = [[UIImageView alloc]initWithFrame:CGRectMake((320-75)/2 * ratio , (95 + 85  /2) * ratio, 75 * ratio, 23 * ratio)];
-    self.titleViewSmall.image        = [UIImage imageNamed:@"earntitlesmall"];
-//    backGround.tag          = 10;
-    [self.windowUv addSubview:self.titleViewSmall];
-    
-    self.titleViewBig = [[UIImageView alloc]initWithFrame:CGRectMake((320-85)/2 * ratio , (93 + 85  /2) * ratio, 90 * ratio, 27 * ratio)];
-    self.titleViewBig.image        = [UIImage imageNamed:@"earntitlebig"];
-    //    backGround.tag          = 10;
-    self.titleViewBig.hidden = YES;
-    [self.windowUv addSubview:self.titleViewBig];
+//    self.titleViewSmall = [[UIImageView alloc]initWithFrame:CGRectMake((320-75)/2 * ratio , (95 + 85  /2) * ratio, 75 * ratio, 23 * ratio)];
+//    self.titleViewSmall.image        = [UIImage imageNamed:@"earntitlesmall"];
+////    backGround.tag          = 10;
+//    [self.windowUv addSubview:self.titleViewSmall];
+//    
+//    self.titleViewBig = [[UIImageView alloc]initWithFrame:CGRectMake((320-85)/2 * ratio , (93 + 85  /2) * ratio, 90 * ratio, 27 * ratio)];
+//    self.titleViewBig.image        = [UIImage imageNamed:@"earntitlebig"];
+//    //    backGround.tag          = 10;
+//    self.titleViewBig.hidden = YES;
+//    [self.windowUv addSubview:self.titleViewBig];
 
     
-    self.label = [[UILabel alloc]initWithFrame:CGRectMake(82 * ratio, 320 * ratio, 150 * ratio,80 * ratio)];
-     self.label.font = [UIFont boldSystemFontOfSize:30];
+     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 235 * ratio, 320 * ratio,25 * ratio)];
+     self.label.font = [UIFont systemFontOfSize:30];
      self.label.textAlignment = NSTextAlignmentCenter;
-     self.label.textColor     = RGBACOLOR( 255 , 255 , 0 , 1);
+    self.label.textColor     = UIColorFromRGB(0xfaad2f);
      self.label.numberOfLines = 0;
     
-     self.label.text          = [NSString stringWithFormat:@"分享获得\n%.2f元",self.rewardInfoForRedPacket.money];
+     self.label.text          = @"恭喜您";
 //    label.tag           = 12;
 //    label.hidden        = YES;
     [self.windowUv addSubview: self.label];
     
+    
+    
+    UILabel *sublabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio, 270 * ratio, 320 * ratio, 17 * ratio)];
+    sublabel.font = [UIFont systemFontOfSize:19];
+    sublabel.textAlignment = NSTextAlignmentCenter;
+    sublabel.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
+    
+    NSMutableAttributedString * aAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"获得随机奖励%.2f元",self.rewardInfoForRedPacket.money]];
+    NSString *number = [NSString stringWithFormat:@"%.2f",self.rewardInfoForRedPacket.money];
+    //富文本样式
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                              value:UIColorFromRGB(0xb2b2b2)
+                              range:NSMakeRange(0, 6)];
+    
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                              value:UIColorFromRGB(0xfaad2f)
+                              range:NSMakeRange(6, number.length)];
+    
+    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+                              value:UIColorFromRGB(0xb2b2b2)
+                              range:NSMakeRange(aAttributedString.length-1, 1)];
+    
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                              value:[UIFont systemFontOfSize:19]
+                              range:NSMakeRange(0, 6)];
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                              value:[UIFont systemFontOfSize:18]
+                              range:NSMakeRange(6, number.length)];
+    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+                              value:[UIFont systemFontOfSize:19]
+                              range:NSMakeRange(aAttributedString.length-1, 1)];
+    
+    sublabel.attributedText = aAttributedString;
+    
+    
+    //    label.text          = [NSString stringWithFormat:@"签到抽奖 恭喜你 抽中%.2f元",self.rewardInfoForRedPacket.money];
+    //    label.tag           = 12;
+    [self.windowUv addSubview:sublabel];
+    
+    
+     sublabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio,(270 + 20)* ratio, 320 * ratio, 17 * ratio)];
+    sublabel.font = [UIFont systemFontOfSize:19];
+    sublabel.textAlignment = NSTextAlignmentCenter;
+    sublabel.textColor     = UIColorFromRGB(0xb2b2b2);
+    sublabel.text = @"奖金已存入账户";
+    
+     [self.windowUv addSubview:sublabel];
+
+    
+
+    
+    
 //     *arrow =( UIImageView *) [self.view viewWithTag:101];
-    [UIView beginAnimations:@"ShowArrow" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView setAnimationDuration:2.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(DidStop)];
-    // Make the animatable changes.
-    self.label.alpha = 0.0;
-    // Commit the changes and perform the animation.
-    [UIView commitAnimations];
+//    [UIView beginAnimations:@"ShowArrow" context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+//    [UIView setAnimationDuration:2.0];
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(DidStop)];
+//    // Make the animatable changes.
+//    self.label.alpha = 0.0;
+//    // Commit the changes and perform the animation.
+//    [UIView commitAnimations];
+//    
     
-    
-    
+    UIButton* cancel = [[UIButton alloc] initWithFrame:CGRectMake(0 * ratio, 340 * ratio, 320 * ratio, 30 * ratio)];
+    //    cancel.backgroundColor = [UIColor redColor];
+    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonClicked)];
+    [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancel setTitle:@"立即分享" forState:UIControlStateNormal];
+    [cancel addGestureRecognizer:tapGesture];
+    [self.windowUv addSubview:cancel];
+
 
     [self addSubview:self.windowUv];
     
@@ -249,7 +308,10 @@ static int i = 0;
 
     
 }
-
+- (void)cancelButtonClicked{
+    self.windowUv.hidden = YES;
+    self.windowUv        = nil;
+}
 - (void)DidStop{
     self.windowUv.hidden = YES;
     self.windowUv        = nil;

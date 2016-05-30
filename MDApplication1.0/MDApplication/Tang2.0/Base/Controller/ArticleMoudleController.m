@@ -12,6 +12,8 @@
 #import "BaseViewController.h"
 #import "AMTools.h"
 #import "UIButton+CenterImageAndTitle.h"
+#import "RewardInfo.h"
+#import "UIWindow+ShareSucAlert.h"
 @interface ArticleMoudleController ()
 
 @end
@@ -28,7 +30,7 @@
 - (void)setrightBar{
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
     [backButton setImage:[UIImage imageNamed:@"jinbi"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
     
     [backButton setTitle:@"11.5" forState:UIControlStateNormal];
 
@@ -45,9 +47,21 @@
      */
     negativeSpacer.width = -20;
     
+    
+    
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:backItem, nil];
 
 }
+- (void)rightClick{
+    RewardInfo *info = [[RewardInfo alloc] init];
+    info.money = 0.03;
+    //                info.rewardName = @"分享成功获得";
+    //                info.rewardContent = @"恭喜你得到奖励";
+    //                info.rewardStatus = 0;
+    //
+    [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+}
+
 - (void)setleftBar{
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 60)];
     [backButton setImage:[UIImage imageNamed:@"news"] forState:UIControlStateNormal];
