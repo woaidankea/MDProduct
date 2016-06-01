@@ -7,6 +7,9 @@
 //
 
 #import "MDWKWebViewController.h"
+
+#import "CLProgress.h"
+#import "JQIndicatorView.h"
 @interface MDWKWebViewController ()
 @property (strong,nonatomic)UIProgressView *progressview;
 @end
@@ -15,13 +18,15 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+    [[CLProgressHUD shareInstance] showsInsuperview:_wkwebview];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-//    [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) ];
-//     [_wkwebview.wkWebView removeObserver:_wkwebview forKeyPath:@"title"];
+//     [_wkwebview.wkWebView removeObserver:_wkwebview.wkWebView forKeyPath:@"estimatedProgress"];
+//     [_wkwebview.wkWebView removeObserver:_wkwebview.wkWebView forKeyPath:@"title"];
 }
-  
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets =NO;
@@ -53,6 +58,7 @@
             [_progressview setAlpha:0.0f];
         } completion:^(BOOL finished) {
             [_progressview setProgress:0.0f animated:NO];
+             [[CLProgressHUD shareInstance] dismiss];
         }];
         
     }

@@ -15,26 +15,29 @@
 #import "AppDelegate.h"
 #import "DXShareTools.h"
 #import <CommonCrypto/CommonDigest.h>
+
+#import "CLProgress.h"
+#import "JQIndicatorView.h"
 @interface MDInterestDetailViewController ()<NJKWebViewProgressDelegate,UIWebViewDelegate>
 {
-    NJKWebViewProgressView *_progressView;
-    NJKWebViewProgress *_progressProxy;
+//    NJKWebViewProgressView *_progressView;
+//    NJKWebViewProgress *_progressProxy;
 }
+@property (strong,nonatomic)UIProgressView *progressview;
 @end
 
 @implementation MDInterestDetailViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar addSubview:_progressView];
-
-    
+      
  
     [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_model.assignUrl]]];
+     [[CLProgressHUD shareInstance] showsInsuperview:_wkwebview];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [_progressView removeFromSuperview];
+  
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,52 +47,20 @@
     
     CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-40-64);
     if(IOS_8){
-    _wkwebview = [[WKWebView alloc]initWithFrame:rect];
+    _wkwebview = [[YPWebView alloc]initWithFrame:rect];
     }
    
-    
+    _wkwebview.delegate = self;
+    _wkwebview.wkUIDelegateViewController = self;
     [self.view addSubview:_wkwebview];
     
     
+    _progressview = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 1)];
+    [_wkwebview addSubview:_progressview];
+    //    _wkwebview.UIDelegate =self;
+    [self.view addSubview:_wkwebview];
+
     
-    
-    //    //logoImageView左侧与父视图左侧对齐
-    //    NSLayoutConstraint* leftConstraint = [NSLayoutConstraint constraintWithItem:_wkwebview attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
-    //
-    //    //logoImageView右侧与父视图右侧对齐
-    //    NSLayoutConstraint* rightConstraint = [NSLayoutConstraint constraintWithItem:_wkwebview attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
-    //
-    //    //logoImageView顶部与父视图顶部对齐
-    //    NSLayoutConstraint* topConstraint = [NSLayoutConstraint constraintWithItem:_wkwebview attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
-    //
-    //    //logoImageView高度为父视图高度一半
-    //    NSLayoutConstraint* heightConstraint = [NSLayoutConstraint constraintWithItem:_wkwebview attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:49.0f];
-    //
-    //
-    //    //iOS 6.0或者7.0调用addConstraints
-    //    //[self.view addConstraints:@[leftConstraint, rightConstraint, topConstraint, heightConstraint]];
-    //
-    //    //iOS 8.0以后设置active属性值
-    //    leftConstraint.active = YES;
-    //    rightConstraint.active = YES;
-    //    topConstraint.active = YES;
-    //    heightConstraint.active = YES;
-    
-    //    _progressProxy = [[NJKWebViewProgress alloc] init];
-    //    _wkwebview.navigationDelegate =_progressProxy;
-    //    _webview.delegate = _progressProxy;
-    //    _webview.hidden =YES;
-    //
-    //    _progressProxy.webViewProxyDelegate = self;
-    //    _progressProxy.progressDelegate = self;
-    //
-    //    CGFloat progressBarHeight = 2.f;
-    //    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
-    //    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
-    //    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    //    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    //
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,11 +81,49 @@
 
 
 #pragma mark - NJKWebViewProgressDelegate
--(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
-{
-    [_progressView setProgress:progress animated:YES];
-    self.title = [_webview stringByEvaluatingJavaScriptFromString:@"document.title"];
+#pragma mark - KVO
+- (void)YPwebview:(YPWebView *)webview loadProgress:(double)progress{
+    [_progressview setAlpha:1.0f];
+    [_progressview setProgress:progress animated:YES];
+    
+    if(progress >= 1.0f) {
+        
+        [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [_progressview setAlpha:0.0f];
+        } completion:^(BOOL finished) {
+            [_progressview setProgress:0.0f animated:NO];
+             [[CLProgressHUD shareInstance] dismiss];
+        }];
+        
+    }
 }
+
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+        
+    }]];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+}
+
+- (void)YPwebview:(YPWebView *)webview loadTitle:(NSString *)title{
+    self.title = title;
+}
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    //    if ([keyPath isEqual:@"estimatedProgress"]) {
+    //        if ([self.delegate respondsToSelector:@selector(YPwebview:loadProgress:)]) {
+    //            [self.delegate YPwebview:self loadProgress:self.wkWebView.estimatedProgress];
+    //        }
+    //    }
+}
+
 - (void)share{
     
     if(!USER_DEFAULT_KEY(@"token")){
