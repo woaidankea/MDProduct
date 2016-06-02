@@ -38,7 +38,12 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
      
-        
+        // 1、创建时间
+        self.labelTime = [[UILabel alloc] init];
+        self.labelTime.textAlignment = NSTextAlignmentCenter;
+        self.labelTime.textColor = [UIColor grayColor];
+        self.labelTime.font = ChatTimeFont;
+        [self.contentView addSubview:self.labelTime];
         // 2、创建头像
         headImageBackView = [[UIView alloc]init];
         headImageBackView.layer.cornerRadius = 15;
@@ -68,12 +73,6 @@
         
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(UUAVAudioPlayerDidFinishPlay) name:@"VoicePlayHasInterrupt" object:nil];
         
-        // 1、创建时间
-        self.labelTime = [[UILabel alloc] init];
-        self.labelTime.textAlignment = NSTextAlignmentCenter;
-        self.labelTime.textColor = [UIColor grayColor];
-        self.labelTime.font = ChatTimeFont;
-        [self.btnContent addSubview:self.labelTime];
         
         //红外线感应监听
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -209,7 +208,7 @@
 
     switch (message.type) {
         case UUMessageTypeText:
-            [self.btnContent setTitle:[NSString stringWithFormat:@"%@\n",message.strContent] forState:UIControlStateNormal];
+            [self.btnContent setTitle:[NSString stringWithFormat:@"%@",message.strContent] forState:UIControlStateNormal];
             break;
         case UUMessageTypePicture:
         {

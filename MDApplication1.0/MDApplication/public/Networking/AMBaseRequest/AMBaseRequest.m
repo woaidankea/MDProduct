@@ -14,7 +14,7 @@
 #import "AMAppInfo.h"
 #import "UtilsMacro.h"
 #import "AppDelegate.h"
-
+#import "NSString+MD5.h"
 @interface AMBaseRequest (){
     onSuccessCallback _onSuccess;
     onFailureCallback _onFailure;
@@ -54,10 +54,16 @@
 -(void)setActionInfo:(NSDictionary *)actionInfo{
     
     NSDictionary *info = [AMSystemInfo systemInfoData];
+    
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970];
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];//转为字符型
+    [actionInfo setValue:timeString forKey:@"time"];
+    NSString *signatureParam = [self generateSignatureParams:actionInfo];
+          [actionInfo setValue:POST_VALUE(signatureParam) forKey:@"sign"];
     if(ServerJieKu){
-        if(USER_DEFAULT_KEY(@"token") != nil && ((NSString *)USER_DEFAULT_KEY(@"token")).length != 0 )
-        [actionInfo setValue: USER_DEFAULT_KEY(@"token") forKey:@"token"];
-      }else {
+          [actionInfo setValue: USER_DEFAULT_KEY(@"token") forKey:@"token"];
+    }else {
           [actionInfo setValue:@"9.2" forKey:@"OSVersion"];  //真机时修改
           [actionInfo setValue:@"100" forKey:@"dtu"];
           [actionInfo setValue:[info objectForKey:@"imei"] forKey:@"deviceCode"];
@@ -66,13 +72,7 @@
     }
     
     _parameters=[NSMutableDictionary dictionaryWithDictionary:actionInfo];
-//    NSDictionary *locationInfo =[AMLocationInfo locationInfo];
-//    NSDictionary *systemInfo =[AMSystemInfo systemInfoData];
-//    NSDictionary *appInfo =[AMAppInfo appInfoData];
-//    [_parameters setObject:locationInfo forKey:@"locationInfo"];
-//    [_parameters setObject:systemInfo forKey:@"systemInfo"];
-//    [_parameters setObject:appInfo forKey:@"appInfo"];
-//    [_parameters setObject:actionInfo forKey:@"actionInfo"];
+
 }
 
 -(void)processResponse:(NSDictionary *)responseDictionary{
@@ -201,7 +201,34 @@
 }
 
 
-
+-(NSString *)generateSignatureParams:(NSDictionary *)paramDic
+{
+    NSArray *keysArray = [paramDic allKeys];
+    NSMutableArray *paramArray = [[NSMutableArray alloc]init];
+    
+    for (NSString *key in keysArray) {
+        [paramArray addObject:[NSString stringWithFormat:@"%@=%@",key,paramDic[key]]];
+    }
+    NSArray *resultArray = [paramArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSCaseInsensitiveSearch];
+    }];
+    
+    NSMutableString *param = [[NSMutableString alloc]init];
+    
+    for (int i = 0 ; i<resultArray.count; i++) {
+        
+        [param appendString:resultArray[i]];
+        if (i<resultArray.count-1) {
+            
+            [param appendString:@"&"];
+        }
+    }
+    
+    [param appendString:kTransferKey];
+    NSString *signature   = [param MD5Hash];
+    
+    return signature;
+}
 @end
 
 

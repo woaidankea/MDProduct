@@ -235,6 +235,30 @@
 		5C6C9F821CFD8339000ED97A /* JQMusic1Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F781CFD8339000ED97A /* JQMusic1Animation.m */; };
 		5C6C9F831CFD8339000ED97A /* JQMusic2Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F7A1CFD8339000ED97A /* JQMusic2Animation.m */; };
 		5C6C9F851CFD83E2000ED97A /* jiazai-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6C9F841CFD83E2000ED97A /* jiazai-1.png */; };
+		5C6CA0101CFFC13A000ED97A /* TDAppcolRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA00F1CFFC13A000ED97A /* TDAppcolRequest.m */; };
+		5C6CA0131CFFC3C6000ED97A /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0121CFFC3C6000ED97A /* NSString+MD5.m */; };
+		5C6CA0161CFFCABA000ED97A /* TDArticleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0151CFFCABA000ED97A /* TDArticleRequest.m */; };
+		5C6CA0191CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0181CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.m */; };
+		5C6CA01C1CFFCF2D000ED97A /* TDColclassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA01B1CFFCF2D000ED97A /* TDColclassRequest.m */; };
+		5C6CA01F1CFFD109000ED97A /* TDForpwdcodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA01E1CFFD109000ED97A /* TDForpwdcodeRequest.m */; };
+		5C6CA0221CFFD2F5000ED97A /* TDLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0211CFFD2F5000ED97A /* TDLoginRequest.m */; };
+		5C6CA0251CFFDB83000ED97A /* TDMydiscipleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0241CFFDB83000ED97A /* TDMydiscipleRequest.m */; };
+		5C6CA0281CFFDCFC000ED97A /* TDPageinfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0271CFFDCFC000ED97A /* TDPageinfoRequest.m */; };
+		5C6CA02B1CFFDE78000ED97A /* TDProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA02A1CFFDE78000ED97A /* TDProfileRequest.m */; };
+		5C6CA02E1CFFDF89000ED97A /* TDProfilesaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA02D1CFFDF89000ED97A /* TDProfilesaveRequest.m */; };
+		5C6CA0311CFFE186000ED97A /* TDRegCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0301CFFE186000ED97A /* TDRegCodeRequest.m */; };
+		5C6CA0341CFFE3AC000ED97A /* TDRegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0331CFFE3AC000ED97A /* TDRegisterRequest.m */; };
+		5C6CA0371CFFE632000ED97A /* TDResetpwdRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0361CFFE632000ED97A /* TDResetpwdRequest.m */; };
+		5C6CA03A1CFFF611000ED97A /* TDRevrankRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0391CFFF611000ED97A /* TDRevrankRequest.m */; };
+		5C6CA03D1CFFF810000ED97A /* TDSecondCheckRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA03C1CFFF810000ED97A /* TDSecondCheckRequest.m */; };
+		5C6CA0401CFFF93D000ED97A /* TDShareconfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA03F1CFFF93D000ED97A /* TDShareconfigRequest.m */; };
+		5C6CA0431CFFFA19000ED97A /* TDShareinfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0421CFFFA19000ED97A /* TDShareinfoRequest.m */; };
+		5C6CA0461CFFFB14000ED97A /* TDStartAdRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0451CFFFB14000ED97A /* TDStartAdRequest.m */; };
+		5C6CA0491CFFFBC6000ED97A /* TDSubticketRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0481CFFFBC6000ED97A /* TDSubticketRequest.m */; };
+		5C6CA04C1CFFFD6E000ED97A /* TDTicketinfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA04B1CFFFD6E000ED97A /* TDTicketinfoRequest.m */; };
+		5C6CA04F1CFFFE15000ED97A /* TDUserearningsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA04E1CFFFE15000ED97A /* TDUserearningsRequest.m */; };
+		5C6CA0521CFFFF01000ED97A /* TDUsersignRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0511CFFFF01000ED97A /* TDUsersignRequest.m */; };
+		5C6CA0551CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0541CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m */; };
 		5C7119E31C9F924C00CA1A31 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119E21C9F924C00CA1A31 /* SelectView.m */; };
 		5C7119E51C9F925900CA1A31 /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7119E41C9F925900CA1A31 /* SelectView.xib */; };
 		5C7119EB1C9FC2FE00CA1A31 /* MDNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119EA1C9FC2FE00CA1A31 /* MDNewsRequest.m */; };
@@ -769,6 +793,54 @@
 		5C6C9F791CFD8339000ED97A /* JQMusic2Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQMusic2Animation.h; sourceTree = "<group>"; };
 		5C6C9F7A1CFD8339000ED97A /* JQMusic2Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQMusic2Animation.m; sourceTree = "<group>"; };
 		5C6C9F841CFD83E2000ED97A /* jiazai-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiazai-1.png"; sourceTree = "<group>"; };
+		5C6CA00E1CFFC13A000ED97A /* TDAppcolRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAppcolRequest.h; sourceTree = "<group>"; };
+		5C6CA00F1CFFC13A000ED97A /* TDAppcolRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAppcolRequest.m; sourceTree = "<group>"; };
+		5C6CA0111CFFC3C6000ED97A /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		5C6CA0121CFFC3C6000ED97A /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		5C6CA0141CFFCABA000ED97A /* TDArticleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDArticleRequest.h; sourceTree = "<group>"; };
+		5C6CA0151CFFCABA000ED97A /* TDArticleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDArticleRequest.m; sourceTree = "<group>"; };
+		5C6CA0171CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCheckforpwdcodeRequest.h; sourceTree = "<group>"; };
+		5C6CA0181CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCheckforpwdcodeRequest.m; sourceTree = "<group>"; };
+		5C6CA01A1CFFCF2D000ED97A /* TDColclassRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDColclassRequest.h; sourceTree = "<group>"; };
+		5C6CA01B1CFFCF2D000ED97A /* TDColclassRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDColclassRequest.m; sourceTree = "<group>"; };
+		5C6CA01D1CFFD109000ED97A /* TDForpwdcodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDForpwdcodeRequest.h; sourceTree = "<group>"; };
+		5C6CA01E1CFFD109000ED97A /* TDForpwdcodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDForpwdcodeRequest.m; sourceTree = "<group>"; };
+		5C6CA0201CFFD2F5000ED97A /* TDLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginRequest.h; sourceTree = "<group>"; };
+		5C6CA0211CFFD2F5000ED97A /* TDLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginRequest.m; sourceTree = "<group>"; };
+		5C6CA0231CFFDB83000ED97A /* TDMydiscipleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMydiscipleRequest.h; sourceTree = "<group>"; };
+		5C6CA0241CFFDB83000ED97A /* TDMydiscipleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDMydiscipleRequest.m; sourceTree = "<group>"; };
+		5C6CA0261CFFDCFC000ED97A /* TDPageinfoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDPageinfoRequest.h; sourceTree = "<group>"; };
+		5C6CA0271CFFDCFC000ED97A /* TDPageinfoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDPageinfoRequest.m; sourceTree = "<group>"; };
+		5C6CA0291CFFDE78000ED97A /* TDProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDProfileRequest.h; sourceTree = "<group>"; };
+		5C6CA02A1CFFDE78000ED97A /* TDProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDProfileRequest.m; sourceTree = "<group>"; };
+		5C6CA02C1CFFDF89000ED97A /* TDProfilesaveRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDProfilesaveRequest.h; sourceTree = "<group>"; };
+		5C6CA02D1CFFDF89000ED97A /* TDProfilesaveRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDProfilesaveRequest.m; sourceTree = "<group>"; };
+		5C6CA02F1CFFE186000ED97A /* TDRegCodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDRegCodeRequest.h; sourceTree = "<group>"; };
+		5C6CA0301CFFE186000ED97A /* TDRegCodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDRegCodeRequest.m; sourceTree = "<group>"; };
+		5C6CA0321CFFE3AC000ED97A /* TDRegisterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDRegisterRequest.h; sourceTree = "<group>"; };
+		5C6CA0331CFFE3AC000ED97A /* TDRegisterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDRegisterRequest.m; sourceTree = "<group>"; };
+		5C6CA0351CFFE632000ED97A /* TDResetpwdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDResetpwdRequest.h; sourceTree = "<group>"; };
+		5C6CA0361CFFE632000ED97A /* TDResetpwdRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDResetpwdRequest.m; sourceTree = "<group>"; };
+		5C6CA0381CFFF611000ED97A /* TDRevrankRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDRevrankRequest.h; sourceTree = "<group>"; };
+		5C6CA0391CFFF611000ED97A /* TDRevrankRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDRevrankRequest.m; sourceTree = "<group>"; };
+		5C6CA03B1CFFF810000ED97A /* TDSecondCheckRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSecondCheckRequest.h; sourceTree = "<group>"; };
+		5C6CA03C1CFFF810000ED97A /* TDSecondCheckRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSecondCheckRequest.m; sourceTree = "<group>"; };
+		5C6CA03E1CFFF93D000ED97A /* TDShareconfigRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDShareconfigRequest.h; sourceTree = "<group>"; };
+		5C6CA03F1CFFF93D000ED97A /* TDShareconfigRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDShareconfigRequest.m; sourceTree = "<group>"; };
+		5C6CA0411CFFFA19000ED97A /* TDShareinfoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDShareinfoRequest.h; sourceTree = "<group>"; };
+		5C6CA0421CFFFA19000ED97A /* TDShareinfoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDShareinfoRequest.m; sourceTree = "<group>"; };
+		5C6CA0441CFFFB14000ED97A /* TDStartAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStartAdRequest.h; sourceTree = "<group>"; };
+		5C6CA0451CFFFB14000ED97A /* TDStartAdRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDStartAdRequest.m; sourceTree = "<group>"; };
+		5C6CA0471CFFFBC6000ED97A /* TDSubticketRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSubticketRequest.h; sourceTree = "<group>"; };
+		5C6CA0481CFFFBC6000ED97A /* TDSubticketRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSubticketRequest.m; sourceTree = "<group>"; };
+		5C6CA04A1CFFFD6E000ED97A /* TDTicketinfoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTicketinfoRequest.h; sourceTree = "<group>"; };
+		5C6CA04B1CFFFD6E000ED97A /* TDTicketinfoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTicketinfoRequest.m; sourceTree = "<group>"; };
+		5C6CA04D1CFFFE15000ED97A /* TDUserearningsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserearningsRequest.h; sourceTree = "<group>"; };
+		5C6CA04E1CFFFE15000ED97A /* TDUserearningsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserearningsRequest.m; sourceTree = "<group>"; };
+		5C6CA0501CFFFF01000ED97A /* TDUsersignRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUsersignRequest.h; sourceTree = "<group>"; };
+		5C6CA0511CFFFF01000ED97A /* TDUsersignRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUsersignRequest.m; sourceTree = "<group>"; };
+		5C6CA0531CFFFFB8000ED97A /* TDUsrforgotpwdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUsrforgotpwdRequest.h; sourceTree = "<group>"; };
+		5C6CA0541CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUsrforgotpwdRequest.m; sourceTree = "<group>"; };
 		5C7119E11C9F924C00CA1A31 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
 		5C7119E21C9F924C00CA1A31 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
 		5C7119E41C9F925900CA1A31 /* SelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
@@ -1746,6 +1818,243 @@
 			path = JQIndicatorView;
 			sourceTree = "<group>";
 		};
+		5C6C9FED1CFEE5A0000ED97A /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				5C6C9FEE1CFEEE56000ED97A /* 2.0AppcolRequest */,
+				5C6C9FEF1CFEEE56000ED97A /* 2.0ArticleRequest */,
+				5C6C9FF01CFEEE56000ED97A /* 2.0CheckforpwdcodeRequest */,
+				5C6C9FF11CFEEE56000ED97A /* 2.0ColclassRequest */,
+				5C6C9FF21CFEEE56000ED97A /* 2.0ForpwdcodeRequest */,
+				5C6C9FF31CFEEE56000ED97A /* 2.0loginRequest */,
+				5C6C9FF41CFEEE56000ED97A /* 2.0MydiscipleRequest */,
+				5C6C9FF51CFEEE56000ED97A /* 2.0PageinfoRequest */,
+				5C6C9FF61CFEEE56000ED97A /* 2.0ProfileRequest */,
+				5C6C9FF71CFEEE56000ED97A /* 2.0ProfilesaveRequest */,
+				5C6C9FF81CFEEE56000ED97A /* 2.0RegCodeRequest */,
+				5C6C9FF91CFEEE56000ED97A /* 2.0RegisterRequest */,
+				5C6C9FFA1CFEEE56000ED97A /* 2.0ResetpwdRequest */,
+				5C6C9FFB1CFEEE56000ED97A /* 2.0RevrankRequest */,
+				5C6C9FFC1CFEEE56000ED97A /* 2.0SecondCheckRequest */,
+				5C6C9FFD1CFEEE56000ED97A /* 2.0ShareconfigRequest */,
+				5C6C9FFE1CFEEE56000ED97A /* 2.0ShareinfoRequest */,
+				5C6C9FFF1CFEEE56000ED97A /* 2.0StartAdRequest */,
+				5C6CA0001CFEEE56000ED97A /* 2.0SubticketRequest */,
+				5C6CA0011CFEEE56000ED97A /* 2.0TicketinfoRequest */,
+				5C6CA0021CFEEE56000ED97A /* 2.0UserearningsRequest */,
+				5C6CA0031CFEEE56000ED97A /* 2.0UsersignRequest */,
+				5C6CA0041CFEEE56000ED97A /* 2.0UsrforgotpwdRequest */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		5C6C9FEE1CFEEE56000ED97A /* 2.0AppcolRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA00E1CFFC13A000ED97A /* TDAppcolRequest.h */,
+				5C6CA00F1CFFC13A000ED97A /* TDAppcolRequest.m */,
+			);
+			path = 2.0AppcolRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FEF1CFEEE56000ED97A /* 2.0ArticleRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0141CFFCABA000ED97A /* TDArticleRequest.h */,
+				5C6CA0151CFFCABA000ED97A /* TDArticleRequest.m */,
+			);
+			path = 2.0ArticleRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF01CFEEE56000ED97A /* 2.0CheckforpwdcodeRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0171CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.h */,
+				5C6CA0181CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.m */,
+			);
+			path = 2.0CheckforpwdcodeRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF11CFEEE56000ED97A /* 2.0ColclassRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA01A1CFFCF2D000ED97A /* TDColclassRequest.h */,
+				5C6CA01B1CFFCF2D000ED97A /* TDColclassRequest.m */,
+			);
+			path = 2.0ColclassRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF21CFEEE56000ED97A /* 2.0ForpwdcodeRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA01D1CFFD109000ED97A /* TDForpwdcodeRequest.h */,
+				5C6CA01E1CFFD109000ED97A /* TDForpwdcodeRequest.m */,
+			);
+			path = 2.0ForpwdcodeRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF31CFEEE56000ED97A /* 2.0loginRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0201CFFD2F5000ED97A /* TDLoginRequest.h */,
+				5C6CA0211CFFD2F5000ED97A /* TDLoginRequest.m */,
+			);
+			path = 2.0loginRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF41CFEEE56000ED97A /* 2.0MydiscipleRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0231CFFDB83000ED97A /* TDMydiscipleRequest.h */,
+				5C6CA0241CFFDB83000ED97A /* TDMydiscipleRequest.m */,
+			);
+			path = 2.0MydiscipleRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF51CFEEE56000ED97A /* 2.0PageinfoRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0261CFFDCFC000ED97A /* TDPageinfoRequest.h */,
+				5C6CA0271CFFDCFC000ED97A /* TDPageinfoRequest.m */,
+			);
+			path = 2.0PageinfoRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF61CFEEE56000ED97A /* 2.0ProfileRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0291CFFDE78000ED97A /* TDProfileRequest.h */,
+				5C6CA02A1CFFDE78000ED97A /* TDProfileRequest.m */,
+			);
+			path = 2.0ProfileRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF71CFEEE56000ED97A /* 2.0ProfilesaveRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA02C1CFFDF89000ED97A /* TDProfilesaveRequest.h */,
+				5C6CA02D1CFFDF89000ED97A /* TDProfilesaveRequest.m */,
+			);
+			path = 2.0ProfilesaveRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF81CFEEE56000ED97A /* 2.0RegCodeRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA02F1CFFE186000ED97A /* TDRegCodeRequest.h */,
+				5C6CA0301CFFE186000ED97A /* TDRegCodeRequest.m */,
+			);
+			path = 2.0RegCodeRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FF91CFEEE56000ED97A /* 2.0RegisterRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0321CFFE3AC000ED97A /* TDRegisterRequest.h */,
+				5C6CA0331CFFE3AC000ED97A /* TDRegisterRequest.m */,
+			);
+			path = 2.0RegisterRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFA1CFEEE56000ED97A /* 2.0ResetpwdRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0351CFFE632000ED97A /* TDResetpwdRequest.h */,
+				5C6CA0361CFFE632000ED97A /* TDResetpwdRequest.m */,
+			);
+			path = 2.0ResetpwdRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFB1CFEEE56000ED97A /* 2.0RevrankRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0381CFFF611000ED97A /* TDRevrankRequest.h */,
+				5C6CA0391CFFF611000ED97A /* TDRevrankRequest.m */,
+			);
+			path = 2.0RevrankRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFC1CFEEE56000ED97A /* 2.0SecondCheckRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA03B1CFFF810000ED97A /* TDSecondCheckRequest.h */,
+				5C6CA03C1CFFF810000ED97A /* TDSecondCheckRequest.m */,
+			);
+			path = 2.0SecondCheckRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFD1CFEEE56000ED97A /* 2.0ShareconfigRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA03E1CFFF93D000ED97A /* TDShareconfigRequest.h */,
+				5C6CA03F1CFFF93D000ED97A /* TDShareconfigRequest.m */,
+			);
+			path = 2.0ShareconfigRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFE1CFEEE56000ED97A /* 2.0ShareinfoRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0411CFFFA19000ED97A /* TDShareinfoRequest.h */,
+				5C6CA0421CFFFA19000ED97A /* TDShareinfoRequest.m */,
+			);
+			path = 2.0ShareinfoRequest;
+			sourceTree = "<group>";
+		};
+		5C6C9FFF1CFEEE56000ED97A /* 2.0StartAdRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0441CFFFB14000ED97A /* TDStartAdRequest.h */,
+				5C6CA0451CFFFB14000ED97A /* TDStartAdRequest.m */,
+			);
+			path = 2.0StartAdRequest;
+			sourceTree = "<group>";
+		};
+		5C6CA0001CFEEE56000ED97A /* 2.0SubticketRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0471CFFFBC6000ED97A /* TDSubticketRequest.h */,
+				5C6CA0481CFFFBC6000ED97A /* TDSubticketRequest.m */,
+			);
+			path = 2.0SubticketRequest;
+			sourceTree = "<group>";
+		};
+		5C6CA0011CFEEE56000ED97A /* 2.0TicketinfoRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA04A1CFFFD6E000ED97A /* TDTicketinfoRequest.h */,
+				5C6CA04B1CFFFD6E000ED97A /* TDTicketinfoRequest.m */,
+			);
+			path = 2.0TicketinfoRequest;
+			sourceTree = "<group>";
+		};
+		5C6CA0021CFEEE56000ED97A /* 2.0UserearningsRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA04D1CFFFE15000ED97A /* TDUserearningsRequest.h */,
+				5C6CA04E1CFFFE15000ED97A /* TDUserearningsRequest.m */,
+			);
+			path = 2.0UserearningsRequest;
+			sourceTree = "<group>";
+		};
+		5C6CA0031CFEEE56000ED97A /* 2.0UsersignRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0501CFFFF01000ED97A /* TDUsersignRequest.h */,
+				5C6CA0511CFFFF01000ED97A /* TDUsersignRequest.m */,
+			);
+			path = 2.0UsersignRequest;
+			sourceTree = "<group>";
+		};
+		5C6CA0041CFEEE56000ED97A /* 2.0UsrforgotpwdRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0531CFFFFB8000ED97A /* TDUsrforgotpwdRequest.h */,
+				5C6CA0541CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m */,
+			);
+			path = 2.0UsrforgotpwdRequest;
+			sourceTree = "<group>";
+		};
 		5C7119E81C9FC2E400CA1A31 /* NewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -2118,6 +2427,7 @@
 		5C7E748E1CED49A40086879F /* Tang2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				5C6C9FED1CFEE5A0000ED97A /* Request */,
 				5C7822951CF2A87500889E21 /* My */,
 				5C7267911CEDBE780019F37C /* Resource */,
 				5C7E748F1CED49A40086879F /* Base */,
@@ -2402,6 +2712,8 @@
 		5C9F3E7C1C96963400756229 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CA0111CFFC3C6000ED97A /* NSString+MD5.h */,
+				5C6CA0121CFFC3C6000ED97A /* NSString+MD5.m */,
 				5C1AF09B1CB4A90E00719F72 /* 红包相关 */,
 				5C0D19B01CAA2B4A0039F7E5 /* 分享相关 */,
 				5C3A90711C9BA75900B4388B /* CALayer+Additions.h */,
@@ -3190,10 +3502,13 @@
 				5C3A8F9F1C9A415100B4388B /* MDSchoolSecondCell.m in Sources */,
 				5C7E74951CED4EDF0086879F /* ViewControllerFactory.m in Sources */,
 				5C3D43691CF7EC52006F2DFC /* ChatModel.m in Sources */,
+				5C6CA04F1CFFFE15000ED97A /* TDUserearningsRequest.m in Sources */,
 				5C7822A11CF2B5EE00889E21 /* DoubleLabelView.m in Sources */,
 				5C3A8FBF1C9A8A6100B4388B /* MDPopCollectionViewCell.m in Sources */,
 				5C711A471CA0E4AD00CA1A31 /* MDArticleModel.m in Sources */,
 				5C9F3EFA1C969C6100756229 /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				5C6CA0161CFFCABA000ED97A /* TDArticleRequest.m in Sources */,
+				5C6CA0101CFFC13A000ED97A /* TDAppcolRequest.m in Sources */,
 				5C3A8FB31C9A75FB00B4388B /* YZDisplayViewController.m in Sources */,
 				5C3D43AC1CF7ECD2006F2DFC /* UUImageAvatarBrowser.m in Sources */,
 				5C7E74701CEC0CD10086879F /* CustomActivity.m in Sources */,
@@ -3207,12 +3522,14 @@
 				5CA7AC681CBBC39E005EF4D0 /* MDRedPacketModel.m in Sources */,
 				5C3A90541C9AD4CB00B4388B /* MDLifeViewController.m in Sources */,
 				5C711A331CA0279B00CA1A31 /* MDFashionViewController.m in Sources */,
+				5C6CA0371CFFE632000ED97A /* TDResetpwdRequest.m in Sources */,
 				5C9F3F181C969CF400756229 /* NSString+AMPublicTools.m in Sources */,
 				5C9F3EDB1C969ABC00756229 /* AMBaseResponse.m in Sources */,
 				5C7822AA1CF3085900889E21 /* RankingViewController.m in Sources */,
 				5C3A8F6C1C99435500B4388B /* MDDiscipleDetailViewController.m in Sources */,
 				5C9F3F321C96A14F00756229 /* MDInterestingArticleViewController.m in Sources */,
 				5CA7AC651CBBC2FA005EF4D0 /* MDRedPacketRequest.m in Sources */,
+				5C6CA03D1CFFF810000ED97A /* TDSecondCheckRequest.m in Sources */,
 				5C0D19B51CAA2B4A0039F7E5 /* HXEasyCustomShareView.m in Sources */,
 				5C9F3F171C969CF400756229 /* NSDate+Utils.m in Sources */,
 				5C7267851CED8FB00019F37C /* ContentModel.m in Sources */,
@@ -3220,6 +3537,7 @@
 				5C7E74721CEC0CD10086879F /* WechatTimelineActivity.m in Sources */,
 				5C711A4A1CA0F07900CA1A31 /* MDInterestDetailViewController.m in Sources */,
 				5C3D43AF1CF7ECD2006F2DFC /* UUMessageCell.m in Sources */,
+				5C6CA0551CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m in Sources */,
 				5C7822A41CF2FAE300889E21 /* JYSlideSegmentController.m in Sources */,
 				5C711A0D1CA01F4100CA1A31 /* MDFinanceViewController.m in Sources */,
 				5C9F3F431C96A67700756229 /* MDSchoolViewController.m in Sources */,
@@ -3238,6 +3556,7 @@
 				5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */,
 				5C78229B1CF2A89B00889E21 /* MyModel.m in Sources */,
 				5CF67A1F1CA8D108004C8345 /* MDForgotPasswordRequest.m in Sources */,
+				5C6CA0491CFFFBC6000ED97A /* TDSubticketRequest.m in Sources */,
 				5C6C9F811CFD8339000ED97A /* JQIndicatorView.m in Sources */,
 				5C3A90891C9BF39E00B4388B /* MDFindNextViewController.m in Sources */,
 				5C9F3FD01C98EA7C00756229 /* DXBaseCollectionViewCell.m in Sources */,
@@ -3247,6 +3566,7 @@
 				5C9F3E911C9699E400756229 /* BaseViewController.m in Sources */,
 				5C3D43B01CF7ECD2006F2DFC /* UUMessageContentButton.m in Sources */,
 				5C3A8FAF1C9A75FB00B4388B /* ChildViewController.m in Sources */,
+				5C6CA0131CFFC3C6000ED97A /* NSString+MD5.m in Sources */,
 				5CA7AC6C1CBBD26F005EF4D0 /* MDShareSuccessRequest.m in Sources */,
 				5C7E74711CEC0CD10086879F /* WechatSessionActivity.m in Sources */,
 				5C711A081CA01EB700CA1A31 /* MDCuriousViewController.m in Sources */,
@@ -3256,9 +3576,11 @@
 				5CE560021CBF3F38005786E1 /* MDAddShareRequest.m in Sources */,
 				5C9F3F101C969CF400756229 /* AMAppInfo.m in Sources */,
 				5C9F3F2D1C96A01600756229 /* AMSelectFriendChatViewController.m in Sources */,
+				5C6CA0431CFFFA19000ED97A /* TDShareinfoRequest.m in Sources */,
 				5C6C9F7C1CFD8339000ED97A /* CLProgressLabel.m in Sources */,
 				5C711A731CA12AF600CA1A31 /* MDMoneyDetailModel.m in Sources */,
 				5C711AB01CA2392800CA1A31 /* MDMemberInterestRequest.m in Sources */,
+				5C6CA0521CFFFF01000ED97A /* TDUsersignRequest.m in Sources */,
 				5C9F3F641C97A7DC00756229 /* ScreenGuideViewController.m in Sources */,
 				5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */,
 				5C9F3F191C969CF400756229 /* VoiceRecorderManger.m in Sources */,
@@ -3268,13 +3590,16 @@
 				5C9F3F131C969CF400756229 /* AMLocationInfo.m in Sources */,
 				5C711A001CA01DCA00CA1A31 /* MDEntertainmentViewController.m in Sources */,
 				5C9036461C9D548200721D8F /* AbstractActionSheetPicker+Interface.m in Sources */,
+				5C6CA0251CFFDB83000ED97A /* TDMydiscipleRequest.m in Sources */,
 				5C73A6F51CC07B57000CB453 /* MDTXModel.m in Sources */,
 				5C9F3E7B1C96954C00756229 /* MainViewController.m in Sources */,
 				5CE307901CC75D500034F2A2 /* UIWindow+ShareSucAlert.m in Sources */,
 				5C3A8F7C1C9953F200B4388B /* MDDiscipleCell.m in Sources */,
+				5C6CA0461CFFFB14000ED97A /* TDStartAdRequest.m in Sources */,
 				5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */,
 				5C9F3E771C96951000756229 /* RDVTabBarController.m in Sources */,
 				5C9F3E921C9699E400756229 /* LBLayoutCellTableViewController.m in Sources */,
+				5C6CA02E1CFFDF89000ED97A /* TDProfilesaveRequest.m in Sources */,
 				5C6C9F7D1CFD8339000ED97A /* JQBounceSpot1Animation.m in Sources */,
 				5C3A8F8B1C99837A00B4388B /* MDInfomationViewController.m in Sources */,
 				5C711A701CA12A4000CA1A31 /* MDMoneyDetailRequest.m in Sources */,
@@ -3299,6 +3624,9 @@
 				5C0D19B61CAA2B4A0039F7E5 /* HXShareScrollView.m in Sources */,
 				5C3D43AD1CF7ECD2006F2DFC /* UUInputFunctionView.m in Sources */,
 				5C1AF0A01CB4A90E00719F72 /* RewardInfo.m in Sources */,
+				5C6CA0311CFFE186000ED97A /* TDRegCodeRequest.m in Sources */,
+				5C6CA0191CFFCBC0000ED97A /* TDCheckforpwdcodeRequest.m in Sources */,
+				5C6CA01C1CFFCF2D000ED97A /* TDColclassRequest.m in Sources */,
 				5C9F3E181C9685A000756229 /* AppDelegate.m in Sources */,
 				5C3A904B1C9AC47B00B4388B /* MDArticleCell.m in Sources */,
 				5C711A381CA0289400CA1A31 /* MDMilitaryViewController.m in Sources */,
@@ -3319,11 +3647,13 @@
 				5C72678A1CED97870019F37C /* TabMenuModel.m in Sources */,
 				5C3D43B11CF7ECD2006F2DFC /* UUMessageFrame.m in Sources */,
 				5C9F3EDC1C969ABC00756229 /* AMResponse.m in Sources */,
+				5C6CA01F1CFFD109000ED97A /* TDForpwdcodeRequest.m in Sources */,
 				5C3A8F931C9988AB00B4388B /* MDHeadImageCell.m in Sources */,
 				5C9F3E151C9685A000756229 /* main.m in Sources */,
 				5C6C9F831CFD8339000ED97A /* JQMusic2Animation.m in Sources */,
 				5C3A8FB41C9A75FB00B4388B /* YZFlowLayout.m in Sources */,
 				5C6C9F7E1CFD8339000ED97A /* JQBounceSpot2Animation.m in Sources */,
+				5C6CA0341CFFE3AC000ED97A /* TDRegisterRequest.m in Sources */,
 				5C3D43AB1CF7ECD2006F2DFC /* UUAVAudioPlayer.m in Sources */,
 				5CF67A251CA8D7ED004C8345 /* MDFindPassword.m in Sources */,
 				5C9F3F3E1C96A5FD00756229 /* MDApprenticeViewController.m in Sources */,
@@ -3331,6 +3661,7 @@
 				5C7267801CED8B820019F37C /* ArticleMoudleController.m in Sources */,
 				5C9F3F161C969CF400756229 /* AMTools.m in Sources */,
 				5C9F3E8E1C9699E400756229 /* AMLayoutCellTableViewController.m in Sources */,
+				5C6CA0281CFFDCFC000ED97A /* TDPageinfoRequest.m in Sources */,
 				5C3A8FB11C9A75FB00B4388B /* UIView+Frame.m in Sources */,
 				5C3A8FB01C9A75FB00B4388B /* FullChildViewController.m in Sources */,
 				5C9F3FC81C98228400756229 /* MDBaseCollectionViewController.m in Sources */,
@@ -3338,9 +3669,11 @@
 				5C0D19921CA91AEF0039F7E5 /* MDMeCollectionCell.m in Sources */,
 				5C9F3F5C1C96A96100756229 /* Reachability.m in Sources */,
 				5C711A511CA0F4DB00CA1A31 /* NJKWebViewProgressView.m in Sources */,
+				5C6CA04C1CFFFD6E000ED97A /* TDTicketinfoRequest.m in Sources */,
 				5C3A8FC91C9A9A8700B4388B /* MDNewsViewController.m in Sources */,
 				5C3D43781CF7EC53006F2DFC /* NSDate+Utils.m in Sources */,
 				5C9F3FB91C97D4BF00756229 /* MDBeautifulPicViewControlleCell.m in Sources */,
+				5C6CA0401CFFF93D000ED97A /* TDShareconfigRequest.m in Sources */,
 				5CFE37E11CABA900007A48BE /* MDMotifyUserInfoRequest.m in Sources */,
 				5C3D43971CF7EC53006F2DFC /* Mp3Recorder.m in Sources */,
 				5C3E46561CF423EC002B7FF4 /* SelectedView.m in Sources */,
@@ -3349,8 +3682,10 @@
 				5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */,
 				5C711A3D1CA0291F00CA1A31 /* MDTourViewController.m in Sources */,
 				5C3A8F821C996D5C00B4388B /* MDSettingViewController.m in Sources */,
+				5C6CA03A1CFFF611000ED97A /* TDRevrankRequest.m in Sources */,
 				5C7119E31C9F924C00CA1A31 /* SelectView.m in Sources */,
 				5CFE38311CAD0643007A48BE /* MDModifyPassword.m in Sources */,
+				5C6CA02B1CFFDE78000ED97A /* TDProfileRequest.m in Sources */,
 				5C9F3FCB1C983C6200756229 /* MDMeCollectionViewController.m in Sources */,
 				5C711A6C1CA11FB500CA1A31 /* MDGetMemberInfoRequest.m in Sources */,
 				5C711A1A1CA0226F00CA1A31 /* MDTechnologyViewController.m in Sources */,
@@ -3360,6 +3695,7 @@
 				5C7E748D1CEC530C0086879F /* QZoneActivity.m in Sources */,
 				5C9F3E8D1C9699E400756229 /* AMBaseTableTableViewController.m in Sources */,
 				5C3D43B21CF7ECD2006F2DFC /* UUProgressHUD.m in Sources */,
+				5C6CA0221CFFD2F5000ED97A /* TDLoginRequest.m in Sources */,
 				5C3A906E1C9B9E8700B4388B /* MDLoginViewController.m in Sources */,
 				5C711A771CA1349D00CA1A31 /* MDPupilRequest.m in Sources */,
 				5C3A8F971C998DB300B4388B /* AMUserActionSelectView.m in Sources */,
