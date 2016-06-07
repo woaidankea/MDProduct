@@ -22,6 +22,7 @@
 #import "AMRequestHelper.h"
 #import "AFNetworking.h"
 #import "MDMotifyUserInfoRequest.h"
+#import "MMTService.h"
 
 @interface MDInfomationViewController ()<UIImagePickerControllerDelegate,SelectPictureDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MDInfomationDelegate>
 {
@@ -32,6 +33,7 @@
      NSArray *industry;
      NSArray *colors;
      MDMemberInterestModel  *requestModel;
+     NSMutableArray *headerImage;
 }
 @end
 
@@ -40,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"完善资料";
+    headerImage = [NSMutableArray new];
     income = [NSArray arrayWithObjects:@"1000以下", @"3000以下",@"5000以下",@"8000以下",@"10000以下",@"10000以上",@"20000以上",nil];
     degree = [NSArray arrayWithObjects:@"初中", @"高中",@"专科",@"本科",@"硕士",@"博士",nil];
     industry = [NSArray arrayWithObjects:@"运输", @"互联网",@"金融",@"服务",@"制造",@"文化传媒",@"娱乐",@"学生族",nil];
@@ -531,11 +534,13 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)inf{
     UIImage *image=inf[@"UIImagePickerControllerEditedImage"];
     UIImage *newImage=[AMTools compressImageWithImage:image];
-    __weak MDInfomationViewController *weakSelf =self;
-    [self dismissViewControllerAnimated:NO completion:^{
-        [weakSelf submitHeadPicture:newImage];
-        //       [weakSelf.dataTable reloadData];
-    }];
+    NSData *data = UIImageJPEGRepresentation(newImage, 1);
+    [headerImage  addObject:data];
+//    __weak MDInfomationViewController *weakSelf =self;
+//    [self dismissViewControllerAnimated:NO completion:^{
+//        [weakSelf submitHeadPicture:newImage];
+//        //       [weakSelf.dataTable reloadData];
+//    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -670,33 +675,37 @@
 
 - (IBAction)SaveMotify:(id)sender {
     
-    if([self checkChange]){
-        __weak MDInfomationViewController *weakSelf =self;
+//    if([self checkChange]){
+//        __weak MDInfomationViewController *weakSelf =self;
+//        
+//        NSMutableDictionary *params = [NSMutableDictionary new];
+//        [params setValue:memberModel.birthday forKey:@"birthday"];
+//        [params setValue:memberModel.education forKey:@"education"];
+//        [params setValue:memberModel.vocation forKey:@"vocation"];
+//        [params setValue:memberModel.nickname forKey:@"nickname"];
+//        [params setValue:memberModel.income forKey:@"income"];
+//        [params setValue:memberModel.sex forKey:@"sex"];
+//        
+//        
+//        
+//        MDMotifyUserInfoRequest *request = [[MDMotifyUserInfoRequest alloc]initWithModel:params success:^(AMBaseRequest *request) {
+//            
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//            
+//            
+//        } failure:^(AMBaseRequest *request) {
+//             [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+//        }];
+//        
+//        
+//        [request start];
+//    
+//    }
+    [[MMTService shareInstance]postProfileWithsex:memberModel.sex birthday:memberModel.birthday education:memberModel.education vocation:memberModel.vocation income:memberModel.income images:headerImage Success:^(id responseObject) {
         
-        NSMutableDictionary *params = [NSMutableDictionary new];
-        [params setValue:memberModel.birthday forKey:@"birthday"];
-        [params setValue:memberModel.education forKey:@"education"];
-        [params setValue:memberModel.vocation forKey:@"vocation"];
-        [params setValue:memberModel.nickname forKey:@"nickname"];
-        [params setValue:memberModel.income forKey:@"income"];
-        [params setValue:memberModel.sex forKey:@"sex"];
+    } failure:^(NSError *error) {
         
-        
-        
-        MDMotifyUserInfoRequest *request = [[MDMotifyUserInfoRequest alloc]initWithModel:params success:^(AMBaseRequest *request) {
-            
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-            
-            
-        } failure:^(AMBaseRequest *request) {
-             [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-        }];
-        
-        
-        [request start];
-    
-    }
-    
+    }];
     
     
 }

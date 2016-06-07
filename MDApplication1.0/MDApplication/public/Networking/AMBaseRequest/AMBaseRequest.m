@@ -57,12 +57,13 @@
     
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a=[dat timeIntervalSince1970];
-    NSString *timeString = [NSString stringWithFormat:@"%f", a];//转为字符型
-    [actionInfo setValue:timeString forKey:@"time"];
+    NSString *timeString = [NSString stringWithFormat:@"%f",a];//转为字符型
+    NSString *tenTime = [timeString substringWithRange:NSMakeRange(0,10)];
+    [actionInfo setValue:tenTime forKey:@"time"];
     NSString *signatureParam = [self generateSignatureParams:actionInfo];
-          [actionInfo setValue:POST_VALUE(signatureParam) forKey:@"sign"];
+    [actionInfo setValue:POST_VALUE(signatureParam) forKey:@"sign"];
     if(ServerJieKu){
-          [actionInfo setValue: USER_DEFAULT_KEY(@"token") forKey:@"token"];
+          [actionInfo setValue: POST_VALUE(USER_DEFAULT_KEY(@"token")) forKey:@"token"];
     }else {
           [actionInfo setValue:@"9.2" forKey:@"OSVersion"];  //真机时修改
           [actionInfo setValue:@"100" forKey:@"dtu"];
@@ -74,6 +75,13 @@
     _parameters=[NSMutableDictionary dictionaryWithDictionary:actionInfo];
 
 }
+
+-(void)setHeaderInfo:(NSDictionary *)headerInfo{
+    
+     _headers = [NSMutableDictionary dictionaryWithDictionary:headerInfo];
+    
+}
+
 
 -(void)processResponse:(NSDictionary *)responseDictionary{
     _response=[[AMBaseResponse alloc]init];
@@ -140,8 +148,13 @@
     [manager GET:url parameters:_parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //     NSString *aString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary * result=responseObject;
+        NSLog(@"%@",result);
         [self processResponse:result];
         if([_response isSucceed]){
+            if(_onSuccess!=nil){
+                _onSuccess(self);
+            }
+        }else if(self.response.statusCode == 1009){
             if(_onSuccess!=nil){
                 _onSuccess(self);
             }
@@ -155,7 +168,8 @@
                 _onFailure(self);
             }
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self processError:error];
         if(_onFailure!=nil){
             _onFailure(self);

@@ -7,7 +7,8 @@
 //
 
 #import "TDRegisterRequest.h"
-
+#import "UtilsMacro.h"
+#import "MDDeviceInfo.h"
 @implementation TDRegisterRequest
 
 - (id)initRegisterWithPhone:(NSString *)phone
@@ -25,8 +26,11 @@
         [dict setValue:POST_VALUE(password) forKey:@"password"];
         [dict setValue:POST_VALUE(code) forKey:@"code"];
         [dict setValue:POST_VALUE(inviter) forKey:@"inviter"];
-        [dict setValue:POST_VALUE(device) forKey:@"device"];
+        [dict setObject:@"a,a,9.0.1" forKey:@"hwinfos"];
         [self setActionInfo:dict];
+//          NSMutableDictionary *headerInfo = [NSMutableDictionary dictionary];
+//        [headerInfo setObject:[MDDeviceInfo systemInfoData] forKey:@"hwinfos"];
+//        [self setHeaderInfo:headerInfo];
     }
     return self;
 }
@@ -36,7 +40,7 @@
 }
 
 - (NSString*)getMethod{
-    return @"GET";
+    return @"POST";
 }
 - (void)processResponse:(NSDictionary *)responseDictionary{
     [super processResponse:responseDictionary];

@@ -26,7 +26,7 @@
 }
 - (NSString *)getURL{
 
-    return kRevrank;
+    return kConfirCode;
 }
 
 - (NSString*)getMethod{

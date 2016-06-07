@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "MDLoginRequest.h"
 #import "MDUserInfoModel.h"
-
+#import "TDLoginRequest.h"
 @interface MDLoginViewController ()
 
 @end
@@ -97,28 +97,51 @@
     
     [self setBusyIndicatorVisible:YES];
     __weak MDLoginViewController *weakSelf =self;
-    MDLoginRequest *request=[[MDLoginRequest alloc]initWithTelephone:userName password:password success:^(AMBaseRequest *request) {
+//    MDLoginRequest *request=[[MDLoginRequest alloc]initWithTelephone:userName password:password success:^(AMBaseRequest *request) {
+//        [self setBusyIndicatorVisible:NO];
+//        MDUserInfoModel *model =[MDUserInfoModel mj_objectWithKeyValues:request.responseObject];
+//            [USER_DEFAULT setObject:model.token forKey:@"token"];
+//            [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
+//            [USER_DEFAULT synchronize];
+//             NSLog(@"111");
+//         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+//        
+//        
+//    } failure:^(AMBaseRequest *request) {
+//        [self setBusyIndicatorVisible:NO];
+////        if(request.response.statusCode==300){
+////                   }
+////        else{
+//        
+//        
+//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+////        }
+//    }];
+//    
+//    [request start];
+    
+    
+    TDLoginRequest *request = [[TDLoginRequest alloc]initWithTelephone:userName password:password success:^(AMBaseRequest *request) {
         [self setBusyIndicatorVisible:NO];
-        MDUserInfoModel *model =[MDUserInfoModel mj_objectWithKeyValues:request.responseObject];
-            [USER_DEFAULT setObject:model.token forKey:@"token"];
-            [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
-            [USER_DEFAULT synchronize];
-             NSLog(@"111");
-         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
-        
-        
+                MDUserInfoModel *model =[MDUserInfoModel mj_objectWithKeyValues:request.responseObject];
+                    [USER_DEFAULT setObject:model.token forKey:@"token"];
+                    [USER_DEFAULT setObject:model.memberId forKey:@"id"];
+                    [USER_DEFAULT synchronize];
+                     NSLog(@"111");
+                 [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+
     } failure:^(AMBaseRequest *request) {
         [self setBusyIndicatorVisible:NO];
-//        if(request.response.statusCode==300){
-//                   }
-//        else{
+        //        if(request.response.statusCode==300){
+        //                   }
+        //        else{
         
         
-            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-//        }
+                    [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+        //        }
+
     }];
-    
-    [request start];
+      [request start];
 
 }
 

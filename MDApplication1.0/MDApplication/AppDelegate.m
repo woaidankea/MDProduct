@@ -393,10 +393,15 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
             else{
                 
                 if(asIM.advertisingTrackingEnabled){
+                    
+                    [USERDEFAULTS setObject:[asIM.advertisingIdentifier UUIDString] forKey:@"idfa"];
                     return [asIM.advertisingIdentifier UUIDString];
                 }
                 else{
+                    [USERDEFAULTS setObject:[asIM.advertisingIdentifier UUIDString] forKey:@"idfa"];
                     return [asIM.advertisingIdentifier UUIDString];
+                    
+                    
                 }
             }
         }

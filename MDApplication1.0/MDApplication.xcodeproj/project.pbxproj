@@ -259,6 +259,9 @@
 		5C6CA04F1CFFFE15000ED97A /* TDUserearningsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA04E1CFFFE15000ED97A /* TDUserearningsRequest.m */; };
 		5C6CA0521CFFFF01000ED97A /* TDUsersignRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0511CFFFF01000ED97A /* TDUsersignRequest.m */; };
 		5C6CA0551CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0541CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m */; };
+		5C6CA0581D003027000ED97A /* MDDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0571D003027000ED97A /* MDDeviceInfo.m */; };
+		5C6CA0671D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0661D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.m */; };
+		5C6CA0871D056AEC000ED97A /* MMTService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6CA0851D056AEC000ED97A /* MMTService.m */; };
 		5C7119E31C9F924C00CA1A31 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119E21C9F924C00CA1A31 /* SelectView.m */; };
 		5C7119E51C9F925900CA1A31 /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7119E41C9F925900CA1A31 /* SelectView.xib */; };
 		5C7119EB1C9FC2FE00CA1A31 /* MDNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7119EA1C9FC2FE00CA1A31 /* MDNewsRequest.m */; };
@@ -841,6 +844,13 @@
 		5C6CA0511CFFFF01000ED97A /* TDUsersignRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUsersignRequest.m; sourceTree = "<group>"; };
 		5C6CA0531CFFFFB8000ED97A /* TDUsrforgotpwdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUsrforgotpwdRequest.h; sourceTree = "<group>"; };
 		5C6CA0541CFFFFB8000ED97A /* TDUsrforgotpwdRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUsrforgotpwdRequest.m; sourceTree = "<group>"; };
+		5C6CA0561D003027000ED97A /* MDDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDeviceInfo.h; sourceTree = "<group>"; };
+		5C6CA0571D003027000ED97A /* MDDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceInfo.m; sourceTree = "<group>"; };
+		5C6CA0651D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+UIWindow_SecondConfirm.h"; sourceTree = "<group>"; };
+		5C6CA0661D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+UIWindow_SecondConfirm.m"; sourceTree = "<group>"; };
+		5C6CA0841D056AEC000ED97A /* MMTService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTService.h; sourceTree = "<group>"; };
+		5C6CA0851D056AEC000ED97A /* MMTService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTService.m; sourceTree = "<group>"; };
+		5C6CA0861D056AEC000ED97A /* ServiceConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceConstant.h; sourceTree = "<group>"; };
 		5C7119E11C9F924C00CA1A31 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
 		5C7119E21C9F924C00CA1A31 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
 		5C7119E41C9F925900CA1A31 /* SelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
@@ -1332,6 +1342,8 @@
 				5C73A6F61CC0AE2A000CB453 /* 5.png */,
 				5C1AF09C1CB4A90E00719F72 /* RewardInfo.h */,
 				5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */,
+				5C6CA0651D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.h */,
+				5C6CA0661D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.m */,
 				5C1AF09E1CB4A90E00719F72 /* UIWindow+RedPacket.h */,
 				5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */,
 				5CE3078E1CC75D500034F2A2 /* UIWindow+ShareSucAlert.h */,
@@ -2055,6 +2067,16 @@
 			path = 2.0UsrforgotpwdRequest;
 			sourceTree = "<group>";
 		};
+		5C6CA0831D056AEC000ED97A /* postService */ = {
+			isa = PBXGroup;
+			children = (
+				5C6CA0841D056AEC000ED97A /* MMTService.h */,
+				5C6CA0851D056AEC000ED97A /* MMTService.m */,
+				5C6CA0861D056AEC000ED97A /* ServiceConstant.h */,
+			);
+			path = postService;
+			sourceTree = "<group>";
+		};
 		5C7119E81C9FC2E400CA1A31 /* NewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -2507,7 +2529,6 @@
 				5C9F3E7C1C96963400756229 /* tools */,
 				5C9F3E6E1C96951000756229 /* thirdlib */,
 				5C9F3E671C96926000756229 /* apprentice */,
-				5C9F3E681C96926000756229 /* beautifulPic */,
 				5C9F3E691C96926000756229 /* interestingArticle */,
 				5C9F3E6A1C96926000756229 /* me */,
 				5C9F3E6B1C96926000756229 /* public */,
@@ -2517,6 +2538,7 @@
 				5C9F3E171C9685A000756229 /* AppDelegate.m */,
 				5C9F3E791C96954C00756229 /* MainViewController.h */,
 				5C9F3E7A1C96954C00756229 /* MainViewController.m */,
+				5C9F3E681C96926000756229 /* beautifulPic */,
 				5C9F3E1F1C9685A000756229 /* Main.storyboard */,
 				5C9F3E221C9685A000756229 /* Assets.xcassets */,
 				5C9F3E271C9685A000756229 /* Info.plist */,
@@ -2740,6 +2762,8 @@
 				5C9F3E7D1C96968100756229 /* MDPublicConfig.h */,
 				5C3A90681C9B948400B4388B /* DXBarCode.h */,
 				5C3A90691C9B948400B4388B /* DXBarCode.m */,
+				5C6CA0561D003027000ED97A /* MDDeviceInfo.h */,
+				5C6CA0571D003027000ED97A /* MDDeviceInfo.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -2780,6 +2804,7 @@
 		5C9F3E7F1C9699E400756229 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				5C6CA0831D056AEC000ED97A /* postService */,
 				5C9F3F561C96A8AB00756229 /* FileManager */,
 				5C9F3EF71C969C6100756229 /* FDTemplateLayoutCell */,
 				5C9F3EF11C969BDF00756229 /* Macro */,
@@ -3644,6 +3669,7 @@
 				5CF67A221CA8D302004C8345 /* MDCheckVertifyRequest.m in Sources */,
 				5C711A291CA0242300CA1A31 /* MDEncyclopediasViewController.m in Sources */,
 				5C3A8FB71C9A768200B4388B /* YZXiMaViewController.m in Sources */,
+				5C6CA0581D003027000ED97A /* MDDeviceInfo.m in Sources */,
 				5C72678A1CED97870019F37C /* TabMenuModel.m in Sources */,
 				5C3D43B11CF7ECD2006F2DFC /* UUMessageFrame.m in Sources */,
 				5C9F3EDC1C969ABC00756229 /* AMResponse.m in Sources */,
@@ -3687,6 +3713,7 @@
 				5CFE38311CAD0643007A48BE /* MDModifyPassword.m in Sources */,
 				5C6CA02B1CFFDE78000ED97A /* TDProfileRequest.m in Sources */,
 				5C9F3FCB1C983C6200756229 /* MDMeCollectionViewController.m in Sources */,
+				5C6CA0871D056AEC000ED97A /* MMTService.m in Sources */,
 				5C711A6C1CA11FB500CA1A31 /* MDGetMemberInfoRequest.m in Sources */,
 				5C711A1A1CA0226F00CA1A31 /* MDTechnologyViewController.m in Sources */,
 				5C711A5E1CA109CE00CA1A31 /* MDUserInfoModel.m in Sources */,
@@ -3707,6 +3734,7 @@
 				5C7119F51CA001C100CA1A31 /* MDBeautifulDetailViewController.m in Sources */,
 				5C7119EB1C9FC2FE00CA1A31 /* MDNewsRequest.m in Sources */,
 				5C9F3F501C96A84400756229 /* AMHTTPRequestSerializer.m in Sources */,
+				5C6CA0671D017FB5000ED97A /* UIWindow+UIWindow_SecondConfirm.m in Sources */,
 				5C6C9F7F1CFD8339000ED97A /* JQCyclingCycleAnimation.m in Sources */,
 				5C3A90731C9BA75900B4388B /* CALayer+Additions.m in Sources */,
 			);

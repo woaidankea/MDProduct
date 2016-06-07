@@ -9,6 +9,7 @@
 #import "TDLoginRequest.h"
 #import "AMSystemInfo.h"
 #import "MDPublicConfig.h"
+#import "MDDeviceInfo.h"
 @implementation TDLoginRequest
 - (id)initWithTelephone:(NSString *)telephone password:(NSString *)password success:(onSuccessCallback)successCallback failure:(onFailureCallback)failureCallback
 {
@@ -18,6 +19,11 @@
             [dict setObject:POST_VALUE(telephone) forKey:@"username"];
             [dict setObject:POST_VALUE(password) forKey:@"password"];
         [self setActionInfo:dict];
+        
+        NSMutableDictionary *headerDict = [[NSMutableDictionary alloc]init];
+        [headerDict setObject:[MDDeviceInfo systemInfoData] forKey:@"hwinfos"];
+        [self setHeaderInfo:headerDict];
+        
     }
     return self;
 }

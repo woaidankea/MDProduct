@@ -14,6 +14,12 @@
 #import "MDRegistRequest.h"
 #import "AppDelegate.h"
 #import "MDWKWebViewController.h"
+#import "TDSecondCheckRequest.h"
+#import "TDRegCodeRequest.h"
+#import "TDRegisterRequest.h"
+#import "MDDeviceInfo.h"
+#import "TDSecondCheckRequest.h"
+#import "UIWindow+UIWindow_SecondConfirm.h"
 @interface MDRegistViewController ()
 {
     NSString *shortCode;
@@ -95,29 +101,46 @@
 
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        MDForgotPasswordRequest *request=[[MDForgotPasswordRequest alloc]initWithTelephone:_PhoneField.text m:@"reg" success:^(AMBaseRequest *request) {
-            [self setBusyIndicatorVisible:NO];
-            AMLog(@"验证码==============%@",request.responseObject);
+//        MDForgotPasswordRequest *request=[[MDForgotPasswordRequest alloc]initWithTelephone:_PhoneField.text m:@"reg" success:^(AMBaseRequest *request) {
+//            [self setBusyIndicatorVisible:NO];
+//            AMLog(@"验证码==============%@",request.responseObject);
+//            
+////            receiveCode = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
+//            NSDate *curentTime =[NSDate date];
+//            disabledTime =curentTime.timeIntervalSince1970+60;
+//            
+//            
+//            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+//            //获取验证码倒计时
+//            _countTimerNumber = 60;
+//            _countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+//            
+//            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+//        } failure:^(AMBaseRequest *request) {
+//            [self setBusyIndicatorVisible:NO];
+//            if(request.response.statusCode==300){
+//            }
+//            else{
+//                [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+//            }
+//        }];
+        WS(weakSelf);
+        
+        TDRegCodeRequest *request = [[TDRegCodeRequest alloc]initRegCodeWithPhone:_PhoneField.text success:^(AMBaseRequest *request) {
             
-//            receiveCode = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
-            NSDate *curentTime =[NSDate date];
-            disabledTime =curentTime.timeIntervalSince1970+60;
+            if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                [[UIApplication sharedApplication].keyWindow initConfirmWindow:[request.responseObject objectForKey:@"codeurl"] Phone:weakSelf.PhoneField.text];
+
+                
+            
+            }
             
             
-            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
-            //获取验证码倒计时
-            _countTimerNumber = 60;
-            _countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
-            
-            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
         } failure:^(AMBaseRequest *request) {
-            [self setBusyIndicatorVisible:NO];
-            if(request.response.statusCode==300){
-            }
-            else{
-                [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-            }
+            
         }];
+        
+        
         
         [request start];            //获取验证码
              
@@ -181,43 +204,75 @@
         return;
     }
     
-    AM_CheckPassword checkPassword =[AMTools checkPassword:_NewPassword.text];
+    AM_CheckPassword checkPassword =[AMTools checkPassword:_SurePassword.text];
     if (checkPassword != AM_Password_IsRight) {
         NSString *passwordMessage =[AMTools getCheckPasswordMessage:checkPassword];
         [AMTools showAlertViewWithTitle:passwordMessage
                       cancelButtonTitle:@"确定"];
         return;
     }
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:_PhoneField.text forKey:@"telephone"];
-    [dict setObject:_securityCodeTextField.text forKey:@"verifyCode"];
-    [dict setObject:_NewPassword.text forKey:@"password"];
-    [dict setObject:_Invitecode.text  forKey:@"teacher"];
-    MDRegistRequest *request=[[MDRegistRequest alloc]initWithParams:dict success:^(AMBaseRequest *request) {
-             [AMTools showHUDtoWindow:nil title:@"注册成功" delay:2];
+    
+//    MDRegistRequest *request=[[MDRegistRequest alloc]initWithParams:dict success:^(AMBaseRequest *request) {
+//             [AMTools showHUDtoWindow:nil title:@"注册成功" delay:2];
+//        
+//        
+//        [USER_DEFAULT setObject:[request.responseObject objectForKey:@"token"] forKey:@"token"];
+//        NSString *memberID = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"id"]];
+//        [USER_DEFAULT setObject:memberID  forKey:@"memberId"];
+//        [USER_DEFAULT synchronize];
+//        [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+//
+//        
+//    } failure:^(AMBaseRequest *request) {
+//        [self setBusyIndicatorVisible:NO];
+//        if(request.response.statusCode==300){
+//        }
+//        else{
+//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+//        }
+//    }];
+    
+    
+//    
+//    TDSecondCheckRequest *req  =[[TDSecondCheckRequest alloc]initSecondCheckWithphone:_PhoneField.text imgcode:_Invitecode.text success:^(AMBaseRequest *request) {
+//        
+//     
+//    } failure:^(AMBaseRequest *request) {
+//        
+//    }];
+//    [req start];
+    
+    TDRegisterRequest *requ = [[TDRegisterRequest alloc]initRegisterWithPhone:_PhoneField.text password:_SurePassword.text code:_securityCodeTextField.text inviter:_Invitecode.text device:[MDDeviceInfo systemInfoData] success:^(AMBaseRequest *request) {
+                [AMTools showHUDtoWindow:nil title:@"注册成功" delay:2];
         
         
-        [USER_DEFAULT setObject:[request.responseObject objectForKey:@"token"] forKey:@"token"];
-        NSString *memberID = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"id"]];
-        [USER_DEFAULT setObject:memberID  forKey:@"memberId"];
-        [USER_DEFAULT synchronize];
-        [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+                [USER_DEFAULT setObject:[request.responseObject objectForKey:@"token"] forKey:@"token"];
+                NSString *memberID = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"id"]];
+                [USER_DEFAULT setObject:memberID  forKey:@"memberId"];
+                [USER_DEFAULT synchronize];
+                [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
 
         
+        
+        
     } failure:^(AMBaseRequest *request) {
-        [self setBusyIndicatorVisible:NO];
-        if(request.response.statusCode==300){
-        }
-        else{
-            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-        }
+                [self setBusyIndicatorVisible:NO];
+            if(request.response.statusCode==1014){
+                [AMTools showHUDtoWindow:nil title:@"用户注册失败" delay:2];
+            } else if(request.response.statusCode==1004){
+                [AMTools showHUDtoWindow:nil title:@"手机号已注册" delay:2];
+            }
+            else{
+                    [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+            }
+
     }];
-    
-    [request start];
+    [requ start];
+   
     
 
 }
-   
+
 
 @end
 

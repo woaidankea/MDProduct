@@ -46,9 +46,9 @@
     [self addHeaderRefresh];
     [self addFooterRefresh];
     
-    [self.tableView.mj_header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing]
+;
     
-
     // Do any additional setup after loading the view.
 }
 - (void)HTTPLocationRequest:(MD_Request_Type)pageType{
