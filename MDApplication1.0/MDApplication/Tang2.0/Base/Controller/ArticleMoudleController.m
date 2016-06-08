@@ -14,6 +14,7 @@
 #import "UIButton+CenterImageAndTitle.h"
 #import "RewardInfo.h"
 #import "UIWindow+ShareSucAlert.h"
+#import "TDColclassRequest.h"
 @interface ArticleMoudleController ()
 
 @end
@@ -87,15 +88,22 @@
 - (void)getContent {
  
   
-    //格式化成json数据
-    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
-    if(jsonObject){
-       
-        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
-        
+//    //格式化成json数据
+//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
+//    if(jsonObject){
+//       
+//        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
+//        
+//        [self setViewControllers:contentItems];
+//    }
+    TDColclassRequest *request = [[TDColclassRequest alloc]initColclassWithModuleid:_moduleId success:^(AMBaseRequest *request) {
+        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:request.responseObject];
         [self setViewControllers:contentItems];
-    }
-
+        } failure:^(AMBaseRequest *request) {
+        
+        }];
+    
+        [request start];
     
 }
 

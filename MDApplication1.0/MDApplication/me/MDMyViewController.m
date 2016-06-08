@@ -23,6 +23,7 @@
 #import "RewardInfo.h"
 #import "UIWindow+RedPacket.h"
 #import "RootViewController.h"
+#import "TDPageinfoRequest.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -211,16 +212,26 @@
     
     
     //格式化成json数据
-    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"my"];
-    if(jsonObject){
+//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"my"];
+//    if(jsonObject){
+//        
+//        _myModel = [MyModel mj_objectWithKeyValues:[jsonObject objectForKey:@"data"]];
+//        
+////        [self setViewControllers:contentItems];
+//    }
+////    [NSThread sleepForTimeInterval:2];
+//     [self.collectionview.mj_header endRefreshing];
+    WS(weakSelf);
+    TDPageinfoRequest *request = [[TDPageinfoRequest alloc]initWithMouduleId:self.moudleId success:^(AMBaseRequest *request) {
+        _myModel = [MyModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"data"]];
+        [weakSelf.collectionview reloadData];
+        [weakSelf.collectionview.mj_header endRefreshing];
+        } failure:^(AMBaseRequest *request) {
         
-        _myModel = [MyModel mj_objectWithKeyValues:[jsonObject objectForKey:@"data"]];
-        
-//        [self setViewControllers:contentItems];
-    }
-//    [NSThread sleepForTimeInterval:2];
-     [self.collectionview.mj_header endRefreshing];
-    
+        }];
+                                
+                              
+                                  [request start];
     
 //    __weak MDMeCollectionViewController *weakSelf =self;
 //    MDGetMemberInfoRequest *request = [[MDGetMemberInfoRequest alloc]initWithToken:USER_DEFAULT_KEY(@"token")success:^(AMBaseRequest *request) {

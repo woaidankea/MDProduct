@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/login/MDFindNextViewController.m"
-            timestampString = "483342799.385735"
+            timestampString = "486960447.033111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-NextBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -280,12 +280,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindsecondViewController.m"
-                  timestampString = "486900601.491974"
+                  timestampString = "486989843.273339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "1150">
+                  offsetFromSymbolStart = "1172">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -295,12 +295,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindsecondViewController.m"
-                  timestampString = "486900601.492095"
+                  timestampString = "486989843.273665"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
                   endingLineNumber = "61"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -328,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
+            timestampString = "486984596.954854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "622"
-            endingLineNumber = "622"
+            startingLineNumber = "633"
+            endingLineNumber = "633"
             landmarkName = "-uploadImageWithUrl"
             landmarkType = "5">
             <Locations>
@@ -340,16 +340,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__48-[MDInfomationViewController uploadImageWithUrl]_block_invoke.477"
+                  symbolName = "__48-[MDInfomationViewController uploadImageWithUrl]_block_invoke.496"
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/me/MDInfomationViewController.m"
-                  timestampString = "486900601.493809"
+                  timestampString = "486989843.275762"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "623"
-                  endingLineNumber = "623"
-                  offsetFromSymbolStart = "77">
+                  startingLineNumber = "634"
+                  endingLineNumber = "634"
+                  offsetFromSymbolStart = "80">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -359,12 +359,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/me/MDInfomationViewController.m"
-                  timestampString = "486900601.493947"
+                  timestampString = "486989843.275885"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "625"
-                  endingLineNumber = "625"
-                  offsetFromSymbolStart = "83">
+                  startingLineNumber = "636"
+                  endingLineNumber = "636"
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -376,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
+            timestampString = "486984596.954854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "624"
-            endingLineNumber = "624"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "-uploadImageWithUrl"
             landmarkType = "5">
          </BreakpointContent>
@@ -392,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
+            timestampString = "486984596.954854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
             landmarkName = "-checkChange"
             landmarkType = "5">
          </BreakpointContent>
@@ -487,86 +487,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDApplication/login/MDFindPasswordViewController.m"
-            timestampString = "482415629.861994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-NextBtnClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/login/MDFindPasswordViewController.m"
-            timestampString = "482415629.861994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-getSecruityBtnClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/login/MDFindPasswordViewController.m"
-            timestampString = "482415629.861994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-getSecruityBtnClick:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MDFindPasswordViewController getSecruityBtnClick:]"
-                  moduleName = "MDApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindPasswordViewController.m"
-                  timestampString = "486900601.50254"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "416">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__52-[MDFindPasswordViewController getSecruityBtnClick:]_block_invoke"
-                  moduleName = "MDApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindPasswordViewController.m"
-                  timestampString = "486900601.502655"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MDApplication/public/Networking/MDRegistRequest/MDRegistRequest.m"
             timestampString = "481106564.083776"
             startingColumnNumber = "9223372036854775807"
@@ -632,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
+            timestampString = "486984596.954854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -728,12 +648,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "486900601.512269"
+                  timestampString = "486989843.290192"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "405"
                   endingLineNumber = "405"
-                  offsetFromSymbolStart = "612">
+                  offsetFromSymbolStart = "596">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -743,12 +663,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "486900601.512558"
+                  timestampString = "486989843.29058"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "412"
                   endingLineNumber = "412"
-                  offsetFromSymbolStart = "52">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -958,22 +878,6 @@
             startingLineNumber = "55"
             endingLineNumber = "55"
             landmarkName = "-HTTPLocationRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "482380302.679025"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1211"
-            endingLineNumber = "1211"
-            landmarkName = "-readData:intoBuffer:maxLength:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1287,22 +1191,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDApplication/login/MDFindNextViewController.m"
-            timestampString = "483342582.665753"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-NextBtnClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MDApplication/school/MDWKWebViewController.m"
             timestampString = "486382731.938099"
             startingColumnNumber = "9223372036854775807"
@@ -1559,54 +1447,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDApplication/Tang2.0/Base/Controller/ArticleMoudleController.m"
-            timestampString = "486030323.878959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-getContent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/me/MDMyViewController.m"
-            timestampString = "486272308.766425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "-getContent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/me/MDMyViewController.m"
-            timestampString = "486272308.766425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-getContent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MDApplication/Tang2.0/My/View/SelectedView.m"
             timestampString = "485764214.797523"
             startingColumnNumber = "9223372036854775807"
@@ -1656,28 +1496,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
+            timestampString = "486984040.625618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/me/MDInfomationViewController.m"
-            timestampString = "486900507.172817"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-startMemberInterestRequest"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1912,12 +1736,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/interestingArticle/controllers/MDInterestDetailViewController.m"
-                  timestampString = "486900601.5842"
+                  timestampString = "486989843.333698"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "187">
+                  offsetFromSymbolStart = "224">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1927,12 +1751,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/interestingArticle/controllers/MDInterestDetailViewController.m"
-                  timestampString = "486900601.584561"
+                  timestampString = "486989843.333915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "15">
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2008,11 +1832,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/login/MDRegistViewController.m"
-            timestampString = "486870389.132283"
+            timestampString = "486973517.375194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-registerClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2040,11 +1864,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/login/MDRegistViewController.m"
-            timestampString = "486889888.537101"
+            timestampString = "486973517.375194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-registerClick:"
             landmarkType = "5">
             <Locations>
@@ -2056,12 +1880,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "486900601.592487"
+                  timestampString = "486989843.338894"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "1444">
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "1452">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2071,12 +1895,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "486900601.592743"
+                  timestampString = "486989843.339083"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "650">
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "780">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2086,12 +1910,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "486900601.592932"
+                  timestampString = "486989843.339308"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2119,12 +1943,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
-            timestampString = "486871402.261127"
+            timestampString = "486976305.224402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-initConfirmWindow:Phone:"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-initConfirmWindow:Phone:withType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2135,12 +1959,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
-            timestampString = "486872414.438976"
+            timestampString = "486976305.224402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-initConfirmWindow:Phone:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-initConfirmWindow:Phone:withType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2151,11 +1975,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
-            timestampString = "486872414.438976"
+            timestampString = "486976305.224402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-cancelButton"
             landmarkType = "5">
          </BreakpointContent>
@@ -2167,27 +1991,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
-            timestampString = "486872414.438976"
+            timestampString = "486977850.394039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-cancelButton"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
-            timestampString = "486872414.438976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-sureClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -2231,12 +2039,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Networking/AMBaseRequest/AMBaseRequest.m"
-                  timestampString = "486900601.602022"
+                  timestampString = "486989843.344877"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
                   endingLineNumber = "148"
-                  offsetFromSymbolStart = "103">
+                  offsetFromSymbolStart = "120">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2246,12 +2054,12 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Networking/AMBaseRequest/AMBaseRequest.m"
-                  timestampString = "486900601.602348"
+                  timestampString = "486989843.34508"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "148"
                   endingLineNumber = "148"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2318,6 +2126,342 @@
             endingLineNumber = "127"
             landmarkName = "-LoginClick:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/me/MDInfomationViewController.m"
+            timestampString = "486984596.954854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
+            landmarkName = "-SaveMotify:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/me/MDInfomationViewController.m"
+            timestampString = "486984596.954854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
+            landmarkName = "-SaveMotify:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/me/MDInfomationViewController.m"
+            timestampString = "486984596.954854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/public/Help/postService/MMTService.m"
+            timestampString = "486954898.65066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-postProfileWithsex:birthday:education:vocation:income:images:Success:failure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/public/Help/postService/MMTService.m"
+            timestampString = "486956577.090616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-postProfileWithsex:birthday:education:vocation:income:images:Success:failure:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MMTService postProfileWithsex:birthday:education:vocation:income:images:Success:failure:]"
+                  moduleName = "MDApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Help/postService/MMTService.m"
+                  timestampString = "486989843.35112"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "1992">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__91-[MMTService postProfileWithsex:birthday:education:vocation:income:images:Success:failure:]_block_invoke"
+                  moduleName = "MDApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Help/postService/MMTService.m"
+                  timestampString = "486989843.351248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/Tang2.0/Request/2.0ResetpwdRequest/TDResetpwdRequest.m"
+            timestampString = "486960449.169948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-processResponse:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/login/MDFindPasswordViewController.m"
+            timestampString = "486974227.415119"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-getSecruityBtnClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/login/MDRegistViewController.m"
+            timestampString = "486976893.887082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-getSecurityCode:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/Tang2.0/Request/2.0RegCodeRequest/TDRegCodeRequest.m"
+            timestampString = "486976900.49174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-processResponse:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
+            timestampString = "486978365.293964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-cancelButton"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+UIWindow_SecondConfirm.m"
+            timestampString = "486978368.640704"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-cancelButton"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/me/MDInfomationViewController.m"
+            timestampString = "486984040.625618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-startMemberInterestRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/me/MDInfomationViewController.m"
+            timestampString = "486984040.625618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/MainViewController.m"
+            timestampString = "486987870.432061"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/MainViewController.m"
+            timestampString = "486989479.830123"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-setTabbarControllers:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/Tang2.0/Base/Controller/ArticleMoudleController.m"
+            timestampString = "486989728.13894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-getContent"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/Tang2.0/Base/Controller/ArticleMoudleController.m"
+            timestampString = "486989728.960952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-getContent"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ArticleMoudleController getContent]"
+                  moduleName = "MDApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/Tang2.0/Base/Controller/ArticleMoudleController.m"
+                  timestampString = "486989843.359901"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[ArticleMoudleController getContent]_block_invoke"
+                  moduleName = "MDApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/Tang2.0/Base/Controller/ArticleMoudleController.m"
+                  timestampString = "486989843.360067"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -14,6 +14,7 @@
 @property (nonatomic,strong)NSString *phone;
 @property (nonatomic,strong)UITextField *codeField;
 @property (nonatomic,strong)UIImageView *codeImageView;
-- (void)initConfirmWindow:(NSString *) imgUrl Phone:(NSString *)phone;
+@property (nonatomic,strong)NSString *type;
+- (void)initConfirmWindow:(NSString *) imgUrl Phone:(NSString *)phone withType:(NSString *)type;
 
 @end

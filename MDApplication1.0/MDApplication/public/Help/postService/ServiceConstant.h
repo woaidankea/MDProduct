@@ -16,7 +16,7 @@
 //密码重置接口
 #define KForgetUrl  @"http://host:port/"
 
-#define kTransferKey @"ead5de99e3dfe933ef56bd2ff6e08886"
+#define kTransferKey @"&jk!@#$%^&td"
 //企业设备图片下载接口
 #define kEquipImageDownloadUrl @"http://mmt.oztechgroup.com:80/api/equipment/photo"
 //下载企业用户或工程师头像

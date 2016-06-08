@@ -9,6 +9,6 @@
 #import "YZXiMaViewController.h"
 
 @interface ArticleMoudleController : YZXiMaViewController
-
+@property (nonatomic,strong)NSString *moduleId;
 - (void)getContent;
 @end

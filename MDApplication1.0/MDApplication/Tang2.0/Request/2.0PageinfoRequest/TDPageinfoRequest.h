@@ -9,7 +9,8 @@
 #import "AMBaseRequest.h"
 
 @interface TDPageinfoRequest : AMBaseRequest
-- (id)initPagesuccess:(onSuccessCallback)successCallback
+- (id)initWithMouduleId:(NSString *)mouduleId
+           success:(onSuccessCallback)successCallback
                   failure:(onFailureCallback)failureCallback;
 
 

@@ -16,6 +16,7 @@
 #import "myImageView.h"
 #import "UConstants.h"
 #import "TDSecondCheckRequest.h"
+#import "TDCheckforpwdcodeRequest.h"
 #import "UIImageView+WebCache.h"
 
 #define RGBACOLOR(r,g,b,a)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
@@ -31,6 +32,7 @@ static const void *phoneKey = &phoneKey;
 static const void *imgUrlKey = &imgUrlKey;
 static const void *codeFieldKey = &codeFieldKey;
 static const void *codeImageViewKey = &codeImageViewKey;
+static const void *typeKey = &typeKey;
 
 @implementation UIWindow (UIWindow_SecondConfirm)
 
@@ -41,6 +43,14 @@ static const void *codeImageViewKey = &codeImageViewKey;
 @dynamic windowUv;
 @dynamic codeField;
 @dynamic codeImageView;
+- (NSString *)type {
+    return objc_getAssociatedObject(self, typeKey);
+}
+
+- (void)setType:(NSString *)type {
+    objc_setAssociatedObject(self, typeKey, type, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (UIView*)windowUv {
     return objc_getAssociatedObject(self, WindowUvKey);
 }
@@ -75,10 +85,10 @@ static const void *codeImageViewKey = &codeImageViewKey;
 - (void)setCodeImageView:(UIImageView *)codeImageView{
     objc_setAssociatedObject(self, codeImageViewKey, codeImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (void)initConfirmWindow:(NSString *) imgUrl Phone:(NSString *)phone{
+- (void)initConfirmWindow:(NSString *) imgUrl Phone:(NSString *)phone withType:(NSString *)type{
     
     CGFloat ratio = CGRectGetWidth(self.frame)/320;
-   
+    self.type = type;
     self.phone  = phone;
     self.imgUrl = imgUrl;
     self.windowUv = [[UIView alloc] initWithFrame:self.frame];
@@ -131,16 +141,49 @@ static const void *codeImageViewKey = &codeImageViewKey;
 - (void)cancelButton{
     
     WS(ws);
-    TDSecondCheckRequest *req  =[[TDSecondCheckRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
+    if([self.type isEqualToString:@"0"]){
+        TDSecondCheckRequest *req  =[[TDSecondCheckRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
+            
+            
+            if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+               [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
+            }else {
+                
+                ws.windowUv.hidden = YES;
+                ws.windowUv        = nil;
+            
+                [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+            }
+
+            
         
-        ws.windowUv.hidden = YES;
-        ws.windowUv        = nil;
-        
-    } failure:^(AMBaseRequest *request) {
-        
-    }];
-    [req start];
- 
+            
+        } failure:^(AMBaseRequest *request) {
+            
+        }];
+        [req start];
+
+    }else{
+        TDCheckforpwdcodeRequest *req  =[[TDCheckforpwdcodeRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
+            if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
+            }else {
+                
+                ws.windowUv.hidden = YES;
+                ws.windowUv        = nil;
+                
+                [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+            }
+            
+        } failure:^(AMBaseRequest *request) {
+            
+        }];
+        [req start];
+
+    }
+    
+    
+    
 }
 - (void)sureClick{
     

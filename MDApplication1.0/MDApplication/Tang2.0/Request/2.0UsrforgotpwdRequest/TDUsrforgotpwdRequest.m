@@ -29,7 +29,7 @@
 }
 
 - (NSString *)getMethod{
-    return @"GET";
+    return @"POST";
 }
 
 - (NSString *)getURL{

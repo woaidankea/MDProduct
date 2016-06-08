@@ -9,6 +9,7 @@
 #import "MDFindNextViewController.h"
 #import "MDModifyPassword.h"
 #import "AppDelegate.h"
+#import "TDResetpwdRequest.h"
 @interface MDFindNextViewController ()
 
 @end
@@ -63,23 +64,41 @@
     __weak MDFindNextViewController *_weakSelf = self;
     
     __weak UINavigationController *_weakNav = ((AppDelegate *)[UIApplication sharedApplication].delegate).rootController;
-    MDModifyPassword *request=[[MDModifyPassword alloc]initWithOldPassword:_oldPassword.text Newpassword:_surPassword.text success:^(AMBaseRequest *request) {
-        [_weakSelf setBusyIndicatorVisible:NO];
+//    MDModifyPassword *request=[[MDModifyPassword alloc]initWithOldPassword:_oldPassword.text Newpassword:_surPassword.text success:^(AMBaseRequest *request) {
+//        [_weakSelf setBusyIndicatorVisible:NO];
+//        
+//     
+//
+//        
+//        [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+//        
+//           [AMTools showHUDtoView:[UIApplication sharedApplication].keyWindow title:@"修改成功" delay:2];
+//        
+//    } failure:^(AMBaseRequest *request) {
+//        [_weakSelf setBusyIndicatorVisible:NO];
+//        if(request.response.statusCode==300){
+//        }
+//        else{
+//            [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+//        }
+//    }];
+    
+    
+    TDResetpwdRequest *request = [[TDResetpwdRequest alloc]initRegisterWitholdpass:_oldPassword.text newpass:_surPassword.text success:^(AMBaseRequest *request) {
+                [_weakSelf setBusyIndicatorVisible:NO];
         
-     
+        
+        
+        
+                [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+        
+                   [AMTools showHUDtoView:[UIApplication sharedApplication].keyWindow title:@"修改成功" delay:2];
 
-        
-        [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
-        
-           [AMTools showHUDtoView:[UIApplication sharedApplication].keyWindow title:@"修改成功" delay:2];
-        
     } failure:^(AMBaseRequest *request) {
         [_weakSelf setBusyIndicatorVisible:NO];
-        if(request.response.statusCode==300){
-        }
-        else{
-            [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-        }
+        [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+        
+
     }];
     
     [request start];

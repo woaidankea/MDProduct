@@ -29,7 +29,7 @@ static NSString *const BaseAddress = @"http://60.173.8.147/tdapi/";
 
 
 static NSString * const kAppcol = @"Api/Column/appcol"; //获取App Tab
-static NSString * const kCheckforpwdcode = @"Api/User/forpwdcode"; //检查验证码
+static NSString * const kCheckforpwdcode = @"Api/User/checkforpwdcode"; //检查验证码
 static NSString * const kArticle = @"Api/Article/getart";    //获取文章信息
 static NSString * const kColclass = @"Api/Column/colclass";    //获取栏目分类
 static NSString * const kForpwdcode = @"Api/User/forpwdcode";  //忘记密码获取验证码

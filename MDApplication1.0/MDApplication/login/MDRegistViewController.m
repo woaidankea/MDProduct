@@ -129,15 +129,33 @@
         TDRegCodeRequest *request = [[TDRegCodeRequest alloc]initRegCodeWithPhone:_PhoneField.text success:^(AMBaseRequest *request) {
             
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
-                [[UIApplication sharedApplication].keyWindow initConfirmWindow:[request.responseObject objectForKey:@"codeurl"] Phone:weakSelf.PhoneField.text];
+                [[UIApplication sharedApplication].keyWindow initConfirmWindow:[request.responseObject objectForKey:@"codeurl"] Phone:weakSelf.PhoneField.text withType:@"0"];
 
                 
             
+            }else {
+                [weakSelf setBusyIndicatorVisible:NO];
+                            AMLog(@"验证码==============%@",request.responseObject);
+                
+                //            receiveCode = [NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
+                            NSDate *curentTime =[NSDate date];
+                            disabledTime =curentTime.timeIntervalSince1970+60;
+                
+                
+                            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+                            //获取验证码倒计时
+                            _countTimerNumber = 60;
+                            _countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+                            
+                            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
             }
             
             
         } failure:^(AMBaseRequest *request) {
+            [self setBusyIndicatorVisible:NO];
+            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
             
+
         }];
         
         

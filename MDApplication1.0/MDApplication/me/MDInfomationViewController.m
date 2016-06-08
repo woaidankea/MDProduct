@@ -23,6 +23,7 @@
 #import "AFNetworking.h"
 #import "MDMotifyUserInfoRequest.h"
 #import "MMTService.h"
+#import "TDProfileRequest.h"
 
 @interface MDInfomationViewController ()<UIImagePickerControllerDelegate,SelectPictureDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MDInfomationDelegate>
 {
@@ -59,14 +60,14 @@
 }
 - (void)startMemberInterestRequest
 {
-    //格式化成json数据
-    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"getuserInfo"];
-    if(jsonObject){
-        
-        memberModel = [MDMemberInterestModel mj_objectWithKeyValues:[[jsonObject objectForKey:@"data"] objectForKey:@"member"]];
-        
-        //        [self setViewControllers:contentItems];
-    }
+//    //格式化成json数据
+//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"getuserInfo"];
+//    if(jsonObject){
+//        
+//        memberModel = [MDMemberInterestModel mj_objectWithKeyValues:[[jsonObject objectForKey:@"data"] objectForKey:@"member"]];
+//        
+//        //        [self setViewControllers:contentItems];
+//    }
 
 //    __weak MDInfomationViewController *weakSelf =self;
 //    MDMemberInterestRequest *request = [[MDMemberInterestRequest alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
@@ -80,6 +81,16 @@
 //    
 //    
 //    [request start];
+    
+    WS(weakSelf);
+    TDProfileRequest  *request = [[TDProfileRequest alloc]initProfilesuccess:^(AMBaseRequest *request) {
+        memberModel = [MDMemberInterestModel mj_objectWithKeyValues:[request.responseObject  objectForKey:@"member"]];
+        [weakSelf.table reloadData];
+    } failure:^(AMBaseRequest *request) {
+        
+    }];
+    [request start];
+
 }
 
 
@@ -171,31 +182,45 @@
                 }else if([memberModel.sex isEqualToString:@"0"]){
                 cell.rightLabel.text = @"女";
                 }else{
-                cell.rightLabel.text = @"";
+                cell.rightLabel.text = @"请选择";
                 }
                 
                
                 break;
             case 1://年龄
                 cell.leftLabel.text = @"年龄";
-                if(memberModel.birthday != nil){
+                if(memberModel.birthday.length!=0){
                 cell.rightLabel.text = [self ageWithDateOfBirth:memberModel.birthday];
+                }else{
+                 cell.rightLabel.text = @"请选择";
                 }
                 
                 break;
             case 2://学历
                 cell.leftLabel.text = @"学历";
+                if(memberModel.education.length != 0){
                 cell.rightLabel.text = [degree objectAtIndex: [memberModel.education integerValue]];
+                }else{
+                    cell.rightLabel.text = @"请选择";
+                }
                 
                 break;
             case 3://行业
                 cell.leftLabel.text = @"行业";
+                 if(memberModel.vocation.length != 0){
                 cell.rightLabel.text = [industry objectAtIndex:[memberModel.vocation integerValue]];
+                 }else{
+                     cell.rightLabel.text = @"请选择";
+                 }
               
                 break;
             case 4://收入
                 cell.leftLabel.text = @"收入";
+                   if(memberModel.income.length != 0){
                 cell.rightLabel.text = [income  objectAtIndex:[memberModel.income integerValue]];
+                   }else{
+                       cell.rightLabel.text = @"请选择";
+                   }
               
                 break;
 
@@ -536,11 +561,11 @@
     UIImage *newImage=[AMTools compressImageWithImage:image];
     NSData *data = UIImageJPEGRepresentation(newImage, 1);
     [headerImage  addObject:data];
-//    __weak MDInfomationViewController *weakSelf =self;
-//    [self dismissViewControllerAnimated:NO completion:^{
+    __weak MDInfomationViewController *weakSelf =self;
+    [self dismissViewControllerAnimated:NO completion:^{
 //        [weakSelf submitHeadPicture:newImage];
-//        //       [weakSelf.dataTable reloadData];
-//    }];
+        //       [weakSelf.dataTable reloadData];
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -550,9 +575,7 @@
 -(void)submitHeadPicture:(UIImage *)headImage{
     __weak MDInfomationViewController *weakSelf =self;
     NSString *pictureDataString =[AMTools imageToBase64String:[UIImage imageNamed:@"hand"]];
-//    NSMutableDictionary *locationInfo =[AMLocationInfo locationInfoData:@"北京" longitude:@"" latitude:@"" address:@"上海"];
-//    NSMutableDictionary *sysytemInof =[AMSystemInfo systemInfoData];
-//    NSMutableDictionary *appInfo =[AMAppInfo appInfoData];
+
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"user_ico@2x" ofType:@"png"];
     NSURL *URL = [NSURL fileURLWithPath:filePath];
@@ -560,19 +583,7 @@
     NSMutableDictionary *paramsDictory = [NSMutableDictionary new];
     [paramsDictory setObject:USER_DEFAULT_KEY(@"token") forKey:@"token"];
     [self uploadImageWithUrl];
-//    [AMRequestHelper requestAFURL:@"/api/member/uploadMemberAvatar" httpMethod:@"POST" params:paramsDictory data:head64 complection:^(id result) {
-//       
-//        
-//        
-//            NSString *message=@"您的头像已经成功上传到后台服务器";
-//            [AMTools showHUDtoWindow:nil title:message delay:2];
-//       
-////            NSString *message=@"您的头像上传后台服务器失败";
-////            [AMTools showHUDtoWindow:nil title:message delay:2];
-//        
-//    } error:^(NSError *error) {
-//        
-//    }];
+
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -669,7 +680,7 @@
             return YES;
         }
     }
-    
+   
     return NO;
 }
 
@@ -701,8 +712,9 @@
 //        [request start];
 //    
 //    }
+    WS(weakSelf);
     [[MMTService shareInstance]postProfileWithsex:memberModel.sex birthday:memberModel.birthday education:memberModel.education vocation:memberModel.vocation income:memberModel.income images:headerImage Success:^(id responseObject) {
-        
+        [weakSelf.table reloadData];
     } failure:^(NSError *error) {
         
     }];

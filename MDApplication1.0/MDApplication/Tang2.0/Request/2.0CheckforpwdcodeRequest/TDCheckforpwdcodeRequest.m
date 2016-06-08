@@ -10,22 +10,20 @@
 
 @implementation TDCheckforpwdcodeRequest
 
-- (id)initCheckforpwdCodeWithPhone:(NSString *)phone
-                          success:(onSuccessCallback)successCallback
-                          failure:(onFailureCallback)failureCallback
+- (id)initSecondCheckWithphone:(NSString *)phone
+                       imgcode:(NSString *)imgcode
+                       success:(onSuccessCallback)successCallback
+                       failure:(onFailureCallback)failureCallback
 {
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:POST_VALUE(phone) forKey:@"phone"];
-        
-            
-       
+        [dict setValue:POST_VALUE(imgcode) forKey:@"imgcode"];
         [self setActionInfo:dict];
     }
     return self;
-}
-- (NSString *)getURL{
+}- (NSString *)getURL{
 
     return kCheckforpwdcode;
 }
@@ -35,7 +33,8 @@
 }
 - (void)processResponse:(NSDictionary *)responseDictionary{
     [super processResponse:responseDictionary];
-    if([self.response isSucceed]){
+    if([self.response isSucceed] ||
+       self.response.statusCode == 1009){
         
         self.responseObject = [responseDictionary objectForKey:@"data"];
     }

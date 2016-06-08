@@ -42,6 +42,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.operationQueue cancelAllOperations];
 }
+
 -(NSString *)generateSignatureParams:(NSDictionary *)paramDic
 {
     NSArray *keysArray = [paramDic allKeys];
@@ -55,7 +56,7 @@
     }];
     
     NSMutableString *param = [[NSMutableString alloc]init];
-
+    
     for (int i = 0 ; i<resultArray.count; i++) {
         
         [param appendString:resultArray[i]];
@@ -88,11 +89,15 @@
     [postDataDic setValue:POST_VALUE(education) forKey:@"education"];
     [postDataDic setValue:POST_VALUE(vocation) forKey:@"vocation"];
     [postDataDic setValue:POST_VALUE(income) forKey:@"income"];
-   
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970];
+    NSString *timeString = [NSString stringWithFormat:@"%f",a];//转为字符型
+    NSString *tenTime = [timeString substringWithRange:NSMakeRange(0,10)];
+    [postDataDic setValue:tenTime forKey:@"time"];
     NSString *signatureParam = [self generateSignatureParams:postDataDic];
     [postDataDic setValue:signatureParam forKey:@"sign"];
     
-    [postDataDic setValue:POST_VALUE(USER_DEFAULT_KEY(@"token")) forKey:@"token"];
+     [postDataDic setValue: POST_VALUE(USER_DEFAULT_KEY(@"token")) forKey:@"token"];
     NSString *postUrl = [NSString stringWithFormat:@"%@%@",kServerUrl,kUpdataProfile];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -104,7 +109,7 @@
     [manager POST:postUrl parameters:postDataDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for(int i = 0 ; i < images.count ; i++){
-            [formData appendPartWithFileData:[images objectAtIndex:i] name:[NSString stringWithFormat:@"photo_%d",i] fileName:[NSString stringWithFormat:@"%d.jpeg",i] mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:[images objectAtIndex:i] name:@"avatar" fileName:[NSString stringWithFormat:@"%d.jpeg",i] mimeType:@"image/jpeg"];
         }
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {

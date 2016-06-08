@@ -16,6 +16,9 @@
 #import "MDFindsecondViewController.h"
 #import "MDForgotPasswordRequest.h"
 #import "MDCheckVertifyRequest.h"
+#import "TDForpwdcodeRequest.h"
+#import "UIWindow+UIWindow_SecondConfirm.h"
+#import "TDUsrforgotpwdRequest.h"
 @interface MDFindPasswordViewController ()
 {
     NSString *shortCode;
@@ -97,24 +100,41 @@
     }
     __weak UINavigationController *_weakNav = ((AppDelegate *)[UIApplication sharedApplication].delegate).rootController;
     
-    MDCheckVertifyRequest *request=[[MDCheckVertifyRequest alloc]initWithTelephone:_PhoneField.text VerifyCode:_securityCodeTextField.text success:^(AMBaseRequest *request) {
-        [self setBusyIndicatorVisible:NO];
-        AMLog(@"验证码==============%@",request.responseObject);
+//    MDCheckVertifyRequest *request=[[MDCheckVertifyRequest alloc]initWithTelephone:_PhoneField.text VerifyCode:_securityCodeTextField.text success:^(AMBaseRequest *request) {
+//        [self setBusyIndicatorVisible:NO];
+//        AMLog(@"验证码==============%@",request.responseObject);
+//        
+//        UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDLoginViewController" bundle:nil];
+//        MDFindsecondViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDFindsecondViewController"];
+//        myContr.verifyCode = _securityCodeTextField.text;
+//        myContr.telePhone = _PhoneField.text;
+//        [_weakNav pushViewController:myContr animated:YES];
+//
+//    } failure:^(AMBaseRequest *request) {
+//        [self setBusyIndicatorVisible:NO];
+//        if(request.response.statusCode==300){
+//        }
+//        else{
+//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+//        }
+//    }];
+    WS(weakSelf);
+    TDUsrforgotpwdRequest *request = [[TDUsrforgotpwdRequest alloc]initWithphone:_PhoneField.text phonecode:_securityCodeTextField.text newpass:_passWord.text success:^(AMBaseRequest *request) {
+          [weakSelf setBusyIndicatorVisible:NO];
         
-        UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDLoginViewController" bundle:nil];
-        MDFindsecondViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDFindsecondViewController"];
-        myContr.verifyCode = _securityCodeTextField.text;
-        myContr.telePhone = _PhoneField.text;
-        [_weakNav pushViewController:myContr animated:YES];
-
     } failure:^(AMBaseRequest *request) {
         [self setBusyIndicatorVisible:NO];
-        if(request.response.statusCode==300){
-        }
-        else{
-            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-        }
+        NSString *confirmTitle=UILocalizedString(@"UI_TEXT_CONFIRM");
+                if(request.response.statusCode==1016){
+                    [AMTools showAlertViewWithTitle:request.response.message cancelButtonTitle:confirmTitle];
+                }
+                else{
+                    [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+                }
+
     }];
+    
+    
     
     [request start];
   
@@ -129,15 +149,26 @@
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
        
-        MDForgotPasswordRequest *request=[[MDForgotPasswordRequest alloc]initWithTelephone:_PhoneField.text m:@"user" success:^(AMBaseRequest *request) {
-            [self setBusyIndicatorVisible:NO];
-            AMLog(@"验证码==============%@",[request.responseObject objectForKey:@"phonecode"]);
-//            receiveCode =[NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
-            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+//        MDForgotPasswordRequest *request=[[MDForgotPasswordRequest alloc]initWithTelephone:_PhoneField.text m:@"user" success:^(AMBaseRequest *request) {
+//            [self setBusyIndicatorVisible:NO];
+//            AMLog(@"验证码==============%@",[request.responseObject objectForKey:@"phonecode"]);
+////            receiveCode =[NSString stringWithFormat:@"%@",[request.responseObject objectForKey:@"phonecode"]];
+//            [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+//        } failure:^(AMBaseRequest *request) {
+//            [self setBusyIndicatorVisible:NO];
+//           
+//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+//            
+//        }];
+        WS(weakSelf);
+        TDForpwdcodeRequest *request = [[TDForpwdcodeRequest alloc]initForpwdcodeWithPhone:_PhoneField.text success:^(AMBaseRequest *request) {
+            if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                [[UIApplication sharedApplication].keyWindow initConfirmWindow:[request.responseObject objectForKey:@"codeurl"] Phone:weakSelf.PhoneField.text withType:@"1"];
+            }else {
+                [self setBusyIndicatorVisible:NO];
+                [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+            }
         } failure:^(AMBaseRequest *request) {
-            [self setBusyIndicatorVisible:NO];
-           
-            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
             
         }];
         

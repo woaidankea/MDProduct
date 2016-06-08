@@ -27,7 +27,7 @@
 }
 - (NSString *)getURL{
 
-    return kCheckforpwdcode;
+    return kColclass;
 }
 
 - (NSString*)getMethod{

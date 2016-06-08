@@ -9,9 +9,10 @@
 #import "AMBaseRequest.h"
 
 @interface TDCheckforpwdcodeRequest : AMBaseRequest
-- (id)initCheckforpwdCodeWithPhone:(NSString *)phone
-                          success:(onSuccessCallback)successCallback
-                          failure:(onFailureCallback)failureCallback;
+- (id)initSecondCheckWithphone:(NSString *)phone
+                       imgcode:(NSString *)imgcode
+                       success:(onSuccessCallback)successCallback
+                       failure:(onFailureCallback)failureCallback;
 
 
 @end

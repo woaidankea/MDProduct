@@ -22,6 +22,8 @@
 #import "ViewControllerFactory.h"
 #import "AMTools.h"
 #import "TabMenuModel.h"
+#import "TDAppcolRequest.h"
+
 @interface MainViewController ()
 @property (nonatomic,strong)NSMutableArray *selected;
 @property (nonatomic,strong)NSMutableArray *unselected;
@@ -50,14 +52,23 @@
     
     _selected = [NSMutableArray new];
     _unselected = [NSMutableArray new];
-    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
     
-    if(jsonObject){
-        
-        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
-        
+    TDAppcolRequest *request = [[TDAppcolRequest alloc]initColsuccess:^(AMBaseRequest *request){
+        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"tabMenu"]];
         [self setTabbarControllers:contentItems];
-    }
+    } failure:^(AMBaseRequest *request) {
+        
+    }];
+    [request start];
+    
+//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
+//    
+//    if(jsonObject){
+//        
+//        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
+//        
+//        [self setTabbarControllers:contentItems];
+//    }
     
 
 //    NSMutableArray *vcArray = [NSMutableArray new];
@@ -106,22 +117,44 @@
         
         if([model.type isEqualToString:@"1"]){
             ArticleMoudleController *vc = [ViewControllerFactory TabMenuFactoryCreateArticleMoudleWithType:kArticleMoudle];
-                    [vc getContent];
+            vc.moduleId = model.moduleid;
+            [vc getContent];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
                     vc.title = model.modulename;
                     [vcArray addObject:nav];
+            if(model.iconSelected.length==0){
+                model.iconSelected = @"selectedicon1";
+            }
+            if(model.iconUnSelected.length == 0){
+              model.iconUnSelected  = @"unselectedicon1";
+            }
+            
+            
         }else if ([model.type isEqualToString:@"3"]){
             BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
             vc.title = model.modulename;
             vc.url = model.url;
             [vcArray addObject:nav];
+            if(model.iconSelected.length==0){
+                model.iconSelected = @"selectedicon2";
+            }
+            if(model.iconUnSelected.length == 0){
+                model.iconUnSelected  = @"unselectedicon2";
+            }
         }else if ([model.type isEqualToString:@"2"]){
             BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMyMoudle];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            vc.moudleId = model.moduleid;
             vc.title = model.modulename;
             vc.url = model.url;
             [vcArray addObject:nav];
+                if(model.iconSelected.length==0){
+                    model.iconSelected = @"selectedicon3";
+                }
+                if(model.iconUnSelected.length == 0){
+                    model.iconUnSelected  = @"unselectedicon3";
+                }
         }
     
         [ _unselected addObject:model.iconUnSelected];

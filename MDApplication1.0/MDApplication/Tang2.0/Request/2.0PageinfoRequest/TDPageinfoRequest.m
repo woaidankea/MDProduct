@@ -10,13 +10,14 @@
 
 @implementation TDPageinfoRequest
 
-- (id)initPagesuccess:(onSuccessCallback)successCallback
-             failure:(onFailureCallback)failureCallback
+- (id)initWithMouduleId:(NSString *)mouduleId
+                success:(onSuccessCallback)successCallback
+                failure:(onFailureCallback)failureCallback
 {
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-   
+        [dict setObject:mouduleId forKey:@"moduleid"];
             
        
         [self setActionInfo:dict];

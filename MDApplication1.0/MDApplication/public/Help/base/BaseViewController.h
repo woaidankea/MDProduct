@@ -17,7 +17,7 @@
 @interface BaseViewController : UIViewController
 
 @property (nonatomic,strong,nullable)NSString *url;
-
+@property (nonatomic,strong,nullable)NSString *moudleId;
 -(void)setBusyIndicatorVisible:(BOOL)visible;
 
 -(BOOL)handleResponseError:(BaseViewController *)currentController
