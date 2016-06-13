@@ -8,7 +8,7 @@
 
 #import "TDTicketinfoRequest.h"
 #import "MDPublicConfig.h"
-@implementation TicketinfoRequest
+@implementation TDTicketinfoRequest
 
 - (id)initWithPage:(NSInteger)page
            success:(onSuccessCallback)successCallback
@@ -30,7 +30,7 @@
 }
 
 - (NSString *)getURL{
-    return @"";
+    return kTicketInfo;
 
 }
 

@@ -7,7 +7,10 @@
 //
 
 #import "KSGuideManager.h"
-
+#import "UIImageView+WebCache.h"
+#import "AdModel.h"
+#import "ViewControllerFactory.h"
+#import "AppDelegate.h"
 #define kScreenBounds [UIScreen mainScreen].bounds
 
 static NSString *identifier = @"Cell";
@@ -142,6 +145,24 @@ static NSString *identifier = @"Cell";
 //    }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    AdModel *model  = [self.images objectAtIndex:indexPath.row];
+    
+    if([model.isclick isEqualToString:@"1"]){
+        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
+        
+        [vc setleftBarItemWith:nil];
+        vc.url = model.clickurl;
+        [self guideRemove];
+
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+    }else{
+        return;
+    }
+    
+    
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -154,15 +175,16 @@ static NSString *identifier = @"Cell";
     
     KSGuideViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    NSString *path = [self.images objectAtIndex:indexPath.row];
-    UIImage *img = [UIImage imageWithContentsOfFile:path];
-    CGSize size = [self adapterSizeImageSize:img.size compareSize:kScreenBounds.size];
+    AdModel *path = [self.images objectAtIndex:indexPath.row];
+//    UIImage *img = [UIImage imageWithContentsOfFile:path];
+//    CGSize size = [self adapterSizeImageSize:img.size compareSize:kScreenBounds.size];
+//    
+//    //自适应图片位置,图片可以是任意尺寸,会自动缩放.
+//    cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+//    cell.imageView.image = [UIImage imageWithContentsOfFile:path];
+//    cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
     
-    //自适应图片位置,图片可以是任意尺寸,会自动缩放.
-    cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
-    cell.imageView.image = [UIImage imageWithContentsOfFile:path];
-    cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
-
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:path.adurl] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
 //    if (indexPath.row == self.images.count - 1) {
 //        [cell.button setHidden:NO];
         [cell.button addTarget:self action:@selector(nextButtonHandler:) forControlEvents:UIControlEventTouchUpInside];

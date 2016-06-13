@@ -10,12 +10,49 @@
 
 #import "UUMessage.h"
 #import "UUMessageFrame.h"
+#import "TDTicketinfoRequest.h"
 
 @implementation ChatModel
 
 - (void)populateRandomDataSource {
     self.dataSource = [NSMutableArray array];
-    [self.dataSource addObjectsFromArray:[self additems:5]];
+//    [self.dataSource addObjectsFromArray:[self additems:5]];
+    
+    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithPage:0 success:^(AMBaseRequest *request) {
+        NSArray *items = [UUMessage mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
+        
+        
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for (UUMessage *message in items) {
+            
+//            NSDictionary *dataDic = [self getDic];
+            UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
+       
+//            [message setWithDict:dataDic];
+            [message minuteOffSetStart:nil end:message.strTime];
+            messageFrame.showTime = message.showDateLabel;
+            [messageFrame setMessage:message];
+            
+            if (message.showDateLabel) {
+//                previousTime = dataDic[@"strTime"];
+            }
+            [result addObject:messageFrame];
+        }
+   
+
+            [self.dataSource addObjectsFromArray:result];
+        
+        
+    } failure:^(AMBaseRequest *request) {
+        
+    }];
+    [request start];
+    
+    
+    
+    
+    
 }
 
 - (void)addRandomItemsToDataSource:(NSInteger)number{

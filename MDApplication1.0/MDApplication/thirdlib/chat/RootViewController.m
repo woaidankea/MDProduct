@@ -14,6 +14,8 @@
 #import "UUMessageFrame.h"
 #import "UUMessage.h"
 #import "MJRefresh.h"
+#import "TDTicketinfoRequest.h"
+#import "MMTService.h"
 @interface RootViewController ()<UUInputFunctionViewDelegate,UUMessageCellDelegate,UITableViewDataSource,UITableViewDelegate>
 
 //@property (strong, nonatomic) MJRefreshHeaderView *head;
@@ -80,7 +82,7 @@
     int pageNum = 3;
     self.chatTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
-        [weakSelf.chatModel addRandomItemsToDataSource:pageNum];
+//        [weakSelf.chatModel addRandomItemsToDataSource:pageNum];
         
                 if (weakSelf.chatModel.dataSource.count > pageNum) {
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:pageNum inSection:0];
@@ -93,38 +95,67 @@
                 [weakSelf.chatTableView.mj_header endRefreshing];
 
     }];
-
-//    _head = [MJRefreshHeaderView header];
-//    _head.scrollView = self.chatTableView;
-//    _head.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-//        
-//        [weakSelf.chatModel addRandomItemsToDataSource:pageNum];
-//        
-//        if (weakSelf.chatModel.dataSource.count > pageNum) {
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:pageNum inSection:0];
-//            
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [weakSelf.chatTableView reloadData];
-//                [weakSelf.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-//            });
-//        }
-//        [weakSelf.head endRefreshing];
-//    };
 }
 
 - (void)loadBaseViewsAndData
 {
     self.chatModel = [[ChatModel alloc]init];
     self.chatModel.isGroupChat = NO;
-    [self.chatModel populateRandomDataSource];
+    [self populateRandomDataSource];
     
     IFView = [[UUInputFunctionView alloc]initWithSuperVC:self];
     IFView.delegate = self;
     [self.view addSubview:IFView];
     
-    [self.chatTableView reloadData];
-    [self tableViewScrollToBottom];
+   
 }
+
+- (void)populateRandomDataSource {
+    self.chatModel.dataSource = [NSMutableArray array];
+    //    [self.dataSource addObjectsFromArray:[self additems:5]];
+    
+    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithPage:0 success:^(AMBaseRequest *request) {
+        NSArray *items = [UUMessage mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
+        
+        
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for (UUMessage *message in items) {
+            
+            //            NSDictionary *dataDic = [self getDic];
+            UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
+            
+            //            [message setWithDict:dataDic];
+            [message minuteOffSetStart:nil end:message.strTime];
+            messageFrame.showTime = message.showDateLabel;
+            [messageFrame setMessage:message];
+            
+            if (message.showDateLabel) {
+                //                previousTime = dataDic[@"strTime"];
+            }
+            [result addObject:messageFrame];
+            
+        }
+        
+        
+        [self.chatModel.dataSource addObjectsFromArray:result];
+        [self.chatTableView reloadData];
+        [self tableViewScrollToBottom];
+        
+        
+    } failure:^(AMBaseRequest *request) {
+        
+    }];
+    [request start];
+    
+    
+    
+    
+    
+}
+
+
+
 
 -(void)keyboardChange:(NSNotification *)notification
 {
@@ -173,18 +204,44 @@
 #pragma mark - InputFunctionViewDelegate
 - (void)UUInputFunctionView:(UUInputFunctionView *)funcView sendMessage:(NSString *)message
 {
-    NSDictionary *dic = @{@"strContent": message,
-                          @"type": @(UUMessageTypeText)};
-    funcView.TextViewInput.text = @"";
-    [funcView changeSendBtnWithPhoto:YES];
-    [self dealTheFunctionData:dic];
+//    NSDictionary *dic = @{@"strContent": message,
+//                          @"type": @(UUMessageTypeText)};
+//    funcView.TextViewInput.text = @"";
+//
+//    [self dealTheFunctionData:dic];
+    
+    
+    [[MMTService shareInstance]postTicketWithcontent:message images:nil Success:^(id responseObject) {
+        if([[responseObject objectForKey:@"code"]floatValue]==0){
+            [funcView changeSendBtnWithPhoto:YES];
+            [self populateRandomDataSource];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
 }
 
 - (void)UUInputFunctionView:(UUInputFunctionView *)funcView sendPicture:(UIImage *)image
 {
-    NSDictionary *dic = @{@"picture": image,
-                          @"type": @(UUMessageTypePicture)};
-    [self dealTheFunctionData:dic];
+//    NSDictionary *dic = @{@"picture": image,
+//                          @"type": @(UUMessageTypePicture)};
+//    [self dealTheFunctionData:dic];
+    NSData *img = UIImageJPEGRepresentation(image, 0.5);
+    NSArray *array = [NSArray arrayWithObject:img];
+    [[MMTService shareInstance]postTicketWithcontent:nil images:array Success:^(id responseObject) {
+        if([[responseObject objectForKey:@"code"]floatValue]==0){
+            [funcView changeSendBtnWithPhoto:YES];
+            [self populateRandomDataSource];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+
 }
 
 - (void)UUInputFunctionView:(UUInputFunctionView *)funcView sendVoice:(NSData *)voice time:(NSInteger)second

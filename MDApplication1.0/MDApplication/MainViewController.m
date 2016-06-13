@@ -23,7 +23,9 @@
 #import "AMTools.h"
 #import "TabMenuModel.h"
 #import "TDAppcolRequest.h"
-
+#import "MMTService.h"
+#import "UUProgressHUD.h"
+#import "AdModel.h"
 @interface MainViewController ()
 @property (nonatomic,strong)NSMutableArray *selected;
 @property (nonatomic,strong)NSMutableArray *unselected;
@@ -53,61 +55,42 @@
     _selected = [NSMutableArray new];
     _unselected = [NSMutableArray new];
     
-    TDAppcolRequest *request = [[TDAppcolRequest alloc]initColsuccess:^(AMBaseRequest *request){
-        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"tabMenu"]];
+    [UUProgressHUD show];
+    NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
+    if([[result objectForKey:@"code"]floatValue]==0){
+        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"tabMenu"]];
         [self setTabbarControllers:contentItems];
-    } failure:^(AMBaseRequest *request) {
-        
-    }];
-    [request start];
-    
-//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
-//    
-//    if(jsonObject){
-//        
-//        NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
-//        
-//        [self setTabbarControllers:contentItems];
-//    }
-    
+        [UUProgressHUD dismissWithSuccess:nil];
 
-//    NSMutableArray *vcArray = [NSMutableArray new];
-//    
-//    
-//    for(int i = 0; i < 3; i++){
-//        
-//        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//        vc.title = [NSString stringWithFormat:@"%d",i];
-//        [vcArray addObject:nav];
-//     
-//    }
-//    
-//    for(int i = 0; i < 3; i++){
-//        
-//        ArticleMoudleController *vc = [ViewControllerFactory TabMenuFactoryCreateArticleMoudleWithType:kArticleMoudle];
-//        [vc getContent];
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//        vc.title = [NSString stringWithFormat:@"%d",i];
-//        [vcArray addObject:nav];
-//        
-//    }
-//    [self setViewControllers:vcArray];
-    
-    
-//    [self addSubViewControllers];
-//    [self addTabBarImage];
-//
-    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
-    NSMutableArray *paths = [NSMutableArray new];
-    
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
-    
-    [[KSGuideManager shared] showGuideViewWithImages:paths];
+
+    }else{
+            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
+        
+            if(jsonObject){
+        
+                NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
+        
+                [self setTabbarControllers:contentItems];
+            }
+        [UUProgressHUD dismissWithSuccess:nil];
+        
+
     }
+    
+    NSDictionary *adresult =[[MMTService shareInstance]syncgetStartAd];
+    
+    NSArray *array = [AdModel mj_objectArrayWithKeyValuesArray:[[adresult objectForKey:@"data"] objectForKey:@"list"]];
+    
+//    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
+//    NSMutableArray *paths = [NSMutableArray new];
+//    
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
+    
+    [[KSGuideManager shared] showGuideViewWithImages:array];
+//    }
     [USERDEFAULTS setObject:@"1" forKey:@"FisrtLogin"];
 }
 

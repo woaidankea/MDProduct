@@ -9,7 +9,9 @@
 #import "AMBaseRequest.h"
 
 @interface TDArticleRequest : AMBaseRequest
-- (id)initColsuccess:(onSuccessCallback)successCallback
+- (id)initColWithType:(NSString *)type
+                 page:(NSInteger )page
+              success:(onSuccessCallback)successCallback
                   failure:(onFailureCallback)failureCallback;
 
 

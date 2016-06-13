@@ -15,6 +15,8 @@
 #import "RewardInfo.h"
 #import "UIWindow+ShareSucAlert.h"
 #import "TDColclassRequest.h"
+#import "UUProgressHUD.h"
+#import "MMTService.h"
 @interface ArticleMoudleController ()
 
 @end
@@ -96,14 +98,35 @@
 //        
 //        [self setViewControllers:contentItems];
 //    }
-    TDColclassRequest *request = [[TDColclassRequest alloc]initColclassWithModuleid:_moduleId success:^(AMBaseRequest *request) {
-        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:request.responseObject];
+//        TDColclassRequest *request = [[TDColclassRequest alloc]initColclassWithModuleid:_moduleId success:^(AMBaseRequest *request) {
+//        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:request.responseObject];
+//        [self setViewControllers:contentItems];
+//        } failure:^(AMBaseRequest *request) {
+//        
+//        }];
+//    
+//        [request start];
+    [UUProgressHUD show];
+    NSDictionary *result = [[MMTService shareInstance]syncgetArticleClassWith:_moduleId];
+    if([[result objectForKey:@"code"]floatValue]==0){
+        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
         [self setViewControllers:contentItems];
-        } failure:^(AMBaseRequest *request) {
+        [UUProgressHUD dismissWithSuccess:nil];
+    }else{
+            //格式化成json数据
+            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
+            if(jsonObject){
         
-        }];
+                NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
+        
+                [self setViewControllers:contentItems];
+            }
+        [UUProgressHUD dismissWithSuccess:nil];
+    }
     
-        [request start];
+    
+    
+    
     
 }
 

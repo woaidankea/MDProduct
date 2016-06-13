@@ -14,6 +14,7 @@
 #import "MDRankModel.h"
 #import "MDTXModel.h"
 #import "MDTXRequest.h"
+#import "TDMydiscipleRequest.h"
 @interface MDDiscipleDetailViewController ()
 
 @end
@@ -97,12 +98,44 @@
 {
     if(pageType==MD_Disciple || pageType==MD_DiscipleUp){
         
-        //格式化成json数据
-        id jsonObject = [AMTools getLocalJsonDataWithFileName:@"mydiciple"];
-        if(jsonObject){
-            
+//        //格式化成json数据
+//        id jsonObject = [AMTools getLocalJsonDataWithFileName:@"mydiciple"];
+//        if(jsonObject){
+//            
+//            [self.tableView.mj_header endRefreshing];
+//            NSArray *list  = [MDPupilModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"] objectForKey:@"list"]];
+//                            if(list.count==0)
+//                                _isLastPage = YES;
+//                            //在数据后面添加数据或清空所有数据
+//                            if (_currentPage == 0 ) {
+//                                [self.items removeAllObjects];
+//                                [self.items addObjectsFromArray:list];
+//            
+//                            }else if (_currentPage > 0 ){
+//                                [self.items addObjectsFromArray:list];
+//            
+//                            }else{
+//                                NSLog(@"数据对接顺序错误");
+//                            }
+//            
+//                            _currentPage++;
+//            
+//                            [self.tableView reloadData];
+//            
+//                            //添加上拉刷新
+//                            if (!_isLastPage) {
+//                                [self.tableView.mj_footer resetNoMoreData];
+//                            }else{
+//                                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+//                            }
+//
+//            
+//                
+//        }
+
+        TDMydiscipleRequest *request = [[TDMydiscipleRequest alloc]initWithPage:_currentPage success:^(AMBaseRequest *request) {
             [self.tableView.mj_header endRefreshing];
-            NSArray *list  = [MDPupilModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"] objectForKey:@"list"]];
+                            NSArray *list  = [MDPupilModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
                             if(list.count==0)
                                 _isLastPage = YES;
                             //在数据后面添加数据或清空所有数据
@@ -128,11 +161,12 @@
                                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
                             }
 
-            
-                
-        }
-
-        
+        } failure:^(AMBaseRequest *request) {
+                             [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+                            [self.tableView.mj_header endRefreshing];
+                            [self.tableView.mj_footer endRefreshing];
+        }];
+        [request start];
         
 //            MDPupilRequest *request = [[MDPupilRequest alloc]initWithPage:_currentPage  success:^(AMBaseRequest *request) {
 //                [self.tableView.mj_header endRefreshing];

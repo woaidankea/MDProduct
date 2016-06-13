@@ -12,6 +12,8 @@
 #import "DXShareTools.h"
 #import "MDGetDomain.h"
 #import "MDApprenticeModel.h"
+#import "TDShareinfoRequest.h"
+
 @interface MDApprenticeViewController ()
 {
     NSString *domailUrl ;
@@ -68,23 +70,42 @@
     
     
     __weak MDApprenticeViewController *weakSelf = self;
-    MDGetDomain *request = [[MDGetDomain alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
+//    MDGetDomain *request = [[MDGetDomain alloc]initWithSuccessCallback:^(AMBaseRequest *request) {
+//        apprenticeModel = [MDApprenticeModel mj_objectWithKeyValues:request.responseObject];
+//        domailUrl = [request.responseObject objectForKey:@"domain"];
+//         NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
+//         weakSelf.barCode.image= [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:170];
+//         [weakSelf.bgimage setImage:[self addImage_iphone6: [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:185]toImage:[UIImage imageNamed:@"bg750"]]];
+//        
+//        if(apprenticeModel.imageBig!=nil){
+//        [shareBgimage sd_setImageWithURL:[NSURL URLWithString:apprenticeModel.imageBig] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            shareBG = [weakSelf addImage:_barCode.image toImage:shareBgimage.image];
+//        }];
+//        }
+//        
+//
+//    } failureCallback:^(AMBaseRequest *request) {
+//        
+//    }];
+    
+    TDShareinfoRequest *request = [[TDShareinfoRequest alloc]initShareinfosuccess:^(AMBaseRequest *request) {
         apprenticeModel = [MDApprenticeModel mj_objectWithKeyValues:request.responseObject];
         domailUrl = [request.responseObject objectForKey:@"domain"];
-         NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
-         weakSelf.barCode.image= [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:170];
-         [weakSelf.bgimage setImage:[self addImage_iphone6: [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:185]toImage:[UIImage imageNamed:@"bg750"]]];
+        NSString *memberCode = USER_DEFAULT_KEY(@"memberId");
+        weakSelf.barCode.image= [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:170];
+        [weakSelf.bgimage setImage:[self addImage_iphone6: [[DXBarCode shareInstance]createBarCodeImageFrom:[NSString stringWithFormat:@"%@?uid=%@",apprenticeModel.domain,memberCode] withSize:185]toImage:[UIImage imageNamed:@"bg750"]]];
         
         if(apprenticeModel.imageBig!=nil){
-        [shareBgimage sd_setImageWithURL:[NSURL URLWithString:apprenticeModel.imageBig] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            shareBG = [weakSelf addImage:_barCode.image toImage:shareBgimage.image];
-        }];
+            [shareBgimage sd_setImageWithURL:[NSURL URLWithString:apprenticeModel.imageBig] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                shareBG = [weakSelf addImage:_barCode.image toImage:shareBgimage.image];
+            }];
         }
-        
 
-    } failureCallback:^(AMBaseRequest *request) {
+    } failure:^(AMBaseRequest *request) {
         
     }];
+    
+    
     
     [request start];
 

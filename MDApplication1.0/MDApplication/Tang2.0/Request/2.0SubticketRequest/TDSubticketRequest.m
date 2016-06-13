@@ -18,7 +18,7 @@
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setObject:@"img" forKey:@"img"];
+//        [dict setObject:@"img" forKey:@"img"];
         [dict setObject:POST_VALUE(content) forKey:@"content"];
         [self setActionInfo:dict];
     }
@@ -26,7 +26,7 @@
 }
 - (NSString *)getURL{
 
-    return kStartAd;
+    return kSendTicket;
 }
 
 - (NSString*)getMethod{

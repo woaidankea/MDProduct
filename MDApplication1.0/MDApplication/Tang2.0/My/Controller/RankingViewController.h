@@ -13,5 +13,6 @@
 @property (nonatomic, assign) BOOL isLastPage;
 
 @property(assign,nonatomic)MD_ENTER_USERINFO enterType;
+@property(strong,nonatomic)NSString *date;
 
 @end

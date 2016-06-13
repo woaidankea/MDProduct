@@ -90,7 +90,13 @@
 
 #define kGetUid @"api/user/getuid"
 
+//糖豆2.0
 #define kUpdataProfile @"Api/User/profilesaved"
+#define kappTab @"Api/Column/appcol"
+#define kArticleClass  @"Api/Column/colclass"
+#define kMyPageInfo @"Api/Column/pageminfo"
+#define kSendTicket @"Api/User/subticket"
+#define kStartAd @"Api/Ad/startad"
 
 
 #endif

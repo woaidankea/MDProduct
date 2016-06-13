@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MJExtension.h"
 typedef NS_ENUM(NSInteger, MessageType) {
     UUMessageTypeText     = 0 , // 文字
     UUMessageTypePicture  = 1 , // 图片
@@ -32,6 +32,8 @@ typedef NS_ENUM(NSInteger, MessageFrom) {
 @property (nonatomic, copy) UIImage  *picture;
 @property (nonatomic, copy) NSData   *voice;
 @property (nonatomic, copy) NSString *strVoiceTime;
+
+@property (nonatomic, copy) NSString  *imgurl;
 
 @property (nonatomic, assign) MessageType type;
 @property (nonatomic, assign) MessageFrom from;

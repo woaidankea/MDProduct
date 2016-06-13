@@ -16,6 +16,7 @@
 #import "MDTXRequest.h"
 #import "MDDiscipleCell.h"
 #import "TangRankingCell.h"
+#import "TDRevrankRequest.h"
 @interface RankingViewController ()
 @property (strong, nonatomic) UITableView *table;
 @end
@@ -43,7 +44,7 @@
       [self.view addSubview:self.table];
     [self resetTableView:self.table];
     _table.separatorColor = [UIColor clearColor];
-    [self addFooterRefresh];
+//    [self addFooterRefresh];
     [self addHeaderRefresh];
     [self setleftBarItemWith:@"back_ico"];
    
@@ -71,32 +72,55 @@
 
 - (void)startRequest:(MD_ENTER_USERINFO)pageType
 {
-
-        MDRankingRequest *request = [[MDRankingRequest alloc]initRequestsuccess:^(AMBaseRequest *request) {
-            [self.tableView.mj_header endRefreshing];
-            NSArray *list  = [MDRankModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
-            
-            _isLastPage = YES;
-            
-            [self.items removeAllObjects];
-            [self.items addObjectsFromArray:list];
-            
-            [self.tableView reloadData];
-            
-            //添加上拉刷新
-            if (!_isLastPage) {
-                [self.tableView.mj_footer resetNoMoreData];
-            }else{
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-            
-        } failure:^(AMBaseRequest *request) {
-            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-            [self.tableView.mj_header endRefreshing];
-            [self.tableView.mj_footer endRefreshing];
-        }];
-        [request start];
+    
+    TDRevrankRequest *request = [[TDRevrankRequest alloc]initTDRevrankWithtype:@"1" date:@"1" success:^(AMBaseRequest *request) {
+        [self.tableView.mj_header endRefreshing];
+                NSArray *list  = [MDRankModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
         
+                    _isLastPage = YES;
+        
+                    [self.items removeAllObjects];
+                    [self.items addObjectsFromArray:list];
+        
+                    [self.tableView reloadData];
+        
+
+    } failure:^(AMBaseRequest *request) {
+        [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+                   [self.tableView.mj_header endRefreshing];
+        
+    }];
+                                 
+    [request start];
+    
+    
+
+//        MDRankingRequest *request = [[MDRankingRequest alloc]initRequestsuccess:^(AMBaseRequest *request) {
+//            [self.tableView.mj_header endRefreshing];
+//            NSArray *list  = [MDRankModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
+//            
+//            _isLastPage = YES;
+//            
+//            [self.items removeAllObjects];
+//            [self.items addObjectsFromArray:list];
+//            
+//            [self.tableView reloadData];
+//            
+//            //添加上拉刷新
+//            if (!_isLastPage) {
+//                [self.tableView.mj_footer resetNoMoreData];
+//            }else{
+//                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+//            }
+//            
+//        } failure:^(AMBaseRequest *request) {
+//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+//            [self.tableView.mj_header endRefreshing];
+//            [self.tableView.mj_footer endRefreshing];
+//        }];
+//        [request start];
+
+    
         
      
     

@@ -63,6 +63,7 @@
 		5C1AF0A01CB4A90E00719F72 /* RewardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */; };
 		5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */; };
 		5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */; };
+		5C2EAE9E1D0D6C1500611A06 /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EAE9D1D0D6C1500611A06 /* AdModel.m */; };
 		5C3A8F5C1C992B0F00B4388B /* MDMeSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */; };
 		5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F571C992B0F00B4388B /* MDMeTopCollectionViewCell.m */; };
 		5C3A8F5E1C992B0F00B4388B /* MeBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F591C992B0F00B4388B /* MeBottomCell.m */; };
@@ -553,6 +554,8 @@
 		5C1AF0A21CB4D21E00719F72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C204D991CBFA2670084BD78 /* MDGetDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGetDomain.h; sourceTree = "<group>"; };
 		5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGetDomain.m; sourceTree = "<group>"; };
+		5C2EAE9C1D0D6C1500611A06 /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
+		5C2EAE9D1D0D6C1500611A06 /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		5C3A8F541C992B0F00B4388B /* MDMeSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeSecondCell.h; sourceTree = "<group>"; };
 		5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMeSecondCell.m; sourceTree = "<group>"; };
 		5C3A8F561C992B0F00B4388B /* MDMeTopCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeTopCollectionViewCell.h; sourceTree = "<group>"; };
@@ -2485,6 +2488,8 @@
 				5C7267841CED8FB00019F37C /* ContentModel.m */,
 				5C7267881CED97870019F37C /* TabMenuModel.h */,
 				5C7267891CED97870019F37C /* TabMenuModel.m */,
+				5C2EAE9C1D0D6C1500611A06 /* AdModel.h */,
+				5C2EAE9D1D0D6C1500611A06 /* AdModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3576,6 +3581,7 @@
 				5C9F3F591C96A8AB00756229 /* FCFileManager.m in Sources */,
 				5C7E74731CEC0CD10086879F /* WeiboActivity.m in Sources */,
 				5C3A906A1C9B948400B4388B /* DXBarCode.m in Sources */,
+				5C2EAE9E1D0D6C1500611A06 /* AdModel.m in Sources */,
 				5C7822A71CF3064200889E21 /* CustomSegmentController.m in Sources */,
 				5C3A8F9C1C9A413100B4388B /* MDSchoolHeadCell.m in Sources */,
 				5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */,

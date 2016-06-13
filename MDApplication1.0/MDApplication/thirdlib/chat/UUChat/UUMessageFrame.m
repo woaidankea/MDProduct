@@ -58,6 +58,12 @@
         default:
             break;
     }
+    
+    if(_message.imgurl.length != 0){
+      contentSize = CGSizeMake(ChatPicWH, ChatPicWH);
+    }
+    
+    
     if (_message.from == UUMessageFromMe) {
         contentX = iconX - contentSize.width - ChatContentLeft - ChatContentRight - ChatMargin;
     }

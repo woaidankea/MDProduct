@@ -11,6 +11,7 @@
 #import "MDMyViewController.h"
 #import "MDApprenticeViewController.h"
 #import "MDInfomationViewController.h"
+#import "MDRecViewController.h"
 @implementation ViewControllerFactory
 + (BaseViewController *)TabMenuFactoryCreateViewControllerWithType:(NSString *)type{
     
@@ -39,9 +40,10 @@
 
 + (BaseViewController *)CreateArticleMoudleContentViewControllerWithId:(ContentModel *)model{
     
-    UIStoryboard *MDRecViewController = [UIStoryboard storyboardWithName:@"MDRecViewController" bundle:nil];
-    MDNewsViewController *Rec = [MDRecViewController instantiateViewControllerWithIdentifier:@"MDRecViewController"];
-    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MDRecViewController" bundle:nil];
+    MDRecViewController *Rec =[sb instantiateViewControllerWithIdentifier:@"MDRecViewController"];
+ 
+    Rec.model = model.content_id;
     Rec.title = model.type;
     
     

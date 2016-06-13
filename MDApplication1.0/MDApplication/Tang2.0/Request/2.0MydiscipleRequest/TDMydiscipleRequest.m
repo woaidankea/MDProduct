@@ -30,7 +30,7 @@
 }
 
 - (NSString *)getURL{
-    return @"";
+    return kMydisciple;
 
 }
 

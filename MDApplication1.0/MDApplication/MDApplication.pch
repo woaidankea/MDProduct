@@ -32,6 +32,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #import "ACMacros.h"
 #import "UtilsMacro.h"
 #import "UIImageView+WebCache.h"
+#import "UUProgressHUD.h"
 
 
 #endif

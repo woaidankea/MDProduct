@@ -24,7 +24,7 @@
 #import "MDMotifyUserInfoRequest.h"
 #import "MMTService.h"
 #import "TDProfileRequest.h"
-
+#import "UUProgressHUD.h"
 @interface MDInfomationViewController ()<UIImagePickerControllerDelegate,SelectPictureDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MDInfomationDelegate>
 {
      AMUserActionSelectView *selectPictureView;
@@ -712,8 +712,14 @@
 //        [request start];
 //    
 //    }
+    
+    [UUProgressHUD show];
     WS(weakSelf);
     [[MMTService shareInstance]postProfileWithsex:memberModel.sex birthday:memberModel.birthday education:memberModel.education vocation:memberModel.vocation income:memberModel.income images:headerImage Success:^(id responseObject) {
+        
+        [UUProgressHUD dismissWithSuccess:@"更改成功"];
+        
+        
         [weakSelf.table reloadData];
     } failure:^(NSError *error) {
         

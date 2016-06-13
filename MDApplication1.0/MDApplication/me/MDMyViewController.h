@@ -10,4 +10,5 @@
 
 @interface MDMyViewController : MDBaseCollectionViewController
 @property (strong, nonatomic)UICollectionView *collection;
+
 @end

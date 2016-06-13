@@ -274,6 +274,15 @@ typedef void (^Failure) (NSError *error);
                  Success:(Success)success
                  failure:(Failure)failure;
 
+- (NSDictionary *)syncgetAppCol;
+- (NSDictionary *)syncgetArticleClassWith:(NSString *)mouduleId;
+- (NSDictionary *)syncgetMyPageinfoWith:(NSString *)mouduleId;
+- (NSDictionary *)syncgetStartAd;
+-(void)postTicketWithcontent:(NSString *)content
+                   images:(NSArray *)images
+                  Success:(Success)success
+                     failure:(Failure)failure;
+
 
 //生成入参签名
 -(NSString *)generateSignatureParams:(NSDictionary *)paramDic;

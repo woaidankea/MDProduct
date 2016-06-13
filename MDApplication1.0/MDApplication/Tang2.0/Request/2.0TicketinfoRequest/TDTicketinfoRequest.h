@@ -7,7 +7,7 @@
 //
 #import "AMBaseRequest.h"
 
-@interface TicketinfoRequest : AMBaseRequest
+@interface TDTicketinfoRequest : AMBaseRequest
 - (id)initWithPage:(NSInteger)page
            success:(onSuccessCallback)successCallback
            failure:(onFailureCallback)failureCallback;

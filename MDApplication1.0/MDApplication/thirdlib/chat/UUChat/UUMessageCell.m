@@ -13,7 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIButton+AFNetworking.h"
 #import "UUImageAvatarBrowser.h"
-
+#import "UIImageView+WebCache.h"
 @interface UUMessageCell ()<UUAVAudioPlayerDelegate>
 {
     AVAudioPlayer *player;
@@ -108,7 +108,7 @@
         }
     }
     //show the picture
-    else if (self.messageFrame.message.type == UUMessageTypePicture)
+    else if (self.messageFrame.message.imgurl.length != 0)
     {
         if (self.btnContent.backImageView) {
             [UUImageAvatarBrowser showImage:self.btnContent.backImageView];
@@ -213,7 +213,7 @@
         case UUMessageTypePicture:
         {
             self.btnContent.backImageView.hidden = NO;
-            self.btnContent.backImageView.image = message.picture;
+            [self.btnContent.backImageView sd_setImageWithURL:[NSURL URLWithString:message.imgurl] placeholderImage:[UIImage imageNamed:@"jiazai-1"]];
             self.btnContent.backImageView.frame = CGRectMake(0, 0, self.btnContent.frame.size.width, self.btnContent.frame.size.height);
             [self makeMaskView:self.btnContent.backImageView withImage:normal];
         }
@@ -229,6 +229,14 @@
             
         default:
             break;
+    }
+    
+    if(message.imgurl.length!=0){
+        self.btnContent.backImageView.hidden = NO;
+        [self.btnContent.backImageView sd_setImageWithURL:[NSURL URLWithString:message.imgurl] placeholderImage:[UIImage imageNamed:@"jiazai-1"]];
+        self.btnContent.backImageView.frame = CGRectMake(0, 0, self.btnContent.frame.size.width, self.btnContent.frame.size.height);
+        [self makeMaskView:self.btnContent.backImageView withImage:normal];
+
     }
 }
 

@@ -10,6 +10,12 @@
 #import "NSDate+Utils.h"
 
 @implementation UUMessage
++ (NSDictionary *)replacedKeyFromPropertyName{
+    // 模型的desc属性对应着字典中的description
+    return @{@"strContent" : @"content",
+             @"from" : @"answer",
+             @"strTime" : @"tictime"};
+}
 - (void)setWithDict:(NSDictionary *)dict{
     
     self.strIcon = dict[@"strIcon"];

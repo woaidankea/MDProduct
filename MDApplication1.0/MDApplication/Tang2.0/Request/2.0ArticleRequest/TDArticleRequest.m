@@ -10,14 +10,19 @@
 
 @implementation TDArticleRequest
 
-- (id)initColsuccess:(onSuccessCallback)successCallback
-             failure:(onFailureCallback)failureCallback
+- (id)initColWithType:(NSString *)type
+                 page:(NSInteger )page
+              success:(onSuccessCallback)successCallback
+              failure:(onFailureCallback)failureCallback
 {
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
    
-            
+        NSString *currentPage = [NSString stringWithFormat:@"%ld",page];
+        [dict setObject:POST_VALUE(currentPage) forKey:@"page"];
+        [dict setObject:POST_VALUE(type) forKey:@"type"];
+   
        
         [self setActionInfo:dict];
     }

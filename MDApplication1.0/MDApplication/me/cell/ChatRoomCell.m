@@ -8,6 +8,7 @@
 
 #import "ChatRoomCell.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
 @implementation ChatRoomCell
 
 - (id)initWithFrame:(CGRect)frame{
@@ -83,5 +84,32 @@
     }
     return _countLabel;
 }
-
+- (void)setContentModel:(MyContentModel *)model{
+    if(model.imageurl.length != 0){
+        [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.imageurl] placeholderImage:[UIImage imageNamed:@""]];
+    }else{
+        if([model.moduletype isEqualToString:@"1"]){
+            _iconImage.image = [UIImage imageNamed:@"zijin"];
+        }
+        if([model.moduletype isEqualToString:@"7"]){
+            _iconImage.image = [UIImage imageNamed:@"tixian"];
+        }
+        if([model.moduletype isEqualToString:@"2"]){
+            _iconImage.image = [UIImage imageNamed:@"qiandao"];
+        }
+        if([model.moduletype isEqualToString:@"3"]){
+            _iconImage.image = [UIImage imageNamed:@"tijiao"];
+        }
+        if([model.moduletype isEqualToString:@"5"]){
+            _iconImage.image = [UIImage imageNamed:@"wanshan"];
+        }
+        if([model.moduletype isEqualToString:@"6"]){
+            _iconImage.image = [UIImage imageNamed:@"shouru"];
+        }
+        if([model.moduletype isEqualToString:@"4"]){
+            _iconImage.image = [UIImage imageNamed:@"shoutu"];
+        }
+    }
+    _titleLabel.text = model.modulename;
+}
 @end

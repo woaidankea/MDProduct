@@ -14,5 +14,6 @@
 @property (nonatomic, assign) NSInteger totalPage;
 @property (nonatomic,assign)BOOL isLastPage;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic,strong)NSString *model;
 
 @end

@@ -10,6 +10,7 @@
 #import "MDReceiveDetailCell.h"
 #import "MDMoneyDetailModel.h"
 #import "MDMoneyDetailRequest.h"
+#import "TDUserearningsRequest.h"
 @interface MDReciveDetailViewController ()
 
 @end
@@ -33,7 +34,7 @@
 
 - (void)startNeighborFriendsRequest:(NSInteger)page
 {
-    MDMoneyDetailRequest *request = [[MDMoneyDetailRequest alloc]initWithPage:page success:^(AMBaseRequest *request) {
+    TDUserearningsRequest *request = [[TDUserearningsRequest alloc]initWithPage:page type:[NSString stringWithFormat:@"%d",_vcType] success:^(AMBaseRequest *request) {
         [self.tableView.mj_header endRefreshing] ;
         
         

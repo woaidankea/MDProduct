@@ -50,6 +50,9 @@ static NSString * const kUserearning = @"Api/User/userearnings"; //收入明细
 static NSString * const kUsersign = @"Api/User/usersign"; //用户签到
 static NSString * const kUserforgotpwd = @"Api/User/usrforgotpwd"; //找回密码
 static NSString * const kConfirCode = @"Api/User/confirmcode";
+static NSString * const kTicketInfo = @"Api/User/ticketinfo";   //工单信息
+static NSString * const kSendTicket = @"Api/User/subticket";   //发送工单
+
 
 
 

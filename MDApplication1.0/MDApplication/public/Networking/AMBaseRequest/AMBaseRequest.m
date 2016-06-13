@@ -88,7 +88,7 @@
     if(responseDictionary!=nil){
         _response.statusCode=[[responseDictionary objectForKey:@"code"] intValue];
         if(ServerJieKu){
-            if(_response.statusCode ==501){
+            if(_response.statusCode ==1002||_response.statusCode ==1003){
                 
                 [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
                 
@@ -100,6 +100,10 @@
             
             [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
 
+        }
+        
+         if(self.response.statusCode  == 1018){
+            
         }
         
         
@@ -158,7 +162,14 @@
             if(_onSuccess!=nil){
                 _onSuccess(self);
             }
-        }else{
+        }else if(self.response.statusCode == 1018) {
+             [_response setErrorMessage:result[@"message"]];
+            if(_onFailure!=nil){
+                _onFailure(self);
+            }
+
+        }
+        else{
             if([result[@"message"] isEqualToString:@"Token过期"]||[result[@"message"] isEqualToString:@"Token过期或不存在"])
             {
                 return;

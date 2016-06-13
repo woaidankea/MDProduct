@@ -24,6 +24,10 @@
 #import "UIWindow+RedPacket.h"
 #import "RootViewController.h"
 #import "TDPageinfoRequest.h"
+#import "MMTService.h"
+#import "UUProgressHUD.h"
+#import "TDUsersignRequest.h"
+#import "TDRevrankRequest.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -188,6 +192,8 @@
     [super viewDidLoad];
     _myModel = [[MyModel alloc]init];
     [self getContent];
+    
+   
     self.title = @"糖豆";
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
@@ -221,17 +227,38 @@
 //    }
 ////    [NSThread sleepForTimeInterval:2];
 //     [self.collectionview.mj_header endRefreshing];
-    WS(weakSelf);
-    TDPageinfoRequest *request = [[TDPageinfoRequest alloc]initWithMouduleId:self.moudleId success:^(AMBaseRequest *request) {
-        _myModel = [MyModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"data"]];
+        WS(weakSelf);
+//        TDPageinfoRequest *request = [[TDPageinfoRequest alloc]initWithMouduleId:self.moudleId success:^(AMBaseRequest *request) {
+//        _myModel = [MyModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"data"]];
+//        [weakSelf.collectionview reloadData];
+//        [weakSelf.collectionview.mj_header endRefreshing];
+//        } failure:^(AMBaseRequest *request) {
+//        
+//        }];
+//                                
+//       [request start];
+    
+    NSDictionary *result =[[MMTService shareInstance]syncgetMyPageinfoWith:self.moudleId];
+    if([[result objectForKey:@"code"]floatValue]==0){
+        _myModel = [MyModel mj_objectWithKeyValues:[result objectForKey:@"data"]];
         [weakSelf.collectionview reloadData];
         [weakSelf.collectionview.mj_header endRefreshing];
-        } failure:^(AMBaseRequest *request) {
+    }else{
+        //格式化成json数据
+            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"my"];
+            if(jsonObject){
         
-        }];
-                                
-                              
-                                  [request start];
+                _myModel = [MyModel mj_objectWithKeyValues:[jsonObject objectForKey:@"data"]];
+                [weakSelf.collectionview reloadData];
+                [weakSelf.collectionview.mj_header endRefreshing];
+
+        //        [self setViewControllers:contentItems];
+            }
+
+    }
+    
+    
+       
     
 //    __weak MDMeCollectionViewController *weakSelf =self;
 //    MDGetMemberInfoRequest *request = [[MDGetMemberInfoRequest alloc]initWithToken:USER_DEFAULT_KEY(@"token")success:^(AMBaseRequest *request) {
@@ -313,8 +340,9 @@
     cell.contentView.backgroundColor = [UIColor whiteColor];
 //    cell.titleLabel.text = @"测试测试";
     MyContentModel *content = [_myModel.list objectAtIndex:indexPath.row];
-    cell.iconImage.image = [UIImage imageNamed:content.imageurl];
-    cell.titleLabel.text = content.modulename;
+    [cell setContentModel:content];
+//    cell.iconImage.image = [UIImage imageNamed:content.imageurl];
+//    cell.titleLabel.text = content.modulename;
   
     return cell;
     
@@ -344,6 +372,7 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    WS(weakSelf);
     
     MyContentModel *model = [_myModel.list objectAtIndex:indexPath.row];
     if([model.moduletype isEqualToString:@"1"]){
@@ -353,8 +382,11 @@
         for (int i = 0; i < 4; i++) {
       
         UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
-        MDReciveDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDReciveDetailViewController"];
-              myContr.title = [arr objectAtIndex:i];
+             MDReciveDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDReciveDetailViewController"];
+            myContr.title = [arr objectAtIndex:i];
+            myContr.vcType = i + 1;
+            
+            
             [vcs addObject:myContr];
         }
         JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
@@ -365,17 +397,32 @@
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:slideSegmentController animated:YES];
         return;
     }
-    if([model.moduletype isEqualToString:@"3"]){
-        RewardInfo *info = [[RewardInfo alloc] init];
-        info.money = 0.03;
-        info.rewardName = @"(每日一次签到抽奖机会)";
-        info.rewardContent = @"已奖励到你的账户";
-        info.rewardStatus = 0;
-        //
-        [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+    if([model.moduletype isEqualToString:@"2"]){
+       
+        TDUsersignRequest *request = [[TDUsersignRequest alloc]initWithsuccess:^(AMBaseRequest *request) {
+            RewardInfo *info = [[RewardInfo alloc] init];
+            info.money = [[request.responseObject objectForKey:@"money"] floatValue];
+            info.rewardName = @"(每日一次签到抽奖机会)";
+            info.rewardContent = @"已奖励到你的账户";
+            info.rewardStatus = 0;
+            //
+            [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+
+        } failure:^(AMBaseRequest *request) {
+              [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
+        }];
+        
+        [request start];
+//        RewardInfo *info = [[RewardInfo alloc] init];
+//        info.money = 0.03;
+//        info.rewardName = @"(每日一次签到抽奖机会)";
+//        info.rewardContent = @"已奖励到你的账户";
+//        info.rewardStatus = 0;
+//        //
+//        [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
         return ;
     }
-    if([model.moduletype isEqualToString:@"4"]){
+    if([model.moduletype isEqualToString:@"3"]){
           RootViewController *root = [[RootViewController alloc]init];
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:root animated:YES];
         return;
@@ -384,9 +431,7 @@
         NSArray *arr = @[@"分享榜",@"阅读榜",@"收入榜"];
         NSMutableArray *vcs = [NSMutableArray array];
         for (int i = 0; i < 3; i++) {
-            
-//            UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
-//            MDDiscipleDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDDiscipleDetailViewController"];
+
         RankingViewController *myContr = [[RankingViewController alloc]init];
       
 
@@ -402,7 +447,7 @@
         return;
     }
     
-    if([model.moduletype isEqualToString:@"2"]){
+    if([model.moduletype isEqualToString:@"7"]){
     
         BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
        
@@ -412,7 +457,7 @@
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
-    if([model.moduletype isEqualToString:@"7"]){
+    if([model.moduletype isEqualToString:@"4"]){
      BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDApprenticeViewController];
         
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];

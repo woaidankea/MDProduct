@@ -32,7 +32,7 @@
 }
 
 - (NSString *)getURL{
-    return @"";
+    return kUserearning;
 
 }
 
