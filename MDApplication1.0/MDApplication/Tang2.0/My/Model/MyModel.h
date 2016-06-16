@@ -16,5 +16,6 @@
 @property (nonatomic,strong)NSString *disciplenum;
 @property (nonatomic,strong)NSString *discipleincome;
 @property (nonatomic,strong)NSArray  *list;
+@property (nonatomic,strong)NSString *balance;
 
 @end

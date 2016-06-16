@@ -29,7 +29,7 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
 
     self.view.backgroundColor = UIColorFromRGB(0xffffff);
-      [self setleftBarItemWith:@"back_ico@2x.png"];
+//      [self setleftBarItemWith:@"back_ico@2x.png"];
     // Do any additional setup after loading the view.
 }
 
@@ -38,15 +38,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)ForgotClick:(id)sender {
     UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDLoginViewController" bundle:nil];
@@ -82,43 +74,13 @@
         [_PasswordField becomeFirstResponder];
         return;
     }
-    
-//    AM_CheckPhone checkPhone =[AMTools checkPhoneNumber:userName];
-//    if (checkPhone != AM_Phone_IsRight) {
-//        NSString *phoneMessage =[AMTools getCheckPhoneMessage:checkPhone];
-//        [AMTools showAlertViewWithTitle:phoneMessage
-//                      cancelButtonTitle:@"确定"];
-//        return;;
-//    }
-//    
     [_AccountField resignFirstResponder];
     [_PasswordField resignFirstResponder];
     
     
     [self setBusyIndicatorVisible:YES];
     __weak MDLoginViewController *weakSelf =self;
-//    MDLoginRequest *request=[[MDLoginRequest alloc]initWithTelephone:userName password:password success:^(AMBaseRequest *request) {
-//        [self setBusyIndicatorVisible:NO];
-//        MDUserInfoModel *model =[MDUserInfoModel mj_objectWithKeyValues:request.responseObject];
-//            [USER_DEFAULT setObject:model.token forKey:@"token"];
-//            [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
-//            [USER_DEFAULT synchronize];
-//             NSLog(@"111");
-//         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
-//        
-//        
-//    } failure:^(AMBaseRequest *request) {
-//        [self setBusyIndicatorVisible:NO];
-////        if(request.response.statusCode==300){
-////                   }
-////        else{
-//        
-//        
-//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-////        }
-//    }];
-//    
-//    [request start];
+
     
     
     TDLoginRequest *request = [[TDLoginRequest alloc]initWithTelephone:userName password:password success:^(AMBaseRequest *request) {
@@ -132,14 +94,8 @@
 
     } failure:^(AMBaseRequest *request) {
         [self setBusyIndicatorVisible:NO];
-        //        if(request.response.statusCode==300){
-        //                   }
-        //        else{
-        
-        
-                    [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-        //        }
-
+                        [self handleResponseError:self request:request treatErrorAsUnknown:YES];
+ 
     }];
       [request start];
 

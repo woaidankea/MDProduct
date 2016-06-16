@@ -13,7 +13,9 @@
 #import "MDLoginViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
-
+#import "MMTService.h"
+#import "AdModel.h"
+#import "KSGuideManager.h"
 //腾讯开放平台（对应QQ和QQ空间）SDK头文件
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
@@ -47,11 +49,34 @@
 
 
 @implementation AppDelegate
+- (void)ad{
+    NSDictionary *adresult =[[MMTService shareInstance]syncgetStartAd];
+    if(adresult){
+    NSArray *array = [AdModel mj_objectArrayWithKeyValuesArray:[[adresult objectForKey:@"data"] objectForKey:@"list"]];
+    
 
+    //    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
+    //    NSMutableArray *paths = [NSMutableArray new];
+    //
+    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
+    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
+    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
+    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
+    
+    [[KSGuideManager shared] showGuideViewWithImages:array withtype:YES];
+    
+    }else{
+         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+    }
+
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     //初始化友盟
+    
+ 
+    
     
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
@@ -79,11 +104,16 @@
     [self setUM];
     //初始化shareSDK
     [self setShareSDK];
-    [self EnterMainViewController:AM_NORMAL_ENTER];
+
     
- 
+    
+//    [self EnterMainViewController:AM_NORMAL_ENTER];
+    
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
 
     [self.window makeKeyAndVisible];
+    [self ad];
     
     return YES;
 }
@@ -290,17 +320,12 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 
 #pragma mark - 用户退出 -
 -(void)exitAppToLandViewController{
-//    [NSUSERDEFAULIT setBool:NO forKey:AM_IS_LAND];
-//    [NSUSERDEFAULIT synchronize];
-//    [NSUSERDEFAULIT setObject:[NSNumber numberWithInteger:0] forKey:AM_USER_ACCOUNTID];
-//    [NSUSERDEFAULIT setObject:@"" forKey:AM_USER_IM_TOKEN];
-//    
-//    [[IMChatMessageManager shareInstance] amLogout];
-//    
-//    [[AMDataManager shareInstance] closeSqlite];
-//    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
-//    
-//
+
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AMUserLogoutNotification object:nil];
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    
+
     [USER_DEFAULT removeObjectForKey:@"token"];
     [USER_DEFAULT removeObjectForKey:@"memberId"];
     [NSUSERDEFAULIT synchronize];

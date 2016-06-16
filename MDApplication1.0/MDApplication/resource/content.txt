@@ -2,60 +2,20 @@
     "code": 0,
     "message": "成功",
     "currentTime": 1463480500,
-    "data": [
-        {
-            "id": 0,
-            "type": "推荐",
-            "sort": 0,
-            "status": 0
-        },
-        {
-            "id": 1,
-            "type": "养生",
-            "sort": 3,
-            "status": 0
-        },
-        {
-            "id": 2,
-            "type": "猎奇",
-            "sort": 6,
-            "status": 0
-        },
-        {
-            "id": 3,
-            "type": "搞笑",
-            "sort": 2,
-            "status": 0
-        },
-        {
-            "id": 4,
-            "type": "母婴",
-            "sort": 4,
-            "status": 0
-        },
-        {
-            "id": 5,
-            "type": "资讯",
-            "sort": 1,
-            "status": 0
-        },
-        {
-            "id": 21,
-            "type": "美食",
-            "sort": 9,
-            "status": 0
-        },
-        {
-            "id": 22,
-            "type": "娱乐",
-            "sort": 5,
-            "status": 0
-        },
-        {
-            "id": 23,
-            "type": "百科",
-            "sort": 11,
-            "status": 0
-        }
-    ]
+"data":[{
+"id": "1",
+"type": "\u63a8\u8350",
+"sort": "1",
+"status": "1"
+}, {
+"id": "2",
+"type": "\u5a31\u4e50",
+"sort": "2",
+"status": "1"
+}, {
+"id": "3",
+"type": "\u517b\u751f",
+"sort": "3",
+"status": "1"
+}]
 }

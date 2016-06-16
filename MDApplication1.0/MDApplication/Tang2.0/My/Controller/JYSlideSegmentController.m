@@ -473,7 +473,7 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
   [self scrollToViewWithIndex:self.selectedIndex animated:NO];
   [self segmentBarScrollToIndex:_selectedIndex animated:YES];
   [self removePreviousViewController];
-    [collectionView reloadData];
+  [collectionView reloadData];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath

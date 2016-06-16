@@ -158,7 +158,13 @@
     
     //第三步，连接服务器
     
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSError *error = nil;
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(!received){
+        NSLog(@"send request failed: %@", error);
+        return nil;
+    }
     NSDictionary *resultDict;
     resultDict = [NSJSONSerialization JSONObjectWithData:received
                                                  options:NSJSONReadingMutableContainers
@@ -191,7 +197,14 @@
     
     //第三步，连接服务器
     
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSError *error = nil;
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(!received){
+        NSLog(@"send request failed: %@", error);
+        return nil;
+    }
     NSDictionary *resultDict;
     resultDict = [NSJSONSerialization JSONObjectWithData:received
                                                  options:NSJSONReadingMutableContainers
@@ -224,7 +237,14 @@
     
     //第三步，连接服务器
     
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSError *error = nil;
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if(!received){
+        NSLog(@"send request failed: %@", error);
+        return nil;
+    }
     NSDictionary *resultDict;
     resultDict = [NSJSONSerialization JSONObjectWithData:received
                                                  options:NSJSONReadingMutableContainers
@@ -302,8 +322,16 @@
     
     
     //第三步，连接服务器
+    NSError *error = nil;
+ 
+   
+
     
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if (received == nil) {
+        NSLog(@"send request failed: %@", error);
+        return nil;
+    }
     NSDictionary *resultDict;
     resultDict = [NSJSONSerialization JSONObjectWithData:received
                                                  options:NSJSONReadingMutableContainers

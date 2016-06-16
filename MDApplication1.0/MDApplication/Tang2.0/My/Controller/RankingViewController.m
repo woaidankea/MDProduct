@@ -52,6 +52,11 @@
     
     // Do any additional setup after loading the view.
 }
+
+
+
+
+
 - (UITableView *)table{
     if (!_table) {
         _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64)];
@@ -73,7 +78,7 @@
 - (void)startRequest:(MD_ENTER_USERINFO)pageType
 {
     
-    TDRevrankRequest *request = [[TDRevrankRequest alloc]initTDRevrankWithtype:@"1" date:@"1" success:^(AMBaseRequest *request) {
+    TDRevrankRequest *request = [[TDRevrankRequest alloc]initTDRevrankWithtype:_type date:@"3" success:^(AMBaseRequest *request) {
         [self.tableView.mj_header endRefreshing];
                 NSArray *list  = [MDRankModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
         
@@ -93,36 +98,7 @@
                                  
     [request start];
     
-    
-
-//        MDRankingRequest *request = [[MDRankingRequest alloc]initRequestsuccess:^(AMBaseRequest *request) {
-//            [self.tableView.mj_header endRefreshing];
-//            NSArray *list  = [MDRankModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
-//            
-//            _isLastPage = YES;
-//            
-//            [self.items removeAllObjects];
-//            [self.items addObjectsFromArray:list];
-//            
-//            [self.tableView reloadData];
-//            
-//            //添加上拉刷新
-//            if (!_isLastPage) {
-//                [self.tableView.mj_footer resetNoMoreData];
-//            }else{
-//                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//            }
-//            
-//        } failure:^(AMBaseRequest *request) {
-//            [self handleResponseError:self request:request treatErrorAsUnknown:YES];
-//            [self.tableView.mj_header endRefreshing];
-//            [self.tableView.mj_footer endRefreshing];
-//        }];
-//        [request start];
-
-    
-        
-     
+         
     
 }
 
@@ -157,7 +133,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TangRankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankCell"];
     
-    
+    [cell.sortImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld",indexPath.row + 1]]];
     return cell;
 }
 

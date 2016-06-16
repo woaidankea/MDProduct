@@ -89,7 +89,7 @@
         _response.statusCode=[[responseDictionary objectForKey:@"code"] intValue];
         if(ServerJieKu){
             if(_response.statusCode ==1002||_response.statusCode ==1003){
-                
+             
                 [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
                 
             }
@@ -215,13 +215,13 @@
 
 -(void)processError:(NSError *)error{
     _response=[[AMBaseResponse alloc]init];
-    if([error code]==-1001||[error code]==-1009 || [error code]==-1004){
+//    if([error code]==-1001||[error code]==-1009 || [error code]==-1004){
         _response.errorMessage=@"网络不给力!";
-        _response.statusCode=-100;
-    }else{
-        _response.statusCode=(int)error.code;
-        _response.errorMessage=error.description;
-    }
+//        _response.statusCode=-100;
+//    }else{
+//        _response.statusCode=(int)error.code;
+//        _response.errorMessage=error.description;
+//    }
     
 }
 

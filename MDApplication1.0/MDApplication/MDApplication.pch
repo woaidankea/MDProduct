@@ -20,6 +20,11 @@
 #define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
+
+#ifdef DEBUG
+#define NULLSAFE_ENABLED 0
+#endif
+
 //16进制色值参数转换
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

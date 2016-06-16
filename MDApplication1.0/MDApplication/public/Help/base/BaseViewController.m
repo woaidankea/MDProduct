@@ -74,7 +74,7 @@
     
     NSString *confirmTitle=UILocalizedString(@"UI_TEXT_CONFIRM");
     if(request.response.statusCode==-100){
-//        [AMTools showAlertViewWithMessage:request.response.errorMessage cancelButtonTitle:confirmTitle];
+
         [AMTools showHUDtoView:self.view title:request.response.errorMessage delay:2];
         return YES;
     }

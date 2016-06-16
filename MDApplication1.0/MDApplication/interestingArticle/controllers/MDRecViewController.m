@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addNotification];
      self.automaticallyAdjustsScrollViewInsets = NO;
     [self resetTableView:_table];
   
@@ -43,6 +44,14 @@
     _currentPage = 0;
     _isLastPage = NO;
     self.items = [NSMutableArray array];
+    
+    //先加载缓存
+    NSDictionary *responseObject = [self readCache];
+    if (responseObject) {
+        NSArray *list =   [MDArticleModel mj_objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"] ];
+        [self.items addObjectsFromArray:list];
+        [self.tableView reloadData];
+    }
     //下拉刷新
     [self addHeaderRefresh];
     [self addFooterRefresh];
@@ -113,6 +122,9 @@
         if (_currentPage == 0 ) {
             [self.items removeAllObjects];
             [self.items addObjectsFromArray:list];
+            NSError *parseError = nil;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:request.responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
+            [self saveCache: jsonData];
             
         }else if (_currentPage > 0 ){
             [self.items addObjectsFromArray:list];
@@ -185,5 +197,58 @@
     
     
 }
+
+- (void)dealloc{
+    [self removeNotification];
+}
+
+#pragma mark - Notification -
+- (void)addNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout) name:AMUserLogoutNotification object:nil];
+}
+
+- (void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)userLogout{
+    [self removeCache];
+}
+
+#pragma mark - 缓存数据 -
+#define ArticleFile @"neighbor"
+#define fileName @"cache.txt"
+- (void)saveCache:(NSData *)dict
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleFile,_model]];
+    NSError *error = nil;
+    [FCFileManager createFileAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleFile,_model] withContent:dict error:&error];
+   }
+
+- (NSDictionary *)readCache
+{
+    NSData *fileData = [FCFileManager readFileAtPathAsData:[NSString stringWithFormat:@"/%@/%@",ArticleFile,_model]];
+    NSError *err;
+    NSDictionary *dict ;
+    
+    
+    
+    if(fileData){
+    dict = [NSJSONSerialization JSONObjectWithData:fileData
+                         
+                                                        options:NSJSONReadingMutableContainers
+                         
+                                                          error:&err];
+    
+    }
+    return dict;
+}
+
+- (void)removeCache
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleFile,_model]];
+}
+
+
 
 @end

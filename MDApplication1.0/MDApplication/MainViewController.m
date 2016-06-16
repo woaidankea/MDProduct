@@ -29,6 +29,7 @@
 @interface MainViewController ()
 @property (nonatomic,strong)NSMutableArray *selected;
 @property (nonatomic,strong)NSMutableArray *unselected;
+@property (nonatomic,strong)NSArray *tabbarModels;
 @end
 
 @implementation MainViewController
@@ -43,25 +44,17 @@
 
 }
 -(void)viewDidLoad{
-//    self.view.backgroundColor = [UIColor redColor];
-    
     [[UINavigationBar appearance]setBarTintColor:UIColorFromRGB(0xc8252b)];
-
-    
-    
-    
     [super viewDidLoad];
-    
     _selected = [NSMutableArray new];
     _unselected = [NSMutableArray new];
-    
     [UUProgressHUD show];
     NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
-    if([[result objectForKey:@"code"]floatValue]==0){
+    if([[result objectForKey:@"code"]floatValue]==0 && result){
         NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"tabMenu"]];
         [self setTabbarControllers:contentItems];
         [UUProgressHUD dismissWithSuccess:nil];
-
+    _tabbarModels = [NSArray arrayWithArray:contentItems];
 
     }else{
             id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
@@ -71,26 +64,25 @@
                 NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"]objectForKey:@"tabMenu"]];
         
                 [self setTabbarControllers:contentItems];
+                 _tabbarModels = [NSArray arrayWithArray:contentItems];
             }
         [UUProgressHUD dismissWithSuccess:nil];
         
-
+        
     }
+    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
+
+    NSMutableArray *paths = [NSMutableArray new];
     
-    NSDictionary *adresult =[[MMTService shareInstance]syncgetStartAd];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
     
-    NSArray *array = [AdModel mj_objectArrayWithKeyValuesArray:[[adresult objectForKey:@"data"] objectForKey:@"list"]];
+    [[KSGuideManager shared] showGuideViewWithImages:paths withtype:NO];
     
-//    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
-//    NSMutableArray *paths = [NSMutableArray new];
-//    
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
-    
-    [[KSGuideManager shared] showGuideViewWithImages:array];
-//    }
+    }
+
     [USERDEFAULTS setObject:@"1" forKey:@"FisrtLogin"];
 }
 
@@ -245,21 +237,25 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)tabBar:(RDVTabBar *)tabBar didSelectItemAtIndex:(NSInteger)index{
-//    if(index==1||index==3){
-//        if(!USER_DEFAULT_KEY(@"token")){
-//        [self setSelectedIndex:0];
-//        
-//        if ([[self delegate] respondsToSelector:@selector(tabBarController:didSelectViewController:)]) {
-//            [[self delegate] tabBarController:self didSelectViewController:[self viewControllers][0]];
-//        }
-//            [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
-//
-//      
-//            return;
-//        }
-//       
-//
-//    }
+    TabMenuModel *model = [_tabbarModels objectAtIndex:index];
+    
+    if([model.type isEqualToString:@"2"]){
+        if(!USER_DEFAULT_KEY(@"token")){
+        [self setSelectedIndex:0];
+        
+        if ([[self delegate] respondsToSelector:@selector(tabBarController:didSelectViewController:)]) {
+            [[self delegate] tabBarController:self didSelectViewController:[self viewControllers][0]];
+        }
+            
+            
+            [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+
+      
+            return;
+        }
+       
+
+    }
     [super tabBar:tabBar didSelectItemAtIndex:index];
 }
 /*

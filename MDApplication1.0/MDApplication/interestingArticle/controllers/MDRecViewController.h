@@ -8,7 +8,7 @@
 
 #import "MDFullViewController.h"
 #import "BaseTableViewController.h"
-
+#import "FCFileManager.h"
 @interface MDRecViewController : BaseTableViewController
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger totalPage;

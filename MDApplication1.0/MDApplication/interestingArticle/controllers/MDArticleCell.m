@@ -45,8 +45,13 @@
 //          _income.textColor = [UIColor ColorWithHexString:@"9A9A9A"];
             
         }
-         _readCount.text = [NSString stringWithFormat:@"阅读数：%@",model.readCount];
     
+    
+    if(model.readCount){
+         _readCount.text = [NSString stringWithFormat:@"阅读数：%@",model.readCount];
+    }else{
+     _readCount.text = @"阅读数：";
+    }
         _ContentLabel.text =  model.desc;
     _datetime.text =  [AMTools dateStringFromTimeInterval:model.createDatetime];
 }

@@ -14,5 +14,6 @@
 
 @property(assign,nonatomic)MD_ENTER_USERINFO enterType;
 @property(strong,nonatomic)NSString *date;
+@property(strong,nonatomic)NSString *type;
 
 @end

@@ -9,6 +9,7 @@
 #import "CustomSegmentController.h"
 #import "UIButton+CenterImageAndTitle.h"
 #import "SelectedView.h"
+#import "RankingViewController.h"
 #define INDICATOR_HEIGHT (1)
 @interface DXSegmentBarItem : UICollectionViewCell
 
@@ -237,6 +238,12 @@
     NSLog(@"index %d",index);
     
     [_timeSelect setTitle:[@[@"昨日",@"本周",@"总榜"] objectAtIndex:index] forState:UIControlStateNormal];
+    
+    RankingViewController *toSelectController = (RankingViewController *)[self.viewControllers objectAtIndex:_selectedIndex];
+    toSelectController.date = [NSString stringWithFormat:@"%ld",index];
+
+    
+    [toSelectController.tableView.mj_header beginRefreshing];
 
 }
 
@@ -564,6 +571,9 @@
         
         if (index >= 0 && index < self.viewControllers.count) {
             [self setSelectedIndex:index];
+            [self.segmentBar reloadData];
+          
+
         }
         self.lastDestination = destination;
         

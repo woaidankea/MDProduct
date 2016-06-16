@@ -360,7 +360,7 @@
             headView.label.text = @"头部";
         }
         headView.todayLabel.text = _myModel.todayincome;
-        headView.balanceLabel.firstLabel.text = _myModel.discipleincome;
+        headView.balanceLabel.firstLabel.text = _myModel.balance;
         headView.incomeLabel.firstLabel.text = _myModel.allincome;
         headView.studentLabel.firstLabel.text = _myModel.disciplenum;
         [headView.settingButton addTarget:self action:@selector(SettingClick) forControlEvents:UIControlEventTouchUpInside];
@@ -390,7 +390,7 @@
             [vcs addObject:myContr];
         }
         JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
-        slideSegmentController.title = @"资金明细";
+        slideSegmentController.title = model.modulename;
         //  self.slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         slideSegmentController.indicatorColor = UIColorFromRGB(0xcc3333);
         slideSegmentController.itemWidth = FRAME_WIDTH/4;
@@ -407,6 +407,7 @@
             info.rewardStatus = 0;
             //
             [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+            [self getContent];
 
         } failure:^(AMBaseRequest *request) {
               [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
@@ -423,26 +424,31 @@
         return ;
     }
     if([model.moduletype isEqualToString:@"3"]){
-          RootViewController *root = [[RootViewController alloc]init];
+        RootViewController *root = [[RootViewController alloc]init];
+        root.title = model.modulename;
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:root animated:YES];
         return;
     }
     if([model.moduletype isEqualToString:@"6"]){
-        NSArray *arr = @[@"分享榜",@"阅读榜",@"收入榜"];
+        NSArray *arr = @[@"收入榜",@"收徒榜"];
         NSMutableArray *vcs = [NSMutableArray array];
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < arr.count; i++) {
 
         RankingViewController *myContr = [[RankingViewController alloc]init];
-      
+            if(i == 0 ){
+                myContr.type = @"1";
+            }else{
+                myContr.type = @"2";
+            }
 
         myContr.title = [arr objectAtIndex:i];
         [vcs addObject:myContr];
         }
         CustomSegmentController *slideSegmentController = [[CustomSegmentController alloc] initWithViewControllers:vcs];
-        slideSegmentController.title = @"排行榜";
-        //  self.slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        slideSegmentController.title = model.modulename;
+     
         slideSegmentController.indicatorColor = [UIColor clearColor];
-        slideSegmentController.itemWidth = FRAME_WIDTH/4;
+        slideSegmentController.itemWidth = FRAME_WIDTH/3;
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:slideSegmentController animated:YES];
         return;
     }
@@ -450,7 +456,7 @@
     if([model.moduletype isEqualToString:@"7"]){
     
         BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
-       
+        vc.title = model.modulename;
        [vc setleftBarItemWith:nil];
         vc.url = model.url;
         
@@ -459,14 +465,14 @@
     }
     if([model.moduletype isEqualToString:@"4"]){
      BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDApprenticeViewController];
-        
+        vc.title = model.modulename;
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
     
     if([model.moduletype isEqualToString:@"5"]){
         BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kMDInfomationViewController];
-        
+        vc.title = model.modulename;
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }

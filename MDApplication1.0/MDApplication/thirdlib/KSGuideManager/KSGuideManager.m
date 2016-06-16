@@ -20,6 +20,7 @@ static NSString *identifier = @"Cell";
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIButton *button;
 
+
 @end
 
 @implementation KSGuideViewCell
@@ -109,7 +110,6 @@ static NSString *identifier = @"Cell";
         _view.pagingEnabled = YES;
         _view.dataSource = self;
         _view.delegate = self;
-        
         [_view registerClass:[KSGuideViewCell class] forCellWithReuseIdentifier:identifier];
     }
     return _view;
@@ -124,8 +124,9 @@ static NSString *identifier = @"Cell";
     return _pageControl;
 }
 
-- (void)showGuideViewWithImages:(NSArray *)images {
+- (void)showGuideViewWithImages:(NSArray *)images withtype:(BOOL)isAd{
     
+    _Ad = isAd;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *version = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"];
     //根据版本号来区分是否要显示引导图
@@ -174,8 +175,9 @@ static NSString *identifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     KSGuideViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
+    if(_Ad){
     AdModel *path = [self.images objectAtIndex:indexPath.row];
+    
 //    UIImage *img = [UIImage imageWithContentsOfFile:path];
 //    CGSize size = [self adapterSizeImageSize:img.size compareSize:kScreenBounds.size];
 //    
@@ -183,14 +185,27 @@ static NSString *identifier = @"Cell";
 //    cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
 //    cell.imageView.image = [UIImage imageWithContentsOfFile:path];
 //    cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
+  
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:path.adurl] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
-//    if (indexPath.row == self.images.count - 1) {
-//        [cell.button setHidden:NO];
+
         [cell.button addTarget:self action:@selector(nextButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
-//    } else {
+
         [cell.button setHidden:NO];
-//    }
+    
+    }else{
+        NSString *path = [self.images objectAtIndex:indexPath.row];
+        
+            UIImage *img = [UIImage imageWithContentsOfFile:path];
+            CGSize size = [self adapterSizeImageSize:img.size compareSize:kScreenBounds.size];
+        
+            //自适应图片位置,图片可以是任意尺寸,会自动缩放.
+            cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+            cell.imageView.image = [UIImage imageWithContentsOfFile:path];
+            cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
+
+    }
+
 
     return cell;
 }
@@ -225,13 +240,20 @@ static NSString *identifier = @"Cell";
 - (void)nextButtonHandler:(id)sender {
 
     [self guideRemove];
+    [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+    
+
 }
 
 -(void)guideRemove{
     [self.view removeFromSuperview];
     [self.pageControl removeFromSuperview];
+    
     [self setWindow:nil];
     [self setView:nil];
+    [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+    
+
    
 }
 

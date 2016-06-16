@@ -15,15 +15,15 @@
 @implementation ScreenGuideViewController
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSMutableArray *paths = [NSMutableArray new];
-    
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
-    
-    [[KSGuideManager shared] showGuideViewWithImages:paths];
-
+//    NSMutableArray *paths = [NSMutableArray new];
+//    
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
+//    
+//    [[KSGuideManager shared] showGuideViewWithImages:paths];
+//
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
