@@ -26,7 +26,7 @@
         [dict setValue:POST_VALUE(password) forKey:@"password"];
         [dict setValue:POST_VALUE(code) forKey:@"code"];
         [dict setValue:POST_VALUE(inviter) forKey:@"inviter"];
-        [dict setObject:@"a,a,9.0.1" forKey:@"hwinfos"];
+        [dict setObject:device forKey:@"hwinfos"];
         [self setActionInfo:dict];
 //          NSMutableDictionary *headerInfo = [NSMutableDictionary dictionary];
 //        [headerInfo setObject:[MDDeviceInfo systemInfoData] forKey:@"hwinfos"];

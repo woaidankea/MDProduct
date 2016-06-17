@@ -17,7 +17,7 @@
 
     
     USER_DEFAULT_KEY(@"idfa");
-    NSString *systemInfo = [NSString stringWithFormat:@"%@,%@,%f",strModel,@"",[[UIDevice currentDevice].systemVersion floatValue]];
+    NSString *systemInfo = [NSString stringWithFormat:@"%@,%@,%f",strModel,USER_DEFAULT_KEY(@"idfa"),[[UIDevice currentDevice].systemVersion floatValue]];
     
     return systemInfo;
 }
