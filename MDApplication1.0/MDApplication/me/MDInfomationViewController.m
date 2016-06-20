@@ -168,7 +168,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
     MDHeadImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDHeadImageCell"];
-    [cell.headImage sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar] placeholderImage:[UIImage imageNamed:@"avatorplaceorder"]];
+        if(headerImage.count!=0){
+            [cell.headImage setImage:[UIImage imageWithData:headerImage[0]]];
+        }else{
+        
+            [cell.headImage sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar] placeholderImage:[UIImage imageNamed:@"avatorplaceorder"]];
+        }
         return cell;
     }else if (indexPath.section == 1) {
         MDInfomationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDInfomationCell"];
@@ -560,11 +565,13 @@
     UIImage *image=inf[@"UIImagePickerControllerEditedImage"];
     UIImage *newImage=[AMTools compressImageWithImage:image];
     NSData *data = UIImageJPEGRepresentation(newImage, 1);
+    [headerImage removeAllObjects];
     [headerImage  addObject:data];
+  
     __weak MDInfomationViewController *weakSelf =self;
     [self dismissViewControllerAnimated:NO completion:^{
 //        [weakSelf submitHeadPicture:newImage];
-        //       [weakSelf.dataTable reloadData];
+               [weakSelf.tableView reloadData];
     }];
 }
 

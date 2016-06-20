@@ -42,7 +42,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Wp-Ha-XEv">
-                                        <rect key="frame" x="100" y="5" width="278" height="30"/>
+                                        <rect key="frame" x="50" y="5" width="328" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="mhO-1F-t2T">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="40"/>
@@ -52,7 +52,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-Ni-Iz5">
-                                        <rect key="frame" x="100" y="45" width="278" height="30"/>
+                                        <rect key="frame" x="50" y="45" width="328" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CGh-X1-BpF">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="40"/>
@@ -88,10 +88,10 @@
                                     <constraint firstItem="0jt-mw-rzm" firstAttribute="top" secondItem="2Wp-Ha-XEv" secondAttribute="bottom" constant="5" id="CfT-C6-Qoq"/>
                                     <constraint firstAttribute="trailing" secondItem="0jt-mw-rzm" secondAttribute="trailing" id="FT7-3I-DNa"/>
                                     <constraint firstItem="epo-Z6-y59" firstAttribute="height" secondItem="2Wp-Ha-XEv" secondAttribute="height" id="GkU-VH-hcx"/>
-                                    <constraint firstItem="2Wp-Ha-XEv" firstAttribute="leading" secondItem="4G4-MB-Nkf" secondAttribute="leading" constant="100" id="OOU-Xg-Fnw"/>
+                                    <constraint firstItem="2Wp-Ha-XEv" firstAttribute="leading" secondItem="4G4-MB-Nkf" secondAttribute="leading" constant="50" id="OOU-Xg-Fnw"/>
                                     <constraint firstItem="hZl-F6-XCp" firstAttribute="leading" secondItem="0jt-mw-rzm" secondAttribute="leading" id="PUd-UP-SGS"/>
                                     <constraint firstItem="epo-Z6-y59" firstAttribute="leading" secondItem="0jt-mw-rzm" secondAttribute="leading" id="R5r-hP-6IA"/>
-                                    <constraint firstItem="Hts-Ni-Iz5" firstAttribute="leading" secondItem="4G4-MB-Nkf" secondAttribute="leading" constant="100" id="Viz-B2-PmV"/>
+                                    <constraint firstItem="Hts-Ni-Iz5" firstAttribute="leading" secondItem="4G4-MB-Nkf" secondAttribute="leading" constant="50" id="Viz-B2-PmV"/>
                                     <constraint firstItem="hZl-F6-XCp" firstAttribute="centerY" secondItem="Hts-Ni-Iz5" secondAttribute="centerY" id="X9Z-nQ-bXR"/>
                                     <constraint firstItem="lMp-ag-axi" firstAttribute="leading" secondItem="0jt-mw-rzm" secondAttribute="leading" id="hmc-aR-WF4"/>
                                     <constraint firstItem="lMp-ag-axi" firstAttribute="top" secondItem="Hts-Ni-Iz5" secondAttribute="bottom" constant="5" id="pwS-nD-hGu"/>
@@ -108,7 +108,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkf-El-c3R">
-                                <rect key="frame" x="20" y="189" width="374" height="40"/>
+                                <rect key="frame" x="20" y="676" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MwL-mO-QIx"/>
                                 </constraints>
@@ -156,6 +156,7 @@
                             <constraint firstAttribute="right" secondItem="4G4-MB-Nkf" secondAttribute="right" constant="18" id="Fm5-a8-O8E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                             </constraint>
+                            <constraint firstItem="Ype-Ei-FyF" firstAttribute="top" secondItem="xkf-El-c3R" secondAttribute="bottom" constant="20" id="I2v-Tx-H5m"/>
                             <constraint firstItem="ifh-8y-NSB" firstAttribute="top" secondItem="4G4-MB-Nkf" secondAttribute="bottom" constant="25" id="LEQ-SL-P4x"/>
                             <constraint firstItem="xkf-El-c3R" firstAttribute="top" secondItem="ifh-8y-NSB" secondAttribute="bottom" id="PMa-sD-SPL"/>
                             <constraint firstItem="4G4-MB-Nkf" firstAttribute="left" secondItem="B3j-TT-KHm" secondAttribute="left" constant="18" id="SeR-tm-Kf9"/>
@@ -172,6 +173,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="fFT-SZ-SC8"/>
+                                <exclude reference="PMa-sD-SPL"/>
                             </mask>
                         </variation>
                     </view>

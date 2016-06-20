@@ -87,7 +87,7 @@
         [self setBusyIndicatorVisible:NO];
                 MDUserInfoModel *model =[MDUserInfoModel mj_objectWithKeyValues:request.responseObject];
                     [USER_DEFAULT setObject:model.token forKey:@"token"];
-                    [USER_DEFAULT setObject:model.memberId forKey:@"id"];
+                    [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
                     [USER_DEFAULT synchronize];
                      NSLog(@"111");
                  [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];

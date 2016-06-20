@@ -39,9 +39,37 @@
     [super viewWillDisappear:animated];
   
 }
+
+
+
+-(void)setrightBarItem:(NSString *)imageNamed{
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:imageNamed] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(rightItemAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
+     *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    negativeSpacer.width = -17;
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,rightBar,nil];
+    
+}
+
+
+- (void)rightItemAction{
+    [self share];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self  setrightBarItemWith:@"share_top"];
+    [self  setrightBarItem:@"share_top"];
     self.automaticallyAdjustsScrollViewInsets =NO;
     [self setleftBarItemWith:@"back_ico@2x.png"];
     
@@ -197,9 +225,8 @@
     sharemodel.imageArray = @[t_model.cover];
     sharemodel.desc = t_model.desc;
     sharemodel.key = [NSString stringWithFormat:@"%@%@",t_model.authcode,MD5];
-      [DXShareTools shareToolsInstance].isPic = NO;
-//    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow
-//     ];
+    [DXShareTools shareToolsInstance].isPic = NO;
+
     
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:self];
 }
@@ -208,12 +235,12 @@
     [self share];
 }
 
-- (void)rightItemAction{
-    
-    [self share];
-    
-    
-}
+//- (void)rightItemAction{
+//    
+//    [self share];
+//    
+//    
+//}
 - (NSString *)md5:(NSString *)string {
     
     // 1. 导入库文件

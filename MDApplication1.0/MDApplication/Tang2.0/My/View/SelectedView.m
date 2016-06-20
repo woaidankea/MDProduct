@@ -69,9 +69,9 @@
 - (UILabel *)contentLabel{
     if(!_contentLabel){
         _contentLabel = [[UILabel alloc]init];
-        _contentLabel.font = [UIFont systemFontOfSize:15.0];
+        _contentLabel.font = [UIFont systemFontOfSize:13.0];
         _contentLabel.text = @"昨日";
-        _contentLabel.textColor = UIColorFromRGB(0xd3494e);
+        _contentLabel.textColor = UIColorFromRGB(0x848484);
         _contentLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_contentLabel];
         

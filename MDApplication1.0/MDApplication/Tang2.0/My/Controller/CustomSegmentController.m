@@ -218,7 +218,7 @@
         _timeSelect.frame = CGRectMake(0, 0, _segmentBar.frame.size.width/(_viewControllers.count + 1), _segmentBar.frame.size.height);
         [_timeSelect setTitle:@"昨日" forState:UIControlStateNormal];
         _timeSelect.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_timeSelect setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
+        [_timeSelect setTitleColor:UIColorFromRGB(0x616161) forState:UIControlStateNormal];
         [_timeSelect addTarget:self action:@selector(timeSelectClick) forControlEvents:UIControlEventTouchUpInside];
         [_timeSelect setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
         [_timeSelect setImage:[UIImage imageNamed:@"up"] forState:UIControlStateSelected];

@@ -142,11 +142,6 @@
     negativeSpacer.width = -17;
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,rightBar,nil];
 
-//    [self.navigationItem setRightBarButtonItem:rightBar];
-
-//    UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageNamed] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemAction)];
-//    [rightBar setTintColor:[UIColor whiteColor]];
-//    [self.navigationItem setRightBarButtonItem:rightBar];
 }
 
 

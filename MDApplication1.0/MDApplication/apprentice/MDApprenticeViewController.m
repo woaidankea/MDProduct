@@ -120,16 +120,7 @@
 
 - (void)share{
     
-//    NSDictionary *share_wx = @{@"image":@"share_wx",
-//                               @"title":@"微信"};
-//    NSDictionary *share_wx_timeline = @{@"image":@"share_wx_timeline",
-//                                        @"title":@"朋友圈"};
-//    NSDictionary *share_qq = @{@"image":@"share_qq",
-//                               @"title":@"QQ"};
-//    NSDictionary *share_weibo = @{@"image":@"share_weibo",
-//                                  @"title":@"新浪微博"};
-//    NSDictionary *share_qzone = @{@"image":@"share_qzone",
-//                                  @"title":@"QQ空间"};
+
 
     
     NSArray *shareAry = @[@{@"image":@"share_qq",@"title":@"QQ"},
@@ -170,7 +161,9 @@
     
     [DXShareTools shareToolsInstance].isApprentice = YES;
     
-    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
+    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel viewController:self];
+    
+    
 
     
     
