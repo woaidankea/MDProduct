@@ -226,6 +226,9 @@
 		5C3E46531CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46521CF42241002B7FF4 /* UIButton+CenterImageAndTitle.m */; };
 		5C3E46561CF423EC002B7FF4 /* SelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E46551CF423EC002B7FF4 /* SelectedView.m */; };
 		5C506B2F1D111CB50002FC78 /* IndexbalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C506B2E1D111CB50002FC78 /* IndexbalRequest.m */; };
+		5C5B1BC61D190B48007D2E6F /* RegbonusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BC51D190B48007D2E6F /* RegbonusRequest.m */; };
+		5C5B1BC91D190E7C007D2E6F /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BC81D190E7C007D2E6F /* BonusModel.m */; };
+		5C5B1BCD1D193178007D2E6F /* UserdataumRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BCC1D193178007D2E6F /* UserdataumRequest.m */; };
 		5C62AF0E1CF549FF007343D8 /* getuserInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */; };
 		5C6C9F7B1CFD8339000ED97A /* CLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F681CFD8339000ED97A /* CLProgressHUD.m */; };
 		5C6C9F7C1CFD8339000ED97A /* CLProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F6A1CFD8339000ED97A /* CLProgressLabel.m */; };
@@ -780,6 +783,12 @@
 		5C3E46551CF423EC002B7FF4 /* SelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedView.m; sourceTree = "<group>"; };
 		5C506B2D1D111CB50002FC78 /* IndexbalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexbalRequest.h; sourceTree = "<group>"; };
 		5C506B2E1D111CB50002FC78 /* IndexbalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexbalRequest.m; sourceTree = "<group>"; };
+		5C5B1BC41D190B48007D2E6F /* RegbonusRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegbonusRequest.h; sourceTree = "<group>"; };
+		5C5B1BC51D190B48007D2E6F /* RegbonusRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegbonusRequest.m; sourceTree = "<group>"; };
+		5C5B1BC71D190E7C007D2E6F /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
+		5C5B1BC81D190E7C007D2E6F /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
+		5C5B1BCB1D193178007D2E6F /* UserdataumRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserdataumRequest.h; sourceTree = "<group>"; };
+		5C5B1BCC1D193178007D2E6F /* UserdataumRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserdataumRequest.m; sourceTree = "<group>"; };
 		5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getuserInfo.txt; sourceTree = "<group>"; };
 		5C6C9F661CFD8339000ED97A /* CLProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProgress.h; sourceTree = "<group>"; };
 		5C6C9F671CFD8339000ED97A /* CLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProgressHUD.h; sourceTree = "<group>"; };
@@ -1810,6 +1819,24 @@
 			path = 2.0IndexbalRequest;
 			sourceTree = "<group>";
 		};
+		5C5B1BC31D190B17007D2E6F /* 2.0RegbonusRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C5B1BC41D190B48007D2E6F /* RegbonusRequest.h */,
+				5C5B1BC51D190B48007D2E6F /* RegbonusRequest.m */,
+			);
+			path = 2.0RegbonusRequest;
+			sourceTree = "<group>";
+		};
+		5C5B1BCA1D193178007D2E6F /* 2.0UserdataumRequset */ = {
+			isa = PBXGroup;
+			children = (
+				5C5B1BCB1D193178007D2E6F /* UserdataumRequest.h */,
+				5C5B1BCC1D193178007D2E6F /* UserdataumRequest.m */,
+			);
+			path = 2.0UserdataumRequset;
+			sourceTree = "<group>";
+		};
 		5C6C9F651CFD8339000ED97A /* CLProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1847,6 +1874,8 @@
 		5C6C9FED1CFEE5A0000ED97A /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				5C5B1BCA1D193178007D2E6F /* 2.0UserdataumRequset */,
+				5C5B1BC31D190B17007D2E6F /* 2.0RegbonusRequest */,
 				5C506B2C1D111C8D0002FC78 /* 2.0IndexbalRequest */,
 				5C6C9FEE1CFEEE56000ED97A /* 2.0AppcolRequest */,
 				5C6C9FEF1CFEEE56000ED97A /* 2.0ArticleRequest */,
@@ -2503,6 +2532,8 @@
 				5C7267891CED97870019F37C /* TabMenuModel.m */,
 				5C2EAE9C1D0D6C1500611A06 /* AdModel.h */,
 				5C2EAE9D1D0D6C1500611A06 /* AdModel.m */,
+				5C5B1BC71D190E7C007D2E6F /* BonusModel.h */,
+				5C5B1BC81D190E7C007D2E6F /* BonusModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3568,6 +3599,7 @@
 				5C73A6FA1CC0B9F7000CB453 /* myImageView.m in Sources */,
 				5C3A90861C9BC36C00B4388B /* MDFindPasswordViewController.m in Sources */,
 				5C711A501CA0F4DB00CA1A31 /* NJKWebViewProgress.m in Sources */,
+				5C5B1BC61D190B48007D2E6F /* RegbonusRequest.m in Sources */,
 				5C506B2F1D111CB50002FC78 /* IndexbalRequest.m in Sources */,
 				5CA7AC681CBBC39E005EF4D0 /* MDRedPacketModel.m in Sources */,
 				5C3A90541C9AD4CB00B4388B /* MDLifeViewController.m in Sources */,
@@ -3647,6 +3679,8 @@
 				5C3A8F7C1C9953F200B4388B /* MDDiscipleCell.m in Sources */,
 				5C6CA0461CFFFB14000ED97A /* TDStartAdRequest.m in Sources */,
 				5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */,
+				5C5B1BC91D190E7C007D2E6F /* BonusModel.m in Sources */,
+				5C5B1BCD1D193178007D2E6F /* UserdataumRequest.m in Sources */,
 				5C9F3E771C96951000756229 /* RDVTabBarController.m in Sources */,
 				5C9F3E921C9699E400756229 /* LBLayoutCellTableViewController.m in Sources */,
 				5C6CA02E1CFFDF89000ED97A /* TDProfilesaveRequest.m in Sources */,
@@ -3922,7 +3956,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "96f8e5b8-c2b4-43b6-95cd-bcf6d2dab81c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3956,7 +3990,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "96f8e5b8-c2b4-43b6-95cd-bcf6d2dab81c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

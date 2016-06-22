@@ -14,6 +14,7 @@
 #import "myImageView.h"
 #import "UConstants.h"
 #import "DXShareTools.h"
+#import "AppDelegate.h"
 #define RGBACOLOR(r,g,b,a)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define SNOW_IMAGENAME         @"5"
 
@@ -345,6 +346,8 @@ static int i = 0;
 //    button.enabled   = NO;
     NSLog(@"123123123123");
     //TODO 自定义分享方式
+    self.windowUv.hidden = YES;
+    self.windowUv        = nil;
     
     ShareModel *sharemodel = [[ShareModel alloc]init];
     
@@ -353,7 +356,7 @@ static int i = 0;
 
     sharemodel.desc = @"利用闲余时间,随便点点就可以轻松拿零花";
 
-    sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"]];
+    sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"]];
     
     NSArray *shareAry = @[@{@"image":@"share_qq",@"title":@"QQ"},
                           @{@"image":@"share_wx_timeline",@"title":@"朋友圈"},
@@ -364,9 +367,10 @@ static int i = 0;
    
     [DXShareTools shareToolsInstance].isPic = NO;
     
+    [DXShareTools shareToolsInstance].isSign = YES;
     
-    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:self];
     
+    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:((AppDelegate *)[UIApplication sharedApplication].delegate).rootController];
 }
 
 - (void)cancelButtonClicked:(id)sender {

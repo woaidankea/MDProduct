@@ -18,7 +18,7 @@ static CGFloat const ButtonWidth = 25;
 static CGFloat const cellButtonWidth = 62;
 static CGFloat const ButtonHeight = 27;
 static CGFloat const contentWidth = 270;
-static CGFloat const cellborder =4;
+static CGFloat const cellborder =20;
 @interface YZDisplayViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 /** 整体内容View 包含标题好内容滚动视图 */
@@ -220,14 +220,14 @@ static CGFloat const cellborder =4;
         [buttonup addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:@"SelectView" owner:nil options:nil];
         SelectView *cv =[nibView objectAtIndex:0];
-        cv.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
-        
-     
+//        cv.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
+        cv.backgroundColor=[[UIColor whiteColor] colorWithAlphaComponent:0.9];
         
 
         [self.contentView addSubview:titleScrollView];
         [self.contentView addSubview:buttonup];
-          [self.contentView addSubview:cv];
+        [self.contentView addSubview:cv];
+//        self.contentView.alpha = 0.5;
         
         
         
@@ -537,6 +537,7 @@ static CGFloat const cellborder =4;
         UILabel *label = [[YZDisplayTitleLabel alloc] init];
         UILabel *cellLabel = [[YZDisplayTitleLabel alloc] init];
         cellLabel.textColor = [UIColor ColorWithHexString:@"484848"];
+       
         cellLabel.backgroundColor = [UIColor whiteColor];
         cellLabel.layer.borderColor = [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1].CGColor;
         cellLabel.layer.borderWidth = 0.5;
@@ -550,7 +551,7 @@ static CGFloat const cellborder =4;
 //        cellLabel.textColor = self.norColor;
         
         label.font = self.titleFont;
-        cellLabel.font = self.titleFont;
+        cellLabel.font = [UIFont systemFontOfSize:13];
         
         // 设置按钮标题
         label.text = vc.title;
@@ -567,7 +568,7 @@ static CGFloat const cellborder =4;
        
         
         if((i%4)==0){
-        buttonX = (YZScreenW-270)/2+cellborder;
+        buttonX = (YZScreenW-64*4 - cellborder * 4)/2+cellborder;
         }else{
         buttonX = cellborder + CGRectGetMaxX(lastcellLabel.frame);
         }

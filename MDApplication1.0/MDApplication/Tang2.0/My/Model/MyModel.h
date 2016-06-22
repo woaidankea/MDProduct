@@ -17,5 +17,8 @@
 @property (nonatomic,strong)NSString *discipleincome;
 @property (nonatomic,strong)NSArray  *list;
 @property (nonatomic,strong)NSString *balance;
+@property (nonatomic,strong)NSString *isbonus;
+@property (nonatomic,strong)NSString *isdatum;
+
 
 @end

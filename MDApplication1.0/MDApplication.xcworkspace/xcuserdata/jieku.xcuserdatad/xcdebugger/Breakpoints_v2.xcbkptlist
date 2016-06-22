@@ -280,7 +280,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindsecondViewController.m"
-                  timestampString = "487917986.550179"
+                  timestampString = "488191337.340209"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -295,7 +295,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDFindsecondViewController.m"
-                  timestampString = "487917986.550284"
+                  timestampString = "488191337.340339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -340,11 +340,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__48-[MDInfomationViewController uploadImageWithUrl]_block_invoke.515"
+                  symbolName = "__48-[MDInfomationViewController uploadImageWithUrl]_block_invoke.519"
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/me/MDInfomationViewController.m"
-                  timestampString = "487917986.551453"
+                  timestampString = "488191337.341794"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "641"
@@ -359,7 +359,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/me/MDInfomationViewController.m"
-                  timestampString = "487917986.551563"
+                  timestampString = "488191337.341919"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "643"
@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
             <Locations>
@@ -648,11 +648,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.560451"
+                  timestampString = "488191337.352944"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "411"
-                  endingLineNumber = "411"
+                  startingLineNumber = "405"
+                  endingLineNumber = "405"
                   offsetFromSymbolStart = "596">
                </Location>
                <Location
@@ -663,11 +663,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.560576"
+                  timestampString = "488191337.353069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "418"
-                  endingLineNumber = "418"
+                  startingLineNumber = "412"
+                  endingLineNumber = "412"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -696,11 +696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
             <Locations>
@@ -712,11 +712,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.561412"
+                  timestampString = "488191337.354023"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "411"
-                  endingLineNumber = "411"
+                  startingLineNumber = "405"
+                  endingLineNumber = "405"
                   offsetFromSymbolStart = "596">
                </Location>
                <Location
@@ -727,11 +727,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.561516"
+                  timestampString = "488191337.354151"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "418"
-                  endingLineNumber = "418"
+                  startingLineNumber = "412"
+                  endingLineNumber = "412"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -920,11 +920,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
-            timestampString = "487840842.690273"
+            timestampString = "488084236.279356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-initRedPacketWindow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1064,11 +1064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+ShareSucAlert.m"
-            timestampString = "482830218.661002"
+            timestampString = "488186240.545833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-initRedPacketWindow1:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1112,11 +1112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
-            timestampString = "487840842.690273"
+            timestampString = "488084236.279356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "-nextButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1192,11 +1192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1240,11 +1240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1256,11 +1256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1272,11 +1272,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1336,11 +1336,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "-easyCustomShareViewButtonAction:title:"
             landmarkType = "5">
             <Locations>
@@ -1352,11 +1352,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.581346"
+                  timestampString = "488191337.378223"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "377"
-                  endingLineNumber = "377"
+                  startingLineNumber = "371"
+                  endingLineNumber = "371"
                   offsetFromSymbolStart = "408">
                </Location>
                <Location
@@ -1367,11 +1367,11 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/tools/%E5%88%86%E4%BA%AB%E7%9B%B8%E5%85%B3/DXShareTools.m"
-                  timestampString = "487917986.581517"
+                  timestampString = "488191337.378344"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "379"
-                  endingLineNumber = "379"
+                  startingLineNumber = "373"
+                  endingLineNumber = "373"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -1384,11 +1384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-showShareView:contentModel:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1400,27 +1400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485250090.833607"
+            timestampString = "488191335.86499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "-showShareView:contentModel:viewController:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327107.09154"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "724"
-            endingLineNumber = "724"
+            startingLineNumber = "738"
+            endingLineNumber = "738"
             landmarkName = "-shareToWeChatTimeline"
             landmarkType = "5">
          </BreakpointContent>
@@ -1432,11 +1416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485327422.147265"
+            timestampString = "488191335.86499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1195"
-            endingLineNumber = "1195"
+            startingLineNumber = "1225"
+            endingLineNumber = "1225"
             landmarkName = "-shareToWechatSession"
             landmarkType = "5">
          </BreakpointContent>
@@ -1464,11 +1448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "485326918.099008"
+            timestampString = "488107841.691713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-showShareView:contentModel:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1560,11 +1544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/login/MDLoginViewController.m"
-            timestampString = "487475624.158735"
+            timestampString = "488085460.482595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-leftItemAction"
             landmarkType = "5">
          </BreakpointContent>
@@ -1576,11 +1560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
-            timestampString = "487840842.690273"
+            timestampString = "488084236.279356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-initRedPacketWindowNeedOpen:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1592,11 +1576,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
-            timestampString = "487840842.690273"
+            timestampString = "488084236.279356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-initRedPacketWindow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1608,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
-            timestampString = "487840842.690273"
+            timestampString = "488084236.279356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-initRedPacketWindowNeedOpen:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1672,7 +1656,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/interestingArticle/controllers/MDInterestDetailViewController.m"
-                  timestampString = "487917986.591629"
+                  timestampString = "488191337.389534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -1687,7 +1671,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/interestingArticle/controllers/MDInterestDetailViewController.m"
-                  timestampString = "487917986.591743"
+                  timestampString = "488191337.389646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -1800,7 +1784,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "487917986.595012"
+                  timestampString = "488191337.394216"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "276"
@@ -1815,7 +1799,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "487917986.595111"
+                  timestampString = "488191337.394347"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "276"
@@ -1830,7 +1814,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/login/MDRegistViewController.m"
-                  timestampString = "487917986.595193"
+                  timestampString = "488191337.394448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "276"
@@ -1927,11 +1911,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+ShareSucAlert.m"
-            timestampString = "486872065.818858"
+            timestampString = "488186240.545833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-cancelButtonClicked"
             landmarkType = "5">
          </BreakpointContent>
@@ -1975,11 +1959,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/login/MDLoginViewController.m"
-            timestampString = "487475624.158735"
+            timestampString = "488085460.482595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-LoginClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2071,7 +2055,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Help/postService/MMTService.m"
-                  timestampString = "487917986.602636"
+                  timestampString = "488191337.405293"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -2086,7 +2070,7 @@
                   moduleName = "MDApplication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/MDProduct/MDApplication1.0/MDApplication/public/Help/postService/MMTService.m"
-                  timestampString = "487917986.602752"
+                  timestampString = "488191337.405434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -2231,28 +2215,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/me/MDMyViewController.m"
-            timestampString = "487389886.043789"
+            timestampString = "488191335.86499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-getContent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MDApplication/me/MDMyViewController.m"
-            timestampString = "487389886.043789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2487,11 +2455,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/interestingArticle/controllers/MDRecViewController.m"
-            timestampString = "487837675.887475"
+            timestampString = "488109497.500755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-saveCache:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2519,11 +2487,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/interestingArticle/controllers/MDRecViewController.m"
-            timestampString = "487837675.887475"
+            timestampString = "488109497.500755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-readCache"
             landmarkType = "5">
          </BreakpointContent>
@@ -2551,11 +2519,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/interestingArticle/controllers/MDRecViewController.m"
-            timestampString = "487837675.887475"
+            timestampString = "488109497.500755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
@@ -2567,11 +2535,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/interestingArticle/controllers/MDRecViewController.m"
-            timestampString = "487837675.887475"
+            timestampString = "488109497.500755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-userLogout"
             landmarkType = "5">
          </BreakpointContent>
@@ -2598,22 +2566,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MDApplication/public/Networking/AMBaseRequest/AMBaseRequest.m"
-            timestampString = "487837997.311702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-start"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MDApplication/apprentice/MDApprenticeViewController.m"
             timestampString = "487840842.690273"
             startingColumnNumber = "9223372036854775807"
@@ -2631,11 +2583,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "487840045.078631"
+            timestampString = "488107841.691713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-showShareView:contentModel:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2647,11 +2599,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
-            timestampString = "487840121.481497"
+            timestampString = "488189169.255264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-showShareView:contentModel:viewController:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2701,6 +2653,102 @@
             startingLineNumber = "90"
             endingLineNumber = "90"
             landmarkName = "-setTabbarControllers:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
+            timestampString = "488084236.279356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "-shareButtonPress:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x7ea2;&#x5305;&#x76f8;&#x5173;/UIWindow+RedPacket.m"
+            timestampString = "488084381.06133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "-shareButtonPress:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
+            timestampString = "488189169.255264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-showShareView:contentModel:viewController:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/thirdlib/chat/UUChat/UUMessageCell.m"
+            timestampString = "488184525.153966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-setMessageFrame:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
+            timestampString = "488191335.86499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1086"
+            endingLineNumber = "1086"
+            landmarkName = "-shareToTencentQQ"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MDApplication/tools/&#x5206;&#x4eab;&#x76f8;&#x5173;/DXShareTools.m"
+            timestampString = "488191335.86499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1112"
+            endingLineNumber = "1112"
+            landmarkName = "-shareToTencentQQ"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

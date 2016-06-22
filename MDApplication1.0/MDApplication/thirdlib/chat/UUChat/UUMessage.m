@@ -14,7 +14,8 @@
     // 模型的desc属性对应着字典中的description
     return @{@"strContent" : @"content",
              @"from" : @"answer",
-             @"strTime" : @"tictime"};
+             @"strTime" : @"tictime",
+             @"strIcon":@"avatar"};
 }
 - (void)setWithDict:(NSDictionary *)dict{
     

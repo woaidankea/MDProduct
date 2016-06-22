@@ -85,8 +85,8 @@
     return _countLabel;
 }
 - (void)setContentModel:(MyContentModel *)model{
-    if(model.imageurl.length != 0){
-        [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.imageurl] placeholderImage:[UIImage imageNamed:@""]];
+    if(model.imgurl.length != 0){
+        [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:[UIImage imageNamed:@"tixian"]];
     }else{
         if([model.moduletype isEqualToString:@"1"]){
             _iconImage.image = [UIImage imageNamed:@"zijin"];

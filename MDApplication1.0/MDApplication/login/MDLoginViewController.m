@@ -29,6 +29,12 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
 
     self.view.backgroundColor = UIColorFromRGB(0xffffff);
+    
+    NSString *username = [self lastLoginUsername];
+    if (username && username.length > 0) {
+        _AccountField.text = username;
+    }
+
 //      [self setleftBarItemWith:@"back_ico@2x.png"];
     // Do any additional setup after loading the view.
 }
@@ -89,7 +95,8 @@
                     [USER_DEFAULT setObject:model.token forKey:@"token"];
                     [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
                     [USER_DEFAULT synchronize];
-                     NSLog(@"111");
+                    [weakSelf saveLastLoginUsername];
+        
                  [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
 
     } failure:^(AMBaseRequest *request) {
@@ -109,6 +116,28 @@
     [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
     
 
+}
+#pragma  mark - private
+- (void)saveLastLoginUsername
+{
+    NSString *username = _AccountField.text;
+
+    if (username && username.length > 0) {
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:username forKey:[NSString stringWithFormat:@"em_lastLogin_username"]];
+      
+        [ud synchronize];
+    }
+}
+
+- (NSString*)lastLoginUsername
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *username = [ud objectForKey:[NSString stringWithFormat:@"em_lastLogin_username"]];
+    if (username && username.length > 0) {
+        return username;
+    }
+    return nil;
 }
 
 @end

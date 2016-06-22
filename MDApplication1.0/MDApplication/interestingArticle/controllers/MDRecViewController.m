@@ -188,6 +188,12 @@
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"MDInterestingArticleViewController" bundle:nil];
     MDInterestDetailViewController *vc = [story instantiateViewControllerWithIdentifier:@"MDInterestDetailViewController"];
     
+    MDArticleCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    vc.shareImage = cell.cover.image;
+    
+    
+    
     vc.model =self.items[indexPath.row];
     //    [self.navigationController pushViewController:vc animated:YES];
     

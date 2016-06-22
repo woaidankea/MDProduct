@@ -28,6 +28,10 @@
 #import "UUProgressHUD.h"
 #import "TDUsersignRequest.h"
 #import "TDRevrankRequest.h"
+#import "RegbonusRequest.h"
+#import "UIWindow+ShareSucAlert.h"
+#import "BonusModel.h"
+#import "UserdataumRequest.h"
 @interface MyHeadView : UICollectionReusableView
 - (void) setLabelText:(NSString *)text;
 @property (strong, nonatomic) UILabel *label;
@@ -208,6 +212,14 @@
      [self addHeaderRefresh];
     // Do any additional setup after loading the view.
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+ 
+    
+}
+
+
 //下拉刷新
 - (void)tableViewHeaderRefresh{
     
@@ -217,30 +229,43 @@
 - (void)getContent {
     
     
-    //格式化成json数据
-//    id jsonObject = [AMTools getLocalJsonDataWithFileName:@"my"];
-//    if(jsonObject){
-//        
-//        _myModel = [MyModel mj_objectWithKeyValues:[jsonObject objectForKey:@"data"]];
-//        
-////        [self setViewControllers:contentItems];
-//    }
-////    [NSThread sleepForTimeInterval:2];
-//     [self.collectionview.mj_header endRefreshing];
+
         WS(weakSelf);
-//        TDPageinfoRequest *request = [[TDPageinfoRequest alloc]initWithMouduleId:self.moudleId success:^(AMBaseRequest *request) {
-//        _myModel = [MyModel mj_objectWithKeyValues:[request.responseObject objectForKey:@"data"]];
-//        [weakSelf.collectionview reloadData];
-//        [weakSelf.collectionview.mj_header endRefreshing];
-//        } failure:^(AMBaseRequest *request) {
-//        
-//        }];
-//                                
-//       [request start];
+
     
     NSDictionary *result =[[MMTService shareInstance]syncgetMyPageinfoWith:self.moudleId];
     if([[result objectForKey:@"code"]floatValue]==0){
         _myModel = [MyModel mj_objectWithKeyValues:[result objectForKey:@"data"]];
+        
+        if(![_myModel.isbonus isEqualToString:@"1"]){
+            RegbonusRequest *request = [[RegbonusRequest alloc]initBonussuccess:^(AMBaseRequest *request) {
+                
+                BonusModel *model = [BonusModel mj_objectWithKeyValues:request.responseObject];
+                
+                RewardInfo *info = [[RewardInfo alloc] init];
+                info.rewardContent = model.content;
+                [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+            } failure:^(AMBaseRequest *request) {
+                
+            }];
+            
+            [request start];
+        }
+        if([_myModel.isdatum isEqualToString:@"1"]){
+            UserdataumRequest *request = [[UserdataumRequest alloc]initdatumsuccess:^(AMBaseRequest *request) {
+                
+                BonusModel *model = [BonusModel mj_objectWithKeyValues:request.responseObject];
+                
+                RewardInfo *info = [[RewardInfo alloc] init];
+                info.rewardContent = model.content;
+                [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+            } failure:^(AMBaseRequest *request) {
+                
+            }];
+            
+            [request start];
+        }
+        
         [weakSelf.collectionview reloadData];
         [weakSelf.collectionview.mj_header endRefreshing];
     }else{
@@ -252,43 +277,11 @@
                 [weakSelf.collectionview reloadData];
                 [weakSelf.collectionview.mj_header endRefreshing];
 
-        //        [self setViewControllers:contentItems];
             }
 
     }
     
-    
-       
-    
-//    __weak MDMeCollectionViewController *weakSelf =self;
-//    MDGetMemberInfoRequest *request = [[MDGetMemberInfoRequest alloc]initWithToken:USER_DEFAULT_KEY(@"token")success:^(AMBaseRequest *request) {
-//        
-//        [weakSelf.collectionview.mj_header endRefreshing];
-//        _model =  request.responseObject;
-//        [weakSelf.collectionview reloadData];
-//        if(!_model.issign){
-//            
-//            //            [self initRedPacketWindowNeedOpen:info];
-//            RewardInfo *info = [[RewardInfo alloc] init];
-//            info.money = 100.0;
-//            info.rewardName = @"每日签到";
-//            info.rewardContent = @"已奖励到您的账户";
-//            info.rewardStatus = 0;
-//            //
-//            [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
-//        }
-//        
-//        
-//        
-//    } failure:^(AMBaseRequest *request) {
-//        [weakSelf.collectionview.mj_header endRefreshing];
-//        [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-//        
-//    }];
-//    
-//    
-//    [request start];
-}
+ }
 
 
 
@@ -410,6 +403,7 @@
             [self getContent];
 
         } failure:^(AMBaseRequest *request) {
+    
               [weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
         }];
         

@@ -26,6 +26,7 @@ static CGFloat const contentWidth = 270;
 {
     if (self = [super init]) {
         [self initial];
+   
     }
     return self;
 }
@@ -56,10 +57,10 @@ static CGFloat const contentWidth = 270;
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(0, 0, 100, 40);
     label.text = @"选择栏目";
-    label.font = [UIFont systemFontOfSize:20];
-    label.textColor = [UIColor ColorWithHexString:MD_UnSelGray_Color];
+    label.font = [UIFont systemFontOfSize:15];
+    label.textColor =[UIColor blackColor];
     [self addSubview:label];
-   
+    
 }
 
 

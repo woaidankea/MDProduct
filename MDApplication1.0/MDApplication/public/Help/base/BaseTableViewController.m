@@ -224,6 +224,7 @@
     [DXShareTools shareToolsInstance].isPic = NO;
 //    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel view:[UIApplication sharedApplication].keyWindow];
     
+    NSLog(@"1111111111");
      [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel viewController:self];
 
    

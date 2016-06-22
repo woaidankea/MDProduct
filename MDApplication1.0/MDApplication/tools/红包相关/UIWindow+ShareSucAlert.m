@@ -194,20 +194,7 @@ static const void *LabelKey =  &LabelKey;
     backGround.image        = [UIImage imageNamed:@"tanchu"];
     backGround.tag          = 10;
     [self.windowUv addSubview:backGround];
-    
-    
-    
-//    self.titleViewSmall = [[UIImageView alloc]initWithFrame:CGRectMake((320-75)/2 * ratio , (95 + 85  /2) * ratio, 75 * ratio, 23 * ratio)];
-//    self.titleViewSmall.image        = [UIImage imageNamed:@"earntitlesmall"];
-////    backGround.tag          = 10;
-//    [self.windowUv addSubview:self.titleViewSmall];
-//    
-//    self.titleViewBig = [[UIImageView alloc]initWithFrame:CGRectMake((320-85)/2 * ratio , (93 + 85  /2) * ratio, 90 * ratio, 27 * ratio)];
-//    self.titleViewBig.image        = [UIImage imageNamed:@"earntitlebig"];
-//    //    backGround.tag          = 10;
-//    self.titleViewBig.hidden = YES;
-//    [self.windowUv addSubview:self.titleViewBig];
-
+  
     
      self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 235 * ratio, 320 * ratio,25 * ratio)];
      self.label.font = [UIFont systemFontOfSize:30];
@@ -222,35 +209,35 @@ static const void *LabelKey =  &LabelKey;
     
     
     
-    UILabel *sublabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio, 270 * ratio, 320 * ratio, 17 * ratio)];
-    sublabel.font = [UIFont systemFontOfSize:19];
+    UILabel *sublabel = [[UILabel alloc]initWithFrame:CGRectMake(50 * ratio, 270 * ratio, 220 * ratio, 40 * ratio)];
+    sublabel.font = [UIFont systemFontOfSize:18];
     sublabel.textAlignment = NSTextAlignmentCenter;
     sublabel.textColor     = RGBACOLOR( 219 , 29 , 56 , 1);
-    
-    NSMutableAttributedString * aAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"获得随机奖励%.2f元",self.rewardInfoForRedPacket.money]];
+    sublabel.numberOfLines = 0;
+    NSMutableAttributedString * aAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",self.rewardInfoForRedPacket.rewardContent]];
     NSString *number = [NSString stringWithFormat:@"%.2f",self.rewardInfoForRedPacket.money];
     //富文本样式
-    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
-                              value:UIColorFromRGB(0xb2b2b2)
-                              range:NSMakeRange(0, 6)];
-    
-    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
-                              value:UIColorFromRGB(0xfaad2f)
-                              range:NSMakeRange(6, number.length)];
-    
-    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
-                              value:UIColorFromRGB(0xb2b2b2)
-                              range:NSMakeRange(aAttributedString.length-1, 1)];
-    
-    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
-                              value:[UIFont systemFontOfSize:19]
-                              range:NSMakeRange(0, 6)];
-    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
-                              value:[UIFont systemFontOfSize:18]
-                              range:NSMakeRange(6, number.length)];
-    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
-                              value:[UIFont systemFontOfSize:19]
-                              range:NSMakeRange(aAttributedString.length-1, 1)];
+//    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+//                              value:UIColorFromRGB(0xb2b2b2)
+//                              range:NSMakeRange(0, 6)];
+//    
+//    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+//                              value:UIColorFromRGB(0xfaad2f)
+//                              range:NSMakeRange(6, number.length)];
+//    
+//    [aAttributedString addAttribute:NSForegroundColorAttributeName  //文字颜色
+//                              value:UIColorFromRGB(0xb2b2b2)
+//                              range:NSMakeRange(aAttributedString.length-1, 1)];
+//    
+//    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+//                              value:[UIFont systemFontOfSize:19]
+//                              range:NSMakeRange(0, 6)];
+//    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+//                              value:[UIFont systemFontOfSize:18]
+//                              range:NSMakeRange(6, number.length)];
+//    [aAttributedString addAttribute:NSFontAttributeName             //文字字体
+//                              value:[UIFont systemFontOfSize:19]
+//                              range:NSMakeRange(aAttributedString.length-1, 1)];
     
     sublabel.attributedText = aAttributedString;
     
@@ -260,13 +247,13 @@ static const void *LabelKey =  &LabelKey;
     [self.windowUv addSubview:sublabel];
     
     
-     sublabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio,(270 + 20)* ratio, 320 * ratio, 17 * ratio)];
-    sublabel.font = [UIFont systemFontOfSize:19];
-    sublabel.textAlignment = NSTextAlignmentCenter;
-    sublabel.textColor     = UIColorFromRGB(0xb2b2b2);
-    sublabel.text = @"奖金已存入账户";
+//     sublabel = [[UILabel alloc]initWithFrame:CGRectMake(0 * ratio,(270 + 20)* ratio, 320 * ratio, 17 * ratio)];
+//    sublabel.font = [UIFont systemFontOfSize:19];
+//    sublabel.textAlignment = NSTextAlignmentCenter;
+//    sublabel.textColor     = UIColorFromRGB(0xb2b2b2);
+//    sublabel.text = @"奖金已存入账户";
     
-     [self.windowUv addSubview:sublabel];
+//     [self.windowUv addSubview:sublabel];
 
     
 

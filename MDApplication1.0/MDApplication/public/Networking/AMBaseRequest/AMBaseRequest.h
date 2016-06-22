@@ -53,8 +53,8 @@ static NSString * const kConfirCode = @"Api/User/confirmcode";
 static NSString * const kTicketInfo = @"Api/User/ticketinfo";   //工单信息
 static NSString * const kSendTicket = @"Api/User/subticket";   //发送工单
 static NSString * const kIndexbal = @"Api/User/indexbal";   //获取信息
-
-
+static NSString * const kRegbonus = @"Api/User/regbonus";   //注册奖励
+static NSString * const kUsrdatum = @"Api/User/usrdatum";   //完善资料奖励
 
 
 

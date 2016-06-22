@@ -148,6 +148,9 @@ static DXShareTools *_shareTools = nil;
     //添加Share
 //    [WechatTimelineActivity class],
 //    [WechatSessionActivity class],
+    
+    
+    NSLog(@"222222222");
     Class classes[3] = {
         [WeiboActivity class],
     
@@ -163,7 +166,7 @@ static DXShareTools *_shareTools = nil;
         }];
         [activitys addObject:activity];
     }
-    
+       NSLog(@"33333333333");
 //    //添加Action
 //    CopyLinkActivity *copyLinkActivity = [[CopyLinkActivity alloc] init];
 //    [copyLinkActivity setPerformActivityBlock:^{
@@ -173,40 +176,31 @@ static DXShareTools *_shareTools = nil;
     
    // /*
     NSMutableArray *activityItems = [NSMutableArray array];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *cachesDir = [paths objectAtIndex:0];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if(!_isApprentice){
-    for(int i = 0;i<model.imageArray.count;i++)
-    {
-        //文件名请自己处理
-        NSString *filename = [NSString stringWithFormat:@"car/shared_%@.jpg", @"1"];
-        NSString *filestr = [NSString stringWithFormat:@"%@/%@", cachesDir, filename];
-        if(![fileManager fileExistsAtPath:filestr])
-        {
-            //图片路径请处理成自己的
-            UIImage * imageFromURL = [PicCache getImageFromURL:[NSString stringWithFormat:@"%@",model.imageArray[i]]];
-             [activityItems addObject:imageFromURL];
-            
-            [PicCache saveImage:imageFromURL withFileName:filestr ofType:@"jpg"];
-        }
-        NSURL *shareobj = [NSURL fileURLWithPath:filestr];
-        // 试验了好多参数，就这个参数部分好使了。
-//        [activityItems addObject:shareobj];
-        
-    }
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *cachesDir = [paths objectAtIndex:0];
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    
+//    
+//    
+    if(!_isApprentice&&!_isSign){
+
         NSString *textToShare = model.title;
         NSURL *urlToShare = [NSURL URLWithString:model.url];
         [activityItems addObject:urlToShare];
         [activityItems addObject:textToShare];
-    }else {
+        [activityItems addObject:model.imageArray[0]];
+    }else if(_isSign){
+        [activityItems addObject:[CurrentModel.imageArray objectAtIndex:0]];
+
+    }
+    else {
     
      [activityItems addObject:[CurrentModel.imageArray objectAtIndex:1]];
     }
     
     
     
-
+   NSLog(@"44444444444");
      
      UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:activitys];
    
@@ -571,11 +565,31 @@ static DXShareTools *_shareTools = nil;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     type =SSDKPlatformTypeSinaWeibo;
     
-    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
-                                     images:CurrentModel.imageArray //传入要分享的图片
-                                        url:[NSURL URLWithString:CurrentModel.url]
-                                      title:CurrentModel.title
-                                       type:SSDKContentTypeWebPage];
+    if(!_isApprentice&&!_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }else if(_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+    }
+    else {
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }
     [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
     
     
@@ -887,13 +901,31 @@ static DXShareTools *_shareTools = nil;
     NSInteger type = 0;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     type =SSDKPlatformSubTypeQZone;
-    
-    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
-                                     images:CurrentModel.imageArray //传入要分享的图片
-                                        url:[NSURL URLWithString:CurrentModel.url]
-                                      title:CurrentModel.title
-                                       type:SSDKContentTypeWebPage];
-    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    if(!_isApprentice&&!_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }else if(_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+    }
+    else {
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }
     
     
     [ShareSDK share:type //传入分享的平台类型
@@ -1042,13 +1074,41 @@ static DXShareTools *_shareTools = nil;
     NSInteger type = 0;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     type =SSDKPlatformSubTypeQQFriend;
+   
     
-    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
-                                     images:CurrentModel.imageArray //传入要分享的图片
-                                        url:[NSURL URLWithString:CurrentModel.url]
-                                      title:CurrentModel.title
-                                       type:SSDKContentTypeWebPage];
-    [shareParams SSDKSetupWeChatParamsByText:nil title:CurrentModel.title url:nil thumbImage:nil image:[CurrentModel.imageArray objectAtIndex:0] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeImage forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+    if(!_isApprentice&&!_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+
+
+    }else if(_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+
+    }
+    else {
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+
+      
+    }
+    
+
+    
+    
+    
+    
+    
+    
     
     
     [ShareSDK share:type //传入分享的平台类型
@@ -1057,15 +1117,7 @@ static DXShareTools *_shareTools = nil;
          switch (state) {
              case SSDKResponseStateSuccess:
              {
-                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                 //                                                                     message:nil
-                 //                                                                    delegate:self
-                 //                                                           cancelButtonTitle:@"确定"
-                 //                                                           otherButtonTitles:nil];
-                 //                 [alertView show];
-                 
-                 //   1.qq  kongjian  pengyouquan  wx  weibo
-                 NSInteger platform = 0 ;
+                              NSInteger platform = 0 ;
                  if(type == SSDKPlatformSubTypeQQFriend){
                      platform = 1;
                      
@@ -1091,40 +1143,18 @@ static DXShareTools *_shareTools = nil;
                          
                          NSLog(@"response = %@",request.responseObject);
                          if(isvalid){
-                             
-                             //            [self initRedPacketWindowNeedOpen:info];
-                             
+                       
                              RewardInfo *info = [[RewardInfo alloc] init];
                              info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
-                             //                info.rewardName = @"分享成功获得";
-                             //                info.rewardContent = @"恭喜你得到奖励";
-                             //                info.rewardStatus = 0;
+                    
                              //
                              [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
-                             //                         RewardInfo *info = [[RewardInfo alloc] init];
-                             //                         info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
-                             //                         info.rewardName = @"分享成功获得";
-                             //                         info.rewardContent = @"恭喜你得到奖励";
-                             //                         info.rewardStatus = 0;
-                             //                         //
-                             //                         [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
+                
                          }
-                         
-                         
-                         
-                         
-                         
-                         
-                         //                     [_weakSelf setBusyIndicatorVisible:NO];
-                         //                     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
+                
                          
                      } failure:^(AMBaseRequest *request) {
-                         ////                     [_weakSelf setBusyIndicatorVisible:NO];
-                         //                     if(request.response.statusCode==300){
-                         //                     }
-                         //                     else{
-                         //                         [_weakSelf handleResponseError:self request:request treatErrorAsUnknown:YES];
-                         //                     }
+                       
                      }];
                      
                      [request start];
@@ -1348,7 +1378,19 @@ static DXShareTools *_shareTools = nil;
     
     
 }
-
+-(UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
+{
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat targetWidth = defineWidth;
+    CGFloat targetHeight = (targetWidth / width) * height;
+    UIGraphicsBeginImageContext(CGSizeMake(targetWidth, targetHeight));
+    [sourceImage drawInRect:CGRectMake(0,0,targetWidth,  targetHeight)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 //弹出框
 - (void)alert:(NSString *)text {
 //    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:text preferredStyle:(UIAlertControllerStyleAlert)];

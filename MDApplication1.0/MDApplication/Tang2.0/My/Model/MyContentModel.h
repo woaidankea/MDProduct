@@ -16,5 +16,5 @@
 @property (nonatomic,strong)NSString * sort;
 @property (nonatomic,strong)NSString * status;
 @property (nonatomic,strong)NSString * url;
-@property (nonatomic,strong)NSString * imageurl;
+@property (nonatomic,strong)NSString * imgurl;
 @end

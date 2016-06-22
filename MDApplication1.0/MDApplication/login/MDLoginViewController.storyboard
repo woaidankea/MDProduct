@@ -112,42 +112,67 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MwL-mO-QIx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="忘记密码？">
-                                    <color key="titleColor" red="0.52156862745098043" green="0.58039215686274503" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="ForgotClick:" destination="Rwr-E2-WBc" eventType="touchUpInside" id="pmj-Di-iNO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-8y-NSB">
-                                <rect key="frame" x="18" y="146" width="187.5" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="Hzs-oc-Wat">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" backgroundImage="login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="LoginClick:" destination="Rwr-E2-WBc" eventType="touchUpInside" id="cQK-8E-Dy5"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5Q-Pq-8Dh">
                                 <rect key="frame" x="215" y="146" width="187.5" height="40"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.6588235294" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="g4C-GG-GYX">
                                         <variation key="heightClass=regular-widthClass=compact" constant="40"/>
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" backgroundImage="regist">
-                                    <color key="titleColor" red="0.56470588235294117" green="0.73725490196078436" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="注册">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.031372549019607843" green="0.59215686274509804" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="RegistClick:" destination="Rwr-E2-WBc" eventType="touchUpInside" id="nEg-h0-jbM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-8y-NSB">
+                                <rect key="frame" x="18" y="146" width="187.5" height="43"/>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.6588235294117647" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Hzs-oc-Wat">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="登录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.68235294117647061" green="0.84313725490196079" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.031372549019607843" green="0.59215686274509804" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="LoginClick:" destination="Rwr-E2-WBc" eventType="touchUpInside" id="cQK-8E-Dy5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -279,10 +304,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rO5-5F-4J3">
-                                <rect key="frame" x="16" y="533" width="288" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="16" y="531" width="288" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="如果您已注册过账号，请点击这里进行登录！">
-                                    <color key="titleColor" red="0.035294117649999998" green="0.035294117649999998" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="loginClick:" destination="CFg-bE-a0b" eventType="touchUpInside" id="ylJ-aK-Z4N"/>
@@ -1145,11 +1170,9 @@
     </scenes>
     <resources>
         <image name="duihao" width="15" height="14"/>
-        <image name="login" width="288" height="61"/>
         <image name="mima" width="28" height="32"/>
         <image name="next" width="593" height="61"/>
         <image name="queding" width="339" height="42"/>
-        <image name="regist" width="288" height="61"/>
         <image name="yanzhengma" width="154" height="45"/>
     </resources>
 </document>

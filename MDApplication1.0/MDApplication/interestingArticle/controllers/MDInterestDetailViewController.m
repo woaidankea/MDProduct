@@ -222,7 +222,7 @@
     
     sharemodel.title = t_model.title;
     sharemodel.url =  [NSString stringWithFormat:@"%@%@",t_model.url,MD5];
-    sharemodel.imageArray = @[t_model.cover];
+    sharemodel.imageArray = @[self.shareImage];
     sharemodel.desc = t_model.desc;
     sharemodel.key = [NSString stringWithFormat:@"%@%@",t_model.authcode,MD5];
     [DXShareTools shareToolsInstance].isPic = NO;
