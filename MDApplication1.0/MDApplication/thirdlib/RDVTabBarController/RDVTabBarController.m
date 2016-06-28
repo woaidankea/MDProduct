@@ -108,6 +108,7 @@
         [[self selectedViewController] willMoveToParentViewController:nil];
         [[[self selectedViewController] view] removeFromSuperview];
         [[self selectedViewController] removeFromParentViewController];
+        
     }
     
     _selectedIndex = selectedIndex;
@@ -198,7 +199,7 @@
         
         if (!tabBarHeight) {
             //!!!: 设置tabbar高度
-            tabBarHeight = 49;
+            tabBarHeight = 55;
         }
         
         if (!hidden) {

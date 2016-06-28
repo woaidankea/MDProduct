@@ -113,21 +113,36 @@ static const void *typeKey = &typeKey;
     //    label.hidden        = YES;
     [self.windowUv addSubview: label];
     
-    self.codeField = [[UITextField alloc]initWithFrame:CGRectMake(125*ratio, 157 * ratio, 120 * ratio, 25 * ratio)];
+    self.codeField = [[UITextField alloc]initWithFrame:CGRectMake(100*ratio, 157 * ratio, 120 * ratio, 25 * ratio)];
     [self.codeField setBorderStyle:UITextBorderStyleRoundedRect];
     [self.windowUv addSubview: self.codeField];
-    
+   
     self.codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(100*ratio, 220 * ratio, 120 * ratio, 45 * ratio)];
+   
+    
     [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl] placeholderImage:nil options:SDWebImageRefreshCached];
-     [self.windowUv addSubview: self.codeImageView];
+    [self.windowUv addSubview: self.codeImageView];
+    
+    UIButton* refresh = [[UIButton alloc] initWithFrame:CGRectMake(0 * ratio, 270 * ratio, 320 * ratio, 30 * ratio)];
+    
+//    UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButton)];
+    
+    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventTouchUpInside];
+    
+    [refresh setTitleColor:UIColorFromRGB(0x82befb) forState:UIControlStateNormal];
+    [refresh setTitle:@"看不清,换一张" forState:UIControlStateNormal];
+//    [refresh addGestureRecognizer:tapGesture];
+    [self.windowUv addSubview:refresh];
+
+    
     
     
     UIButton* sure = [[UIButton alloc] initWithFrame:CGRectMake(0 * ratio, 340 * ratio, 320 * ratio, 30 * ratio)];
-    //    cancel.backgroundColor = [UIColor redColor];
+   
     UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButton)];
     
     
-//    [sure addTarget:self action:@selector(sureClick) forControlEvents:UIControlEventTouchUpInside];
+
     [sure setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [sure setTitle:@"确认提交" forState:UIControlStateNormal];
     [sure addGestureRecognizer:tapGesture];
@@ -138,6 +153,10 @@ static const void *typeKey = &typeKey;
     
     
 }
+- (void)refresh{
+  [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl] placeholderImage:nil options:SDWebImageRefreshCached];
+}
+
 - (void)cancelButton{
     
     WS(ws);
@@ -146,6 +165,7 @@ static const void *typeKey = &typeKey;
             
             
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                [AMTools showHUDtoWindow:nil title:@"验证码不正确" delay:2];
                [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
             }else {
                 
@@ -166,6 +186,7 @@ static const void *typeKey = &typeKey;
     }else{
         TDCheckforpwdcodeRequest *req  =[[TDCheckforpwdcodeRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                [AMTools showHUDtoWindow:nil title:@"验证码不正确" delay:2];
                 [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
             }else {
                 

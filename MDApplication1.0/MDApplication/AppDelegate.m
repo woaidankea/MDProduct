@@ -38,11 +38,13 @@
 
 
 #import "JPUSHService.h"
+#import "TangConfig.h"
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 
 {
        UINavigationController *mainContrl;
+        MainViewController *mainview;
 }
 
 @end
@@ -55,13 +57,6 @@
     NSArray *array = [AdModel mj_objectArrayWithKeyValuesArray:[[adresult objectForKey:@"data"] objectForKey:@"list"]];
     
 
-    //    if(!USER_DEFAULT_KEY(@"FisrtLogin")){
-    //    NSMutableArray *paths = [NSMutableArray new];
-    //
-    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
-    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
-    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
-    //    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
     
     [[KSGuideManager shared] showGuideViewWithImages:array withtype:YES];
     
@@ -114,10 +109,20 @@
 
     [self.window makeKeyAndVisible];
     [self ad];
+    [self getColConfig];
+    
     
     return YES;
 }
+- (void)getColConfig{
 
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
+        [TangConfig shareInstance].colDic = result;
+    });
+    
+}
 
 
 - (void)setUM{
@@ -298,10 +303,19 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 }
 
 -(void)EnterMainViewController :(AMEnterMainViewControllerType)enterType{
+    
+    if(!mainview){
     MainViewController *mainVc=[[MainViewController alloc]init];
     mainVc.enterType =enterType;
     mainContrl=[[UINavigationController alloc]initWithRootViewController:mainVc];
+    mainview = mainVc;
     [self.window setRootViewController:mainContrl];
+    }else{
+        mainContrl=[[UINavigationController alloc]initWithRootViewController:mainview];
+        
+        [self.window setRootViewController:mainContrl];
+
+    }
 
 }
 

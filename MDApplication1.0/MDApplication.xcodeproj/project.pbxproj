@@ -229,6 +229,7 @@
 		5C5B1BC61D190B48007D2E6F /* RegbonusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BC51D190B48007D2E6F /* RegbonusRequest.m */; };
 		5C5B1BC91D190E7C007D2E6F /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BC81D190E7C007D2E6F /* BonusModel.m */; };
 		5C5B1BCD1D193178007D2E6F /* UserdataumRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1BCC1D193178007D2E6F /* UserdataumRequest.m */; };
+		5C5B1C061D1A8ACE007D2E6F /* TangConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B1C051D1A8ACE007D2E6F /* TangConfig.m */; };
 		5C62AF0E1CF549FF007343D8 /* getuserInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */; };
 		5C6C9F7B1CFD8339000ED97A /* CLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F681CFD8339000ED97A /* CLProgressHUD.m */; };
 		5C6C9F7C1CFD8339000ED97A /* CLProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C9F6A1CFD8339000ED97A /* CLProgressLabel.m */; };
@@ -789,6 +790,8 @@
 		5C5B1BC81D190E7C007D2E6F /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
 		5C5B1BCB1D193178007D2E6F /* UserdataumRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserdataumRequest.h; sourceTree = "<group>"; };
 		5C5B1BCC1D193178007D2E6F /* UserdataumRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserdataumRequest.m; sourceTree = "<group>"; };
+		5C5B1C041D1A8ACE007D2E6F /* TangConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TangConfig.h; sourceTree = "<group>"; };
+		5C5B1C051D1A8ACE007D2E6F /* TangConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TangConfig.m; sourceTree = "<group>"; };
 		5C62AF0D1CF549FF007343D8 /* getuserInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getuserInfo.txt; sourceTree = "<group>"; };
 		5C6C9F661CFD8339000ED97A /* CLProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProgress.h; sourceTree = "<group>"; };
 		5C6C9F671CFD8339000ED97A /* CLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProgressHUD.h; sourceTree = "<group>"; };
@@ -2534,6 +2537,8 @@
 				5C2EAE9D1D0D6C1500611A06 /* AdModel.m */,
 				5C5B1BC71D190E7C007D2E6F /* BonusModel.h */,
 				5C5B1BC81D190E7C007D2E6F /* BonusModel.m */,
+				5C5B1C041D1A8ACE007D2E6F /* TangConfig.h */,
+				5C5B1C051D1A8ACE007D2E6F /* TangConfig.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3773,6 +3778,7 @@
 				5CFE38311CAD0643007A48BE /* MDModifyPassword.m in Sources */,
 				5C6CA02B1CFFDE78000ED97A /* TDProfileRequest.m in Sources */,
 				5C9F3FCB1C983C6200756229 /* MDMeCollectionViewController.m in Sources */,
+				5C5B1C061D1A8ACE007D2E6F /* TangConfig.m in Sources */,
 				5C6CA0871D056AEC000ED97A /* MMTService.m in Sources */,
 				5C711A6C1CA11FB500CA1A31 /* MDGetMemberInfoRequest.m in Sources */,
 				5C711A1A1CA0226F00CA1A31 /* MDTechnologyViewController.m in Sources */,

@@ -831,7 +831,7 @@ static const NSUInteger MAX_SIZE=1024*300ul;
 + (NSString *)dateStringFromTimeInterval:(NSString *)timeInterval{
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeInterval integerValue]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *strDate = [dateFormatter stringFromDate:confromTimesp];
     return strDate;
 

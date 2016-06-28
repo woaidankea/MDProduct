@@ -8,7 +8,7 @@
 #import "AMBaseRequest.h"
 
 @interface TDTicketinfoRequest : AMBaseRequest
-- (id)initWithPage:(NSInteger)page
+- (id)initWithDate:(NSString *)date
            success:(onSuccessCallback)successCallback
            failure:(onFailureCallback)failureCallback;
 @end

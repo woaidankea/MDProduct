@@ -27,9 +27,10 @@
     }
     return self;
 }
+
 - (NSString *)getMethod{
 
-        return @"GET";
+        return @"POST";
 }
 - (NSString *)getURL{
        return kLogin;

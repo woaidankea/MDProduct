@@ -11,43 +11,43 @@
 #import "UUMessage.h"
 #import "UUMessageFrame.h"
 #import "TDTicketinfoRequest.h"
-
+#import "AMTools.h"
 @implementation ChatModel
 
 - (void)populateRandomDataSource {
     self.dataSource = [NSMutableArray array];
 //    [self.dataSource addObjectsFromArray:[self additems:5]];
     
-    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithPage:0 success:^(AMBaseRequest *request) {
-        NSArray *items = [UUMessage mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
-        
-        
-        NSMutableArray *result = [NSMutableArray array];
-        
-        for (UUMessage *message in items) {
-            
-//            NSDictionary *dataDic = [self getDic];
-            UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
-       
-//            [message setWithDict:dataDic];
-            [message minuteOffSetStart:nil end:message.strTime];
-            messageFrame.showTime = message.showDateLabel;
-            [messageFrame setMessage:message];
-            
-            if (message.showDateLabel) {
-//                previousTime = dataDic[@"strTime"];
-            }
-            [result addObject:messageFrame];
-        }
-   
-
-            [self.dataSource addObjectsFromArray:result];
-        
-        
-    } failure:^(AMBaseRequest *request) {
-        
-    }];
-    [request start];
+//    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithD:0 success:^(AMBaseRequest *request) {
+//        NSArray *items = [UUMessage mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
+//        
+//        
+//        NSMutableArray *result = [NSMutableArray array];
+//        
+//        for (UUMessage *message in items) {
+//            
+////            NSDictionary *dataDic = [self getDic];
+//            UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
+//       
+////            [message setWithDict:dataDic];
+//            [message minuteOffSetStart:nil end:message.strTime];
+//            messageFrame.showTime = message.showDateLabel;
+//            [messageFrame setMessage:message];
+//            
+//            if (message.showDateLabel) {
+////                previousTime = dataDic[@"strTime"];
+//            }
+//            [result addObject:messageFrame];
+//        }
+//   
+//
+//            [self.dataSource addObjectsFromArray:result];
+//        
+//        
+//    } failure:^(AMBaseRequest *request) {
+//        
+//    }];
+//    [request start];
     
     
     
@@ -69,20 +69,24 @@
     UUMessage *message = [[UUMessage alloc] init];
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     
-    NSString *URLStr = @"http://img0.bdstatic.com/img/image/shouye/xinshouye/mingxing16.jpg";
+//    NSString *URLStr = @"http://img0.bdstatic.com/img/image/shouye/xinshouye/mingxing16.jpg";
     [dataDic setObject:@(UUMessageFromMe) forKey:@"from"];
-    [dataDic setObject:[[NSDate date] description] forKey:@"strTime"];
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970];
+    NSString *timeString = [NSString stringWithFormat:@"%f",a];//转为字符型
+    NSString *tenTime = [timeString substringWithRange:NSMakeRange(0,10)];
+    [dataDic setObject:tenTime forKey:@"strTime"];
     [dataDic setObject:@"Hello,Sister" forKey:@"strName"];
-    [dataDic setObject:URLStr forKey:@"strIcon"];
+    [dataDic setObject:[dataDic objectForKey:@"strIcon"] forKey:@"strIcon"];
     
     [message setWithDict:dataDic];
-    [message minuteOffSetStart:previousTime end:dataDic[@"strTime"]];
+    [message minuteOffSetStart:nil end:dataDic[@"strTime"]];
     messageFrame.showTime = message.showDateLabel;
     [messageFrame setMessage:message];
     
-    if (message.showDateLabel) {
-        previousTime = dataDic[@"strTime"];
-    }
+//    if (message.showDateLabel) {
+//        previousTime = dataDic[@"strTime"];
+//    }
     [self.dataSource addObject:messageFrame];
 }
 

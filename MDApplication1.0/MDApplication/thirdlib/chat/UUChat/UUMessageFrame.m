@@ -8,7 +8,7 @@
 
 #import "UUMessageFrame.h"
 #import "UUMessage.h"
-
+#import "AMTools.h"
 @implementation UUMessageFrame
 
 - (void)setMessage:(UUMessage *)message{
@@ -20,7 +20,7 @@
     // 1、计算时间的位置
     if (_showTime){
         CGFloat timeY = ChatMargin;
-        CGSize timeSize = [_message.strTime sizeWithFont:ChatTimeFont constrainedToSize:CGSizeMake(300, 100) lineBreakMode:NSLineBreakByWordWrapping];
+        CGSize timeSize = [ [AMTools dateStringFromTimeInterval:message.strTime] sizeWithFont:ChatTimeFont constrainedToSize:CGSizeMake(300, 100) lineBreakMode:NSLineBreakByWordWrapping];
         
         CGFloat timeX = (screenW - timeSize.width) / 2;
         _timeF = CGRectMake(timeX, timeY, timeSize.width + ChatTimeMarginW, timeSize.height + ChatTimeMarginH);

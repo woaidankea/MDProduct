@@ -147,9 +147,9 @@
 }
 
 - (void)setSelectedItem:(RDVTabBarItem *)selectedItem {
-    if (selectedItem == _selectedItem) {
-        return;
-    }
+//    if (selectedItem == _selectedItem) {
+//        return;
+//    }
     [_selectedItem setSelected:NO];
     
     _selectedItem = selectedItem;

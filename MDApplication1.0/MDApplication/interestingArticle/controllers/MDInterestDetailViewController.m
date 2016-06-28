@@ -73,7 +73,7 @@
     self.automaticallyAdjustsScrollViewInsets =NO;
     [self setleftBarItemWith:@"back_ico@2x.png"];
     
-    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-40-64);
+    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-50-64);
     if(IOS_8){
     _wkwebview = [[YPWebView alloc]initWithFrame:rect];
     }

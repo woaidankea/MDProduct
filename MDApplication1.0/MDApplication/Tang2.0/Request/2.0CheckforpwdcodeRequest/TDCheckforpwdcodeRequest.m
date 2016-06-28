@@ -34,7 +34,8 @@
 - (void)processResponse:(NSDictionary *)responseDictionary{
     [super processResponse:responseDictionary];
     if([self.response isSucceed] ||
-       self.response.statusCode == 1009){
+       self.response.statusCode == 1009||
+       self.response.statusCode == 1010){
         
         self.responseObject = [responseDictionary objectForKey:@"data"];
     }

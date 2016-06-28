@@ -51,13 +51,7 @@ static NSString *identifier = @"Cell";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     button.hidden = YES;
-    [button setFrame:CGRectMake(0, 0,50, 25)];
-    [button setTitle:@"跳过" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button.layer setCornerRadius:12.5];
-    [button.layer setBorderColor:[UIColor whiteColor].CGColor];
-    [button.layer setBorderWidth:0.5f];
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
+ 
     [button setBackgroundColor:[UIColor clearColor]];
     
     self.button = button;
@@ -147,6 +141,7 @@ static NSString *identifier = @"Cell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(_Ad){
     AdModel *model  = [self.images objectAtIndex:indexPath.row];
     
     if([model.isclick isEqualToString:@"1"]){
@@ -159,6 +154,7 @@ static NSString *identifier = @"Cell";
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
     }else{
         return;
+    }
     }
     
     
@@ -188,7 +184,14 @@ static NSString *identifier = @"Cell";
   
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:path.adurl] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
-
+        [cell.button setFrame:CGRectMake(0, 0,50, 25)];
+        [cell.button setTitle:@"跳过" forState:UIControlStateNormal];
+        [cell.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cell.button.layer setCornerRadius:12.5];
+        [cell.button.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [cell.button.layer setBorderWidth:0.5f];
+        cell.button.titleLabel.font = [UIFont systemFontOfSize:15];
+          [cell.button setCenter:CGPointMake(kScreenBounds.size.width -44,44)];
         [cell.button addTarget:self action:@selector(nextButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
 
         [cell.button setHidden:NO];
@@ -203,6 +206,21 @@ static NSString *identifier = @"Cell";
             cell.imageView.frame = CGRectMake(0, 0, size.width, size.height);
             cell.imageView.image = [UIImage imageWithContentsOfFile:path];
             cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
+        if(indexPath.row == self.images.count - 1){
+            [cell.button addTarget:self action:@selector(nextButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.button setBackgroundImage:[UIImage imageNamed:@"2208-a"] forState:UIControlStateNormal];
+            if(iPhone6Pus){
+                [cell.button setFrame:CGRectMake((1242/3 - 724/3)/2, kScreenBounds.size.height - 140, 724/3, 188/3)];
+            }else if(iPhone6){
+              [cell.button setFrame:CGRectMake((750/2 - 220)/2, kScreenBounds.size.height - 120, 220, 57)];
+            }else{
+              [cell.button setFrame:CGRectMake((640/2 - 362)/2, kScreenBounds.size.height - 120, 186, 49)];
+            }
+            [cell.button setTitle:@"开始赚钱" forState:UIControlStateNormal];
+            [cell.button setTitleColor:UIColorFromRGB(0xd53c3e) forState:UIControlStateNormal];
+            cell.button.titleLabel.font = [UIFont systemFontOfSize:20];
+            [cell.button setHidden:NO];
+        }
 
     }
 

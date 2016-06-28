@@ -23,7 +23,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic,strong)NSString *managerHeader;
+@property (nonatomic,strong)NSString *avatar;
 
+@property (nonatomic,assign)BOOL isLastPage;
 @end
 
 @implementation RootViewController{
@@ -37,6 +41,7 @@
     [self setleftBarItemWith:nil];
     [self addRefreshViews];
     [self loadBaseViewsAndData];
+    self.chatModel.dataSource = [NSMutableArray array];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,19 +84,19 @@
     __weak typeof(self) weakSelf = self;
     
     //load more
-    int pageNum = 3;
+//    int pageNum = 3;
     self.chatTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
 //        [weakSelf.chatModel addRandomItemsToDataSource:pageNum];
-        
-                if (weakSelf.chatModel.dataSource.count > pageNum) {
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:pageNum inSection:0];
-        
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [weakSelf.chatTableView reloadData];
-                        [weakSelf.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-                    });
-                }
+        [self populateRandomDataSource];
+//                if (weakSelf.chatModel.dataSource.count > pageNum) {
+//                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:pageNum inSection:0];
+//        
+//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                        [weakSelf.chatTableView reloadData];
+//                        [weakSelf.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//                    });
+//                }
                 [weakSelf.chatTableView.mj_header endRefreshing];
 
     }];
@@ -99,6 +104,8 @@
 
 - (void)loadBaseViewsAndData
 {
+    _currentPage = 0;
+    self.chatModel.dataSource = [NSMutableArray array];
     self.chatModel = [[ChatModel alloc]init];
     self.chatModel.isGroupChat = NO;
     [self populateRandomDataSource];
@@ -109,38 +116,101 @@
     
    
 }
-
+static NSString *previousTime = nil;
 - (void)populateRandomDataSource {
-    self.chatModel.dataSource = [NSMutableArray array];
+    
     //    [self.dataSource addObjectsFromArray:[self additems:5]];
     
-    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithPage:0 success:^(AMBaseRequest *request) {
+    TDTicketinfoRequest *request = [[TDTicketinfoRequest alloc]initWithDate:previousTime success:^(AMBaseRequest *request) {
         NSArray *items = [UUMessage mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
-        
-        
+        _avatar = [request.responseObject objectForKey:@"avatar"];
+        _managerHeader = [request.responseObject objectForKey:@"manage"];
         NSMutableArray *result = [NSMutableArray array];
-        
-        for (UUMessage *message in items) {
-            
-            //            NSDictionary *dataDic = [self getDic];
-            UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
-            
-            //            [message setWithDict:dataDic];
-            [message minuteOffSetStart:nil end:message.strTime];
-            messageFrame.showTime = message.showDateLabel;
-            [messageFrame setMessage:message];
-            
-            if (message.showDateLabel) {
-                //                previousTime = dataDic[@"strTime"];
+        if (items.count<10) {
+            _isLastPage = YES;
+            for (UUMessage *message in items) {
+                
+                if(message.from == UUMessageFromMe){
+                    message.strIcon = _avatar;
+                }else{
+                      message.strIcon = _managerHeader;
+                }
+                
+                
+                
+                //            NSDictionary *dataDic = [self getDic];
+                UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
+                
+                //            [message setWithDict:dataDic];
+                [message minuteOffSetStart:nil end:message.strTime];
+                messageFrame.showTime = message.showDateLabel;
+                [messageFrame setMessage:message];
+                
+                
+                if (message.showDateLabel) {
+                    //                previousTime = dataDic[@"strTime"];
+                }
+                [result addObject:messageFrame];
+                
             }
-            [result addObject:messageFrame];
+            if(items.count!=0){
+            UUMessage *last = (UUMessage *)[items objectAtIndex:0];
+                previousTime = last.strTime;
+          
+            
+            NSRange range = NSMakeRange(0, [result count]);
+            
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+            
+            
+            [self.chatModel.dataSource insertObjects:result atIndexes:indexSet];
+            }
+            _currentPage++;
+//            [self.chatModel.dataSource addObjectsFromArray:result];
+        }else{
+            for (UUMessage *message in items) {
+                if(message.from == UUMessageFromMe){
+                    message.strIcon = _avatar;
+                }else{
+                    message.strIcon = _managerHeader;
+                }
+
+                //            NSDictionary *dataDic = [self getDic];
+                UUMessageFrame *messageFrame = [[UUMessageFrame alloc]init];
+                
+                //            [message setWithDict:dataDic];
+                [message minuteOffSetStart:nil end:message.strTime];
+                messageFrame.showTime = message.showDateLabel;
+                [messageFrame setMessage:message];
+                
+                
+                if (message.showDateLabel) {
+//                                   previousTime = dataDic[@"strTime"];
+                }
+                [result addObject:messageFrame];
+                
+            }
+            if(items.count!=0){
+                UUMessage *last = (UUMessage *)[items objectAtIndex:0];
+                previousTime = last.strTime;
+            }
+            
+            NSRange range = NSMakeRange(0, [result count]);
+            
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+            
+
+            [self.chatModel.dataSource insertObjects:result atIndexes:indexSet];
+//            [self.chatModel.dataSource addObjectsFromArray:result];
+            _currentPage++;
             
         }
         
-        
-        [self.chatModel.dataSource addObjectsFromArray:result];
+      
         [self.chatTableView reloadData];
+        if(_currentPage==1){
         [self tableViewScrollToBottom];
+        }
         
         
     } failure:^(AMBaseRequest *request) {
@@ -204,17 +274,18 @@
 #pragma mark - InputFunctionViewDelegate
 - (void)UUInputFunctionView:(UUInputFunctionView *)funcView sendMessage:(NSString *)message
 {
-//    NSDictionary *dic = @{@"strContent": message,
-//                          @"type": @(UUMessageTypeText)};
-//    funcView.TextViewInput.text = @"";
-//
-//    [self dealTheFunctionData:dic];
+    NSDictionary *dic = @{@"strContent": message,
+                          @"type": @(UUMessageTypeText),
+                          @"strIcon":_avatar};
+    funcView.TextViewInput.text = @"";
+
+    [self dealTheFunctionData:dic];
     
     
     [[MMTService shareInstance]postTicketWithcontent:message images:nil Success:^(id responseObject) {
         if([[responseObject objectForKey:@"code"]floatValue]==0){
             [funcView changeSendBtnWithPhoto:YES];
-            [self populateRandomDataSource];
+//            [self populateRandomDataSource];
         }
     } failure:^(NSError *error) {
         
@@ -227,15 +298,16 @@
 
 - (void)UUInputFunctionView:(UUInputFunctionView *)funcView sendPicture:(UIImage *)image
 {
-//    NSDictionary *dic = @{@"picture": image,
-//                          @"type": @(UUMessageTypePicture)};
-//    [self dealTheFunctionData:dic];
+    NSDictionary *dic = @{@"picture": image,
+                          @"type": @(UUMessageTypePicture),
+                          @"strIcon":_avatar};
+    [self dealTheFunctionData:dic];
     NSData *img = UIImageJPEGRepresentation(image, 0.5);
     NSArray *array = [NSArray arrayWithObject:img];
     [[MMTService shareInstance]postTicketWithcontent:nil images:array Success:^(id responseObject) {
         if([[responseObject objectForKey:@"code"]floatValue]==0){
             [funcView changeSendBtnWithPhoto:YES];
-            [self populateRandomDataSource];
+//            [self populateRandomDataSource];
         }
     } failure:^(NSError *error) {
         

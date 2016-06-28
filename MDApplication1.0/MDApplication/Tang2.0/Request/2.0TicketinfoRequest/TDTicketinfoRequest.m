@@ -10,14 +10,14 @@
 #import "MDPublicConfig.h"
 @implementation TDTicketinfoRequest
 
-- (id)initWithPage:(NSInteger)page
+- (id)initWithDate:(NSString *)date
            success:(onSuccessCallback)successCallback
            failure:(onFailureCallback)failureCallback{
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        NSString *currentPage = [NSString stringWithFormat:@"%ld",page];
-        [dict setObject:POST_VALUE(currentPage) forKey:@"page"];
+//        NSString *currentPage = [NSString stringWithFormat:@"%ld",page];
+        [dict setObject:POST_VALUE(date) forKey:@"tictime"];
         [self setActionInfo:dict];
     }
     return self;

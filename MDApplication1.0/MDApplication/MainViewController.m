@@ -26,6 +26,7 @@
 #import "MMTService.h"
 #import "UUProgressHUD.h"
 #import "AdModel.h"
+#import "TangConfig.h"
 @interface MainViewController ()
 @property (nonatomic,strong)NSMutableArray *selected;
 @property (nonatomic,strong)NSMutableArray *unselected;
@@ -49,12 +50,12 @@
     _selected = [NSMutableArray new];
     _unselected = [NSMutableArray new];
     [UUProgressHUD show];
-    NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
+    NSDictionary *result =  [TangConfig shareInstance].colDic;
     if([[result objectForKey:@"code"]floatValue]==0 && result){
         NSArray *contentItems = [TabMenuModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"tabMenu"]];
         [self setTabbarControllers:contentItems];
         [UUProgressHUD dismissWithSuccess:nil];
-    _tabbarModels = [NSArray arrayWithArray:contentItems];
+        _tabbarModels = [NSArray arrayWithArray:contentItems];
 
     }else{
             id jsonObject = [AMTools getLocalJsonDataWithFileName:@"tabmenu"];
@@ -77,7 +78,7 @@
     [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_1" ofType:@"png"]];
     [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_2" ofType:@"png"]];
     [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_3" ofType:@"png"]];
-    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"5_index_4" ofType:@"png"]];
     
     [[KSGuideManager shared] showGuideViewWithImages:paths withtype:NO];
     
@@ -213,11 +214,45 @@
 //                                  @"mune_ico4",
 //                                  @"mune_ico5"];
 //    NSArray *titles = @[];
-    
+    WS(ws);
     NSInteger index = 0;
     for (RDVTabBarItem *item in self.tabBar.items) {
-        UIImage *selectedimage = [UIImage imageNamed:_selected[index]];
-        UIImage *unselectedimage = [UIImage imageNamed:_unselected[index]];
+        
+        __block UIImage *unselectedimage = [UIImage new];
+        __block  UIImage *selectedimage = [UIImage new];
+        if([_selected[index] rangeOfString:@"http"].location !=NSNotFound)//_roaldSearchText
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                selectedimage = [UIImage imageWithData:[NSData
+                                                        dataWithContentsOfURL:[NSURL URLWithString:_selected[index]]]];
+                [item setFinishedSelectedImage:selectedimage
+                   withFinishedUnselectedImage:unselectedimage];
+                 [ws setSelectedIndex:[ws selectedIndex]];
+
+            });
+        }
+        else
+        {
+            selectedimage = [UIImage imageNamed:_selected[index]];
+        }
+        
+        if([_unselected[index] rangeOfString:@"http"].location !=NSNotFound)//_roaldSearchText
+        {
+             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                 unselectedimage = [UIImage imageWithData:[NSData
+                      
+                                                           dataWithContentsOfURL:[NSURL URLWithString:_unselected[index]]]];
+                 [item setFinishedSelectedImage:selectedimage
+                    withFinishedUnselectedImage:unselectedimage];
+                  [ws setSelectedIndex:[ws selectedIndex]];
+             });
+            
+        }
+        else
+        {
+              unselectedimage = [UIImage imageNamed:_unselected[index]];
+        }
+//        UIImage *unselectedimage = [UIImage imageNamed:_unselected[index]];
         
         [item setFinishedSelectedImage:selectedimage
            withFinishedUnselectedImage:unselectedimage];

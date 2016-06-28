@@ -14,6 +14,7 @@
 #import "UIButton+AFNetworking.h"
 #import "UUImageAvatarBrowser.h"
 #import "UIImageView+WebCache.h"
+#import "AMTools.h"
 @interface UUMessageCell ()<UUAVAudioPlayerDelegate>
 {
     AVAudioPlayer *player;
@@ -154,7 +155,10 @@
     UUMessage *message = messageFrame.message;
     
     // 1、设置时间
-    self.labelTime.text = message.strTime;
+    
+   
+    
+    self.labelTime.text =  [AMTools dateStringFromTimeInterval:message.strTime];
     self.labelTime.frame = messageFrame.timeF;
     
     // 2、设置头像
