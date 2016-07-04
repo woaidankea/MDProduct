@@ -17,6 +17,11 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if(self.isFullScreen){
+      CGRect  rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-64);
+        _wkwebview.frame = rect;
+    }
+
     [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     [[CLProgressHUD shareInstance] showsInsuperview:_wkwebview];
 
@@ -31,9 +36,10 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets =NO;
     
-//   
-    
+//
     CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-64);
+   
+ 
     
     _wkwebview = [[YPWebView alloc]initWithFrame:rect];
     _wkwebview.delegate = self;

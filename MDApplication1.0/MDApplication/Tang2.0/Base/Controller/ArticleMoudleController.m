@@ -22,25 +22,51 @@
 #import "AppDelegate.h"
 #import "IndexbalRequest.h"
 @interface ArticleMoudleController ()
-
+@property (nonatomic,strong)UIButton *backButton;
 @end
 
 @implementation ArticleMoudleController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if(!USER_DEFAULT_KEY(@"token")){
-        [self setrightLogin];
-    }else{
-        
-        [self setrightBar];
-        
-    }
+    
+    
+    
+//    if(!USER_DEFAULT_KEY(@"token")){
+//        [self setrightLogin];
+//    }else{
+//        
+//        [self setrightBar];
+//        
+//        
+//    }
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setleftBar];
+    
+    if(!USER_DEFAULT_KEY(@"token")){
+        [self setrightLogin];
+    }else{
+        
+        [self setrightBar];
+        IndexbalRequest *request = [[IndexbalRequest alloc]initColsuccess:^(AMBaseRequest *request) {
+            NSString *balance =[[request.responseObject objectForKey:@"member"]objectForKey:@"balance"];
+            [_backButton setTitle:[NSString stringWithFormat:@"%.2f",[balance floatValue]]
+                         forState:UIControlStateNormal];
+            [_backButton horizontalCenterTitleAndImageRight:5];
+        } failure:^(AMBaseRequest *request) {
+            
+        }];
+        [request start];
+        
+    }
+    
+    
+   
+    
+
     // Do any additional setup after loading the view.
 }
 
@@ -72,16 +98,16 @@
 
 
 - (void)setrightBar{
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
-    [backButton setImage:[UIImage imageNamed:@"jinbi"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
+     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
+    [_backButton setImage:[UIImage imageNamed:@"jinbi"] forState:UIControlStateNormal];
+    [_backButton addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
     
-    [backButton setTitle:@"" forState:UIControlStateNormal];
+    [_backButton setTitle:@"" forState:UIControlStateNormal];
 
-    [backButton horizontalCenterTitleAndImageRight:5];
+    [_backButton horizontalCenterTitleAndImageRight:5];
     
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:_backButton];
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
@@ -92,15 +118,6 @@
     negativeSpacer.width = -17;
     
     
-    IndexbalRequest *request = [[IndexbalRequest alloc]initColsuccess:^(AMBaseRequest *request) {
-        NSString *balance =[[request.responseObject objectForKey:@"member"]objectForKey:@"balance"];
-        [backButton setTitle:[NSString stringWithFormat:@"%.2f",[balance floatValue]]
-                    forState:UIControlStateNormal];
-        [backButton horizontalCenterTitleAndImageRight:5];
-    } failure:^(AMBaseRequest *request) {
-        
-    }];
-    [request start];
     
     
     

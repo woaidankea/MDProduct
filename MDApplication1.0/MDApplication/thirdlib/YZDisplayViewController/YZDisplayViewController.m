@@ -415,7 +415,7 @@ static CGFloat const cellborder =20;
     self.titleScrollView.frame = CGRectMake(0, titleY, contentW-ButtonWidth, titleH);
     self.addButton.frame =CGRectMake(contentW-ButtonWidth, titleY,ButtonWidth, titleH);
     
-    self.selectView.frame =CGRectMake(0, titleY,contentW,170);
+    self.selectView.frame =CGRectMake(0, titleY,contentW,220);
     
     
     UIButton *buttondown  = [UIButton buttonWithType:UIButtonTypeCustom];

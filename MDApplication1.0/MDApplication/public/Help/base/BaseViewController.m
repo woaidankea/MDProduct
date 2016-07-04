@@ -72,22 +72,25 @@
                    request:(AMBaseRequest *)request
        treatErrorAsUnknown:(BOOL) treated{
     
-    NSString *confirmTitle=UILocalizedString(@"UI_TEXT_CONFIRM");
-    if(request.response.statusCode==-100){
-
-        [AMTools showHUDtoView:self.view title:request.response.errorMessage delay:2];
-        return YES;
-    }
+    [AMTools showHUDtoView:self.view title:request.response.errorMessage delay:2];
+    return YES;
     
-    if (request.response.errorMessage) {
-        [AMTools showAlertViewWithTitle:request.response.errorMessage cancelButtonTitle:confirmTitle];
-        return YES;
-    }
-    
-    if(treated){
-        [AMTools showAlertViewWithMessage:UILocalizedString(@"UI_UNKOWN_ERROR_MESSAGE") cancelButtonTitle:confirmTitle];
-        return YES;
-    }
+//    NSString *confirmTitle=UILocalizedString(@"UI_TEXT_CONFIRM");
+//    if(request.response.statusCode==-100){
+//
+//        [AMTools showHUDtoView:self.view title:request.response.errorMessage delay:2];
+//        return YES;
+//    }
+//    
+//    if (request.response.errorMessage) {
+//        [AMTools showHUDtoView:request.response.errorMessage cancelButtonTitle:confirmTitle];
+//        return YES;
+//    }
+//    
+//    if(treated){
+//        [AMTools showAlertViewWithMessage:UILocalizedString(@"UI_UNKOWN_ERROR_MESSAGE") cancelButtonTitle:confirmTitle];
+//        return YES;
+//    }
     
     return NO;
 }

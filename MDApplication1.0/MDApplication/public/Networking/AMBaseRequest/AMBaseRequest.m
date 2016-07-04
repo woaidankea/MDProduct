@@ -87,6 +87,7 @@
     _response=[[AMBaseResponse alloc]init];
     if(responseDictionary!=nil){
         _response.statusCode=[[responseDictionary objectForKey:@"code"] intValue];
+        _response.message = [responseDictionary objectForKey:@"message"];
         if(ServerJieKu){
             if(_response.statusCode ==1002||_response.statusCode ==1003){
              
@@ -158,7 +159,7 @@
             if(_onSuccess!=nil){
                 _onSuccess(self);
             }
-        }else if(self.response.statusCode == 1009){
+        }else if(self.response.statusCode == 1009||self.response.statusCode == 1023||self.response.statusCode == 1024){
             if(_onSuccess!=nil){
                 _onSuccess(self);
             }

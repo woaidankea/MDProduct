@@ -17,7 +17,7 @@
 @end
 static CGFloat const ButtonWidth = 62;
 static CGFloat const ButtonHeight = 27;
-static CGFloat const contentWidth = 270;
+static CGFloat const contentWidth = 350;
 //static CGFloat const LeftBorder = 27;
 
 @implementation SelectView

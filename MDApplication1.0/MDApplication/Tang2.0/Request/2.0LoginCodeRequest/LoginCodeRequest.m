@@ -6,17 +6,19 @@
 //  Copyright © 2016年 jieku. All rights reserved.
 //
 
-#import "UserdataumRequest.h"
+#import "LoginCodeRequest.h"
 
-@implementation UserdataumRequest
+@implementation LoginCodeRequest
 
-- (id)initDatumsuccess:(onSuccessCallback)successCallback
-               failure:(onFailureCallback)failureCallback
+- (id)initRegCodeWithPhone:(NSString *)phone
+                      success:(onSuccessCallback)successCallback
+                      failure:(onFailureCallback)failureCallback
 {
     self=[super initWithSuccessCallback:successCallback failureCallback:failureCallback];
     if(self){
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-   
+        [dict setValue:POST_VALUE(phone) forKey:@"phone"];
+        
             
        
         [self setActionInfo:dict];
@@ -25,7 +27,7 @@
 }
 - (NSString *)getURL{
 
-        return kUsrdatum;
+    return kLogincode;
 }
 
 - (NSString*)getMethod{
@@ -33,7 +35,7 @@
 }
 - (void)processResponse:(NSDictionary *)responseDictionary{
     [super processResponse:responseDictionary];
-    if([self.response isSucceed]){
+    if(self.response.statusCode == 1009|| [self.response isSucceed]){
         
         self.responseObject = [responseDictionary objectForKey:@"data"];
     }

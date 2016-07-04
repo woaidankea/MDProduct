@@ -39,6 +39,9 @@
 
 #import "JPUSHService.h"
 #import "TangConfig.h"
+#import "AdLaunchView.h"
+#import "ViewControllerFactory.h"
+#import "ShareConfig.h"
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 
@@ -47,6 +50,8 @@
         MainViewController *mainview;
 }
 
+@property(nonatomic, strong) AdLaunchView *adLaunchView;
+@property(nonatomic,strong)AdModel *model;
 @end
 
 
@@ -55,14 +60,22 @@
     NSDictionary *adresult =[[MMTService shareInstance]syncgetStartAd];
     if(adresult){
     NSArray *array = [AdModel mj_objectArrayWithKeyValuesArray:[[adresult objectForKey:@"data"] objectForKey:@"list"]];
-    
-
-    
-    [[KSGuideManager shared] showGuideViewWithImages:array withtype:YES];
+        
+        if(array.count>0){
+            _model = [array objectAtIndex:0];
+        }
+        self.adLaunchView = [[AdLaunchView alloc] initWithFrame: [UIScreen mainScreen].bounds type: AdLaunchProgressType andUrl:_model.adurl];
+//         self.adLaunchView.imageURL = _model.adurl;
+        self.adLaunchView._delegate = self;
+       
+        [self.window addSubview: self.adLaunchView];
+//    [[KSGuideManager shared] showGuideViewWithImages:array withtype:YES];
     
     }else{
          [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
     }
+    
+
 
 }
 
@@ -110,9 +123,14 @@
     [self.window makeKeyAndVisible];
     [self ad];
     [self getColConfig];
+    [self getShareConfig];
     
     
     return YES;
+}
+
+- (void)getShareConfig{
+    [ShareConfig shareToolsInstance];
 }
 - (void)getColConfig{
 
@@ -446,6 +464,20 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
         }
     }
 }
+
+- (void) adLaunch:(AdLaunchView *)launchView {
+    
+    if([_model.isclick isEqualToString:@"1"]){
+        BaseViewController *vc = [ViewControllerFactory TabMenuFactoryCreateViewControllerWithType:kWebViewController];
+        
+        [vc setleftBarItemWith:nil];
+        vc.url = _model.clickurl;
+      
+        
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
+    }
+}
+
 
 - (NSString *)idfvString
 {

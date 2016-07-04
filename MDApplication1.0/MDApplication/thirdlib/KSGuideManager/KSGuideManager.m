@@ -182,8 +182,16 @@ static NSString *identifier = @"Cell";
 //    cell.imageView.image = [UIImage imageWithContentsOfFile:path];
 //    cell.imageView.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height / 2);
   
+        SDWebImageManager *manage = [[SDWebImageManager alloc] init];
+        NSURL *url = [[NSURL alloc] initWithString: path.adurl];
+        if ([manage cachedImageExistsForURL: url] == NO) {
+            [self guideRemove];
+            [self requestBanner:path.adurl];
+        }else{
+        
+        
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:path.adurl] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:path.adurl] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
         [cell.button setFrame:CGRectMake(0, 0,50, 25)];
         [cell.button setTitle:@"跳过" forState:UIControlStateNormal];
         [cell.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -195,6 +203,7 @@ static NSString *identifier = @"Cell";
         [cell.button addTarget:self action:@selector(nextButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
 
         [cell.button setHidden:NO];
+        }
     
     }else{
         NSString *path = [self.images objectAtIndex:indexPath.row];
@@ -227,6 +236,28 @@ static NSString *identifier = @"Cell";
 
     return cell;
 }
+
+#pragma mark - 获取本地图片缓存，如果没有广告结束
+- (void) displayCachedAd {
+//    SDWebImageManager *manage = [[SDWebImageManager alloc] init];
+//    NSURL *url = [[NSURL alloc] initWithString: self.imageURL];
+//    if ([manage cacheKeyForURL: url] == NO) {
+//        self.hidden = YES;
+//    } else {
+//        [self showImage];
+//    }
+}
+
+#pragma mark - 下载图片
+- (void) requestBanner:(NSString *)imageURL {
+    [[SDWebImageManager sharedManager] downloadImageWithURL: [[NSURL alloc] initWithString: imageURL]
+                                                    options: SDWebImageAvoidAutoSetImage
+                                                   progress: nil
+                                                  completed: ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                      NSLog(@"图片下载成功");
+                                                  }];
+}
+
 
 - (CGSize)adapterSizeImageSize:(CGSize)is compareSize:(CGSize)cs
 {

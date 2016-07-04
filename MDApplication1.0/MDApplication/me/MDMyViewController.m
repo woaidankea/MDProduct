@@ -213,6 +213,11 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getContent];
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
  
@@ -237,7 +242,7 @@
     if([[result objectForKey:@"code"]floatValue]==0){
         _myModel = [MyModel mj_objectWithKeyValues:[result objectForKey:@"data"]];
         
-        if(![_myModel.isbonus isEqualToString:@"1"]){
+        if([_myModel.isbonus isEqualToString:@"1"]){
             RegbonusRequest *request = [[RegbonusRequest alloc]initBonussuccess:^(AMBaseRequest *request) {
                 
                 BonusModel *model = [BonusModel mj_objectWithKeyValues:request.responseObject];
@@ -252,7 +257,7 @@
             [request start];
         }
         if([_myModel.isdatum isEqualToString:@"1"]){
-            UserdataumRequest *request = [[UserdataumRequest alloc]initdatumsuccess:^(AMBaseRequest *request) {
+            UserdataumRequest *request = [[UserdataumRequest alloc]initDatumsuccess:^(AMBaseRequest *request) {
                 
                 BonusModel *model = [BonusModel mj_objectWithKeyValues:request.responseObject];
                 
@@ -268,6 +273,8 @@
         
         [weakSelf.collectionview reloadData];
         [weakSelf.collectionview.mj_header endRefreshing];
+    }else if([[result objectForKey:@"code"]floatValue]==1002){
+         [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
     }else{
         //格式化成json数据
             id jsonObject = [AMTools getLocalJsonDataWithFileName:@"my"];

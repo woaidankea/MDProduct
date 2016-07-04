@@ -25,7 +25,8 @@
 #import "CopyLinkActivity.h"
 #import "TencentActivity.h"
 #import "QZoneActivity.h"
-
+#import "ShareConfig.h"
+#import "ShareConfigModel.h"
 
 
 
@@ -138,27 +139,56 @@ static DXShareTools *_shareTools = nil;
        CurrentModel = model;
 //    @"shareToWeChatTimeline",
 //    @"shareToWechatSession",
-    NSArray *selectors = @[
-                           @"shareToWeibo",
-                        
-                           @"shareToTencentQQ",
-                           @"shareToQzone"
-                           ];
+//    @[
+//      @"shareToWeibo",
+//      @"shareToTencentQQ",
+//      @"shareToQzone"
+//      ];
+
+//    [WeiboActivity class],
+//    [TencentActivity class],
+//    [QZoneActivity class]
+    NSMutableArray *selectors = [NSMutableArray new];
     
-    //添加Share
-//    [WechatTimelineActivity class],
-//    [WechatSessionActivity class],
+    NSMutableArray *classes =  [NSMutableArray new];
+    for(ShareConfigModel *model in [ShareConfig shareToolsInstance].configArray){
+        if([model.show isEqualToString:@"1"]){
+            if([model.config isEqualToString:@"2"]){
+                if([model.platform isEqualToString:@"1"]){
+                    [selectors addObject:@"shareToTencentQQ"];
+                    [classes addObject:[TencentActivity class]];
+                }
+                if([model.platform isEqualToString:@"2"]){
+                     [selectors addObject:@"shareToQzone"];
+                    [classes addObject:[QZoneActivity class]];
+
+                }
+                if([model.platform isEqualToString:@"3"]){
+                    
+                }
+                if([model.platform isEqualToString:@"4"]){
+                    
+                }
+                if([model.platform isEqualToString:@"5"]){
+                    [selectors addObject:@"shareToWeibo"];
+                    [classes addObject:[WeiboActivity class]];
+
+                }
+
+            }
+        }
+        
+        
     
+    
+    
+    
+    }
     
     NSLog(@"222222222");
-    Class classes[3] = {
-        [WeiboActivity class],
-    
-        [TencentActivity class],
-        [QZoneActivity class]
-    };
+  
     NSMutableArray *activitys = [NSMutableArray arrayWithCapacity:3];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < selectors.count; i++) {
         id activity = [[classes[i] alloc] init];
         [activity setPerformActivityBlock:^{
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

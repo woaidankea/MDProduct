@@ -30,6 +30,7 @@
 #import "MDFashionViewController.h"
 #import "MDTourViewController.h"
 #import "MDMilitaryViewController.h"
+
 @implementation YZXiMaViewController
 
 
@@ -95,6 +96,7 @@
     // 如果有导航控制器或者tabBarController,需要设置tableView额外滚动区域,详情请看FullChildViewController
     self.isfullScreen = YES;
 }
+
 
 // 添加所有子控制器
 - (void)setUpAllViewController

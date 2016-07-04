@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     previousTime = nil;
 //    [self initBar];
     [self setleftBarItemWith:nil];
     [self addRefreshViews];

@@ -11,4 +11,5 @@
 @interface MDRankModel : NSObject
 @property (nonatomic,strong)NSString *phone;
 @property (nonatomic,strong)NSString *totalmoney;
+@property (nonatomic,strong)NSString *avatar;
 @end

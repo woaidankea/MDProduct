@@ -9,7 +9,7 @@
 #import "AMBaseRequest.h"
 
 @interface UserdataumRequest : AMBaseRequest
-- (id)initdatumsuccess:(onSuccessCallback)successCallback
+- (id)initDatumsuccess:(onSuccessCallback)successCallback
                   failure:(onFailureCallback)failureCallback;
 
 

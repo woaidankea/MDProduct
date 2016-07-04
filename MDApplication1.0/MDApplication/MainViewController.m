@@ -111,6 +111,7 @@
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
             vc.title = model.modulename;
             vc.url = model.url;
+            vc.isFullScreen = YES;
             [vcArray addObject:nav];
             if(model.iconSelected.length==0){
                 model.iconSelected = @"selectedicon2";
@@ -125,10 +126,10 @@
             vc.title = model.modulename;
             vc.url = model.url;
             [vcArray addObject:nav];
-                if(model.iconSelected.length==0){
+            if(model.iconSelected.length==0){
                     model.iconSelected = @"selectedicon3";
                 }
-                if(model.iconUnSelected.length == 0){
+            if(model.iconUnSelected.length == 0){
                     model.iconUnSelected  = @"unselectedicon3";
                 }
         }
@@ -214,6 +215,8 @@
 //                                  @"mune_ico4",
 //                                  @"mune_ico5"];
 //    NSArray *titles = @[];
+    
+    
     WS(ws);
     NSInteger index = 0;
     for (RDVTabBarItem *item in self.tabBar.items) {
@@ -223,11 +226,30 @@
         if([_selected[index] rangeOfString:@"http"].location !=NSNotFound)//_roaldSearchText
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                selectedimage = [UIImage imageWithData:[NSData
-                                                        dataWithContentsOfURL:[NSURL URLWithString:_selected[index]]]];
-                [item setFinishedSelectedImage:selectedimage
-                   withFinishedUnselectedImage:unselectedimage];
-                 [ws setSelectedIndex:[ws selectedIndex]];
+                
+                
+                
+                
+                [[SDWebImageManager sharedManager] downloadImageWithURL: [[NSURL alloc] initWithString: _selected[index]]
+                                                                options: SDWebImageAvoidAutoSetImage
+                                                               progress: nil
+                                                              completed: ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                                  selectedimage = image;
+                                                                  [item setFinishedSelectedImage:selectedimage
+                                                                     withFinishedUnselectedImage:unselectedimage];
+                                                                  [ws setSelectedIndex:[ws selectedIndex]];
+                                                                [self setNeedsStatusBarAppearanceUpdate];
+                                                              }];
+
+                
+                
+                
+                
+//                selectedimage = [UIImage imageWithData:[NSData
+//                                                        dataWithContentsOfURL:[NSURL URLWithString:_selected[index]]]];
+//                [item setFinishedSelectedImage:selectedimage
+//                   withFinishedUnselectedImage:unselectedimage];
+//                 [ws setSelectedIndex:[ws selectedIndex]];
 
             });
         }
@@ -239,12 +261,26 @@
         if([_unselected[index] rangeOfString:@"http"].location !=NSNotFound)//_roaldSearchText
         {
              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                 unselectedimage = [UIImage imageWithData:[NSData
-                      
-                                                           dataWithContentsOfURL:[NSURL URLWithString:_unselected[index]]]];
-                 [item setFinishedSelectedImage:selectedimage
-                    withFinishedUnselectedImage:unselectedimage];
-                  [ws setSelectedIndex:[ws selectedIndex]];
+                 
+                 
+                 [[SDWebImageManager sharedManager] downloadImageWithURL: [[NSURL alloc] initWithString: _unselected[index]]
+                                                                 options: SDWebImageAvoidAutoSetImage
+                                                                progress: nil
+                                                               completed: ^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                                   unselectedimage = image;
+                                                                   [item setFinishedSelectedImage:selectedimage
+                                                                      withFinishedUnselectedImage:unselectedimage];
+                                                                   [ws setSelectedIndex:[ws selectedIndex]];
+                                                                    [self.tabBar layoutSubviews];
+                                                               }];
+
+                 
+//                 unselectedimage = [UIImage imageWithData:[NSData
+//                      
+//                                                           dataWithContentsOfURL:[NSURL URLWithString:_unselected[index]]]];
+//                 [item setFinishedSelectedImage:selectedimage
+//                    withFinishedUnselectedImage:unselectedimage];
+//                  [ws setSelectedIndex:[ws selectedIndex]];
              });
             
         }
@@ -252,13 +288,11 @@
         {
               unselectedimage = [UIImage imageNamed:_unselected[index]];
         }
-//        UIImage *unselectedimage = [UIImage imageNamed:_unselected[index]];
+
         
         [item setFinishedSelectedImage:selectedimage
            withFinishedUnselectedImage:unselectedimage];
-//        [item setTitle:titles[index]];
-    
-//        item.backgroundColor = UIColorFromRGB(0xf4f4f4);
+
         
         index++;
     }

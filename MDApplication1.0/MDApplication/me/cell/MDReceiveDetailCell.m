@@ -22,10 +22,14 @@
     _Title.text = model.title;
     _Money.text = model.amount;
     _Date.text = model.date;
-//    if(model.imageUrl.length!=0){
-        [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"place_order"]];
-//    }
+    if(model.imageUrl.length!=0){
+        _contentImage.hidden = NO;
+    [_contentImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:[UIImage imageNamed:@"place_order"]];
+    }else{
+        _contentImage.hidden = YES;
+    }
     
+
 }
 
 @end

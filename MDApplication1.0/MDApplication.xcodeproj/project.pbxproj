@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C044A811D2258ED00FC9C50 /* LoginCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A801D2258ED00FC9C50 /* LoginCodeRequest.m */; };
+		5C044A851D225ADE00FC9C50 /* OtherLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A841D225ADE00FC9C50 /* OtherLoginRequest.m */; };
+		5C044A911D23570E00FC9C50 /* AdLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A871D23570E00FC9C50 /* AdLaunchView.m */; };
+		5C044A921D23570E00FC9C50 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A8A1D23570E00FC9C50 /* DACircularProgressView.m */; };
+		5C044A931D23570E00FC9C50 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A8C1D23570E00FC9C50 /* DALabeledCircularProgressView.m */; };
+		5C044A941D23570E00FC9C50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C044A8E1D23570E00FC9C50 /* Info.plist */; };
+		5C044A951D23570E00FC9C50 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044A901D23570E00FC9C50 /* MZTimerLabel.m */; };
+		5C044AA11D261DAF00FC9C50 /* ShareConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044AA01D261DAF00FC9C50 /* ShareConfig.m */; };
+		5C044AA41D261DD400FC9C50 /* ShareConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044AA31D261DD400FC9C50 /* ShareConfigModel.m */; };
+		5C044AA81D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C044AA71D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.m */; };
 		5C07077C1CBB54F9005945AC /* ceshitupian.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C07077B1CBB54F9005945AC /* ceshitupian.jpg */; };
 		5C0D19921CA91AEF0039F7E5 /* MDMeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D19901CA91AEF0039F7E5 /* MDMeCollectionCell.m */; };
 		5C0D19931CA91AEF0039F7E5 /* MDMeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0D19911CA91AEF0039F7E5 /* MDMeCollectionCell.xib */; };
@@ -493,6 +503,25 @@
 
 /* Begin PBXFileReference section */
 		57992D12F2795A958B21BD7A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5C044A7F1D2258ED00FC9C50 /* LoginCodeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCodeRequest.h; sourceTree = "<group>"; };
+		5C044A801D2258ED00FC9C50 /* LoginCodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCodeRequest.m; sourceTree = "<group>"; };
+		5C044A831D225ADE00FC9C50 /* OtherLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherLoginRequest.h; sourceTree = "<group>"; };
+		5C044A841D225ADE00FC9C50 /* OtherLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherLoginRequest.m; sourceTree = "<group>"; };
+		5C044A861D23570E00FC9C50 /* AdLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdLaunchView.h; sourceTree = "<group>"; };
+		5C044A871D23570E00FC9C50 /* AdLaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdLaunchView.m; sourceTree = "<group>"; };
+		5C044A891D23570E00FC9C50 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		5C044A8A1D23570E00FC9C50 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		5C044A8B1D23570E00FC9C50 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		5C044A8C1D23570E00FC9C50 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		5C044A8E1D23570E00FC9C50 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C044A8F1D23570E00FC9C50 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		5C044A901D23570E00FC9C50 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
+		5C044A9F1D261DAF00FC9C50 /* ShareConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareConfig.h; sourceTree = "<group>"; };
+		5C044AA01D261DAF00FC9C50 /* ShareConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareConfig.m; sourceTree = "<group>"; };
+		5C044AA21D261DD400FC9C50 /* ShareConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareConfigModel.h; sourceTree = "<group>"; };
+		5C044AA31D261DD400FC9C50 /* ShareConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareConfigModel.m; sourceTree = "<group>"; };
+		5C044AA61D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDeviceLoginCheckRequest.h; sourceTree = "<group>"; };
+		5C044AA71D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDeviceLoginCheckRequest.m; sourceTree = "<group>"; };
 		5C07077B1CBB54F9005945AC /* ceshitupian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ceshitupian.jpg; sourceTree = "<group>"; };
 		5C0D198F1CA91AEF0039F7E5 /* MDMeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeCollectionCell.h; sourceTree = "<group>"; };
 		5C0D19901CA91AEF0039F7E5 /* MDMeCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMeCollectionCell.m; sourceTree = "<group>"; };
@@ -1273,6 +1302,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C044A7E1D2258ED00FC9C50 /* 2.0LoginCodeRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C044A7F1D2258ED00FC9C50 /* LoginCodeRequest.h */,
+				5C044A801D2258ED00FC9C50 /* LoginCodeRequest.m */,
+			);
+			path = 2.0LoginCodeRequest;
+			sourceTree = "<group>";
+		};
+		5C044A821D225ADE00FC9C50 /* 2.0OtherLoginRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C044A831D225ADE00FC9C50 /* OtherLoginRequest.h */,
+				5C044A841D225ADE00FC9C50 /* OtherLoginRequest.m */,
+			);
+			path = 2.0OtherLoginRequest;
+			sourceTree = "<group>";
+		};
+		5C044A881D23570E00FC9C50 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				5C044A891D23570E00FC9C50 /* DACircularProgressView.h */,
+				5C044A8A1D23570E00FC9C50 /* DACircularProgressView.m */,
+				5C044A8B1D23570E00FC9C50 /* DALabeledCircularProgressView.h */,
+				5C044A8C1D23570E00FC9C50 /* DALabeledCircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
+		5C044A8D1D23570E00FC9C50 /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5C044A8E1D23570E00FC9C50 /* Info.plist */,
+				5C044A8F1D23570E00FC9C50 /* MZTimerLabel.h */,
+				5C044A901D23570E00FC9C50 /* MZTimerLabel.m */,
+			);
+			path = MZTimerLabel;
+			sourceTree = "<group>";
+		};
+		5C044AA51D29ECC600FC9C50 /* 2.0DeviceLoginCheckRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5C044AA61D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.h */,
+				5C044AA71D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.m */,
+			);
+			path = 2.0DeviceLoginCheckRequest;
+			sourceTree = "<group>";
+		};
 		5C0D19B01CAA2B4A0039F7E5 /* 分享相关 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1360,10 @@
 				5C0D19B41CAA2B4A0039F7E5 /* HXShareScrollView.m */,
 				5C0D19D01CAA2E0F0039F7E5 /* DXShareTools.h */,
 				5C0D19D11CAA2E0F0039F7E5 /* DXShareTools.m */,
+				5C044A9F1D261DAF00FC9C50 /* ShareConfig.h */,
+				5C044AA01D261DAF00FC9C50 /* ShareConfig.m */,
+				5C044AA21D261DD400FC9C50 /* ShareConfigModel.h */,
+				5C044AA31D261DD400FC9C50 /* ShareConfigModel.m */,
 			);
 			path = "分享相关";
 			sourceTree = "<group>";
@@ -1877,6 +1958,9 @@
 		5C6C9FED1CFEE5A0000ED97A /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				5C044AA51D29ECC600FC9C50 /* 2.0DeviceLoginCheckRequest */,
+				5C044A821D225ADE00FC9C50 /* 2.0OtherLoginRequest */,
+				5C044A7E1D2258ED00FC9C50 /* 2.0LoginCodeRequest */,
 				5C5B1BCA1D193178007D2E6F /* 2.0UserdataumRequset */,
 				5C5B1BC31D190B17007D2E6F /* 2.0RegbonusRequest */,
 				5C506B2C1D111C8D0002FC78 /* 2.0IndexbalRequest */,
@@ -2745,6 +2829,10 @@
 		5C9F3E6E1C96951000756229 /* thirdlib */ = {
 			isa = PBXGroup;
 			children = (
+				5C044A861D23570E00FC9C50 /* AdLaunchView.h */,
+				5C044A871D23570E00FC9C50 /* AdLaunchView.m */,
+				5C044A881D23570E00FC9C50 /* DACircularProgress */,
+				5C044A8D1D23570E00FC9C50 /* MZTimerLabel */,
 				5CC65EAE1D0FE3BC00117E5B /* NullSafe.m */,
 				5C6C9F651CFD8339000ED97A /* CLProgressHUD */,
 				5C6C9F6B1CFD8339000ED97A /* JQIndicatorView */,
@@ -3384,6 +3472,7 @@
 				5C9F3FB51C97BE5B00756229 /* tab_share_selected@2x.png in Resources */,
 				5C0D19931CA91AEF0039F7E5 /* MDMeCollectionCell.xib in Resources */,
 				5C3D43991CF7EC53006F2DFC /* RootViewController.xib in Resources */,
+				5C044A941D23570E00FC9C50 /* Info.plist in Resources */,
 				5C0D19AB1CAA1BE40039F7E5 /* mune_ico1_hov@2x.png in Resources */,
 				5C3A900A1C9AB6F700B4388B /* last_receive@3x.png in Resources */,
 				5C73A6F71CC0AE2A000CB453 /* 5.png in Resources */,
@@ -3586,6 +3675,7 @@
 				5C9F3E8F1C9699E400756229 /* BaseTableViewCell.m in Sources */,
 				5C3A8F9F1C9A415100B4388B /* MDSchoolSecondCell.m in Sources */,
 				5C7E74951CED4EDF0086879F /* ViewControllerFactory.m in Sources */,
+				5C044AA81D29ECC600FC9C50 /* TDDeviceLoginCheckRequest.m in Sources */,
 				5C3D43691CF7EC52006F2DFC /* ChatModel.m in Sources */,
 				5C6CA04F1CFFFE15000ED97A /* TDUserearningsRequest.m in Sources */,
 				5C7822A11CF2B5EE00889E21 /* DoubleLabelView.m in Sources */,
@@ -3600,6 +3690,7 @@
 				5C78229E1CF2A8BB00889E21 /* MyContentModel.m in Sources */,
 				5C9F3F601C97A78C00756229 /* KSGuideManager.m in Sources */,
 				5C3A90831C9BB19400B4388B /* MDRegistViewController.m in Sources */,
+				5C044AA11D261DAF00FC9C50 /* ShareConfig.m in Sources */,
 				5C9F3F151C969CF400756229 /* AMSystemInfo.m in Sources */,
 				5C73A6FA1CC0B9F7000CB453 /* myImageView.m in Sources */,
 				5C3A90861C9BC36C00B4388B /* MDFindPasswordViewController.m in Sources */,
@@ -3607,6 +3698,7 @@
 				5C5B1BC61D190B48007D2E6F /* RegbonusRequest.m in Sources */,
 				5C506B2F1D111CB50002FC78 /* IndexbalRequest.m in Sources */,
 				5CA7AC681CBBC39E005EF4D0 /* MDRedPacketModel.m in Sources */,
+				5C044A811D2258ED00FC9C50 /* LoginCodeRequest.m in Sources */,
 				5C3A90541C9AD4CB00B4388B /* MDLifeViewController.m in Sources */,
 				5C711A331CA0279B00CA1A31 /* MDFashionViewController.m in Sources */,
 				5C6CA0371CFFE632000ED97A /* TDResetpwdRequest.m in Sources */,
@@ -3639,12 +3731,16 @@
 				5C3A906A1C9B948400B4388B /* DXBarCode.m in Sources */,
 				5C2EAE9E1D0D6C1500611A06 /* AdModel.m in Sources */,
 				5C7822A71CF3064200889E21 /* CustomSegmentController.m in Sources */,
+				5C044A921D23570E00FC9C50 /* DACircularProgressView.m in Sources */,
+				5C044AA41D261DD400FC9C50 /* ShareConfigModel.m in Sources */,
 				5C3A8F9C1C9A413100B4388B /* MDSchoolHeadCell.m in Sources */,
+				5C044A911D23570E00FC9C50 /* AdLaunchView.m in Sources */,
 				5C90360E1C9D193500721D8F /* MDAboutusViewController.m in Sources */,
 				5C78229B1CF2A89B00889E21 /* MyModel.m in Sources */,
 				5CF67A1F1CA8D108004C8345 /* MDForgotPasswordRequest.m in Sources */,
 				5C6CA0491CFFFBC6000ED97A /* TDSubticketRequest.m in Sources */,
 				5C6C9F811CFD8339000ED97A /* JQIndicatorView.m in Sources */,
+				5C044A931D23570E00FC9C50 /* DALabeledCircularProgressView.m in Sources */,
 				5C3A90891C9BF39E00B4388B /* MDFindNextViewController.m in Sources */,
 				5C9F3FD01C98EA7C00756229 /* DXBaseCollectionViewCell.m in Sources */,
 				5C3A8F901C99888000B4388B /* MDInfomationCell.m in Sources */,
@@ -3740,6 +3836,7 @@
 				5C6CA01F1CFFD109000ED97A /* TDForpwdcodeRequest.m in Sources */,
 				5C3A8F931C9988AB00B4388B /* MDHeadImageCell.m in Sources */,
 				5C9F3E151C9685A000756229 /* main.m in Sources */,
+				5C044A951D23570E00FC9C50 /* MZTimerLabel.m in Sources */,
 				5C6C9F831CFD8339000ED97A /* JQMusic2Animation.m in Sources */,
 				5C3A8FB41C9A75FB00B4388B /* YZFlowLayout.m in Sources */,
 				5C6C9F7E1CFD8339000ED97A /* JQBounceSpot2Animation.m in Sources */,
@@ -3769,6 +3866,7 @@
 				5C3E46561CF423EC002B7FF4 /* SelectedView.m in Sources */,
 				5C711A241CA0238700CA1A31 /* MDEncouragementViewController.m in Sources */,
 				5C711A801CA141D200CA1A31 /* MDRankModel.m in Sources */,
+				5C044A851D225ADE00FC9C50 /* OtherLoginRequest.m in Sources */,
 				5CC65EAF1D0FE3BC00117E5B /* NullSafe.m in Sources */,
 				5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */,
 				5C711A3D1CA0291F00CA1A31 /* MDTourViewController.m in Sources */,

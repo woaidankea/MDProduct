@@ -74,7 +74,7 @@
     if(!_accountLabel){
         _accountLabel = [[UILabel alloc]init];
         _accountLabel.font = [UIFont systemFontOfSize:15.0];
-        _accountLabel.text = @"132****8224";
+        _accountLabel.text = @"";
         _accountLabel.textColor = UIColorFromRGB(0x111215);
         [self.contentView addSubview:_accountLabel];
         
@@ -87,7 +87,7 @@
     if(!_contentLabel){
         _contentLabel = [[UILabel alloc]init];
         _contentLabel.font = [UIFont systemFontOfSize:15.0];
-        _contentLabel.text = @"1314.22元";
+        _contentLabel.text = @"";
         _contentLabel.textColor = UIColorFromRGB(0xd3494e);
         _contentLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_contentLabel];

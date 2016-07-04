@@ -46,7 +46,7 @@
     _table.separatorColor = [UIColor clearColor];
 //    [self addFooterRefresh];
     [self addHeaderRefresh];
-    [self setleftBarItemWith:@"back_ico"];
+   [self setleftBarItemWith:@"back_ico"];
    
     
     
@@ -134,6 +134,10 @@
     TangRankingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rankCell"];
     
     [cell.sortImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld",indexPath.row + 1]]];
+    MDRankModel *model = [self.items objectAtIndex:indexPath.row];
+    [cell.avatorView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"avatorplaceorder"]];
+    cell.contentLabel.text = [NSString stringWithFormat:@"%.2f￥",[model.totalmoney floatValue]];
+    cell.accountLabel.text =  [model.phone stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     return cell;
 }
 

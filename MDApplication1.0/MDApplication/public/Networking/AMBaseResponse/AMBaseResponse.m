@@ -12,7 +12,7 @@
 
 -(BOOL) isSucceed{
     if(ServerJieKu){
-    return self.statusCode==0;
+    return self.statusCode==0|| self.statusCode == 1023||self.statusCode == 1024;
     }
         
     return self.statusCode==0;

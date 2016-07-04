@@ -18,6 +18,7 @@
 
 @property (nonatomic,strong,nullable)NSString *url;
 @property (nonatomic,strong,nullable)NSString *moudleId;
+@property (assign,nonatomic)BOOL isFullScreen;
 -(void)setBusyIndicatorVisible:(BOOL)visible;
 
 -(BOOL)handleResponseError:(BaseViewController *)currentController
