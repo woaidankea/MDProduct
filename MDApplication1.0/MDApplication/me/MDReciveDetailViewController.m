@@ -25,7 +25,7 @@
     [self resetTableView:_tableview];
     [self addHeaderRefresh];
     [self addFooterRefresh];
-    [self setleftBarItemWith:@"back_ico"];
+//    [self setleftBarItemWith:@"back_ico"];
     [self.tableView.mj_header beginRefreshing];
     
     // Do any additional setup after loading the view.

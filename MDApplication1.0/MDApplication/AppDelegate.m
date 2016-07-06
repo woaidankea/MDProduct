@@ -25,6 +25,7 @@
 
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
+#import "YXApi.h"
 #import "KeyBoardManager.h"
 #import "MobClick.h"
 //for mac
@@ -42,6 +43,7 @@
 #import "AdLaunchView.h"
 #import "ViewControllerFactory.h"
 #import "ShareConfig.h"
+#import "FCFileManager.h"
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 
@@ -119,11 +121,12 @@
     
     
     [UIApplication sharedApplication].applicationIconBadgeNumber=0;
-
-    [self.window makeKeyAndVisible];
-    [self ad];
     [self getColConfig];
     [self getShareConfig];
+
+    [self.window makeKeyAndVisible];
+     [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+    [self ad];
     
     
     return YES;
@@ -138,6 +141,11 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
         [TangConfig shareInstance].colDic = result;
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:&parseError];
+        [self saveCache: jsonData];
+
+        
     });
     
 }
@@ -178,7 +186,8 @@
                             @(SSDKPlatformTypeSinaWeibo),
                             @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformSubTypeWechatTimeline),
-                            @(SSDKPlatformTypeQQ)]
+                            @(SSDKPlatformTypeQQ),
+                            @(SSDKPlatformTypeYiXin)]
                  onImport:^(SSDKPlatformType platformType)
      {
          switch (platformType)
@@ -194,6 +203,9 @@
              case SSDKPlatformTypeSinaWeibo:
              [ShareSDKConnector connectWeibo:[WeiboSDK class]];
              break;
+             case SSDKPlatformTypeYiXin:
+                 [ShareSDKConnector connectYiXin:[YXApi class]];
+                 break;
              default:
              break;
          }
@@ -219,6 +231,8 @@
                                   appKey:@"vGIFeWxaqTzbhe8w"
                                 authType:SSDKAuthTypeBoth];
              break;
+             case SSDKPlatformTypeYiXin:
+             [appInfo SSDKSetupYiXinByAppId:@"yx31bc441496b444afbe86e3c4bbb7a1c5" appSecret:@"976a8bdf6920773" redirectUri:@"http://www.jieku.com" authType:SSDKAuthTypeBoth];
              default:
              break;
          }
@@ -487,5 +501,41 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     
     return @"";
 }
+
+
+#pragma mark - 缓存数据 -
+#define MaintainFile @"maintain"
+#define fileName @"maintain.txt"
+- (void)saveCache:(NSData *)dict
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",MaintainFile,_model]];
+    NSError *error = nil;
+    [FCFileManager createFileAtPath:[NSString stringWithFormat:@"/%@/%@",MaintainFile,_model] withContent:dict error:&error];
+}
+
+- (NSDictionary *)readCache
+{
+    NSData *fileData = [FCFileManager readFileAtPathAsData:[NSString stringWithFormat:@"/%@/%@",MaintainFile,_model]];
+    NSError *err;
+    NSDictionary *dict ;
+    
+    
+    
+    if(fileData){
+        dict = [NSJSONSerialization JSONObjectWithData:fileData
+                
+                                               options:NSJSONReadingMutableContainers
+                
+                                                 error:&err];
+        
+    }
+    return dict;
+}
+
+- (void)removeCache
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",MaintainFile,_model]];
+}
+
 
 @end

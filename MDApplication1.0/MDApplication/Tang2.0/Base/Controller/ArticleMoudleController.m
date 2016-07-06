@@ -21,6 +21,7 @@
 #import "MDReciveDetailViewController.h"
 #import "AppDelegate.h"
 #import "IndexbalRequest.h"
+#import "FCFileManager.h"
 @interface ArticleMoudleController ()
 @property (nonatomic,strong)UIButton *backButton;
 @end
@@ -39,12 +40,6 @@
 //        
 //        
 //    }
-
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setleftBar];
     
     if(!USER_DEFAULT_KEY(@"token")){
         [self setrightLogin];
@@ -62,6 +57,14 @@
         [request start];
         
     }
+
+
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self setleftBar];
+    
     
     
    
@@ -193,22 +196,93 @@
  
 
     [UUProgressHUD show];
-    NSDictionary *result = [[MMTService shareInstance]syncgetArticleClassWith:_moduleId];
-    if([[result objectForKey:@"code"]floatValue]==0 && result){
-        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
+    NSDictionary *responseObject = [self readCache];
+    if (responseObject) {
+        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
+        
+        
         [self setViewControllers:contentItems];
+    }
+
+    
+    if(!responseObject){
+         id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
+        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[jsonObject objectForKey:@"data"] objectForKey:@"list"]];
+        [self setViewControllers:contentItems];
+    }
+
+    
+    TDColclassRequest *request = [[TDColclassRequest alloc]initColclassWithModuleid:_moduleId success:^(AMBaseRequest *request) {
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:request.responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
+        [self saveCache: jsonData];
+        
+        if(!responseObject){
+            NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
+            [self setViewControllers:contentItems];
+        }
         [UUProgressHUD dismissWithSuccess:nil];
-    }else{
-            //格式化成json数据
-            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
-            if(jsonObject){
-        
+
+    } failure:^(AMBaseRequest *request) {
+        //格式化成json数据
+        id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
+        if(jsonObject){
+            
+            
+            
+            NSError *parseError = nil;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[jsonObject objectForKey:@"content"] options:NSJSONWritingPrettyPrinted error:&parseError];
+            [self saveCache: jsonData];
+            if(!responseObject){
                 NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
-        
                 [self setViewControllers:contentItems];
             }
+            
+            
+        }
         [UUProgressHUD dismissWithSuccess:nil];
-    }
+
+    }];
+    
+    
+    [request start];
+    
+    
+    
+    
+    
+//    NSDictionary *result = [[MMTService shareInstance]syncgetArticleClassWith:_moduleId];
+//    if([[result objectForKey:@"code"]floatValue]==0 && result){
+////        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
+//        
+//        NSError *parseError = nil;
+//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[result objectForKey:@"data"] options:NSJSONWritingPrettyPrinted error:&parseError];
+//        [self saveCache: jsonData];
+//
+//        if(!responseObject){
+//        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
+//        [self setViewControllers:contentItems];
+//        }
+//        [UUProgressHUD dismissWithSuccess:nil];
+//    }else{
+//            //格式化成json数据
+//            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
+//            if(jsonObject){
+//        
+//               
+//                
+//                NSError *parseError = nil;
+//                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[jsonObject objectForKey:@"content"] options:NSJSONWritingPrettyPrinted error:&parseError];
+//                [self saveCache: jsonData];
+//                if(!responseObject){
+//                 NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
+//                [self setViewControllers:contentItems];
+//                }
+//
+//               
+//            }
+//        [UUProgressHUD dismissWithSuccess:nil];
+//    }
     
     
     
@@ -229,6 +303,40 @@
     }
  
 }
+#pragma mark - 缓存数据 -
+#define ArticleClassFile @"articleclass"
+#define fileName @"articleclass.txt"
+- (void)saveCache:(NSData *)dict
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleClassFile,fileName]];
+    NSError *error = nil;
+    [FCFileManager createFileAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleClassFile,fileName] withContent:dict error:&error];
+}
+
+- (NSDictionary *)readCache
+{
+    NSData *fileData = [FCFileManager readFileAtPathAsData:[NSString stringWithFormat:@"/%@/%@",ArticleClassFile,fileName]];
+    NSError *err;
+    NSDictionary *dict ;
+    
+    
+    
+    if(fileData){
+        dict = [NSJSONSerialization JSONObjectWithData:fileData
+                
+                                               options:NSJSONReadingMutableContainers
+                
+                                                 error:&err];
+        
+    }
+    return dict;
+}
+
+- (void)removeCache
+{
+    [FCFileManager removeItemAtPath:[NSString stringWithFormat:@"/%@/%@",ArticleClassFile,fileName]];
+}
+
 
 /*
 #pragma mark - Navigation

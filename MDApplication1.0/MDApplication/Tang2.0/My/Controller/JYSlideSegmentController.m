@@ -136,8 +136,33 @@ NSString * const segmentBarItemID = @"JYSegmentBarItem";
          selector:@selector(handleOrientationDidChangeNotification:)
              name:UIDeviceOrientationDidChangeNotification
            object:nil];
-    [self setleftBarItemWith:@"back_ico"];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:@"back_ico.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(leftItemAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
+     *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    negativeSpacer.width = -17;
+    self.navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,backItem, nil];
 }
+- (void)leftItemAction{
+    
+    
+    
+    //
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+}
+
+
 -(void)setleftBarItemWith:(NSString *)imageNamed{
     
     

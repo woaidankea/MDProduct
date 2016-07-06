@@ -1,21 +1,83 @@
- {
-    "code": 0,
-    "message": "成功",
-    "currentTime": 1463480500,
-"data":[{
-"id": "1",
+{
+"code": "0",
+"message": "\u6210\u529f",
+"data": {
+"list": [{
+"id": "0",
 "type": "\u63a8\u8350",
+"sort": "0",
+"status": "1"
+}, {
+"id": "1",
+"type": "\u60c5\u611f",
 "sort": "1",
 "status": "1"
 }, {
 "id": "2",
-"type": "\u5a31\u4e50",
+"type": "\u641e\u7b11",
 "sort": "2",
 "status": "1"
 }, {
 "id": "3",
-"type": "\u517b\u751f",
+"type": "\u5065\u5eb7",
 "sort": "3",
 "status": "1"
+}, {
+"id": "4",
+"type": "\u5a31\u4e50",
+"sort": "4",
+"status": "1"
+}, {
+"id": "5",
+"type": "\u51cf\u80a5",
+"sort": "5",
+"status": "1"
+}, {
+"id": "6",
+"type": "\u7f8e\u5bb9",
+"sort": "6",
+"status": "1"
+}, {
+"id": "7",
+"type": "\u5065\u8eab",
+"sort": "7",
+"status": "1"
+}, {
+"id": "8",
+"type": "\u8da3\u6587",
+"sort": "8",
+"status": "1"
+}, {
+"id": "9",
+"type": "\u4e24\u6027",
+"sort": "9",
+"status": "1"
+}, {
+"id": "10",
+"type": "\u79d1\u6280",
+"sort": "10",
+"status": "1"
+}, {
+"id": "11",
+"type": "\u767e\u79d1",
+"sort": "11",
+"status": "1"
+}, {
+"id": "12",
+"type": "\u661f\u5ea7",
+"sort": "12",
+"status": "1"
+}, {
+"id": "13",
+"type": "\u6c7d\u8f66",
+"sort": "13",
+"status": "1"
+}, {
+"id": "14",
+"type": "\u65c5\u6e38",
+"sort": "14",
+"status": "1"
 }]
+},
+"currentTime": 1467711476
 }

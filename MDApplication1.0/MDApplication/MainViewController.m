@@ -27,6 +27,7 @@
 #import "UUProgressHUD.h"
 #import "AdModel.h"
 #import "TangConfig.h"
+#import "FCFileManager.h"
 @interface MainViewController ()
 @property (nonatomic,strong)NSMutableArray *selected;
 @property (nonatomic,strong)NSMutableArray *unselected;
@@ -336,5 +337,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

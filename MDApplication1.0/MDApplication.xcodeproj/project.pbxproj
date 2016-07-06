@@ -73,6 +73,9 @@
 		5C1AF0A01CB4A90E00719F72 /* RewardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09D1CB4A90E00719F72 /* RewardInfo.m */; };
 		5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AF09F1CB4A90E00719F72 /* UIWindow+RedPacket.m */; };
 		5C204D9B1CBFA2670084BD78 /* MDGetDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */; };
+		5C21C98D1D2BAC20004329D3 /* YXActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C98A1D2BAC20004329D3 /* YXActivity.m */; };
+		5C21C98E1D2BAC20004329D3 /* YXTimeLineActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C98C1D2BAC20004329D3 /* YXTimeLineActivity.m */; };
+		5C21C9931D2BB0A8004329D3 /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C21C9901D2BB0A8004329D3 /* libYixinSDK.a */; };
 		5C2EAE9E1D0D6C1500611A06 /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EAE9D1D0D6C1500611A06 /* AdModel.m */; };
 		5C3A8F5C1C992B0F00B4388B /* MDMeSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F551C992B0F00B4388B /* MDMeSecondCell.m */; };
 		5C3A8F5D1C992B0F00B4388B /* MDMeTopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A8F571C992B0F00B4388B /* MDMeTopCollectionViewCell.m */; };
@@ -588,6 +591,13 @@
 		5C1AF0A21CB4D21E00719F72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C204D991CBFA2670084BD78 /* MDGetDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGetDomain.h; sourceTree = "<group>"; };
 		5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGetDomain.m; sourceTree = "<group>"; };
+		5C21C9891D2BAC20004329D3 /* YXActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXActivity.h; sourceTree = "<group>"; };
+		5C21C98A1D2BAC20004329D3 /* YXActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXActivity.m; sourceTree = "<group>"; };
+		5C21C98B1D2BAC20004329D3 /* YXTimeLineActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXTimeLineActivity.h; sourceTree = "<group>"; };
+		5C21C98C1D2BAC20004329D3 /* YXTimeLineActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXTimeLineActivity.m; sourceTree = "<group>"; };
+		5C21C9901D2BB0A8004329D3 /* libYixinSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYixinSDK.a; sourceTree = "<group>"; };
+		5C21C9911D2BB0A8004329D3 /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
+		5C21C9921D2BB0A8004329D3 /* YXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApiObject.h; sourceTree = "<group>"; };
 		5C2EAE9C1D0D6C1500611A06 /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
 		5C2EAE9D1D0D6C1500611A06 /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		5C3A8F541C992B0F00B4388B /* MDMeSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMeSecondCell.h; sourceTree = "<group>"; };
@@ -1258,6 +1268,7 @@
 				5C3D415C1CF7CCF7006F2DFC /* libz.tbd in Frameworks */,
 				5C711AF91CA38B7900CA1A31 /* Security.framework in Frameworks */,
 				5C3D415A1CF7CCD6006F2DFC /* UIKit.framework in Frameworks */,
+				5C21C9931D2BB0A8004329D3 /* libYixinSDK.a in Frameworks */,
 				5C3D41581CF7CCCD006F2DFC /* Foundation.framework in Frameworks */,
 				5C3D41561CF7CCC3006F2DFC /* CoreGraphics.framework in Frameworks */,
 				5C711AEF1CA38AF300CA1A31 /* SystemConfiguration.framework in Frameworks */,
@@ -1457,6 +1468,16 @@
 				5C204D9A1CBFA2670084BD78 /* MDGetDomain.m */,
 			);
 			path = MDGetDomain;
+			sourceTree = "<group>";
+		};
+		5C21C98F1D2BB0A8004329D3 /* YiXinSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5C21C9901D2BB0A8004329D3 /* libYixinSDK.a */,
+				5C21C9911D2BB0A8004329D3 /* YXApi.h */,
+				5C21C9921D2BB0A8004329D3 /* YXApiObject.h */,
+			);
+			path = YiXinSDK;
 			sourceTree = "<group>";
 		};
 		5C3A8F531C992B0F00B4388B /* cell */ = {
@@ -2424,6 +2445,7 @@
 		5C711AC51CA38A7B00CA1A31 /* PlatformSDK */ = {
 			isa = PBXGroup;
 			children = (
+				5C21C98F1D2BB0A8004329D3 /* YiXinSDK */,
 				5C711AC61CA38A7B00CA1A31 /* QQSDK */,
 				5C711AC91CA38A7B00CA1A31 /* SinaWeiboSDK */,
 				5C711AD71CA38A7B00CA1A31 /* WeChatSDK */,
@@ -2559,6 +2581,10 @@
 		5C7E74641CEC0CD10086879F /* CustomActivity */ = {
 			isa = PBXGroup;
 			children = (
+				5C21C9891D2BAC20004329D3 /* YXActivity.h */,
+				5C21C98A1D2BAC20004329D3 /* YXActivity.m */,
+				5C21C98B1D2BAC20004329D3 /* YXTimeLineActivity.h */,
+				5C21C98C1D2BAC20004329D3 /* YXTimeLineActivity.m */,
 				5C7E74651CEC0CD10086879F /* CopyLinkActivity.h */,
 				5C7E74661CEC0CD10086879F /* CopyLinkActivity.m */,
 				5C7E74671CEC0CD10086879F /* CustomActivity.h */,
@@ -3693,6 +3719,7 @@
 				5C044AA11D261DAF00FC9C50 /* ShareConfig.m in Sources */,
 				5C9F3F151C969CF400756229 /* AMSystemInfo.m in Sources */,
 				5C73A6FA1CC0B9F7000CB453 /* myImageView.m in Sources */,
+				5C21C98E1D2BAC20004329D3 /* YXTimeLineActivity.m in Sources */,
 				5C3A90861C9BC36C00B4388B /* MDFindPasswordViewController.m in Sources */,
 				5C711A501CA0F4DB00CA1A31 /* NJKWebViewProgress.m in Sources */,
 				5C5B1BC61D190B48007D2E6F /* RegbonusRequest.m in Sources */,
@@ -3767,6 +3794,7 @@
 				5C9F3F641C97A7DC00756229 /* ScreenGuideViewController.m in Sources */,
 				5C1AF0A11CB4A90E00719F72 /* UIWindow+RedPacket.m in Sources */,
 				5C9F3F191C969CF400756229 /* VoiceRecorderManger.m in Sources */,
+				5C21C98D1D2BAC20004329D3 /* YXActivity.m in Sources */,
 				5C711A681CA11EC200CA1A31 /* MDLoginRequest.m in Sources */,
 				5C3A8F871C99728C00B4388B /* MDSettingCell.m in Sources */,
 				5C3A8F791C99537C00B4388B /* MDBaseTableviewCell.m in Sources */,
@@ -4057,6 +4085,7 @@
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/lib",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/chat/OtherResources/VoiceLib",
+					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/YiXinSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4091,6 +4120,7 @@
 					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/lib",
 					"$(PROJECT_DIR)/MDApplication/thirdlib/chat/OtherResources/VoiceLib",
+					"$(PROJECT_DIR)/MDApplication/thirdlib/ShareSDK/Support/PlatformSDK/YiXinSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -32,7 +32,7 @@
     [super viewWillAppear:animated];
       
  
-    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_model.assignUrl]]];
+    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@&version=%@",_model.assignUrl,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]]]];
      [[CLProgressHUD shareInstance] showsInsuperview:_wkwebview];
 }
 - (void)viewWillDisappear:(BOOL)animated{

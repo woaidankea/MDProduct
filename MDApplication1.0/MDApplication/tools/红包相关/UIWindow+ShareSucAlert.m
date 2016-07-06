@@ -15,6 +15,8 @@
 #import "AMTools.h"
 #import "myImageView.h"
 #import "UConstants.h"
+#import "DXShareTools.h"
+#import "AppDelegate.h"
 #define RGBACOLOR(r,g,b,a)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define SNOW_IMAGENAME         @"5"
 
@@ -298,6 +300,28 @@ static int i = 0;
 - (void)cancelButtonClicked{
     self.windowUv.hidden = YES;
     self.windowUv        = nil;
+    ShareModel *sharemodel = [[ShareModel alloc]init];
+    
+    sharemodel.title = @"这个应用好玩,推荐大家下载。好多人都在玩!";
+    
+    
+    sharemodel.desc = @"利用闲余时间,随便点点就可以轻松拿零花";
+    
+    sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"]];
+    
+    NSArray *shareAry = @[@{@"image":@"share_qq",@"title":@"QQ"},
+                          @{@"image":@"share_wx_timeline",@"title":@"朋友圈"},
+                          @{@"image":@"share_wx",@"title":@"微信"},
+                          @{@"image":@"share_weibo",@"title":@"新浪微博"},
+                          @{@"image":@"share_qzone",@"title":@"QQ空间"}];
+    
+    
+    [DXShareTools shareToolsInstance].isPic = NO;
+    
+    [DXShareTools shareToolsInstance].isSign = YES;
+    
+    
+    [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:((AppDelegate *)[UIApplication sharedApplication].delegate).rootController];
 }
 - (void)DidStop{
     self.windowUv.hidden = YES;
