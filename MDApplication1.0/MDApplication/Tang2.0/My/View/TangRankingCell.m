@@ -57,7 +57,7 @@
     [self.bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(weakSelf.contentView.mas_right).offset(-10);
         make.left.equalTo(weakSelf.contentView.mas_left).offset(10);
-         make.bottom.equalTo(weakSelf.contentView.mas_bottom);
+        make.bottom.equalTo(weakSelf.contentView.mas_bottom);
         
         
         make.height.mas_equalTo(1);
@@ -103,6 +103,8 @@
         _avatorView = [[UIImageView alloc]init];
         _avatorView.image = [UIImage imageNamed:@"avatorplaceorder"];
         _avatorView.layer.cornerRadius = 22.5;
+        _avatorView.layer.masksToBounds = YES;
+        _avatorView.clipsToBounds = YES;
         [self.contentView addSubview:_avatorView];
     }
     return _avatorView;

@@ -12,7 +12,7 @@
 
 - (UIImage *)activityImage
 {
-    return [UIImage imageNamed:@"qqzone"];
+    return [UIImage imageNamed:@"yixinpengyouquan"];
 }
 
 - (NSString *)activityTitle

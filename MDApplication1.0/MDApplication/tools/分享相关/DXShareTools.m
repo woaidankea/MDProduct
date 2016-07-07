@@ -29,8 +29,13 @@
 #import "ShareConfigModel.h"
 #import "YXActivity.h"
 #import "YXTimeLineActivity.h"
+#import "YXApi.h"
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 
-
+//微信SDK头文件
+#import "WXApi.h"
 
 @implementation PicCache
 
@@ -156,27 +161,35 @@ static DXShareTools *_shareTools = nil;
     for(ShareConfigModel *model in [ShareConfig shareToolsInstance].configArray){
         if([model.show isEqualToString:@"1"]){
             if([model.config isEqualToString:@"2"]){
-                if([model.platform isEqualToString:@"1"]){
+                if([model.platform isEqualToString:@"1"]&[model.config isEqualToString:@"2"]&[TencentOAuth iphoneQQInstalled]){
                     [selectors addObject:@"shareToTencentQQ"];
                     [classes addObject:[TencentActivity class]];
                 }
-                if([model.platform isEqualToString:@"2"]){
+                if([model.platform isEqualToString:@"2"]&[model.config isEqualToString:@"2"]&[TencentOAuth iphoneQQInstalled]){
                      [selectors addObject:@"shareToQzone"];
                     [classes addObject:[QZoneActivity class]];
 
                 }
                 if([model.platform isEqualToString:@"3"]){
-                    [selectors addObject:@"shareToYixin"];
-                    [classes addObject:[YXActivity class]];
+                   
                 }
                 if([model.platform isEqualToString:@"4"]){
-                    [selectors addObject:@"shareToYixinTimeline"];
-                    [classes addObject:[YXTimeLineActivity class]];
+                  
                 }
-                if([model.platform isEqualToString:@"5"]){
+                if([model.platform isEqualToString:@"5"]&[model.config isEqualToString:@"2"]&[WXApi isWXAppInstalled]){
                     [selectors addObject:@"shareToWeibo"];
                     [classes addObject:[WeiboActivity class]];
 
+                }
+                if([model.platform isEqualToString:@"6"]&[YXApi isYXAppInstalled]&[model.config isEqualToString:@"2"]){
+                    [selectors addObject:@"shareToYixin"];
+                    [classes addObject:[YXActivity class]];
+                    
+                }
+                if([model.platform isEqualToString:@"7"]&[YXApi isYXAppInstalled]&[model.config isEqualToString:@"2"]){
+                    [selectors addObject:@"shareToYixinTimeline"];
+                    [classes addObject:[YXTimeLineActivity class]];
+                    
                 }
 
             }
@@ -1425,7 +1438,7 @@ static DXShareTools *_shareTools = nil;
 - (void)shareToYixin{
     NSInteger type = 0;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    type =SSDKPlatformTypeYiXin;
+    type =SSDKPlatformSubTypeYiXinSession;
     
     
     if(!_isApprentice&&!_isSign){
@@ -1454,21 +1467,25 @@ static DXShareTools *_shareTools = nil;
         
     }
     
-    
     [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
-                                     images:@"http://60.173.8.147/td/Public/images/articleimg/2016-04-22/57198eac98908.jpg" //传入要分享的图片
+                                     images:CurrentModel.imageArray //传入要分享的图片
                                         url:[NSURL URLWithString:CurrentModel.url]
                                       title:CurrentModel.title
-                                       type:SSDKContentTypeAuto];
+                                       type:SSDKContentTypeWebPage];
+//    [shareParams SSDKSetupShareParamsByText:@"测试"
+//                                     images:@"http://60.173.8.147/td/Public/images/articleimg/2016-04-22/57198eac98908.jpg" //传入要分享的图片
+//                                        url:[NSURL URLWithString:@"http://www.baidu.com"]
+//                                      title:@"测试标题"
+//                                       type:SSDKContentTypeAuto];
 
     
     
     
     
+    [shareParams SSDKEnableUseClientShare];
     
     
-    
-    [ShareSDK share:type //传入分享的平台类型
+    [ShareSDK share:SSDKPlatformSubTypeYiXinSession //传入分享的平台类型
          parameters:shareParams
      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
          switch (state) {
@@ -1553,7 +1570,7 @@ static DXShareTools *_shareTools = nil;
                          [alert show];
                      }
                      if(type == SSDKPlatformSubTypeYiXinSession || type == SSDKPlatformSubTypeYiXinTimeline){
-                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装易信客户端"
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装易信信客户端"
                                                                          message:nil
                                                                         delegate:self
                                                                cancelButtonTitle:@"OK"
@@ -1561,6 +1578,178 @@ static DXShareTools *_shareTools = nil;
                          [alert show];
                      }
 
+                     
+                     
+                     
+                 }
+                 break;
+             }
+                 
+             case SSDKResponseStateCancel: {
+                 //                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"取消分享"
+                 //                                                                 message:nil
+                 //                                                                delegate:self
+                 //                                                       cancelButtonTitle:@"OK"
+                 //                                                       otherButtonTitles:nil, nil];
+                 //                 [alert show];
+                 break;
+                 
+             }
+                 
+             default:
+                 break;
+         }
+         
+         // 回调处理....
+     }];
+    
+    
+}
+
+//分享到易信
+- (void)shareToYixinTimeline{
+    NSInteger type = 0;
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    type =SSDKPlatformSubTypeYiXinSession;
+    
+    
+    if(!_isApprentice&&!_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }else if(_isSign){
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+    }
+    else {
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
+    }
+    
+    [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                     images:CurrentModel.imageArray //传入要分享的图片
+                                        url:[NSURL URLWithString:CurrentModel.url]
+                                      title:CurrentModel.title
+                                       type:SSDKContentTypeWebPage];
+    //    [shareParams SSDKSetupShareParamsByText:@"测试"
+    //                                     images:@"http://60.173.8.147/td/Public/images/articleimg/2016-04-22/57198eac98908.jpg" //传入要分享的图片
+    //                                        url:[NSURL URLWithString:@"http://www.baidu.com"]
+    //                                      title:@"测试标题"
+    //                                       type:SSDKContentTypeAuto];
+    
+    
+    
+    
+    
+    [shareParams SSDKEnableUseClientShare];
+    
+    
+    [ShareSDK share:SSDKPlatformSubTypeYiXinTimeline //传入分享的平台类型
+         parameters:shareParams
+     onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         switch (state) {
+             case SSDKResponseStateSuccess:
+             {
+                 NSInteger platform = 0 ;
+                 if(type == SSDKPlatformSubTypeQQFriend){
+                     platform = 1;
+                     
+                 }
+                 if(type == SSDKPlatformTypeSinaWeibo){
+                     platform = 5;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatSession){
+                     platform = 4;
+                 }
+                 if(type == SSDKPlatformSubTypeWechatTimeline){
+                     platform = 3;
+                 }
+                 if(type == SSDKPlatformSubTypeQZone){
+                     platform = 2;
+                 }
+                 
+                 if (CurrentModel.key != nil){
+                     MDAddShareRequest *request=[[MDAddShareRequest alloc]initWithContentID:CurrentModel.key Platform: platform success:^(AMBaseRequest *request) {
+                         
+                         BOOL isvalid  =  [[request.responseObject objectForKey:@"isvalid"] boolValue];
+                         
+                         
+                         NSLog(@"response = %@",request.responseObject);
+                         if(isvalid){
+                             
+                             RewardInfo *info = [[RewardInfo alloc] init];
+                             info.money = [[request.responseObject objectForKey:@"sendusermoney"] floatValue];
+                             
+                             //
+                             [[UIApplication sharedApplication].keyWindow initRedPacketWindow1:info];
+                             
+                         }
+                         
+                         
+                     } failure:^(AMBaseRequest *request) {
+                         
+                     }];
+                     
+                     [request start];
+                 }
+                 
+                 
+                 
+                 break;
+             }
+             case SSDKResponseStateFail:
+             {
+                 if([error.domain isEqualToString:@"ShareSDKErrorDomain"]){
+                     
+                     
+                     if(type == SSDKPlatformSubTypeQQFriend ||type == SSDKPlatformSubTypeQZone){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装QQ客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                         
+                         
+                     }
+                     if(type == SSDKPlatformTypeSinaWeibo){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装新浪客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeWechatSession || type == SSDKPlatformSubTypeWechatTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装微信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     if(type == SSDKPlatformSubTypeYiXinSession || type == SSDKPlatformSubTypeYiXinTimeline){
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您没有安装易信信客户端"
+                                                                         message:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
                      
                      
                      

@@ -46,11 +46,21 @@
 				<string>wxebfb4fdedd1bccb2</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>yx31bc441496b444afbe86e3c4bbb7a1c5</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>19</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>yixinfav</string>
+		<string>yixinoauth</string>
 		<string>yixinopenapi</string>
 		<string>yixin</string>
 		<string>sinaweibo</string>

@@ -232,7 +232,8 @@
                                 authType:SSDKAuthTypeBoth];
              break;
              case SSDKPlatformTypeYiXin:
-             [appInfo SSDKSetupYiXinByAppId:@"yx31bc441496b444afbe86e3c4bbb7a1c5" appSecret:@"976a8bdf6920773" redirectUri:@"http://www.jieku.com" authType:SSDKAuthTypeBoth];
+             [appInfo SSDKSetupYiXinByAppId:@"yx31bc441496b444afbe86e3c4bbb7a1c5" appSecret:@"976a8bdf6920773" redirectUri:@"https://open.yixin.im/resource/oauth2_callback.html" authType:SSDKAuthTypeBoth];
+                 break;
              default:
              break;
          }
