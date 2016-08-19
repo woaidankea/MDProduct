@@ -34,4 +34,5 @@
 @property (nonatomic,strong)NSArray *shareConfig;
 @property (nonatomic,strong)NSString *authcode;
 @property (nonatomic,strong)NSString *key;
+@property (nonatomic,strong)NSString *aid;
 @end

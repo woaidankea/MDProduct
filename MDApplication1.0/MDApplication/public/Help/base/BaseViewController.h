@@ -20,7 +20,7 @@
 @property (nonatomic,strong,nullable)NSString *moudleId;
 @property (assign,nonatomic)BOOL isFullScreen;
 -(void)setBusyIndicatorVisible:(BOOL)visible;
-
+-(void)setleftBarItemWith:(NSString *)imageNamed;
 -(BOOL)handleResponseError:(BaseViewController *)currentController
                    request:(AMBaseRequest *)request
        treatErrorAsUnknown:(BOOL) treated;

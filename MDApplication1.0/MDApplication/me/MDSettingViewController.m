@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 #import "UtilsMacro.h"
 #import "MDWKWebViewController.h"
-
+#import "TDApnsTokenRequest.h"
 @interface MDSettingViewController ()
 
 @end
@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title= @"设置";
-      [self setleftBarItemWith:@"back_ico@2x.png"];
+    [self setleftBarItemWith:@"back_ico@2x.png"];
     [self resetTableView:_table];
     _table.separatorStyle =UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view.
@@ -111,7 +111,8 @@
     if(indexPath.row == 3){
      //@"隐私协议";
         MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
-        vc.url = @"http://h.51tangdou.com/weizuan/help/protocol.html";
+        vc.url = @"http://web.51tangdou.com/sz/1.html";
+           [vc setleftBarItemWith:@"back_ico@2x.png"];
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
@@ -119,7 +120,8 @@
     //关于我们
         
         MDWKWebViewController *vc = [[MDWKWebViewController alloc]init];
-        vc.url = @"http://h.51tangdou.com/weizuan/help/service.html";
+        vc.url = @"http://web.51tangdou.com/sz/2.html";
+         [vc setleftBarItemWith:@"back_ico@2x.png"];
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
@@ -136,6 +138,16 @@
 */
 
 - (IBAction)logoutClick:(id)sender {
+    TDApnsTokenRequest *request = [[TDApnsTokenRequest alloc]initSecondCheckWithuid:USER_DEFAULT_KEY(@"memberId") token:@"" success:^(AMBaseRequest *request) {
+        
+    } failure:^(AMBaseRequest *request) {
+        
+    }];
+    
+    [request start];
+
+    
+    
     [(AppDelegate*)[UIApplication sharedApplication].delegate exitAppToLandViewController];
 
 }

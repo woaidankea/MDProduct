@@ -87,6 +87,12 @@
     
  
     
+    NSURL *url = [NSURL URLWithString:@"http://weicar.oztechgroup.com/Upload/advert/20160613/53ad4da5d4.png"];
+    
+    
+    
+    
+    
     
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
@@ -337,19 +343,19 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
 
 -(void)EnterMainViewController :(AMEnterMainViewControllerType)enterType{
     
-    if(!mainview){
+//    if(!mainview){
     MainViewController *mainVc=[[MainViewController alloc]init];
     mainVc.enterType =enterType;
     mainContrl=[[UINavigationController alloc]initWithRootViewController:mainVc];
     mainview = mainVc;
     [self.window setRootViewController:mainContrl];
-    }else{
-        mainContrl=[[UINavigationController alloc]initWithRootViewController:mainview];
-        
-        [self.window setRootViewController:mainContrl];
-
-    }
-
+//    }else{
+//        mainContrl=[[UINavigationController alloc]initWithRootViewController:mainview];
+//        
+//        [self.window setRootViewController:mainContrl];
+//
+//    }
+//
 }
 
 

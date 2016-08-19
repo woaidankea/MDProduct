@@ -355,8 +355,8 @@ static int i = 0;
 
 
     sharemodel.desc = @"利用闲余时间,随便点点就可以轻松拿零花";
-
-    sharemodel.imageArray = @[[[NSBundle mainBundle] pathForResource:@"Icon" ofType:@"png"]];
+    sharemodel.url = @"http://itunes.apple.com/app/id1101583170";
+    sharemodel.imageArray = @[[UIImage imageNamed:@"Icon"]];
     
     NSArray *shareAry = @[@{@"image":@"share_qq",@"title":@"QQ"},
                           @{@"image":@"share_wx_timeline",@"title":@"朋友圈"},
@@ -364,13 +364,13 @@ static int i = 0;
                           @{@"image":@"share_weibo",@"title":@"新浪微博"},
                           @{@"image":@"share_qzone",@"title":@"QQ空间"}];
 
-   
-    [DXShareTools shareToolsInstance].isPic = NO;
-    
+    [DXShareTools shareToolsInstance].isArticle = NO;
+    [DXShareTools shareToolsInstance].isApprentice = NO;
     [DXShareTools shareToolsInstance].isSign = YES;
     
     
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:((AppDelegate *)[UIApplication sharedApplication].delegate).rootController];
+    
 }
 
 - (void)cancelButtonClicked:(id)sender {

@@ -17,6 +17,8 @@
 #import "LoginCodeRequest.h"
 #import "OtherLoginRequest.h"
 #import "UIColor+HexStringToColor.h"
+#import "TDApnsTokenRequest.h"
+#import "JPUSHService.h"
 @interface MDLoginViewController ()
 {
       NSInteger disabledTime;
@@ -37,6 +39,8 @@
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TimeStart) name:@"TimeStart" object:nil];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
      *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -49,11 +53,18 @@
     if (username && username.length > 0) {
         _AccountField.text = username;
     }
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TimeStart) name:@"TimeStart" object:nil];
 
-//      [self setleftBarItemWith:@"back_ico@2x.png"];
-    // Do any additional setup after loading the view.
 }
-
+- (void)TimeStart {
+    NSDate *curentTime =[NSDate date];
+    disabledTime =curentTime.timeIntervalSince1970+60;
+    
+    
+    
+    _countTimerNumber = 60;
+    self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -125,6 +136,14 @@
                     [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
                     [USER_DEFAULT synchronize];
                     [weakSelf saveLastLoginUsername];
+           TDApnsTokenRequest *request = [[TDApnsTokenRequest alloc]initSecondCheckWithuid:model.memberId token:[JPUSHService registrationID] success:^(AMBaseRequest *request) {
+               
+           } failure:^(AMBaseRequest *request) {
+               
+           }];
+            
+            [request start];
+            
         }else if(request.response.statusCode == 1023||request.response.statusCode == 1024 ){
           
 //            NSLog(@"123123123123123123");
@@ -151,7 +170,7 @@
             [AMTools showAlertViewWithTitle:@"验证码不能为空" cancelButtonTitle:@"确定"];
             return;
         }
-        
+        [self setBusyIndicatorVisible:YES];
         OtherLoginRequest *request = [[OtherLoginRequest alloc]initWithTelephone:_AccountField.text password:_PasswordField.text code:_securityField.text success:^(AMBaseRequest *request) {
             if(request.response.statusCode == 0){
                 
@@ -160,6 +179,7 @@
                 [USER_DEFAULT setObject:model.memberId forKey:@"memberId"];
                 [USER_DEFAULT synchronize];
                 [self saveLastLoginUsername];
+                 [self setBusyIndicatorVisible:NO];
                 [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
             }
         } failure:^(AMBaseRequest *request) {
@@ -220,24 +240,21 @@
 - (IBAction)getSecurityCode:(id)sender {
     AM_CheckPhone checkPhone =[AMTools checkPhoneNumber:_AccountField.text];
     if (checkPhone==AM_Phone_IsRight) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+      [self setBusyIndicatorVisible:YES];
         WS(weakSelf);
         
         LoginCodeRequest *request = [[LoginCodeRequest alloc]initRegCodeWithPhone:_AccountField.text success:^(AMBaseRequest *request) {
             
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
+                 [self setBusyIndicatorVisible:NO];
                 [[UIApplication sharedApplication].keyWindow initConfirmWindow:[request.responseObject objectForKey:@"codeurl"] Phone:_AccountField.text withType:@"2"];
-                NSDate *curentTime =[NSDate date];
-                disabledTime =curentTime.timeIntervalSince1970+60;
-                
-                
-                //[AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
-                //获取验证码倒计时
-                _countTimerNumber = 60;
-                self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+//                NSDate *curentTime =[NSDate date];
+//                disabledTime =curentTime.timeIntervalSince1970+60;
+//                
+//                
+//            
+//                _countTimerNumber = 60;
+//                self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
                 
                  [AMTools showHUDtoView:self.view title:request.response.message delay:2];
                 
@@ -255,12 +272,13 @@
                 //获取验证码倒计时
                 _countTimerNumber = 60;
                 self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
-                
+                 [self setBusyIndicatorVisible:NO];
                 [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
             }
             
             
         } failure:^(AMBaseRequest *request) {
+              [self setBusyIndicatorVisible:NO];
              [AMTools showHUDtoView:self.view title:request.response.message delay:2];
             
             

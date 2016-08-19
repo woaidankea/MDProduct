@@ -32,7 +32,7 @@
     [super viewWillAppear:animated];
       
  
-    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@&version=%@",_model.assignUrl,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]]]];
+    [_wkwebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@&version=ios2.0.%@",_model.assignUrl,[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]]]];
      [[CLProgressHUD shareInstance] showsInsuperview:_wkwebview];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -214,22 +214,71 @@
     
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a=[dat timeIntervalSince1970]*1000;
-    NSString *timeString = [NSString stringWithFormat:@"%f", a];  //转为字符型
-    NSString *newKey = [self md5:timeString];
-    NSString *MD5 = [newKey substringWithRange:NSMakeRange(7,16)];
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", a];  //转为字符型
+    
+//    NSString *newKey = [self md5:timeString];
+    NSString *MD5 = [timeString substringWithRange:NSMakeRange(6,7)];
 
+    
     
     
     sharemodel.title = t_model.title;
-    sharemodel.url =  [NSString stringWithFormat:@"%@%@",t_model.url,MD5];
+    sharemodel.url =  [NSString stringWithFormat:@"%@%@.html",t_model.url,MD5];
     sharemodel.imageArray = @[self.shareImage];
     sharemodel.desc = t_model.desc;
     sharemodel.key = [NSString stringWithFormat:@"%@%@",t_model.authcode,MD5];
-    [DXShareTools shareToolsInstance].isPic = NO;
-
+    sharemodel.qqbrowser = [NSString stringWithFormat:@"%@%@adi=%@&shareurl=%@",BaseAddress,kqqBrowser,t_model.aid,[self base64StringFromText:sharemodel.url]];
+    [DXShareTools shareToolsInstance].isArticle = YES;
+    [DXShareTools shareToolsInstance].isApprentice = NO;
+    [DXShareTools shareToolsInstance].isSign = NO;
     
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel  viewController:self];
 }
+
+- (NSString *)base64StringFromText:(NSString *)text
+{
+           NSString *key = [[NSBundle mainBundle] bundleIdentifier];
+        NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+        //IOS 自带DES加密 Begin
+//        data = [self DESEncrypt:data WithKey:key];
+        //IOS 自带DES加密 End
+        return [self base64EncodedStringFrom:data];
+    
+}
+static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+- (NSString *)base64EncodedStringFrom:(NSData *)data
+{
+    if ([data length] == 0)
+        return @"";
+    
+    char *characters = malloc((([data length] + 2) / 3) * 4);
+    if (characters == NULL)
+        return nil;
+    NSUInteger length = 0;
+    
+    NSUInteger i = 0;
+    while (i < [data length])
+    {
+        char buffer[3] = {0,0,0};
+        short bufferLength = 0;
+        while (bufferLength < 3 && i < [data length])
+            buffer[bufferLength++] = ((char *)[data bytes])[i++];
+        
+        // Encode the bytes in the buffer to four characters, including padding "=" characters if necessary.
+        characters[length++] = encodingTable[(buffer[0] & 0xFC) >> 2];
+        characters[length++] = encodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
+        if (bufferLength > 1)
+            characters[length++] = encodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
+        else characters[length++] = '=';
+        if (bufferLength > 2)
+            characters[length++] = encodingTable[buffer[2] & 0x3F];
+        else characters[length++] = '=';
+    }
+    
+    return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];
+}
+
+
 - (IBAction)shareButtonClick:(id)sender {
     
     [self share];

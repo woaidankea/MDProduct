@@ -46,7 +46,19 @@
     self.protocolImage.userInteractionEnabled =YES;
     [self.protocolImage addGestureRecognizer:imageViewTap];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TimeStart) name:@"RegTimeStart" object:nil];
+    
 }
+- (void)TimeStart {
+    NSDate *curentTime =[NSDate date];
+    disabledTime =curentTime.timeIntervalSince1970+60;
+    
+    
+    
+    _countTimerNumber = 60;
+    self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+}
+
 - (void)imageViewTap:(UIGestureRecognizer *)sender{
 
     if(!Selected){

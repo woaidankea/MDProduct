@@ -11,7 +11,8 @@
 @implementation MDArticleModel
 + (NSDictionary *)replacedKeyFromPropertyName{
     // 模型的desc属性对应着字典中的description
-    return @{@"desc" : @"description"};
+    return @{@"desc" : @"description",
+             @"aid":@"id"};
 }
 
 

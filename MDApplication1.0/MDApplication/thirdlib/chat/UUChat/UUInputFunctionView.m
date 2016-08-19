@@ -10,6 +10,7 @@
 #import "Mp3Recorder.h"
 #import "UUProgressHUD.h"
 #import "ACMacros.h"
+#import "KeyBoardManager.h"
 @interface UUInputFunctionView ()<UITextViewDelegate,Mp3RecorderDelegate>
 {
     BOOL isbeginVoiceRecord;
@@ -76,7 +77,7 @@
         self.TextViewInput.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:0.4] CGColor];
         self.TextViewInput.returnKeyType = UIReturnKeySend;
         [self addSubview:self.TextViewInput];
-        
+         [self.TextViewInput addDoneOnKeyboardWithTarget:self action:@selector(doneAction:)];
         //输入框的提示语
         placeHold = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 200, 30)];
         placeHold.text = @"期待您的反馈";
@@ -92,7 +93,19 @@
     }
     return self;
 }
-
+/*! doneAction. */
+-(void)doneAction:(UIBarButtonItem*)barButton
+{
+    if([self.TextViewInput.text isEqualToString:@""]){
+        [self.TextViewInput resignFirstResponder];
+        return;
+    }
+    
+    NSString *resultStr = [self.TextViewInput.text stringByReplacingOccurrencesOfString:@"   " withString:@""];
+    
+    [self.delegate UUInputFunctionView:self sendMessage:resultStr];
+    //doneAction
+}
 #pragma mark - 录音touch事件
 - (void)beginRecordVoice:(UIButton *)button
 {
@@ -214,6 +227,12 @@
         //在这里做你响应return键的代码
         
         NSString *resultStr = [self.TextViewInput.text stringByReplacingOccurrencesOfString:@"   " withString:@""];
+        
+        if([resultStr isEqualToString:@""]){
+            [self.TextViewInput resignFirstResponder];
+            return NO;
+        }
+        
         [self.delegate UUInputFunctionView:self sendMessage:resultStr];
 
         return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
@@ -235,6 +254,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     placeHold.hidden = self.TextViewInput.text.length > 0;
+   
 }
 
 

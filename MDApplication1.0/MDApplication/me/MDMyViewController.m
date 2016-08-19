@@ -304,7 +304,7 @@
 - (UICollectionView *)collection{
     if(!_collection){
         UICollectionViewFlowLayout *flowLayout= [[UICollectionViewFlowLayout alloc]init];
-        _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0,0, kScreenWidth, kScreenHeight) collectionViewLayout:flowLayout];
+        _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0,0, kScreenWidth, kScreenHeight-49) collectionViewLayout:flowLayout];
         flowLayout.minimumLineSpacing = 1;
         flowLayout.minimumInteritemSpacing = 1;
         _collection.backgroundColor = UIColorFromRGB(0xe7e6e5);
@@ -398,7 +398,13 @@
         return;
     }
     if([model.moduletype isEqualToString:@"2"]){
-       
+        RewardInfo *info = [[RewardInfo alloc] init];
+        info.money = 0.01;
+        info.rewardName = @"(每日一次签到抽奖机会)";
+        info.rewardContent = @"已奖励到你的账户";
+        info.rewardStatus = 0;
+        //
+        [[UIApplication sharedApplication].keyWindow initRedPacketWindowNeedOpen:info];
         TDUsersignRequest *request = [[TDUsersignRequest alloc]initWithsuccess:^(AMBaseRequest *request) {
             RewardInfo *info = [[RewardInfo alloc] init];
             info.money = [[request.responseObject objectForKey:@"money"] floatValue];
@@ -477,7 +483,17 @@
         [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:vc animated:YES];
         return;
     }
-    
+    if([model.moduletype isEqualToString:@"8"]){
+        
+        UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
+        MDDiscipleDetailViewController *myContr = [userInfoStoryboard instantiateViewControllerWithIdentifier:@"MDDiscipleDetailViewController"];
+        
+        
+        myContr.enterType = MD_DepositT;
+        
+        [((AppDelegate *)[UIApplication sharedApplication].delegate).rootController pushViewController:myContr animated:YES];
+        return;
+    }
     
     
     UIStoryboard *userInfoStoryboard = [UIStoryboard storyboardWithName:@"MDMeCollectionViewController" bundle:nil];
@@ -485,7 +501,7 @@
     
     
     
-     if(indexPath.section==1&&indexPath.row==2){
+    if(indexPath.section==1&&indexPath.row==2){
         myContr.enterType = MD_Disciple;
         
     } if(indexPath.section==1&&indexPath.row==3){

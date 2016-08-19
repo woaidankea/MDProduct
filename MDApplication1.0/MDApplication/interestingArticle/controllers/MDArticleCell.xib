@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHK-de-PaX" userLabel="Content">
-                        <rect key="frame" x="118" y="69" width="284" height="0.0"/>
+                        <rect key="frame" x="118" y="64" width="284" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="height" id="E6P-JK-WV5"/>
                         </constraints>
@@ -31,7 +31,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="啊大家此次此次新走向这些从皮箱操作迫选择车票查询啊大皮箱操作迫选择车票查询" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbq-7N-flk">
-                        <rect key="frame" x="118" y="9" width="284" height="55"/>
+                        <rect key="frame" x="118" y="4" width="284" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="dTP-7B-j31"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0.01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mv-Dh-Yhh">
-                        <rect key="frame" x="352" y="69" width="50" height="26"/>
+                        <rect key="frame" x="352" y="64" width="50" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="J1O-Ny-qpo"/>
                             <constraint firstAttribute="width" constant="50" id="yt8-MU-psN"/>
@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gw-7w-4TS">
-                        <rect key="frame" x="352" y="72" width="50" height="19"/>
+                        <rect key="frame" x="352" y="67" width="50" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="kpg-M0-Lz6"/>
                             <constraint firstAttribute="width" constant="50" id="qh0-B8-W3z"/>
@@ -61,7 +61,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZh-N9-WzV" userLabel="datatime">
-                        <rect key="frame" x="208" y="69" width="28.5" height="26"/>
+                        <rect key="frame" x="208" y="64" width="28.5" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="mcR-Md-fze"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读数：123123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nf9-r4-7i7">
-                        <rect key="frame" x="118" y="69" width="90" height="26"/>
+                        <rect key="frame" x="118" y="64" width="90" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="0Ys-c3-Qby"/>
                             <constraint firstAttribute="width" constant="90" id="vSI-ly-2Mx"/>
@@ -97,7 +97,7 @@
                     <constraint firstItem="2Mv-Dh-Yhh" firstAttribute="top" secondItem="Nf9-r4-7i7" secondAttribute="top" id="mKd-XY-1f0"/>
                     <constraint firstItem="Nf9-r4-7i7" firstAttribute="leading" secondItem="Cbq-7N-flk" secondAttribute="leading" id="mLb-Qi-kJE"/>
                     <constraint firstItem="uHK-de-PaX" firstAttribute="leading" secondItem="Cbq-7N-flk" secondAttribute="leading" id="siO-ee-fCC"/>
-                    <constraint firstItem="Cbq-7N-flk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="zcF-4o-dwH"/>
+                    <constraint firstItem="Cbq-7N-flk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="zcF-4o-dwH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -44,7 +44,7 @@ AdLaunchType state = AdLaunchProgressType;
     dispatch_time_t show = dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC);
     dispatch_after(show, dispatch_get_main_queue(), ^(void){
         [self removeFromSuperview];
-         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
+//         [(AppDelegate*)[UIApplication sharedApplication].delegate EnterMainViewController:AM_NORMAL_ENTER];
     });
     
     return self;
@@ -74,7 +74,7 @@ AdLaunchType state = AdLaunchProgressType;
 #pragma mark - 展示图片
 - (void) showImage {
     self.adImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    [self.adImageView sd_setImageWithURL: [[NSURL alloc] initWithString: self.imageURL]];
+    [self.adImageView sd_setImageWithURL: [[NSURL alloc] initWithString: self.imageURL] placeholderImage:[UIImage imageNamed:@"LaunchImage"]];
     [self.adImageView setUserInteractionEnabled: YES];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(singleTap)];
     [self.adImageView addGestureRecognizer: singleTap];

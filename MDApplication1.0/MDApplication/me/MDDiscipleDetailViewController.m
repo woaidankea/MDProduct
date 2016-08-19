@@ -15,6 +15,7 @@
 #import "MDTXModel.h"
 #import "MDTXRequest.h"
 #import "TDMydiscipleRequest.h"
+#import "MyTxRequest.h"
 @interface MDDiscipleDetailViewController ()
 
 @end
@@ -232,7 +233,7 @@
     
     }else if (pageType == MD_DepositT){
     
-        MDTXRequest *request = [[MDTXRequest alloc]initWithPage:_currentPage  success:^(AMBaseRequest *request) {
+        MyTxRequest *request = [[MyTxRequest alloc]initWithPage:_currentPage  success:^(AMBaseRequest *request) {
             [self.tableView.mj_header endRefreshing];
             NSArray *list  = [MDTXModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"] ];
             if(list.count==0)

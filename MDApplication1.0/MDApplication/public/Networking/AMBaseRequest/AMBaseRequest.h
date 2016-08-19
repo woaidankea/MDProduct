@@ -21,43 +21,46 @@ static NSString *action_Id = @"actionId";
 //static NSString * const BaseAddress =@"http://h.51tangdou.com/weizuan/";
 
 
-static NSString *const BaseAddress = @"http://60.173.8.147/tdapi/";
+//static NSString *const BaseAddress = @"http://60.173.8.147/tdapi/";
+static NSString *const BaseAddress = @"http://tdapi.51tangdou.com/";
 
 //else
 
 //static NSString * const BaseAddress =@"http://api.aizhuanfa.net";
 
-
-static NSString * const kAppcol = @"Api/Column/appcol"; //获取App Tab
-static NSString * const kCheckforpwdcode = @"Api/User/checkforpwdcode"; //检查验证码
-static NSString * const kCheckdevicecode = @"Api/User/devlogincode"; //二次登陆检查验证码
-static NSString * const kArticle = @"Api/Article/getart";    //获取文章信息
-static NSString * const kColclass = @"Api/Column/colclass";    //获取栏目分类
-static NSString * const kForpwdcode = @"Api/User/forpwdcode";  //忘记密码获取验证码
-static NSString * const kLogin = @"Api/User/ioslogin";      //iOS 登录
-static NSString * const kCheckLogin = @"Api/User/tioslogin";      //iOS 验证登录
-static NSString * const kMydisciple = @"Api/User/mydisciple";   //我的徒弟
-static NSString * const kPageminfo = @"Api/Column/pageminfo";   //我页面配置
-static NSString * const kProfile = @"Api/User/getprofile";   //个人资料
-static NSString * const kProfilesaved = @"Api/User/profilesaved";   //保存资料
-static NSString * const kRegcode = @"Api/User/regcode";      //获取注册验证码
-static NSString * const kLogincode = @"Api/User/logincode";      //获取登录验证码
-static NSString * const kRegister = @"Api/User/iosreg";   //注册
-static NSString * const kResetpwd = @"Api/User/usermpwd";   //修改密码
-static NSString * const kRevrank = @"Api/User/revrank";   //收入排行
-static NSString * const kSecondChect = @"Api/User/regcode";   //二次验证
-static NSString * const kShareConfig = @"Api/Share/shareconfigios";   //分享配置
-static NSString * const kShareinfo = @"Api/Share/shareinfo";   //分享信息
-static NSString * const kStartAd = @"Api/Ad/startad";   //启动App广告
-static NSString * const kUserearning = @"Api/User/userearnings"; //收入明细
-static NSString * const kUsersign = @"Api/User/usersign"; //用户签到
-static NSString * const kUserforgotpwd = @"Api/User/usrforgotpwd"; //找回密码
-static NSString * const kConfirCode = @"Api/User/confirmcode";
-static NSString * const kTicketInfo = @"Api/User/ticketinfo";   //工单信息
-static NSString * const kSendTicket = @"Api/User/subticket";   //发送工单
-static NSString * const kIndexbal = @"Api/User/indexbal";   //获取信息
-static NSString * const kRegbonus = @"Api/User/regbonus";   //注册奖励
-static NSString * const kUsrdatum = @"Api/User/usrdatum";   //完善资料奖励
+static NSString * const kqqBrowser = @"Goshare / share?";
+static NSString * const kAppcol = @"Column/appcol"; //获取App Tab
+static NSString * const kCheckforpwdcode = @"User/checkforpwdcode"; //检查验证码
+static NSString * const kCheckdevicecode = @"User/devlogincode"; //二次登陆检查验证码
+static NSString * const kArticle = @"Article/getart";    //获取文章信息
+static NSString * const kColclass = @"Column/colclass";    //获取栏目分类
+static NSString * const kForpwdcode = @"User/forpwdcode";  //忘记密码获取验证码
+static NSString * const kLogin = @"User/ioslogin";      //iOS 登录
+static NSString * const kCheckLogin = @"User/tioslogin";      //iOS 验证登录
+static NSString * const kMydisciple = @"User/mydisciple";   //我的徒弟
+static NSString * const kPageminfo = @"Column/pageminfo";   //我页面配置
+static NSString * const kProfile = @"User/getprofile";   //个人资料
+static NSString * const kProfilesaved = @"User/profilesaved";   //保存资料
+static NSString * const kRegcode = @"User/regcode";      //获取注册验证码
+static NSString * const kLogincode = @"User/logincode";      //获取登录验证码
+static NSString * const kRegister = @"User/iosreg";   //注册
+static NSString * const kResetpwd = @"User/usermpwd";   //修改密码
+static NSString * const kRevrank = @"User/revrank";   //收入排行
+static NSString * const kSecondChect = @"User/regcode";   //二次验证
+static NSString * const kShareConfig = @"Share/shareconfigios";   //分享配置
+static NSString * const kShareinfo = @"Share/shareinfo";   //分享信息
+static NSString * const kStartAd = @"Ad/startad";   //启动App广告
+static NSString * const kUserearning = @"User/userearnings"; //收入明细
+static NSString * const kUsersign = @"User/usersign"; //用户签到
+static NSString * const kUserforgotpwd = @"User/usrforgotpwd"; //找回密码
+static NSString * const kConfirCode = @"User/confirmcode";
+static NSString * const kTicketInfo = @"User/ticketinfo";   //工单信息
+static NSString * const kSendTicket = @"User/subticket";   //发送工单
+static NSString * const kIndexbal = @"User/indexbal";   //获取信息
+static NSString * const kRegbonus = @"User/regbonus";   //注册奖励
+static NSString * const kUsrdatum = @"User/usrdatum";   //完善资料奖励
+static NSString * const kTokenSet = @"App/jgpush";    //绑定token
+static NSString * const kUsrWithdraw = @"user/usrwithdraw"; //提现记录
 
 
 

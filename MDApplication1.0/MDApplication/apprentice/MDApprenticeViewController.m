@@ -144,7 +144,9 @@
     
     }
     
+    [DXShareTools shareToolsInstance].isArticle = NO;
     [DXShareTools shareToolsInstance].isApprentice = YES;
+    [DXShareTools shareToolsInstance].isSign = NO;
     
     [[DXShareTools shareToolsInstance]showShareView:shareAry contentModel:sharemodel viewController:self];
     

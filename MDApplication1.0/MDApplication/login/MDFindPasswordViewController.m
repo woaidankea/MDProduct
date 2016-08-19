@@ -38,7 +38,19 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setleftBarItemWith:@"back_ico@2x.png"];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TimeStart) name:@"ForgetTimeStart" object:nil];
+    
 }
+- (void)TimeStart {
+    NSDate *curentTime =[NSDate date];
+    disabledTime =curentTime.timeIntervalSince1970+60;
+    
+    
+    
+    _countTimerNumber = 60;
+    self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -350,13 +350,33 @@ int disabledTime = 0;
 - (void)refresh{
   [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl] placeholderImage:nil options:SDWebImageRefreshCached];
 }
+//
+//-(void)setBusyIndicatorVisible:(BOOL)visible{
+//    if(visible){
+//        _busyCount++;
+//        if(self.busyIndicator==nil){
+//            self.busyIndicator=[MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+//            self.busyIndicator.dimBackground=YES;
+//        }
+//    }else{
+//        _busyCount--;
+//        if(_busyCount==0 || _busyCount<0){
+//            _busyCount=0;
+//            [self.busyIndicator hide:YES];
+//            [self.busyIndicator removeFromSuperview];
+//            self.busyIndicator=nil;
+//        }
+//    }
+//}
 
 - (void)cancelButton{
     
     WS(ws);
+    [self.codeField resignFirstResponder];
+   MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
     if([self.type isEqualToString:@"0"]){
         TDSecondCheckRequest *req  =[[TDSecondCheckRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
-            
+            [hud hide:YES];
             
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
                 [AMTools showHUDtoWindow:nil title:@"验证码不正确" delay:2];
@@ -365,8 +385,8 @@ int disabledTime = 0;
                 
                 ws.windowUv.hidden = YES;
                 ws.windowUv        = nil;
-            
-                [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"TimeStart" object:nil];
+             [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
             }
 
             
@@ -384,7 +404,8 @@ int disabledTime = 0;
             return;
         }
      TDDeviceLoginCheckRequest *req  =[[TDDeviceLoginCheckRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
-        
+         [hud hide:YES];
+
          if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
              [AMTools showHUDtoWindow:nil title:@"验证码不正确" delay:2];
              [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
@@ -392,11 +413,11 @@ int disabledTime = 0;
              
              ws.windowUv.hidden = YES;
              ws.windowUv        = nil;
-             
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RegTimeStart" object:nil];
              [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
          }
             } failure:^(AMBaseRequest *request) {
-                
+                  [hud hide:YES];
             }];
             [req start];
 
@@ -405,6 +426,8 @@ int disabledTime = 0;
         
           } else{
         TDCheckforpwdcodeRequest *req  =[[TDCheckforpwdcodeRequest alloc]initSecondCheckWithphone:self.phone    imgcode:self.codeField.text success:^(AMBaseRequest *request) {
+            [hud hide:YES];
+
             if(((NSString *)[request.responseObject objectForKey:@"codeurl"]).length != 0){
                 [AMTools showHUDtoWindow:nil title:@"验证码不正确" delay:2];
                 [self.codeImageView sd_setImageWithURL:[NSURL URLWithString:[request.responseObject objectForKey:@"codeurl"]] placeholderImage:nil options:SDWebImageRefreshCached];
@@ -412,7 +435,7 @@ int disabledTime = 0;
                 
                 ws.windowUv.hidden = YES;
                 ws.windowUv        = nil;
-                
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ForgetTimeStart" object:nil];
                 [AMTools showHUDtoWindow:nil title:@"验证码已发送请注意查收" delay:2];
             }
             

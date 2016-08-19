@@ -445,75 +445,8 @@
         }
     }
     if (indexPath.section==2) {
-        switch (indexPath.row) {
-            case 0:{
-              
-                
-                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:degree initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                    //*********一组点击确认按钮做处理************
-                    NSLog(@"选择de学历%@",selectedValue);
-                     memberModel.education =[NSString stringWithFormat:@"%ld",[degree indexOfObject:selectedValue]];
-                     [tableView reloadData];
-                } cancelBlock:^(ActionSheetStringPicker *picker) {
-                    
-                } origin:self.view];
-                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
-                [actionPicker customizeInterface];
-                [actionPicker showActionSheetPicker];
-                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
-                
-
-            }
-                
-                break;
-            case 1:{
-               
-                
-                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:industry initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                    //*********一组点击确认按钮做处理************
-                    NSLog(@"选择de职业%@",selectedValue);
-                    
-                    
-                    memberModel.vocation =[NSString stringWithFormat:@"%ld",[industry indexOfObject:selectedValue]];
-                    
-                     [tableView reloadData];
-                } cancelBlock:^(ActionSheetStringPicker *picker) {
-                    
-                } origin:self.view];
-                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
-                [actionPicker customizeInterface];
-                [actionPicker showActionSheetPicker];
-                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
-
-            
-            }
-                break;
-            case 2:{
-               
-                
-                ActionSheetStringPicker *actionPicker = [[ActionSheetStringPicker alloc]initWithTitle:nil rows:income initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                    //*********一组点击确认按钮做处理************
-                    NSLog(@"选择de收入%@",selectedValue);
-                    memberModel.income = [NSString stringWithFormat:@"%ld",[income indexOfObject:selectedValue]];
-                     [tableView reloadData];
-                    
-                    
-                } cancelBlock:^(ActionSheetStringPicker *picker) {
-                    
-                } origin:self.view];
-                [actionPicker setPickerBackgroundColor: [UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
-                [actionPicker customizeInterface];
-                [actionPicker showActionSheetPicker];
-                actionPicker.toolbar.backgroundColor =[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1];
-                
-
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }
+        return;
+         }
   
     
     

@@ -14,6 +14,7 @@
 @property (nonatomic,retain)NSArray *imageArray;
 @property (nonatomic,copy)NSString *desc;
 @property (nonatomic,copy)NSString *key;
+@property (nonatomic,copy)NSString *qqbrowser;
 
 @end
 
@@ -29,6 +30,7 @@
 @property (nonatomic,assign)BOOL isPic;
 @property (nonatomic,assign)BOOL isApprentice;
 @property (nonatomic,assign)BOOL isSign;
+@property (nonatomic,assign)BOOL isArticle;
 
 +(DXShareTools *)shareToolsInstance;
 

@@ -175,7 +175,7 @@
                                     <action selector="LoginClick:" destination="Rwr-E2-WBc" eventType="touchUpInside" id="cQK-8E-Dy5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXm-5o-zEX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXm-5o-zEX">
                                 <rect key="frame" x="18" y="121" width="42" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="cGD-B5-VGy"/>

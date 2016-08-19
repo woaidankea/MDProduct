@@ -228,19 +228,36 @@ static DXShareTools *_shareTools = nil;
 //    NSFileManager *fileManager = [NSFileManager defaultManager];
 //    
 //    
-//    
-    if(!_isApprentice&&!_isSign){
+//
+   
+    if(_isArticle){
 
         NSString *textToShare = model.title;
         NSURL *urlToShare = [NSURL URLWithString:model.url];
         [activityItems addObject:urlToShare];
         [activityItems addObject:textToShare];
-        [activityItems addObject:model.imageArray[0]];
-    }else if(_isSign){
-        [activityItems addObject:[CurrentModel.imageArray objectAtIndex:0]];
-
+        
+        
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.jieku.com/Common/images/logo.png"]];
+        UIImage *imagerang = [UIImage imageWithData:data];
+        
+        NSString *path_sandox = NSHomeDirectory();
+        NSString *imagePath = [path_sandox stringByAppendingString:[NSString stringWithFormat:@"/Documents/ShareWX%d.jpg",1]];
+        [UIImagePNGRepresentation(imagerang) writeToFile:imagePath atomically:YES];
+        
+        NSURL *shareobj = [NSURL fileURLWithPath:imagePath];
+        
+        [activityItems addObject:shareobj];
     }
-    else {
+    if(_isSign){
+        NSString *textToShare = model.title;
+        NSURL *urlToShare = [NSURL URLWithString:model.url];
+        [activityItems addObject:urlToShare];
+        [activityItems addObject:textToShare];
+        [activityItems addObject:model.imageArray[0]];
+        
+    }
+    if(_isApprentice) {
     
      [activityItems addObject:[CurrentModel.imageArray objectAtIndex:1]];
     }
@@ -612,7 +629,7 @@ static DXShareTools *_shareTools = nil;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     type =SSDKPlatformTypeSinaWeibo;
     
-    if(!_isApprentice&&!_isSign){
+    if(_isArticle){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -626,7 +643,7 @@ static DXShareTools *_shareTools = nil;
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-        
+            _isSign = NO;
     }
     else {
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
@@ -956,7 +973,7 @@ static DXShareTools *_shareTools = nil;
     NSInteger type = 0;
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     type =SSDKPlatformSubTypeQZone;
-    if(!_isApprentice&&!_isSign){
+    if(_isArticle){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -964,15 +981,16 @@ static DXShareTools *_shareTools = nil;
                                            type:SSDKContentTypeAuto];
         
         
-    }else if(_isSign){
+    }
+    if(_isSign){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-        
+            _isSign = NO;
     }
-    else {
+    if(_isApprentice) {
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -1131,33 +1149,33 @@ static DXShareTools *_shareTools = nil;
     type =SSDKPlatformSubTypeQQFriend;
    
     
-    if(!_isApprentice&&!_isSign){
+    if(_isArticle){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-
-
-    }else if(_isSign){
-        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
-                                         images:CurrentModel.imageArray[0] //传入要分享的图片
-                                            url:[NSURL URLWithString:CurrentModel.url]
-                                          title:CurrentModel.title
-                                           type:SSDKContentTypeAuto];
-
+        
+        
     }
-    else {
+    if(_isSign){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-
-      
+        _isSign = NO;
+    }
+    if(_isApprentice) {
+        [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
+                                         images:CurrentModel.imageArray[0] //传入要分享的图片
+                                            url:[NSURL URLWithString:CurrentModel.url]
+                                          title:CurrentModel.title
+                                           type:SSDKContentTypeAuto];
+        
+        
     }
     
-
     
     
     
@@ -1298,7 +1316,7 @@ static DXShareTools *_shareTools = nil;
          switch (state) {
              case SSDKResponseStateSuccess:
              {
-                 //                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                 // UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
                  //                                                                     message:nil
                  //                                                                    delegate:self
                  //                                                           cancelButtonTitle:@"确定"
@@ -1441,7 +1459,7 @@ static DXShareTools *_shareTools = nil;
     type =SSDKPlatformSubTypeYiXinSession;
     
     
-    if(!_isApprentice&&!_isSign){
+    if(_isArticle){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -1449,15 +1467,16 @@ static DXShareTools *_shareTools = nil;
                                            type:SSDKContentTypeAuto];
         
         
-    }else if(_isSign){
+    }
+    if(_isSign){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-        
+        _isSign = NO;
     }
-    else {
+    if(_isApprentice) {
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -1613,7 +1632,7 @@ static DXShareTools *_shareTools = nil;
     type =SSDKPlatformSubTypeYiXinSession;
     
     
-    if(!_isApprentice&&!_isSign){
+    if(_isArticle){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:[self imageCompressForWidth:CurrentModel.imageArray[0] targetWidth:40] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
@@ -1621,15 +1640,16 @@ static DXShareTools *_shareTools = nil;
                                            type:SSDKContentTypeAuto];
         
         
-    }else if(_isSign){
+    }
+    if(_isSign){
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]
                                           title:CurrentModel.title
                                            type:SSDKContentTypeAuto];
-        
+        _isSign = NO;
     }
-    else {
+    if(_isApprentice) {
         [shareParams SSDKSetupShareParamsByText:CurrentModel.desc
                                          images:CurrentModel.imageArray[0] //传入要分享的图片
                                             url:[NSURL URLWithString:CurrentModel.url]

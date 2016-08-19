@@ -12,7 +12,7 @@
 #ifdef kServerPre
 
 //1、接口地址
-#define kServerUrl   @"http://60.173.8.147/tdapi/"
+#define kServerUrl   @"http://tdapi.51tangdou.com/"
 //密码重置接口
 #define KForgetUrl  @"http://host:port/"
 
@@ -91,12 +91,12 @@
 #define kGetUid @"api/user/getuid"
 
 //糖豆2.0
-#define kUpdataProfile @"Api/User/profilesaved"
-#define kappTab @"Api/Column/appcol"
-#define kArticleClass  @"Api/Column/colclass"
-#define kMyPageInfo @"Api/Column/pageminfo"
-#define kSendTicket @"Api/User/subticket"
-#define kStartAd @"Api/Ad/startad"
+#define kUpdataProfile @"User/profilesaved"
+#define kappTab @"Column/appcol"
+#define kArticleClass  @"Column/colclass"
+#define kMyPageInfo @"Column/pageminfo"
+#define kSendTicket @"User/subticket"
+#define kStartAd @"Ad/startad"
 
 
 #endif

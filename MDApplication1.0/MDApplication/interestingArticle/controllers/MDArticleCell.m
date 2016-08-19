@@ -36,7 +36,7 @@
     
         if([model.showPrice isEqualToString:@"1"]){
             
-            _income.text = [NSString stringWithFormat:@"￥%@",model.inCome];
+            _income.text = [NSString stringWithFormat:@"￥%.2f",[model.inCome floatValue]];
 //            _income.textColor = [UIColor ColorWithHexString:@"E82C28"];
             
         }else{
@@ -52,8 +52,8 @@
     }else{
      _readCount.text = @"阅读数：";
     }
-        _ContentLabel.text =  model.desc;
-    _datetime.text =  [AMTools dateStringFromTimeInterval:model.createDatetime];
+    _ContentLabel.text =  model.desc;
+    _datetime.text =  [AMTools dateYYStringFromTimeInterval:model.createDatetime];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
