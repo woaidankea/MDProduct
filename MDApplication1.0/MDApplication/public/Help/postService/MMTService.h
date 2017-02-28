@@ -288,6 +288,8 @@ typedef void (^Failure) (NSError *error);
 -(NSString *)generateSignatureParams:(NSDictionary *)paramDic;
 
 
+-(void)postSuccess:(Success)success
+           failure:(Failure)failure;
 
 
 

@@ -122,6 +122,12 @@
     [self setShareSDK];
 
     
+    [[MMTService shareInstance]postSuccess:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
     
 //    [self EnterMainViewController:AM_NORMAL_ENTER];
     
@@ -148,8 +154,11 @@
         NSDictionary *result = [[MMTService shareInstance]syncgetAppCol];
         [TangConfig shareInstance].colDic = result;
         NSError *parseError = nil;
+        if(result){
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:&parseError];
+      
         [self saveCache: jsonData];
+        }
 
         
     });

@@ -215,8 +215,9 @@
     TDColclassRequest *request = [[TDColclassRequest alloc]initColclassWithModuleid:_moduleId success:^(AMBaseRequest *request) {
         NSError *parseError = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:request.responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
+        if(jsonData){
         [self saveCache: jsonData];
-        
+        }
         if(!responseObject){
             NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[request.responseObject objectForKey:@"list"]];
             [self setViewControllers:contentItems];
@@ -231,8 +232,12 @@
             
             
             NSError *parseError = nil;
+            if([jsonObject objectForKey:@"content"]){
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[jsonObject objectForKey:@"content"] options:NSJSONWritingPrettyPrinted error:&parseError];
-            [self saveCache: jsonData];
+    
+             [self saveCache: jsonData];
+            }
+           
             if(!responseObject){
                 NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
                 [self setViewControllers:contentItems];
@@ -249,40 +254,6 @@
     
     
     
-    
-    
-//    NSDictionary *result = [[MMTService shareInstance]syncgetArticleClassWith:_moduleId];
-//    if([[result objectForKey:@"code"]floatValue]==0 && result){
-////        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
-//        
-//        NSError *parseError = nil;
-//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[result objectForKey:@"data"] options:NSJSONWritingPrettyPrinted error:&parseError];
-//        [self saveCache: jsonData];
-//
-//        if(!responseObject){
-//        NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[[result objectForKey:@"data"] objectForKey:@"list"]];
-//        [self setViewControllers:contentItems];
-//        }
-//        [UUProgressHUD dismissWithSuccess:nil];
-//    }else{
-//            //格式化成json数据
-//            id jsonObject = [AMTools getLocalJsonDataWithFileName:@"content"];
-//            if(jsonObject){
-//        
-//               
-//                
-//                NSError *parseError = nil;
-//                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[jsonObject objectForKey:@"content"] options:NSJSONWritingPrettyPrinted error:&parseError];
-//                [self saveCache: jsonData];
-//                if(!responseObject){
-//                 NSArray *contentItems = [ContentModel mj_objectArrayWithKeyValuesArray:[jsonObject objectForKey:@"data"]];
-//                [self setViewControllers:contentItems];
-//                }
-//
-//               
-//            }
-//        [UUProgressHUD dismissWithSuccess:nil];
-//    }
     
     
     

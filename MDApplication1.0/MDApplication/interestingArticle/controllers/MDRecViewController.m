@@ -124,7 +124,10 @@
             [self.items addObjectsFromArray:list];
             NSError *parseError = nil;
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:request.responseObject options:NSJSONWritingPrettyPrinted error:&parseError];
-            [self saveCache: jsonData];
+            if(jsonData){
+                [self saveCache: jsonData];
+            }
+          
             
         }else if (_currentPage > 0 ){
             [self.items addObjectsFromArray:list];

@@ -103,7 +103,7 @@
     }
     if(indexPath.row==2){
     //@"去评分";
-       NSString*   url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id1101583170"];
+        NSString*   url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id1101583170"];
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
         
         

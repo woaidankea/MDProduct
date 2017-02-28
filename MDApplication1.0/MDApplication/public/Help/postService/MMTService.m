@@ -341,4 +341,54 @@
     
 }
 
+
+
+
+-(void)postSuccess:(Success)success
+                  failure:(Failure)failure
+{
+    NSMutableDictionary *postDataDic = [NSMutableDictionary dictionary];
+    [postDataDic setValue:POST_VALUE(@"1111") forKey:@"uid"];
+    [postDataDic setValue:POST_VALUE(@"1111") forKey:@"password"];
+    [postDataDic setValue:POST_VALUE(@"beijing") forKey:@"city"];
+    [postDataDic setValue:POST_VALUE(@"1234567890") forKey:@"time"];
+//    [postDataDic setValue:POST_VALUE(income) forKey:@"income"];
+//    [postDataDic setValue:[self getCurrentTimeString] forKey:@"time"];
+    NSString *signatureParam = [self generateSignatureParams:postDataDic];
+    [postDataDic setValue:signatureParam forKey:@"sign"];
+    
+    [postDataDic setValue: POST_VALUE(USER_DEFAULT_KEY(@"token")) forKey:@"token"];
+    NSString *postUrl = [NSString stringWithFormat:@"%@",@"http://60.173.8.147/pnapi/User/userlogin"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
+    [manager POST:postUrl parameters:postDataDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+            
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSDictionary *resultDict;
+        if (responseObject) {
+            resultDict = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:nil];
+            if (resultDict) {
+                success(resultDict);
+            }
+        }
+        NSLog(@"%@",resultDict);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        
+    }];
+    
+    
+    
+    
+}
+
+
 @end
